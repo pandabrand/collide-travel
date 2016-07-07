@@ -1,3 +1,92 @@
-<head>
-  <title>Collide Travel</title>
-</head>
+<template name="layout">
+  {{> header }}
+  <div class="container">
+    Hi.
+  </div>
+  {{> footer }}
+</template>
+
+<template name="header">
+  <header id="header">
+  	<div class="navbar-inner not-navbar-fixed-top">
+    	<div id="top-img-wrapper" class="banner-img-wrapper">
+  		</div>
+
+  		<div id="navbar-wrapper">
+  			<div class="container">
+  				<div class="innerContainer">
+  					<nav class="navbar yamm navbar-custom" role="navigation">
+  						<a class="navbar-brand" href="http://www.culturecollide.com/">
+                <img src="/images/new-logo.png" srcset="/images/new-logo.png 1x, /images/new-logo@x2.png 2x" width="225">
+  							<div class="clear"></div>
+  						</a>
+
+  						<div class="navbar-header  page-scroll">
+  							 <button type="button" class="js-mobile-menu-trigger navbar-toggle">
+  								 <div class="nav-show nav-menu icon menu-icon">
+  									<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 32 20" height="20px" width="32px">
+  										<g class="menu-icon-svg" fill="#FFFFFF">
+  											<rect height="5.26315789" width="32" y="0" x="0"></rect>
+  											<rect height="5.26315789" width="32" y="7.36842105" x="0"></rect>
+  											<rect height="5.26315789" width="32" y="14.7368421" x="0"></rect>
+  										</g>
+  									</svg>
+  								</div>
+  							 </button>
+  						</div>
+
+  						<div class="collapse navbar-collapse navbar-main-collapse">
+
+  						<div>
+  							<ul class="nav nav-pills socialSearch">
+  								<li>
+  									<div class="headerSocials">
+  										<a href="http://twitter.com/@culturecollide" target="_blank" class="external twLink"></a>
+  										<a href="http://facebook.com/culturecollideofficial" target="_blank" class="external fbLink"></a>
+  										<a href="http://instagram.com/officialculturecollide" target="_blank" class="external igLink"></a>
+  										<a href="http://www.pinterest.com/culturecollide" target="_blank" class="external pLink"></a>
+  										<a href="http://youtube.com/culturecollide" target="_blank" class="external ytLink"></a>
+  										<a href="http://culturecollideofficial.tumblr.com&#9;" target="_blank" class="external tLink"></a>
+  										<a href="https://open.spotify.com/user/culturecollide" target="_blank" class="external sLink"></a>
+  										<a href="/rss/rss" target="_blank" class="external rssLink"></a>
+  									</div>
+  								</li>
+
+  								<li class="searchWrap">
+  									<form id="searchform" class="navbar-form navbar-right" method="post" action="http://www.culturecollide.com/">
+                    <div class="hiddenFields">
+                    </div>
+  										<div class="form-group">
+  											<input type="text" class="form-control" placeholder="" name="keywords" id="keywords">
+  										</div>
+  										<button type="submit" class="btn btn-default hidden">Submit</button>
+  									</form>
+  								</li>
+
+  							</ul>
+  						</div>
+  							<ul class="nav nav-pills">
+  								<li><a href="/city-guides">City Guides</a></li>
+  								<li><a href="/trending/">Trending</a></li>
+  								<li><a href="/in-print/">In Print</a></li>
+                  <li><a href="/events/">Events</a></li>
+  								<li><a href="/contests/">Contests</a></li>
+  								<li><a href="/newsletters/">Newsletters</a></li>
+  							</ul>
+  						</div>
+  					</nav>
+  				</div>
+  			</div>
+  		</div>
+
+  	</div>
+  </header>
+</template>
+
+<template name="home">
+  <h1>We're home</h1>
+</template>
+
+<template name="footer">
+  <footer>this is a footer</footer>
+</template>

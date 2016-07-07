@@ -1,0 +1,346 @@
+/* --- BODY --- */
+
+body {
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-x: hidden;
+  &.noscroll {
+    overflow: hidden;
+    position: fixed;
+  }
+}
+
+#outerWrapper {
+  width: 100%;
+  background-color: #fff;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  max-width: inherit;
+}
+
+/* --- HEADER --- */
+
+header {
+  .container {
+    border: none;
+    width: 100%;
+    max-width: 1436px;
+    background-color: #000;
+  }
+  .innerContainer {
+    max-width: 1170px;
+    margin: 0 auto;
+  }
+  .row {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* --- MISC --- */
+
+a:link {
+  text-decoration: none;
+}
+
+.clear {
+  clear: both;
+}
+
+.noPadLeft {
+  padding-left: 0;
+}
+
+.noPadRight {
+  padding-right: 0;
+}
+
+.relative {
+  position: relative;
+}
+
+/* --- SOCIAL NAV --- */
+
+.headerSocials {
+  width: 415px;
+  float: right;
+  margin-top: 0px;
+}
+
+.twLink, .fbLink, .igLink, .pLink, .ytLink, .tLink, .sLink, .rssLink {
+  border-right: 1px solid #4A4A4A;
+  display: block;
+  float: left;
+  margin: 2px 0 8px 15px;
+  padding: 0 25px 0 10px;
+  text-indent: -9999px;
+  height: 22px;
+  width: 22px;
+}
+
+.ytLink {
+  padding-right: 31px;
+}
+
+.twLink {
+  background: url("/images/Twitter.png") no-repeat 0 0 transparent;
+}
+
+.fbLink {
+  background: url("/images/Facebook.png") no-repeat 0 0 transparent;
+}
+
+.igLink {
+  background: url("/images/Instagram.png") no-repeat 0 0 transparent;
+}
+
+.pLink {
+  background: url("/images/Pinterest.png") no-repeat 0 0 transparent;
+}
+
+.ytLink {
+  background: url("/images/youtube.png") no-repeat 0 0 transparent;
+}
+
+.tLink {
+  background: url("/images/tumblr.png") no-repeat 0 0 transparent;
+}
+
+.sLink {
+  background: url("/images/spotify.png") no-repeat 0 0 transparent;
+}
+
+.rssLink {
+  background: url("/images/rss.png") no-repeat 0 0 transparent;
+}
+
+.twLink:hover, .fbLink:hover, .igLink:hover, .pLink:hover, .ytLink:hover .tLink:hover, .sLink:hover, .rssLink:hover {
+  opacity: .7 !important;
+}
+
+.socialSearch {
+  background-color: #000 !important;
+  height: 52px;
+  border-radius: 5px;
+  a:hover {
+    cursor: pointer;
+  }
+}
+
+/*  -- NAVIGATION--------------------------------------- */
+
+.nav-pills {
+  font-size: 16px;
+  margin-top: 0;
+  float: right;
+}
+
+.navbar .nav {
+  display: inline-block;
+  *display: inline;
+  /* ie7 fix */
+  *zoom: 1;
+  /* hasLayout ie7 trigger */
+  vertical-align: top;
+  > li {
+    display: inline-block;
+    *display: inline;
+    /* ie7 fix */
+    *zoom: 1;
+    /* hasLayout ie7 trigger */
+    vertical-align: top;
+  }
+}
+
+.navbar-inner {
+  text-align: center;
+  background: none repeat scroll 0 0 #000;
+}
+
+.navbar-toggle {
+  font-size: 35px;
+  color: #fff;
+  margin-top: 4%;
+  padding: 0;
+}
+
+a.navbar-brand {
+  float: left;
+  display: inline-block;
+  height: 91px;
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  padding: 10px 0 0 0;
+  &:hover {
+    opacity: .7;
+  }
+}
+
+.navbar {
+  background: #000;
+  border-color: #000;
+  text-transform: uppercase;
+  border-radius: 0;
+  height: 122px;
+  margin-bottom: 0;
+  li {
+    margin: 15px 10px 15px 0px;
+  }
+  a {}
+}
+
+.nav > li > a {
+  color: #FFFFFF;
+  font-family: 'colfax-web';
+  font-size: 14px;
+  font-weight: 300;
+  padding: 0 7px;
+  &:focus, &:hover {
+    background-color: transparent !important;
+  }
+}
+
+.navbar .nav-pills a:hover {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.nav-pills .searchWrap {
+  margin-top: 7px;
+}
+
+.dropdown-toggle {
+  margin: 0;
+  background: #1e1e1e !important;
+  color: #999;
+}
+
+.nav .caret {
+  border-top-color: #666;
+  border-bottom-color: #666;
+  background: #1e1e1e !important;
+}
+
+.dropdown {
+  background: #1e1e1e !important;
+  color: #999;
+  li {
+    margin: -15px 20px 0 0;
+    color: #999;
+    a {
+      display: inline;
+      float: left;
+      margin: 0;
+      padding: 18px 5px;
+      color: #999;
+      height: 30px;
+      &:hover {
+        background: url(/images/menu_triangle.png) no-repeat top center !important;
+      }
+    }
+  }
+}
+
+ul.dropdown-menu {
+  border-radius: 0;
+  border: none;
+  background: #f1f1f1;
+  margin: 0;
+  border-radius: 0;
+  border: none;
+  background: rgba(256, 256, 256, 1);
+  padding: 0;
+  &.festivals {
+    background: rgba(71, 137, 146, 0.8);
+    padding: 0;
+  }
+  &.galleries {
+    background: rgba(80, 124, 159, 0.8);
+    padding: 0;
+  }
+  a {
+    margin: -2px 10px 0 10px;
+    border-radius: 0;
+    border: none;
+    color: #000 !important;
+  }
+}
+
+.dropdown-menu a:hover {
+  background: #f1f1f1 !important;
+  text-decoration: none;
+  color: #666 !important;
+}
+
+ul.dropdown-menu {
+  &.festivals a, &.galleries a {
+    color: #fff !important;
+  }
+  &.festivals a:hover, &.galleries a:hover {
+    color: #ddd !important;
+  }
+}
+
+.form-control {
+  margin-top: -5px;
+  padding-left: 30px;
+  background: #fff url(/images/search_icon.png);
+  background-repeat: no-repeat;
+  background-position: 8px 10px;
+}
+
+.yamm-content i {
+  float: left;
+  margin: 0;
+  font-size: 35px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 10px 15px;
+}
+
+.iconMicrophone {
+  background: url("/images/microphone.png") no-repeat scroll center center #478992;
+  display: block;
+  height: 52px;
+  margin-right: 10px !important;
+  width: 60px;
+}
+
+.galleryIcon {
+  background-color: #507c9f;
+}
+
+.yamm-content {
+  h1 {
+    color: #FFFFFF;
+    float: left;
+    font-family: 'colfax-web';
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 1;
+    margin: 0;
+    text-transform: uppercase;
+    padding-top: 11px;
+  }
+  div {
+    padding-top: 15px;
+  }
+}
+
+.nav-menu {
+  animation: 0.4s ease 0s normal both 1 fadeIn;
+}
+
+.nav-show {
+  background-color: #363636;
+  bottom: 0;
+  height: 100%;
+  text-align: center;
+  width: 70px;
+}
+
+.menu-icon, .menu-icon-svg {
+  background: none repeat scroll 0 0 #000;
+}
