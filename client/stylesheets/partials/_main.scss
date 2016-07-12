@@ -1,0 +1,30 @@
+#main {
+  position: relative;
+  .hero-image {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .hero-text {
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    color: $white;
+    .hero-title {
+      font-size: 72px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .hero-copy {
+      font-size: 24px;
+    }
+  }
+
+  .select-bar {
+    font-size: 36px;
+    text-align: center;
+    margin: 25px auto;
+  }
+}

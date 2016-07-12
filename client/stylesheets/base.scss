@@ -348,10 +348,6 @@ ul.dropdown-menu {
 .menu-icon, .menu-icon-svg {
   background: none repeat scroll 0 0 #000;
 }
-/*  -- Main temp--------------------------------------- */
-#main {
-  height: 100vh;
-}
 
 /*  -- FOOTER--------------------------------------- */
 
@@ -361,4 +357,6 @@ footer {
 }
 
 /* --- IMPORTS --- */
+@import "partials/variables";
 @import "partials/explore";
+@import "partials/main";
