@@ -17,11 +17,14 @@ es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 insecure                # Allow all DB writes from clients (for prototyping)
-orionjs:core
 kadira:flow-router
 kadira:blaze-layout
 seba:minifiers-autoprefixer
 fourseven:scss
 twbs:bootstrap
 fortawesome:fontawesome
-orionjs:bootstrap
+session
+react-meteor-data
+accounts-ui
+accounts-password
+useraccounts:bootstrap
