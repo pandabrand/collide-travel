@@ -5,11 +5,13 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 import UIHeader from './header.jsx';
 import UIFooter from './footer.jsx';
+import ExploreBar from './explore.jsx';
 
 //App component - base app
 export const Layout = ({content}) => (
   <div id="wrapper">
     <UIHeader/>
+    <ExploreBar/>
     <div>{content}</div>
     <UIFooter/>
   </div>
