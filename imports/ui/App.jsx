@@ -7,19 +7,10 @@ import UIHeader from './header.jsx';
 import UIFooter from './footer.jsx';
 
 //App component - base app
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div id="wrapper">
-        <UIHeader/>
-        <div className="container" id="main">This is the main container.</div>
-        <UIFooter/>
-      </div>
-
-    );
-  }
-}
+export const Layout = ({content}) => (
+  <div id="wrapper">
+    <UIHeader/>
+    <div>{content}</div>
+    <UIFooter/>
+  </div>
+);
