@@ -28,7 +28,7 @@ export default class HomeMap extends Component {
     return (
       <div className="map-container">
         <GoogleMap
-          key={'AIzaSyCCZXJra6h1WdMewRSZ2SJ9K0Rt1lurRIk'}
+          key={process.env.GOOGLE_MAP_KEY}
           center={this.props.center}
           zoom={this.props.zoom}>
             <MapMarker lat={59.955413} lng={30.337844} text={'A'} />
