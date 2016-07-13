@@ -5,6 +5,8 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "babel-plugin-transform-class-properties": "^6.10.2",
+    "google-map-react": "^0.15.1",
     "meteor-node-stubs": "~0.2.0",
     "react": "^15.2.1",
     "react-addons-create-fragment": "^15.2.1",
@@ -16,6 +18,8 @@
     "react-addons-transition-group": "^15.2.1",
     "react-addons-update": "^15.2.1",
     "react-dom": "^15.2.1",
-    "react-mounter": "^1.2.0"
+    "react-mixin": "^2.0.2",
+    "react-mounter": "^1.2.0",
+    "react-pure-render": "^1.0.2"
   }
 }
