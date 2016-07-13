@@ -4,8 +4,10 @@ import shouldPureComponentUpdate from 'react-pure-render/function';
 import GoogleMap from 'google-map-react';
 import MapMarker from './mapping/map-marker.jsx';
 
+const MAP_KEY = Meteor.settings.public.GMAP_KEY;
 
 export default class HomeMap extends Component {
+
   static propTypes = {
     center: PropTypes.array,
     zoom: PropTypes.number,
@@ -28,7 +30,7 @@ export default class HomeMap extends Component {
     return (
       <div className="map-container">
         <GoogleMap
-          key={process.env.GOOGLE_MAP_KEY}
+          bootstrapURLKeys={{key: MAP_KEY}}
           center={this.props.center}
           zoom={this.props.zoom}>
             <MapMarker lat={59.955413} lng={30.337844} text={'A'} />
