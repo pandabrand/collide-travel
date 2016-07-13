@@ -3,6 +3,7 @@ import shouldPureComponentUpdate from 'react-pure-render/function';
 
 import GoogleMap from 'google-map-react';
 import MapMarker from './mapping/map-marker.jsx';
+import MapTable from './mapping/map-table.jsx';
 
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
 
@@ -29,13 +30,18 @@ export default class HomeMap extends Component {
   render() {
     return (
       <div className="map-container">
-        <GoogleMap
-          bootstrapURLKeys={{key: MAP_KEY}}
-          center={this.props.center}
-          zoom={this.props.zoom}>
-            <MapMarker lat={59.955413} lng={30.337844} text={'A'} />
-            <MapMarker {...this.props.mapPlaceCoords} text={'B'} />
-        </GoogleMap>
+        <div className="table-container">
+          <MapTable/>
+        </div>
+        <div className="map-layout">
+          <GoogleMap
+            bootstrapURLKeys={{key: MAP_KEY}}
+            center={this.props.center}
+            zoom={this.props.zoom}>
+              <MapMarker lat={59.955413} lng={30.337844} text={'A'} />
+              <MapMarker {...this.props.mapPlaceCoords} text={'B'} />
+          </GoogleMap>
+        </div>
       </div>
     );
   }
