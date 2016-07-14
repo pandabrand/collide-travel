@@ -9,6 +9,7 @@ export default class Magazine extends Component {
           <img src={this.props.print.preview}/>
         </div>
         <div className="print-control caption">
+          <h2>Issue #{this.props.print.issue}</h2>
           <p>{this.props.print.featured}</p>
           { !this.props.print.purchase && !this.props.print.download ?
             <div className="soldout">
