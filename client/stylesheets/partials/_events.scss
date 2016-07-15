@@ -1,0 +1,18 @@
+.event-image-container {
+  .event-image {
+    position: relative;
+    img {
+      width: 100%;
+    }
+  }
+  .event-title {
+    font-size: 2em;
+    font-weight: bold;
+    color: $white;
+    position: absolute;
+    top: 45%;
+    margin: 2% auto;
+    width: 100%;
+    text-align: center;
+  }
+}
