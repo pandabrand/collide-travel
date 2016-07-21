@@ -16,9 +16,12 @@ export default class HomeMap extends Component {
   };
 
   static defaultProps = {
-    center: [59.938043, 30.337157],
-    zoom: 8,
-    mapPlaceCoords: {lat: 59.724465, lng: 30.080121}
+    center: [41.928432, -87.707342],
+    zoom: 12,
+    greatPlaces: [
+     {id: 'A', lat: 41.927665, lng: -87.706945},
+     {id: 'B', lat: 41.923945, lng: -87.699295}
+    ]
   };
 
   shouldComponentUpdate = shouldPureComponentUpdate;
@@ -28,6 +31,7 @@ export default class HomeMap extends Component {
   }
 
   render() {
+
     return (
       <div className="map-container">
         <div className="table-container">
@@ -38,8 +42,8 @@ export default class HomeMap extends Component {
             bootstrapURLKeys={{key: MAP_KEY}}
             center={this.props.center}
             zoom={this.props.zoom}>
-              <MapMarker lat={59.955413} lng={30.337844} text={'A'} />
-              <MapMarker {...this.props.mapPlaceCoords} text={'B'} />
+              <MapMarker lat={41.927665} lng={-87.706945} text={'A'} />
+              <MapMarker lat={41.923945} lng={-87.699295} text={'B'} />
           </GoogleMap>
         </div>
       </div>
