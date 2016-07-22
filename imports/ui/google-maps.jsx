@@ -9,6 +9,7 @@ import Spinner from './app/spinner.jsx'
 import Loading from 'react-loading-spinner';
 import 'react-loading-spinner/src/css/index.css';
 
+
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
 let pos = {};
 
@@ -35,13 +36,28 @@ export default class HomeMap extends Component {
     this.state = {pos: null};
   }
 
-  componentWillMount() {
+  getCoordsByGeolocation() {
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         var pos = {lat: position.coords.latitude, lng: position.coords.longitude};
         this.setState({pos: {lat: position.coords.latitude, lng: position.coords.longitude}});
       }.bind(this));
     }
+  }
+
+  getCoordsByCity() {
+    Meteor.call('getCoordsByCityGeolocation', 'Chicago IL', function(error, result) {
+      if(error)
+        console.log('there is an error ' + error.reason);
+
+      console.log(JSON.stringify(result));
+      this.setState({pos: {lat: result[0].latitude, lng: result[0].longitude}});
+    }.bind(this));
+  }
+
+  componentWillMount() {
+    //this.getCoordsByGeolocation();
+    this.getCoordsByCity();
   }
 
   render() {

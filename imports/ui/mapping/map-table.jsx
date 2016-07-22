@@ -9,7 +9,6 @@ export default class MapTable extends Component {
       <table className="table table-hover">
       <tbody>
         {names.map(function(name,i){
-          console.log('name: ' + name + ' index: ' + i);
           return (<MapRow key={i} name={name} imgId={i+1}/>)
         })}
       </tbody>
