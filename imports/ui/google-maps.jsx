@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
+import { createContainer } from 'meteor/react-meteor-data';
 
 import GoogleMap from 'google-map-react';
 import MapMarker from './mapping/map-marker.jsx';
@@ -50,7 +51,6 @@ export default class HomeMap extends Component {
       if(error)
         console.log('there is an error ' + error.reason);
 
-      console.log(JSON.stringify(result));
       this.setState({pos: {lat: result[0].latitude, lng: result[0].longitude}});
     }.bind(this));
   }
@@ -85,3 +85,15 @@ export default class HomeMap extends Component {
     );
   }
 }
+
+HomeMap.PropTypes = {
+  cities: PropTypes.array.isRequired,
+}
+
+export default createContainer(() => {
+  Meteor.subscribe('cities');
+
+  return {
+    cities: Cities.find({}, { sort: {default: true} }).fetch(),
+  }
+})
