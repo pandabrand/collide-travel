@@ -1,7 +1,8 @@
 import React from 'react';
 
 import SelectBar from '../includes/select-bar.jsx';
-import HomeMap from './google-maps.jsx';
+// import HomeMap from './google-maps.jsx';
+import HomeCityContainer from '../../containers/home-city.jsx';
 
 export const Home = () => (
   <div id="main">
@@ -11,6 +12,6 @@ export const Home = () => (
       <div className="hero-copy">Now we will have more text below.</div>
     </div>
     <SelectBar/>
-    <HomeMap/>
+    <HomeCityContainer/>
   </div>
 );
