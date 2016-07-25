@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import {Cities} from '../../lib/collections/cities.js';
+
 import GoogleMap from 'google-map-react';
 import MapMarker from './mapping/map-marker.jsx';
 import MapTable from './mapping/map-table.jsx';
@@ -12,7 +14,6 @@ import 'react-loading-spinner/src/css/index.css';
 
 
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
-let pos = {};
 
 export default class HomeMap extends Component {
   static propTypes = {
@@ -47,12 +48,11 @@ export default class HomeMap extends Component {
   }
 
   getCoordsByCity() {
-    Meteor.call('getCoordsByCityGeolocation', 'Chicago IL', function(error, result) {
-      if(error)
-        console.log('there is an error ' + error.reason);
-
-      this.setState({pos: {lat: result[0].latitude, lng: result[0].longitude}});
-    }.bind(this));
+    let cities = this.props.cities;
+    console.log('# of cities: ' + cities.length);
+    if(cities.length !== 0) {
+      this.setState({pos: {lat: cities[0].lat, lng: cities[0].lng}}).bind(this);
+    }
   }
 
   componentWillMount() {
@@ -91,9 +91,9 @@ HomeMap.PropTypes = {
 }
 
 export default createContainer(() => {
-  Meteor.subscribe('cities');
+  Meteor.subscribe('Cities');
 
   return {
     cities: Cities.find({}, { sort: {default: true} }).fetch(),
-  }
-})
+  };
+}, HomeMap);

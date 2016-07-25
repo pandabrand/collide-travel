@@ -1,4 +1,6 @@
 // Fixture data
+import { Cities } from '../lib/collections/cities.js';
+
 if(Magazines.find().count() === 0) {
   for(var i = 0; i < 5; i++) {
     Magazines.insert(
@@ -21,9 +23,9 @@ if(Events.find().count() === 0) {
 }
 
 if(Cities.find().count() === 0) {
-  Cities.insert(
+  Cities.insert([
     {_id: '1', cityName: 'New York', state: 'NY', lat:  40.712784, lng: -74.005941, guidePreview: 'http://lorempixel.com/300/410/city/1', isDefault: true, isPromoted: false},
     {_id: '2', cityName: 'Chicago', state: 'IL', lat: 41.878114, lng: -87.629798, guidePreview: 'http://lorempixel.com/300/410/city/2', isDefault: false, isPromoted: false},
     {_id: '3', cityName: 'Los Angeles', state: 'CA', lat: 34.052234, lng: -118.243685, guidePreview: 'http://lorempixel.com/300/410/city/3', isDefault: false, isPromoted: false}
-  );
+  ]);
 }
