@@ -1,10 +1,10 @@
 import React from 'react';
 import { mount } from 'react-mounter';
-import { Layout } from '../imports/ui/App.jsx';
-import { Home } from '../imports/ui/home.jsx';
-import PrintPage  from '../imports/ui/print-page.jsx';
-import Events from '../imports/ui/events.jsx';
-import Event from '../imports/ui/data/event.jsx';
+import { Layout } from './components/application/App.jsx';
+import { Home } from './components/home/home.jsx';
+import PrintPage  from './components/print-page/print-page.jsx';
+import Events from './components/events/events.jsx';
+import Event from './containers/event.jsx';
 
 FlowRouter.route('/', {
   action() {

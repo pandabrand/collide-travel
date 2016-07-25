@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import EventsRow from './data/event-row.jsx';
+import EventsRow from '../../containers/event-row.jsx';
 
 export default class Events extends Component {
   getEvents() {

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import Magazine from './data/magazine.jsx';
+import Magazine from '../../containers/magazine.jsx';
 
 export default class PrintPage extends Component {
 

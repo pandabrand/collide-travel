@@ -2,13 +2,13 @@ import React, { Component, PropTypes } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 import { createContainer } from 'meteor/react-meteor-data';
 
-import {Cities} from '../../lib/collections/cities.js';
+import { Cities } from '../../../lib/collections/cities.js';
 
 import GoogleMap from 'google-map-react';
-import MapMarker from './mapping/map-marker.jsx';
-import MapTable from './mapping/map-table.jsx';
+import MapMarker from '../mapping/map-marker.jsx';
+import MapTable from '../mapping/map-table.jsx';
 
-import Spinner from './app/spinner.jsx'
+import Spinner from '../includes/spinner.jsx'
 import Loading from 'react-loading-spinner';
 import 'react-loading-spinner/src/css/index.css';
 

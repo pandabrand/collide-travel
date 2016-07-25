@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SelectBar from './select-bar.jsx';
+import SelectBar from '../includes/select-bar.jsx';
 import HomeMap from './google-maps.jsx';
 
 export const Home = () => (
