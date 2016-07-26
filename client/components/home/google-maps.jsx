@@ -5,7 +5,8 @@ import { Cities } from '../../../lib/collections/cities.js';
 import { Locations } from '../../../lib/collections/locations.js';
 
 import GoogleMap from 'google-map-react';
-import {MapMarker} from '../mapping/map-marker.jsx';
+import MapMarker from '../mapping/map-marker.jsx';
+import {K_CIRCLE_SIZE} from '../mapping/marker-style.js';
 import {MapTable} from '../mapping/map-table.jsx';
 
 import Spinner from '../includes/spinner.jsx'
@@ -27,9 +28,10 @@ const getCoordsByCity = (homeCity, locations) => {
         <GoogleMap
           bootstrapURLKeys={{key: MAP_KEY}}
           center={homeCenter}
-          zoom={DEFAULT_ZOOM}>
+          zoom={DEFAULT_ZOOM}
+          hoverDistance={K_CIRCLE_SIZE}>
           {locations.map(function(location,i){
-              return <MapMarker lat={location.lat} lng={location.lng} key={i} item={i} />
+              return <MapMarker lat={location.lat} lng={location.lng} key={i} item={(i+1).toString()} zIndex={i+1} />
             })
           }
         </GoogleMap>
