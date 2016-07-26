@@ -2,6 +2,7 @@
 import { Cities } from '../lib/collections/cities.js';
 import { Magazines } from '../lib/collections/magazines.js';
 import { Events } from '../lib/collections/events.js';
+import { Locations } from '../lib/collections/locations.js';
 
 if(Magazines.find().count() === 0) {
   for(var i = 0; i < 5; i++) {
@@ -28,4 +29,12 @@ if(Cities.find().count() === 0) {
   Cities.insert({_id: '1', cityName: 'New York', state: 'NY', lat:  40.712784, lng: -74.005941, guidePreview: 'http://lorempixel.com/300/410/city/1', isDefault: true, isPromoted: false});
   Cities.insert({_id: '2', cityName: 'Chicago', state: 'IL', lat: 41.878114, lng: -87.629798, guidePreview: 'http://lorempixel.com/300/410/city/2', isDefault: false, isPromoted: false});
   Cities.insert({_id: '3', cityName: 'Los Angeles', state: 'CA', lat: 34.052234, lng: -118.243685, guidePreview: 'http://lorempixel.com/300/410/city/3', isDefault: false, isPromoted: false});
+}
+
+if(Locations.find().count() === 0) {
+  Locations.insert({_id: '1', cityId: '1', lat: 40.7143818, lng: -73.9981829, type:'bar', name:'Apotheke the bar', address:'9 Doyers St #1', photo:'http://lorempixel.com/100/100/fashion/1', description:'Aperiam eruditi indoctum sit et, ea sint primis cum. Ei duis primis diceret nam. Ei qui solet repudiare. Et commodo apeirian eos. Ex mea iudico aliquip evertitur, id minim placerat volutpat mei.', website:'http://www.apothekenyc.com/'});
+  Locations.insert({_id: '2', cityId: '1', lat: 40.713683, lng: -73.997181, type:'restaurant', name:'Golden Unicorn Restaurant', address:'18 E Broadway', photo:'http://lorempixel.com/100/100/fashion/2', description:'Aperiam eruditi indoctum sit et, ea sint primis cum. Ei duis primis diceret nam. Ei qui solet repudiare. Et commodo apeirian eos. Ex mea iudico aliquip evertitur, id minim placerat volutpat mei.', website:'http://www.goldenunicornrestaurant.com/'});
+  Locations.insert({_id: '3', cityId: '1', lat: 40.743193, lng: -73.977578, type:'restaurant', name:'Marchi\'s', address:'251 E 31st St', photo:'http://lorempixel.com/100/100/fashion/3', description:'Aperiam eruditi indoctum sit et, ea sint primis cum. Ei duis primis diceret nam. Ei qui solet repudiare. Et commodo apeirian eos. Ex mea iudico aliquip evertitur, id minim placerat volutpat mei.', website:'http://www.marchirestaurant.com/'});
+  Locations.insert({_id: '4', cityId: '1', lat: 40.680226, lng: -73.860875, type:'nightclub', name:'Medina Hall', address:'76-15 101 Ave', photo:'http://lorempixel.com/100/100/fashion/4', description:'Aperiam eruditi indoctum sit et, ea sint primis cum. Ei duis primis diceret nam. Ei qui solet repudiare. Et commodo apeirian eos. Ex mea iudico aliquip evertitur, id minim placerat volutpat mei.', website:'http://medinahall.com/'});
+  Locations.insert({_id: '5', cityId: '1', lat: 40.685038, lng: -73.991847, type:'boutique', name:'Article&', address:'198 Smith St', photo:'http://lorempixel.com/100/100/fashion/5', description:'Aperiam eruditi indoctum sit et, ea sint primis cum. Ei duis primis diceret nam. Ei qui solet repudiare. Et commodo apeirian eos. Ex mea iudico aliquip evertitur, id minim placerat volutpat mei.', website:'https://www.articleand.com/'});
 }
