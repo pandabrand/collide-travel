@@ -30,6 +30,8 @@
     "react-mounter": "^1.2.0",
     "react-pure-render": "^1.0.2",
     "redux": "^3.5.2",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0",
     "utils": "^0.3.1"
   }
 }

@@ -24,10 +24,9 @@ const getCoordsByCity = (homeCity, locations) => {
 
   if(homeCity && locations) {
     const homeCenter = {lat: homeCity.lat, lng: homeCity.lng};
-    console.log('props:' + JSON.stringify(hoverIndex));
     return <div className="map-container">
       <div className="table-container">
-        <MapTable {...props} locations={locations}/>
+        <MapTable locations={locations}/>
       </div>
       <div className="map-layout">
         <GoogleMap
