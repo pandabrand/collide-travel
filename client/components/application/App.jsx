@@ -1,18 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import Meteor from 'meteor/meteor';
-import { createContainer } from 'meteor/react-meteor-data';
+import { Provider } from 'react-redux';
+import Store from '../../../lib/client/store/store.js';
 
-import UIHeader from './header.jsx';
-import UIFooter from './footer.jsx';
-import ExploreBar from '../includes/explore.jsx';
+import { Layout } from './layout.jsx';
 
 //App component - base app
-export const Layout = ({content}) => (
+export const App = ({content}) => (
   <div id="wrapper">
-    <UIHeader/>
-    <ExploreBar/>
-    <div>{content}</div>
-    <UIFooter/>
+    <Provider store={Store}>
+      <Layout content={content} />
+    </Provider>
   </div>
-);
+)

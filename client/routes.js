@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'react-mounter';
-import { Layout } from './components/application/App.jsx';
+import { App } from './components/application/App.jsx';
 import { Home } from './components/home/home.jsx';
 import PrintPage  from './components/print-page/print-page.jsx';
 import Events from './components/events/events.jsx';
@@ -8,7 +8,7 @@ import Event from './containers/event.jsx';
 
 FlowRouter.route('/', {
   action() {
-    mount(Layout, {
+    mount(App, {
       content: (<Home/>),
     });
   }
@@ -16,7 +16,7 @@ FlowRouter.route('/', {
 
 FlowRouter.route('/in-print', {
   action() {
-    mount(Layout, {
+    mount(App, {
       content: (<PrintPage/>),
     });
   }
@@ -28,7 +28,7 @@ var eventSection = FlowRouter.group({
 
 eventSection.route('/', {
   action() {
-    mount(Layout, {
+    mount(App, {
       content: (<Events/>),
     });
   }
