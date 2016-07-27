@@ -59,4 +59,10 @@ const markerCircleStyleHover = {
   color: '#f44336'
 };
 
-export {markerStyle, markerCircleStyle,markerCircleStyleHover, markerTableCircleStyle, K_CIRCLE_SIZE};
+const markerTableCircleStyleHover = {
+  ...markerTableCircleStyle,
+  border: '3px solid #3f51b5',
+  color: '#f44336'
+};
+
+export {markerStyle, markerCircleStyle,markerCircleStyleHover, markerTableCircleStyle, markerTableCircleStyleHover, K_CIRCLE_SIZE};

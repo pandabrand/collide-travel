@@ -8,7 +8,7 @@ import GoogleMap from 'google-map-react';
 import MapMarker from '../mapping/map-marker.jsx';
 import {K_CIRCLE_SIZE} from '../mapping/marker-style.js';
 import {MapTable} from '../mapping/map-table.jsx';
-
+import setCircleHover from '../../../lib/client/actions/set-circle-hover.js';
 import Spinner from '../includes/spinner.jsx'
 import Loading from 'react-loading-spinner';
 import 'react-loading-spinner/src/css/index.css';
@@ -17,16 +17,12 @@ import 'react-loading-spinner/src/css/index.css';
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
 const DEFAULT_ZOOM = 12;
 
-const getCoordsByCity = (homeCity, locations) => {
-  const handleMouseOver = (event) => {
-    console.log('event: ' + event);
-  }
-
+const getCoordsByCity = (homeCity, locations, dispatch, props) => {
   if(homeCity && locations) {
     const homeCenter = {lat: homeCity.lat, lng: homeCity.lng};
     return <div className="map-container">
       <div className="table-container">
-        <MapTable locations={locations}/>
+        <MapTable markerCirlceHover={props.markerCirlceHover} locations={locations} />
       </div>
       <div className="map-layout">
         <GoogleMap
@@ -34,7 +30,8 @@ const getCoordsByCity = (homeCity, locations) => {
           center={homeCenter}
           zoom={DEFAULT_ZOOM}
           hoverDistance={K_CIRCLE_SIZE}
-          onChildMouseEnter={handleMouseOver}>
+          onChildMouseEnter={(event) => { return dispatch(setCircleHover(event))}}
+          onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}>
           {locations.map(function(location,i){
               return <MapMarker lat={location.lat} lng={location.lng} key={i} item={(i+1).toString()} zIndex={i+1} />
             })
@@ -47,7 +44,7 @@ const getCoordsByCity = (homeCity, locations) => {
   }
 }
 
-export const HomeCity = ( {homeCity, locations} ) =>
+export const HomeCity = ( {homeCity, locations, dispatch, props} ) =>
 (
-  <div>{getCoordsByCity(homeCity, locations)}</div>
+  <div>{getCoordsByCity(homeCity, locations, dispatch, props)}</div>
 );

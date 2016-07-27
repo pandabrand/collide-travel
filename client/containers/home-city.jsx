@@ -8,7 +8,6 @@ import { HomeCity } from '../components/home/google-maps.jsx';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('promoted-city');
-
   if(subscription.ready()) {
     let homeCity = Cities.findOne({isPromoted:true});
     let locations = '';
@@ -19,7 +18,7 @@ const composer = (props, onData) => {
     if(locations_sub.ready()) {
       locations = Locations.find().fetch();
     }
-    const homeData = {homeCity, locations}
+    const homeData = {homeCity, locations, props}
     onData(null, homeData);
   }
 };

@@ -38,7 +38,7 @@ export default class MapMarker extends Component {
     const circleStyle = this.props.$hover ? markerCircleStyleHover : markerCircleStyle;
 
     return (
-      <div style={style} onMouseOut={this.handleMouseOut.bind(this)} onMouseOver={this.handleMouseOver.bind(this)}>
+      <div style={style}>
         <div style={circleStyle}>
            {item}
         </div>
