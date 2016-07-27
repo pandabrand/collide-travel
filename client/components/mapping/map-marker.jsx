@@ -16,6 +16,19 @@ export default class MapMarker extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      isHovering: false,
+    };
+  }
+
+  handleMouseOver() {
+    this.setState({isHovering: true});
+    console.log('isHovering: ' + this.state.isHovering);
+  }
+
+  handleMouseOut() {
+    this.setState({isHovering: false});
+    console.log('isHovering: ' + this.state.isHovering);
   }
 
   render() {
@@ -25,7 +38,7 @@ export default class MapMarker extends Component {
     const circleStyle = this.props.$hover ? markerCircleStyleHover : markerCircleStyle;
 
     return (
-      <div style={style}>
+      <div style={style} onMouseOut={this.handleMouseOut.bind(this)} onMouseOver={this.handleMouseOver.bind(this)}>
         <div style={circleStyle}>
            {item}
         </div>

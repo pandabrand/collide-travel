@@ -17,6 +17,23 @@ const markerStyle = {
   top: -(K_CIRCLE_SIZE)
 };
 
+const markerTableCircleStyle = {
+  width: K_CIRCLE_SIZE,
+  height: K_CIRCLE_SIZE,
+  border: '3px solid #f44336',
+  borderRadius: K_CIRCLE_SIZE,
+  backgroundColor: 'white',
+  textAlign: 'center',
+  color: '#3f51b5',
+  fontSize: 16,
+  fontWeight: 'bold',
+  padding: 1,
+  cursor: 'pointer',
+  boxShadow: '0 0 0 1px white',
+  display: 'inline-block'
+};
+
+
 const markerCircleStyle = {
   position: 'absolute',
   left: 0,
@@ -42,4 +59,4 @@ const markerCircleStyleHover = {
   color: '#f44336'
 };
 
-export {markerStyle, markerCircleStyle,markerCircleStyleHover, K_CIRCLE_SIZE};
+export {markerStyle, markerCircleStyle,markerCircleStyleHover, markerTableCircleStyle, K_CIRCLE_SIZE};

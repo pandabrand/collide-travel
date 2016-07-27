@@ -18,18 +18,24 @@ const MAP_KEY = Meteor.settings.public.GMAP_KEY;
 const DEFAULT_ZOOM = 12;
 
 const getCoordsByCity = (homeCity, locations) => {
+  const handleMouseOver = (event) => {
+    console.log('event: ' + event);
+  }
+
   if(homeCity && locations) {
     const homeCenter = {lat: homeCity.lat, lng: homeCity.lng};
+    console.log('props:' + JSON.stringify(hoverIndex));
     return <div className="map-container">
       <div className="table-container">
-        <MapTable locations={locations}/>
+        <MapTable {...props} locations={locations}/>
       </div>
       <div className="map-layout">
         <GoogleMap
           bootstrapURLKeys={{key: MAP_KEY}}
           center={homeCenter}
           zoom={DEFAULT_ZOOM}
-          hoverDistance={K_CIRCLE_SIZE}>
+          hoverDistance={K_CIRCLE_SIZE}
+          onChildMouseEnter={handleMouseOver}>
           {locations.map(function(location,i){
               return <MapMarker lat={location.lat} lng={location.lng} key={i} item={(i+1).toString()} zIndex={i+1} />
             })
