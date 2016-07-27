@@ -16,7 +16,9 @@ import 'react-loading-spinner/src/css/index.css';
 
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
 const DEFAULT_ZOOM = 12;
-
+const mapOptions = {
+  scrollwheel: false,
+};
 const getCoordsByCity = (homeCity, locations, dispatch, props) => {
   if(homeCity && locations) {
     const homeCenter = {lat: homeCity.lat, lng: homeCity.lng};
@@ -31,7 +33,9 @@ const getCoordsByCity = (homeCity, locations, dispatch, props) => {
           zoom={DEFAULT_ZOOM}
           hoverDistance={K_CIRCLE_SIZE}
           onChildMouseEnter={(event) => { return dispatch(setCircleHover(event))}}
-          onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}>
+          onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}
+          //onGoogleApiLoaded={({map, maps}) => {console.log(map, maps);}} yesIWantToUseGoogleMapApiInternals>
+          options={mapOptions}>
           {locations.map(function(location,i){
               return <MapMarker lat={location.lat} lng={location.lng} key={i} item={(i+1).toString()} zIndex={i+1} />
             })
