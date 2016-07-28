@@ -12,3 +12,7 @@ Meteor.publish('promoted-city', function() {
 Meteor.publish('locations', function(cityId){
   return Locations.find({cityId});
 });
+
+Meteor.publish('categories', function(){
+  return Locations.find();
+});

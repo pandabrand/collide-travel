@@ -9,9 +9,7 @@ import MapMarker from '../mapping/map-marker.jsx';
 import {K_CIRCLE_SIZE} from '../mapping/marker-style.js';
 import {MapTable} from '../mapping/map-table.jsx';
 import setCircleHover from '../../../lib/client/actions/set-circle-hover.js';
-import Spinner from '../includes/spinner.jsx'
-import Loading from 'react-loading-spinner';
-import 'react-loading-spinner/src/css/index.css';
+import Spinner from 'react-spinkit';
 
 
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
@@ -41,7 +39,7 @@ const getCoordsByCity = (homeCity, locations, dispatch, props) => {
           onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}
           options={mapOptions}
           onChildClick={(event) => {return(console.log(JSON.stringify(event)))}}
-          onGoogleApiLoaded={({map, maps}) => { trafficLayerInit(map, maps); console.log(map, maps) } }
+          onGoogleApiLoaded={({map, maps}) => { trafficLayerInit(map, maps); } }
             yesIWantToUseGoogleMapApiInternals>
           {locations.map(function(location,i){
               return <MapMarker lat={location.lat} lng={location.lng} key={i} item={(i+1).toString()} zIndex={i} mapTableHoverIndex={props.mapTableHover}/>
@@ -51,7 +49,7 @@ const getCoordsByCity = (homeCity, locations, dispatch, props) => {
       </div>
     </div>;
   } else {
-    return <div className='loading' >trying to load</div>;
+    return <Spinner spinnerName='cube-grid'/>;
   }
 }
 
