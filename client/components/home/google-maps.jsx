@@ -21,6 +21,10 @@ const mapOptions = {
 };
 
 const getCoordsByCity = (homeCity, locations, dispatch, props) => {
+  const trafficLayerInit = (map, maps) => {
+    var trafficLayer = new google.maps.TrafficLayer();
+    trafficLayer.setMap(map);
+  }
   if(homeCity && locations) {
     homeCenter = Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick : {lat: homeCity.lat, lng: homeCity.lng};
     return <div className="map-container">
@@ -36,7 +40,9 @@ const getCoordsByCity = (homeCity, locations, dispatch, props) => {
           onChildMouseEnter={(event) => { return dispatch(setCircleHover(event))}}
           onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}
           options={mapOptions}
-          onChildClick={(event) => {return(console.log(JSON.stringify(event)))}}>
+          onChildClick={(event) => {return(console.log(JSON.stringify(event)))}}
+          onGoogleApiLoaded={({map, maps}) => { trafficLayerInit(map, maps); console.log(map, maps) } }
+            yesIWantToUseGoogleMapApiInternals>
           {locations.map(function(location,i){
               return <MapMarker lat={location.lat} lng={location.lng} key={i} item={(i+1).toString()} zIndex={i} mapTableHoverIndex={props.mapTableHover}/>
             })
