@@ -14,8 +14,8 @@ const getExploreBar = (cities, locationCategories, artists) => {
       return <div className="explore-bar">
         <form>
           <form-group>
-            <label>Explore a city: </label>
             <select className="form-control explore-select">
+            <option>Explore a city:</option>
               {cities.map(
                 function(city,i) {
                   return <option key={i}>{city.cityName}</option>
@@ -24,8 +24,8 @@ const getExploreBar = (cities, locationCategories, artists) => {
             </select>
           </form-group>
           <form-group>
-            <label>Search by artist: </label>
             <select className="form-control explore-select">
+              <option>Search by artist:</option>
               {artists.map(
                 function(artist,i) {
                   return <option key={i}>{artist.artistName}</option>
@@ -34,8 +34,8 @@ const getExploreBar = (cities, locationCategories, artists) => {
             </select>
           </form-group>
           <form-group>
-            <label>Search by category: </label>
             <select className="form-control explore-select">
+            <option>Search by category:</option>
               {locationCategories.map(
                 function(category,i) {
                   return <option key={i}>{category}</option>
