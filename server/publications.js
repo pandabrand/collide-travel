@@ -1,5 +1,6 @@
 import { Cities } from '../lib/collections/cities.js';
 import { Locations } from '../lib/collections/locations.js';
+import { Artists } from '../lib/collections/artists.js';
 
 Meteor.publish('cities', function() {
   return Cities.find();
@@ -13,6 +14,14 @@ Meteor.publish('locations', function(cityId){
   return Locations.find({cityId});
 });
 
+Meteor.publish('artist-locations', function(locationIds){
+  return Locations.find({_id: {"$in": locationIds}});
+});
+
 Meteor.publish('categories', function(){
   return Locations.find();
 });
+
+Meteor.publish('artists', function(){
+  return Artists.find();
+})

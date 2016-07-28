@@ -3,6 +3,7 @@ import { Cities } from '../lib/collections/cities.js';
 import { Magazines } from '../lib/collections/magazines.js';
 import { Events } from '../lib/collections/events.js';
 import { Locations } from '../lib/collections/locations.js';
+import { Artists } from '../lib/collections/artists.js';
 
 if(Magazines.find().count() === 0) {
   for(var i = 0; i < 5; i++) {
@@ -37,4 +38,12 @@ if(Locations.find().count() === 0) {
   Locations.insert({_id: '3', cityId: '1', lat: 40.743193, lng: -73.977578, type:'restaurant', name:'Marchi\'s', address:'251 E 31st St', photo:'http://lorempixel.com/100/100/fashion/3', description:'Aperiam eruditi indoctum sit et, ea sint primis cum. Ei duis primis diceret nam. Ei qui solet repudiare. Et commodo apeirian eos. Ex mea iudico aliquip evertitur, id minim placerat volutpat mei.', website:'http://www.marchirestaurant.com/'});
   Locations.insert({_id: '4', cityId: '1', lat: 40.680226, lng: -73.860875, type:'nightclub', name:'Medina Hall', address:'76-15 101 Ave', photo:'http://lorempixel.com/100/100/fashion/4', description:'Aperiam eruditi indoctum sit et, ea sint primis cum. Ei duis primis diceret nam. Ei qui solet repudiare. Et commodo apeirian eos. Ex mea iudico aliquip evertitur, id minim placerat volutpat mei.', website:'http://medinahall.com/'});
   Locations.insert({_id: '5', cityId: '1', lat: 40.685038, lng: -73.991847, type:'boutique', name:'Article&', address:'198 Smith St', photo:'http://lorempixel.com/100/100/fashion/5', description:'Aperiam eruditi indoctum sit et, ea sint primis cum. Ei duis primis diceret nam. Ei qui solet repudiare. Et commodo apeirian eos. Ex mea iudico aliquip evertitur, id minim placerat volutpat mei.', website:'https://www.articleand.com/'});
+  Locations.insert({_id: '6', cityId: '2', lat: 41.913881, lng: -87.662596, type:'music', name:'The Hideout', address:'1354 W Wabansia Ave', photo:'http://lorempixel.com/100/100/fashion/1', description:'Aperiam eruditi indoctum sit et, ea sint primis cum. Ei duis primis diceret nam. Ei qui solet repudiare. Et commodo apeirian eos. Ex mea iudico aliquip evertitur, id minim placerat volutpat mei.', website:'http://www.hideoutchicago.com/'});
+  Locations.insert({_id: '7', cityId: '2', lat: 41.881662, lng: -87.624969, type:'bar', name:'Cindy\'s Rooftop', address:'12 S Michigan Ave', photo:'http://lorempixel.com/100/100/fashion/1', description:'Aperiam eruditi indoctum sit et, ea sint primis cum. Ei duis primis diceret nam. Ei qui solet repudiare. Et commodo apeirian eos. Ex mea iudico aliquip evertitur, id minim placerat volutpat mei.', website:'http://www.cindysrooftop.com/'});
+}
+
+if(Artists.find().count() === 0) {
+  Artists.insert({_id: '1', artistName: 'Le1f', cityId: '1', locationIds: ['1','3','5']});
+  Artists.insert({_id: '2', artistName: 'St. Vincent', cityId: '1', locationIds: ['2','3','4']});
+  Artists.insert({_id: '3', artistName: 'Rise Against', cityId: '2', locationIds: ['6','7']});
 }
