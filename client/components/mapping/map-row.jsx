@@ -1,9 +1,11 @@
 import React from 'react';
 import {markerTableCircleStyle,markerTableCircleStyleHover} from './marker-style.js';
+import setMapTableHover from '../../../lib/client/actions/set-map-table-hover.js';
+import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-click.js';
 
-export default function MapRow({location, item, hoverIndex}){
+export default function MapRow({location, item, hoverIndex, dispatch}){
   return (
-    <tr>
+    <tr onClick={() => {return dispatch(setMapTableRowClick({lat: location.lat, lng: location.lng}))}} onMouseOver={() => {return dispatch(setMapTableHover(item))}} onMouseOut={() => {return dispatch(setMapTableHover(-1))}}>
       <td><img src={location.photo}/></td>
       <td>
         <div className="name-item">

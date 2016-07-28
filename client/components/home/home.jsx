@@ -20,7 +20,9 @@ function Home(props) {
 
 function mapStateToProps(state) {
   return {
-    markerCirlceHover: state.markerCirlceHover
+    markerCirlceHover: state.markerCirlceHover,
+    mapTableHover: state.mapTableHover,
+    mapTableRowClick: state.mapTableRowClick
   }
 }
 

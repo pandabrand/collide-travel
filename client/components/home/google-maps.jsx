@@ -19,12 +19,13 @@ const DEFAULT_ZOOM = 12;
 const mapOptions = {
   scrollwheel: false,
 };
+
 const getCoordsByCity = (homeCity, locations, dispatch, props) => {
   if(homeCity && locations) {
-    const homeCenter = {lat: homeCity.lat, lng: homeCity.lng};
+    homeCenter = Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick : {lat: homeCity.lat, lng: homeCity.lng};
     return <div className="map-container">
       <div className="table-container">
-        <MapTable markerCirlceHover={props.markerCirlceHover} locations={locations} />
+        <MapTable dispatch={dispatch} markerCirlceHover={props.markerCirlceHover} locations={locations} />
       </div>
       <div className="map-layout">
         <GoogleMap
@@ -34,10 +35,10 @@ const getCoordsByCity = (homeCity, locations, dispatch, props) => {
           hoverDistance={K_CIRCLE_SIZE}
           onChildMouseEnter={(event) => { return dispatch(setCircleHover(event))}}
           onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}
-          //onGoogleApiLoaded={({map, maps}) => {console.log(map, maps);}} yesIWantToUseGoogleMapApiInternals>
-          options={mapOptions}>
+          options={mapOptions}
+          onChildClick={(event) => {return(console.log(JSON.stringify(event)))}}>
           {locations.map(function(location,i){
-              return <MapMarker lat={location.lat} lng={location.lng} key={i} item={(i+1).toString()} zIndex={i+1} />
+              return <MapMarker lat={location.lat} lng={location.lng} key={i} item={(i+1).toString()} zIndex={i} mapTableHoverIndex={props.mapTableHover}/>
             })
           }
         </GoogleMap>

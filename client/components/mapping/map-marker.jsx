@@ -32,10 +32,10 @@ export default class MapMarker extends Component {
   }
 
   render() {
-    const {item, zIndex} = this.props;
+    const {item, zIndex, mapTableHoverIndex} = this.props;
 
-    const style = {...markerStyle, zIndex: this.props.$hover ? 1000 : zIndex};
-    const circleStyle = this.props.$hover ? markerCircleStyleHover : markerCircleStyle;
+    const style = {...markerStyle, zIndex: this.props.$hover || (parseInt(mapTableHoverIndex)+1) === parseInt(item) ? 1000 : zIndex};
+    const circleStyle = this.props.$hover || (parseInt(mapTableHoverIndex)+1) === parseInt(item) ? markerCircleStyleHover : markerCircleStyle;
 
     return (
       <div style={style}>
