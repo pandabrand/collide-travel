@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 
 import { composeWithTracker } from 'react-komposer';
 import { Cities } from '../../lib/collections/cities.js';
@@ -24,4 +25,6 @@ const composer = (props, onData) => {
   }
 };
 
-export default ExploreBarContainer = composeWithTracker(composer)(ExploreBar);
+const ExploreBarContainer = composeWithTracker(composer)(ExploreBar);
+
+export default connect()(ExploreBarContainer);

@@ -6,39 +6,42 @@ import { Cities } from '../../../lib/collections/cities.js';
 import { Locations } from '../../../lib/collections/locations.js';
 import { Artists } from '../../../lib/collections/artists.js';
 
+import setCitySelection from '../../../lib/client/actions/set-city-selection.js';
+import setArtistSelection from '../../../lib/client/actions/set-artist-selection.js';
+import setCategorySelection from '../../../lib/client/actions/set-category-selection.js';
+
 import Spinner from 'react-spinkit';
 
-const getExploreBar = (cities, locationCategories, artists) => {
+const getExploreBar = (cities, locationCategories, artists, dispatch) => {
   if(cities && locationCategories) {
-      console.log('cities: ' + JSON.stringify(locationCategories));
       return <div className="explore-bar">
         <form>
           <form-group>
-            <select className="form-control explore-select">
-            <option>Explore a city:</option>
+            <select onChange={(e) => {return dispatch(setCitySelection(e.target.value))}} className="form-control explore-select">
+            <option value='0'>Explore a city:</option>
               {cities.map(
                 function(city,i) {
-                  return <option key={i}>{city.cityName}</option>
+                  return <option value={city._id} key={i}>{city.cityName}</option>
                 })
               }
             </select>
           </form-group>
           <form-group>
-            <select className="form-control explore-select">
-              <option>Search by artist:</option>
+            <select onChange={(e) => {return dispatch(setArtistSelection(e.target.value))}} className="form-control explore-select">
+              <option value='0'>Search by artist:</option>
               {artists.map(
                 function(artist,i) {
-                  return <option key={i}>{artist.artistName}</option>
+                  return <option value={artist._id} key={i}>{artist.artistName}</option>
                 })
               }
             </select>
           </form-group>
           <form-group>
-            <select className="form-control explore-select">
-            <option>Search by category:</option>
+            <select onChange={(e) => {return dispatch(setCategorySelection(e.target.value))}} className="form-control explore-select">
+            <option value='none'>Search by category:</option>
               {locationCategories.map(
                 function(category,i) {
-                  return <option key={i}>{category}</option>
+                  return <option value={category} key={i}>{category}</option>
                 })
               }
             </select>
@@ -49,7 +52,7 @@ const getExploreBar = (cities, locationCategories, artists) => {
     return <Spinner spinnerName='cube-grid'/>;
   }
 }
-export const ExploreBar = ({cities, locationCategories, artists}) =>
+export const ExploreBar = ({cities, locationCategories, artists, dispatch}) =>
 (
-  <div>{getExploreBar(cities, locationCategories, artists)}</div>
+  <div>{getExploreBar(cities, locationCategories, artists, dispatch)}</div>
 );

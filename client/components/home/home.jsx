@@ -22,7 +22,10 @@ function mapStateToProps(state) {
   return {
     markerCirlceHover: state.markerCirlceHover,
     mapTableHover: state.mapTableHover,
-    mapTableRowClick: state.mapTableRowClick
+    mapTableRowClick: state.mapTableRowClick,
+    cityExploreSelection: state.cityExploreSelection,
+    artistExploreSelection: state.artistExploreSelection,
+    categoryExploreSelection: state.categoryExploreSelection
   }
 }
 

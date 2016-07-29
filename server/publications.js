@@ -14,8 +14,12 @@ Meteor.publish('locations', function(cityId){
   return Locations.find({cityId});
 });
 
-Meteor.publish('artist-locations', function(locationIds){
-  return Locations.find({_id: {"$in": locationIds}});
+Meteor.publish('artist-locations', function(locationIds) {
+  return Locations.find({_id: {$in: locationIds}});
+});
+
+Meteor.publish('type-locations', function(categoryType) {
+    return Locations.find({type: categoryType});
 });
 
 Meteor.publish('categories', function(){
@@ -24,4 +28,8 @@ Meteor.publish('categories', function(){
 
 Meteor.publish('artists', function(){
   return Artists.find();
+})
+
+Meteor.publish('artist', function(id){
+  return Artists.find({_id: id});
 })
