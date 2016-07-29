@@ -30,7 +30,8 @@ const markerTableCircleStyle = {
   padding: 1,
   cursor: 'pointer',
   boxShadow: '0 0 0 1px white',
-  display: 'inline-block'
+  display: 'inline-block',
+  float: 'right'
 };
 
 
