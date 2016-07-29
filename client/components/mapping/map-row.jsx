@@ -2,6 +2,7 @@ import React from 'react';
 import {markerTableCircleStyle,markerTableCircleStyleHover} from './marker-style.js';
 import setMapTableHover from '../../../lib/client/actions/set-map-table-hover.js';
 import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-click.js';
+import MapIcon from './map-icons.jsx';
 
 export default function MapRow({location, item, hoverIndex, dispatch}){
   return (
@@ -9,7 +10,7 @@ export default function MapRow({location, item, hoverIndex, dispatch}){
       <td><img src={location.photo}/></td>
       <td>
         <div className="name-item">
-          <div style={item === parseInt(hoverIndex) ? markerTableCircleStyleHover : markerTableCircleStyle}>{item+1}</div>
+          <div style={item === parseInt(hoverIndex) ? markerTableCircleStyleHover : markerTableCircleStyle}><MapIcon type={location.type}/></div>
           <div className="table-map-location-name">{location.name}</div>
         </div>
         <p>{location.address}</p>

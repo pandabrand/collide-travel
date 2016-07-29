@@ -42,7 +42,7 @@ const getCoordsByCity = (homeCity, locations, dispatch, props) => {
           onGoogleApiLoaded={({map, maps}) => { trafficLayerInit(map, maps); } }
             yesIWantToUseGoogleMapApiInternals>
           {locations.map(function(location,i){
-              return <MapMarker lat={location.lat} lng={location.lng} key={i} item={(i+1).toString()} zIndex={i} mapTableHoverIndex={props.mapTableHover}/>
+              return <MapMarker lat={location.lat} lng={location.lng} key={i} item={(i+1).toString()} type={location.type} zIndex={i} mapTableHoverIndex={props.mapTableHover}/>
             })
           }
         </GoogleMap>

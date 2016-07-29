@@ -23,7 +23,7 @@ const composer = (props, onData) => {
     let homeCity = {};
     let locations = [];
     let artist = {};
-    console.log(props);
+    
     if(props.cityExploreSelection !== '0') {
       homeCity = getCity({_id:props.cityExploreSelection});
       locations = getLocations(homeCity._id);
