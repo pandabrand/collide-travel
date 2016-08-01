@@ -13,37 +13,44 @@ import setCategorySelection from '../../../lib/client/actions/set-category-selec
 import Spinner from 'react-spinkit';
 
 const getExploreBar = (cities, locationCategories, artists, dispatch) => {
-  const gotoRoute = (pathRoot, params) => {
-    const pathDef = '/' + pathRoot + '/:name';
-    FlowRouter.go(pathDef,{'name':params});
+  const gotoRoute = (pathRoot, e) => {
+    selectEl = document.forms['explore-bar-form'].elements;
+    for(let i = 0; i < selectEl.length; i++) {
+      let el = selectEl[i];
+      if(el.name !== e.target.name) {
+        el.selectedIndex = 0;
+      }
+    }
+    var selected = e.target.options[e.target.selectedIndex];
+    FlowRouter.go(pathRoot,JSON.parse(selected.getAttribute('data-value')));
   }
 
   if(cities && locationCategories) {
       return <div className="explore-bar">
-        <form>
+        <form name="explore-bar-form">
           <form-group>
             {/*<select onChange={(e) => {return dispatch(setCitySelection(e.target.value))}} className="form-control explore-select">*/}
-            <select onChange={(e) => {gotoRoute('city',e.target.value);}} className="form-control explore-select">
+            <select name="ciy" onChange={(e) => {gotoRoute('/city/:name',e);}} className="form-control explore-select">
             <option value='0'>Explore a city:</option>
               {cities.map(
                 function(city,i) {
-                  return <option value={city.cityName} key={i}>{city.cityName}</option>
+                  return <option data-value={JSON.stringify({'name':city.cityName})} value={city.cityName} key={i}>{city.displayName}</option>
                 })
               }
             </select>
           </form-group>
           <form-group>
-            <select onChange={(e) => {return dispatch(setArtistSelection(e.target.value))}} className="form-control explore-select">
+            <select name="artist" onChange={(e) => { gotoRoute('/city/:name/:artistName', e);}} className="form-control explore-select">
               <option value='0'>Search by artist:</option>
               {artists.map(
                 function(artist,i) {
-                  return <option value={artist._id} key={i}>{artist.artistName}</option>
+                  return <option data-value={JSON.stringify({'artistName':artist.artistName,'name':artist.cityName})} value={artist._id} key={i}>{artist.artistName}</option>
                 })
               }
             </select>
           </form-group>
           <form-group>
-            <select onChange={(e) => {return dispatch(setCategorySelection(e.target.value))}} className="form-control explore-select">
+            <select name="category" onChange={(e) => {return dispatch(setCategorySelection(e.target.value))}} className="form-control explore-select">
             <option value='none'>Search by category:</option>
               {locationCategories.map(
                 function(category,i) {

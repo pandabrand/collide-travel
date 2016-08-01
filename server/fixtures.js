@@ -27,9 +27,9 @@ if(Events.find().count() === 0) {
 }
 
 if(Cities.find().count() === 0) {
-  Cities.insert({_id: '1', cityName: 'New York', state: 'NY', lat:  40.712784, lng: -74.005941, guidePreview: 'http://lorempixel.com/300/410/city/1', isDefault: true, isPromoted: false});
-  Cities.insert({_id: '2', cityName: 'Chicago', state: 'IL', lat: 41.878114, lng: -87.629798, guidePreview: 'http://lorempixel.com/300/410/city/2', isDefault: false, isPromoted: false});
-  Cities.insert({_id: '3', cityName: 'Los Angeles', state: 'CA', lat: 34.052234, lng: -118.243685, guidePreview: 'http://lorempixel.com/300/410/city/3', isDefault: false, isPromoted: false});
+  Cities.insert({_id: '1', cityName: 'new-york', displayName: 'New York', state: 'NY', lat:  40.712784, lng: -74.005941, guidePreview: 'http://lorempixel.com/300/410/city/1', isDefault: true, isPromoted: false});
+  Cities.insert({_id: '2', cityName: 'chicago', displayName: 'Chicago', state: 'IL', lat: 41.878114, lng: -87.629798, guidePreview: 'http://lorempixel.com/300/410/city/2', isDefault: false, isPromoted: false});
+  Cities.insert({_id: '3', cityName: 'los-angeles', displayName: 'Los Angeles', state: 'CA', lat: 34.052234, lng: -118.243685, guidePreview: 'http://lorempixel.com/300/410/city/3', isDefault: false, isPromoted: false});
 }
 
 if(Locations.find().count() === 0) {
@@ -43,7 +43,7 @@ if(Locations.find().count() === 0) {
 }
 
 if(Artists.find().count() === 0) {
-  Artists.insert({_id: '1', artistName: 'Le1f', cityId: '1', locationIds: ['1','3','5']});
-  Artists.insert({_id: '2', artistName: 'St. Vincent', cityId: '1', locationIds: ['2','3','4']});
-  Artists.insert({_id: '3', artistName: 'Rise Against', cityId: '2', locationIds: ['6','7']});
+  Artists.insert({_id: '1', artistName: 'Le1f', cityId: '1', cityName: 'new-york', locationIds: ['1','3','5']});
+  Artists.insert({_id: '2', artistName: 'St. Vincent', cityId: '1', cityName: 'new-york', locationIds: ['2','3','4']});
+  Artists.insert({_id: '3', artistName: 'Rise Against', cityId: '2', cityName: 'chicago', locationIds: ['6','7']});
 }

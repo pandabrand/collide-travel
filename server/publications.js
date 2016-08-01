@@ -38,3 +38,7 @@ Meteor.publish('artists', function(){
 Meteor.publish('artist', function(id){
   return Artists.find({_id: id});
 })
+
+Meteor.publish('artist-name', function(name){
+  return Artists.find({artistName: name});
+})

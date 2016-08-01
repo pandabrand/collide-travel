@@ -15,13 +15,26 @@ FlowRouter.route('/', {
   }
 });
 
-FlowRouter.route('/city/:name', {
+const citySection = FlowRouter.group({
+    prefix: "/city"
+});
+
+citySection.route('/:name', {
   action(params) {
     mount(App, {
       content: <City {...params}/>
     });
   }
 });
+
+citySection.route('/:name/:artistName', {
+  action(params) {
+    mount(App, {
+      content: <City {...params}/>
+    });
+  }
+});
+
 
 FlowRouter.route('/in-print', {
   action() {
