@@ -6,6 +6,10 @@ Meteor.publish('cities', function() {
   return Cities.find();
 });
 
+Meteor.publish('find-city', function(cityName) {
+  return Cities.find({cityName:cityName});
+});
+
 Meteor.publish('promoted-city', function() {
   return Cities.find({$or: [{isPromoted: true},{isDefault: true}]});
 });

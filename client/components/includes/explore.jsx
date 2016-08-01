@@ -13,15 +13,21 @@ import setCategorySelection from '../../../lib/client/actions/set-category-selec
 import Spinner from 'react-spinkit';
 
 const getExploreBar = (cities, locationCategories, artists, dispatch) => {
+  const gotoRoute = (pathRoot, params) => {
+    const pathDef = '/' + pathRoot + '/:name';
+    FlowRouter.go(pathDef,{'name':params});
+  }
+
   if(cities && locationCategories) {
       return <div className="explore-bar">
         <form>
           <form-group>
-            <select onChange={(e) => {return dispatch(setCitySelection(e.target.value))}} className="form-control explore-select">
+            {/*<select onChange={(e) => {return dispatch(setCitySelection(e.target.value))}} className="form-control explore-select">*/}
+            <select onChange={(e) => {gotoRoute('city',e.target.value);}} className="form-control explore-select">
             <option value='0'>Explore a city:</option>
               {cities.map(
                 function(city,i) {
-                  return <option value={city._id} key={i}>{city.cityName}</option>
+                  return <option value={city.cityName} key={i}>{city.cityName}</option>
                 })
               }
             </select>

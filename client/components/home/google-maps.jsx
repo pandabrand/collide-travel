@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
-
-import { Cities } from '../../../lib/collections/cities.js';
-import { Locations } from '../../../lib/collections/locations.js';
+import { connect } from 'react-redux';
 
 import GoogleMap from 'google-map-react';
 import MapMarker from '../mapping/map-marker.jsx';
@@ -53,7 +51,7 @@ const getCoordsByCity = (homeCity, locations, dispatch, props) => {
   }
 }
 
-export const HomeCity = ( {homeCity, locations, dispatch, props} ) =>
+export default GoogleMaps = ( {homeCity, locations, dispatch, props} ) =>
 (
   <div>{getCoordsByCity(homeCity, locations, dispatch, props)}</div>
 );
