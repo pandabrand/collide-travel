@@ -50,11 +50,11 @@ const getExploreBar = (cities, locationCategories, artists, dispatch) => {
             </select>
           </form-group>
           <form-group>
-            <select name="category" onChange={(e) => {return dispatch(setCategorySelection(e.target.value))}} className="form-control explore-select">
+            <select name="category" onChange={(e) => { gotoRoute('/category/:type', e)}} className="form-control explore-select">
             <option value='none'>Search by category:</option>
               {locationCategories.map(
                 function(category,i) {
-                  return <option value={category} key={i}>{category}</option>
+                  return <option data-value={JSON.stringify({'type':category})} value={category} key={i}>{category}</option>
                 })
               }
             </select>

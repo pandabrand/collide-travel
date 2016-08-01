@@ -3,6 +3,7 @@ import { mount } from 'react-mounter';
 import { App } from './components/application/App.jsx';
 import HomeContainer from './containers/home.jsx';
 import City from './containers/city.jsx';
+import Category from './containers/category.jsx';
 import PrintPage  from './components/print-page/print-page.jsx';
 import Events from './components/events/events.jsx';
 import Event from './containers/event.jsx';
@@ -11,6 +12,14 @@ FlowRouter.route('/', {
   action() {
     mount(App, {
       content: (<HomeContainer />),
+    });
+  }
+});
+
+FlowRouter.route('/category/:type', {
+  action(params) {
+    mount(App, {
+      content: <Category {...params}/>
     });
   }
 });

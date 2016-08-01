@@ -11,6 +11,11 @@ Meteor.publish('find-city', function(cityName) {
   return cities;
 });
 
+Meteor.publish('find-city-id', function(id) {
+  cities = Cities.find({_id:id});
+  return cities;
+});
+
 Meteor.publish('promoted-city', function() {
   return Cities.find({$or: [{isPromoted: true},{isDefault: true}]});
 });
