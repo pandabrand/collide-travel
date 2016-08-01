@@ -23,7 +23,7 @@ const composer = (props, onData) => {
     let artist = {};
 
     if(props.name) {
-      homeCity = Cities.findOne();
+      homeCity = Cities.findOne({cityName:props.name});
       locations = getLocations(homeCity._id);
     }
     // } if(props.artistExploreSelection !== '0') {
