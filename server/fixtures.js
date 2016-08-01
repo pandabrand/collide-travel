@@ -4,6 +4,7 @@ import { Magazines } from '../lib/collections/magazines.js';
 import { Events } from '../lib/collections/events.js';
 import { Locations } from '../lib/collections/locations.js';
 import { Artists } from '../lib/collections/artists.js';
+import { ArtistComments } from '../lib/collections/artist-comments.js';
 
 if(Magazines.find().count() === 0) {
   for(var i = 0; i < 5; i++) {
@@ -46,4 +47,14 @@ if(Artists.find().count() === 0) {
   Artists.insert({_id: '1', artistName: 'Le1f', cityId: '1', cityName: 'new-york', locationIds: ['1','3','5']});
   Artists.insert({_id: '2', artistName: 'St. Vincent', cityId: '1', cityName: 'new-york', locationIds: ['2','3','4']});
   Artists.insert({_id: '3', artistName: 'Rise Against', cityId: '2', cityName: 'chicago', locationIds: ['6','7']});
+}
+
+if(ArtistComments.find().count() === 0) {
+  ArtistComments.insert({_id: '1', artistId: '1', locationId: '1', comment: 'Ludus assueverit ut his, eos ad duis decore hendrerit. In mea cotidieque deterruisset, usu unum meis assentior ex. An mandamus percipitur vix, an mei voluptua constituto reprehendunt. Ei alia iriure nominavi usu, graeci perfecto volutpat no ius. Quo oblique definitiones ne, dicam laoreet sea id.'});
+  ArtistComments.insert({_id: '2', artistId: '1', locationId: '3', comment: 'Cu quas evertitur per. Nec reprimique eloquentiam ne, qui prompta mediocritatem ad. Pri percipitur deterruisset ad, pro in rebum errem voluptatum. Nam dolor nusquam iudicabit at, hinc nullam dolorum an cum.'});
+  ArtistComments.insert({_id: '3', artistId: '1', locationId: '5', comment: 'Pri agam aeque at, minimum delectus nec an, vis ut pericula molestiae temporibus. Graece constituto ex vim, quem nominati consequat sed ne, ne sit verear antiopam.'});
+  ArtistComments.insert({_id: '4', artistId: '2', locationId: '3', comment: 'Cu quas evertitur per. Nec reprimique eloquentiam ne, qui prompta mediocritatem ad. Pri percipitur deterruisset ad, pro in rebum errem voluptatum. Nam dolor nusquam iudicabit at, hinc nullam dolorum an cum.'});
+  ArtistComments.insert({_id: '5', artistId: '2', locationId: '4', comment: 'Pri agam aeque at, minimum delectus nec an, vis ut pericula molestiae temporibus. Graece constituto ex vim, quem nominati consequat sed ne, ne sit verear antiopam.'});
+  ArtistComments.insert({_id: '6', artistId: '3', locationId: '6', comment: 'Cu quas evertitur per. Nec reprimique eloquentiam ne, qui prompta mediocritatem ad. Pri percipitur deterruisset ad, pro in rebum errem voluptatum. Nam dolor nusquam iudicabit at, hinc nullam dolorum an cum.'});
+  ArtistComments.insert({_id: '7', artistId: '3', locationId: '7', comment: 'Pri agam aeque at, minimum delectus nec an, vis ut pericula molestiae temporibus. Graece constituto ex vim, quem nominati consequat sed ne, ne sit verear antiopam.'});
 }

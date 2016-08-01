@@ -16,7 +16,7 @@ const mapOptions = {
   scrollwheel: false,
 };
 
-const getCoordsByCity = (homeCity, locations, dispatch, props) => {
+const getCoordsByCity = (homeCity, locations, artist, artistComments, dispatch, props) => {
   const trafficLayerInit = (map, maps) => {
     var trafficLayer = new google.maps.TrafficLayer();
     trafficLayer.setMap(map);
@@ -25,7 +25,7 @@ const getCoordsByCity = (homeCity, locations, dispatch, props) => {
     homeCenter = Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick : {lat: homeCity.lat, lng: homeCity.lng};
     return <div className="map-container">
       <div className="table-container">
-        <MapTable dispatch={dispatch} markerCirlceHover={props.markerCirlceHover} locations={locations} />
+        <MapTable dispatch={dispatch} markerCirlceHover={props.markerCirlceHover} locations={locations} artist={artist} artistComments={artistComments} />
       </div>
       <div className="map-layout">
         <GoogleMap
@@ -51,7 +51,7 @@ const getCoordsByCity = (homeCity, locations, dispatch, props) => {
   }
 }
 
-export default GoogleMaps = ( {homeCity, locations, dispatch, props} ) =>
+export default GoogleMaps = ( {homeCity, locations, artist, artistComments, dispatch, props} ) =>
 (
-  <div>{getCoordsByCity(homeCity, locations, dispatch, props)}</div>
+  <div>{getCoordsByCity(homeCity, locations, artist, artistComments, dispatch, props)}</div>
 );

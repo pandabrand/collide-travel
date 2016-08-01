@@ -1,6 +1,7 @@
 import { Cities } from '../lib/collections/cities.js';
 import { Locations } from '../lib/collections/locations.js';
 import { Artists } from '../lib/collections/artists.js';
+import { ArtistComments } from '../lib/collections/artist-comments.js';
 
 Meteor.publish('cities', function() {
   return Cities.find();
@@ -46,4 +47,8 @@ Meteor.publish('artist', function(id){
 
 Meteor.publish('artist-name', function(name){
   return Artists.find({artistName: name});
+})
+
+Meteor.publish('artist-comments', function(artistId) {
+  return ArtistComments.find({artistId: artistId});
 })

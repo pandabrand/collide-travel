@@ -6,7 +6,7 @@ import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-c
 import MapIcon from './map-icons.jsx';
 import store from '../../../lib/client/store/store.js';
 
-export default function MapRow({location, item, hoverIndex, dispatch}){
+export default function MapRow({location, item, hoverIndex, artist, comment, dispatch}){
   const handleScroll = () => {
     document.getElementById(location._id).scrollIntoView();
   };
@@ -17,6 +17,11 @@ export default function MapRow({location, item, hoverIndex, dispatch}){
       handleScroll()
     }
   })
+
+  const addComment = () => {
+    if(comment && comment.length > 0)
+      return <div className="artist-comments"><div>{artist.artistName} says: </div><div>{comment[0].comment}</div></div>;
+  }
 
   return (
     <tr id={location._id} onClick={() => {return dispatch(setMapTableRowClick({lat: location.lat, lng: location.lng}))}} onMouseOver={() => {return dispatch(setMapTableHover(item))}} onMouseOut={() => {return dispatch(setMapTableHover(-1))}}>
@@ -29,6 +34,7 @@ export default function MapRow({location, item, hoverIndex, dispatch}){
         <p>{location.address}</p>
         <p className="front-map-description">{location.description}</p>
         <a href={location.website} target="_blank">website</a>
+        {addComment()}
       </td>
     </tr>
   );
