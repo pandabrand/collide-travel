@@ -92,6 +92,7 @@ privateRoutes = FlowRouter.group({
  triggersEnter: [ function() {
    if (!Meteor.loggingIn() && !Meteor.userId()) {
      let route = FlowRouter.current();
+     console.log('route: ' + route);
      if (route.route.name !== 'login') {
        Session.set('redirectAfterLogin', route.path);
      }

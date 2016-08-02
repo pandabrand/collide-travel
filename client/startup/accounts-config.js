@@ -10,5 +10,7 @@ Accounts.onLogin(function() {
     if (redirect !== '/login') {
       FlowRouter.go(redirect);
     }
+  } else {
+    FlowRouter.go('dashboard');
   }
 });
