@@ -8,6 +8,8 @@ import PrintPage  from './components/print-page/print-page.jsx';
 import Events from './components/events/events.jsx';
 import Event from './containers/event.jsx';
 
+import '../lib/startup/accounts-config.js';
+
 FlowRouter.route('/', {
   action() {
     mount(App, {
