@@ -65,4 +65,6 @@ if(Meteor.users.find().count() === 0) {
     email: Meteor.settings.private.ADMIN_EMAIL,
     password: Meteor.settings.private.ADMIN_PASS
   });
+  var first_user = Accounts.findUserByUsername(Meteor.settings.private.ADMIN_USERNAME);
+  Roles.addUsersToRoles(first_user._id, 'super-admin', Roles.GLOBAL_GROUP);
 }
