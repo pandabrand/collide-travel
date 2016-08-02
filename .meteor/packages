@@ -31,3 +31,12 @@ pauldowman:dotenv
 aldeed:geocoder
 underscore
 reywood:publish-composite
+accounts-base
+dburles:collection-helpers
+aldeed:collection2
+alanning:roles
+mpowaga:autoform-summernote
+aldeed:autoform-bs-datetimepicker
+tsega:bootstrap3-datetimepicker@=3.1.3_3
+froala:editor
+buishi:autoform-ufs

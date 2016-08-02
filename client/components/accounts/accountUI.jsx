@@ -5,7 +5,7 @@ import { Blaze } from 'meteor/blaze';
 
 export default class AccountUI extends Component {
   componentDidMount() {
-    this.view = Blaze.render(Template.loginButtons, ReactDOM.findDOMNode(this.red.container));
+    this.view = Blaze.render(Template.atForm,this.refs.container);
   }
 
   componentWillUnmount() {
@@ -13,6 +13,6 @@ export default class AccountUI extends Component {
   }
 
   render() {
-    return <span ref="container" />;
+    return <span ref="container"/>;
   }
 }

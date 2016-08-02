@@ -1,16 +1,26 @@
 import React from 'react';
 import { mount } from 'react-mounter';
 import { App } from './components/application/App.jsx';
+import {AdminApp} from './components/application/AdminApp.jsx';
 import HomeContainer from './containers/home.jsx';
 import City from './containers/city.jsx';
 import Category from './containers/category.jsx';
 import PrintPage  from './components/print-page/print-page.jsx';
 import Events from './components/events/events.jsx';
 import Event from './containers/event.jsx';
+import AccountUI from './components/accounts/accountUI.jsx';
 
-import '../lib/startup/accounts-config.js';
+publicRoutes = FlowRouter.group({});
 
-FlowRouter.route('/', {
+publicRoutes.route('/login', {
+  action() {
+    mount(AdminApp, {
+      content: <AccountUI/>,
+    });
+  }
+});
+
+publicRoutes.route('/', {
   action() {
     mount(App, {
       content: (<HomeContainer />),
@@ -18,7 +28,7 @@ FlowRouter.route('/', {
   }
 });
 
-FlowRouter.route('/category/:type', {
+publicRoutes.route('/category/:type', {
   action(params) {
     mount(App, {
       content: <Category {...params}/>
@@ -26,7 +36,7 @@ FlowRouter.route('/category/:type', {
   }
 });
 
-const citySection = FlowRouter.group({
+const citySection = publicRoutes.group({
     prefix: "/city"
 });
 
@@ -47,7 +57,7 @@ citySection.route('/:name/:artistName', {
 });
 
 
-FlowRouter.route('/in-print', {
+publicRoutes.route('/in-print', {
   action() {
     mount(App, {
       content: (<PrintPage/>),
@@ -55,7 +65,7 @@ FlowRouter.route('/in-print', {
   }
 });
 
-var eventSection = FlowRouter.group({
+var eventSection = publicRoutes.group({
     prefix: "/events"
 });
 
@@ -75,4 +85,16 @@ eventSection.route('/:id', {
       content: (<Event id={params.id}/>)
     });
   }
+});
+
+privateRoutes = FlowRouter.group({
+  triggersEnter: [() => {
+   if (Meteor.loggingIn() || Meteor.userId()) {
+     route = FlowRouter.current();
+     if (route.route.name === 'login') {
+       Session.set('redirectAfterLogin', route.path);
+     }
+     FlowRouter.go('login')
+   }
+  }]
 });
