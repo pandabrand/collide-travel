@@ -21,7 +21,7 @@ if(Events.find().count() === 0) {
     Events.insert(
       {
         _id: x.toString(), title: 'This is an awesome event.', description: '<p>Lorem ipsum dolor sit amet, legendos quaestio efficiendi id nec, vim elitr omittam consetetur ex, ad periculis splendide reprehendunt quo. Et brute persequeris sit, persius habemus percipitur pro no, partem nullam vel et. Noster assentior eu mei. Eu veri quodsi quo, cu legendos iudicabit persecuti his, in mel mutat velit menandri. Eu vix tamquam voluptua luptatum, an vel illud inani.</p><p>Aperiam eruditi indoctum sit et, ea sint primis cum. Ei duis primis diceret nam. Ei qui solet repudiare. Et commodo apeirian eos. Ex mea iudico aliquip evertitur, id minim placerat volutpat mei.</p>',
-        image: 'http://lorempixel.com/640/480/food/'+x.toString(), date: 'December 13, 2019', location: 'Chicago, IL'
+        image: 'http://lorempixel.com/640/480/food/'+x.toString(), eventDate: 'December 13, 2019', location: 'Chicago, IL'
       }
     );
   }
@@ -57,4 +57,12 @@ if(ArtistComments.find().count() === 0) {
   ArtistComments.insert({_id: '5', artistId: '2', locationId: '4', comment: 'Pri agam aeque at, minimum delectus nec an, vis ut pericula molestiae temporibus. Graece constituto ex vim, quem nominati consequat sed ne, ne sit verear antiopam.'});
   ArtistComments.insert({_id: '6', artistId: '3', locationId: '6', comment: 'Cu quas evertitur per. Nec reprimique eloquentiam ne, qui prompta mediocritatem ad. Pri percipitur deterruisset ad, pro in rebum errem voluptatum. Nam dolor nusquam iudicabit at, hinc nullam dolorum an cum.'});
   ArtistComments.insert({_id: '7', artistId: '3', locationId: '7', comment: 'Pri agam aeque at, minimum delectus nec an, vis ut pericula molestiae temporibus. Graece constituto ex vim, quem nominati consequat sed ne, ne sit verear antiopam.'});
+}
+
+if(Meteor.users.find().count() === 0) {
+  Accounts.createUser({
+    username: Meteor.settings.private.ADMIN_USERNAME,
+    email: Meteor.settings.private.ADMIN_EMAIL,
+    password: Meteor.settings.private.ADMIN_PASS
+  });
 }

@@ -9,10 +9,12 @@ import PrintPage  from './components/print-page/print-page.jsx';
 import Events from './components/events/events.jsx';
 import Event from './containers/event.jsx';
 import AccountUI from './components/accounts/accountUI.jsx';
+import Dashboard from './components/admin/dashboard.jsx';
 
 publicRoutes = FlowRouter.group({});
 
 publicRoutes.route('/login', {
+  name: 'login',
   action() {
     mount(AdminApp, {
       content: <AccountUI/>,
@@ -80,7 +82,6 @@ eventSection.route('/', {
 eventSection.route('/:id', {
   name:'Event',
   action(params) {
-    console.log('params: ' + params.id);
     mount( Layout, {
       content: (<Event id={params.id}/>)
     });
@@ -88,13 +89,23 @@ eventSection.route('/:id', {
 });
 
 privateRoutes = FlowRouter.group({
-  triggersEnter: [() => {
-   if (Meteor.loggingIn() || Meteor.userId()) {
-     route = FlowRouter.current();
-     if (route.route.name === 'login') {
+ triggersEnter: [ function() {
+   if (!Meteor.loggingIn() && !Meteor.userId()) {
+     let route = FlowRouter.current();
+     if (route.route.name !== 'login') {
        Session.set('redirectAfterLogin', route.path);
      }
-     FlowRouter.go('login')
+     return FlowRouter.go('login');
    }
-  }]
+ }
+ ]
+});
+
+privateRoutes.route('/dashboard', {
+  name: 'dashboard',
+  action() {
+    mount(AdminApp, {
+      content: <Dashboard/>,
+    });
+  }
 });
