@@ -95,7 +95,7 @@ privateRoutes = FlowRouter.group({
      if (route.route.name !== 'login') {
        Session.set('redirectAfterLogin', route.path);
      }
-     return FlowRouter.go('login');
+     return FlowRouter.go('dashboard');
    }
  }
  ]
@@ -108,4 +108,9 @@ privateRoutes.route('/dashboard', {
       content: <Dashboard/>,
     });
   }
+});
+
+privateRoutes.route('/logout', {
+  name: 'logout',
+  action() { Meteor.logout(() => FlowRouter.go(FlowRouter.path('login'))); }
 });
