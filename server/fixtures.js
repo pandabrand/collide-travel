@@ -28,9 +28,9 @@ if(EventsCollection.find().count() === 0) {
 }
 
 if(CitiesCollection.find().count() === 0) {
-  CitiesCollection.insert({_id: '1', cityName: 'new-york', displayName: 'New York', state: 'NY', lat:  40.712784, lng: -74.005941, guidePreview: 'http://lorempixel.com/300/410/city/1', isDefault: true, isPromoted: false});
-  CitiesCollection.insert({_id: '2', cityName: 'chicago', displayName: 'Chicago', state: 'IL', lat: 41.878114, lng: -87.629798, guidePreview: 'http://lorempixel.com/300/410/city/2', isDefault: false, isPromoted: false});
-  CitiesCollection.insert({_id: '3', cityName: 'los-angeles', displayName: 'Los Angeles', state: 'CA', lat: 34.052234, lng: -118.243685, guidePreview: 'http://lorempixel.com/300/410/city/3', isDefault: false, isPromoted: false});
+  CitiesCollection.insert({_id: '1', cityName: 'new-york', displayName: 'New York', state: 'NY', location: {40.712784,-74.005941}, lat:  40.712784, lng: -74.005941, guidePreview: 'http://lorempixel.com/300/410/city/1', isDefault: true, isPromoted: false});
+  CitiesCollection.insert({_id: '2', cityName: 'chicago', displayName: 'Chicago', state: 'IL', location: {41.878114,-87.629798}, lat: 41.878114, lng: -87.629798, guidePreview: 'http://lorempixel.com/300/410/city/2', isDefault: false, isPromoted: false});
+  CitiesCollection.insert({_id: '3', cityName: 'los-angeles', displayName: 'Los Angeles', state: 'CA', location: {34.052234,-118.243685}, lat: 34.052234, lng: -118.243685, guidePreview: 'http://lorempixel.com/300/410/city/3', isDefault: false, isPromoted: false});
 }
 
 if(LocationsCollection.find().count() === 0) {
