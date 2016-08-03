@@ -6,7 +6,7 @@ import HomeContainer from './containers/home.jsx';
 import City from './containers/city.jsx';
 import Category from './containers/category.jsx';
 import PrintPage  from './components/print-page/print-page.jsx';
-import Events from './components/events/events.jsx';
+import EventsContainer from './containers/events.jsx';
 import Event from './containers/event.jsx';
 import AccountUI from './components/accounts/accountUI.jsx';
 import Dashboard from './components/admin/dashboard.jsx';
@@ -77,7 +77,7 @@ var eventSection = publicRoutes.group({
 eventSection.route('/', {
   action() {
     mount(App, {
-      content: (<Events/>),
+      content: (<EventsContainer/>),
     });
   }
 });
