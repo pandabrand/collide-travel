@@ -1,0 +1,38 @@
+.dashboard {
+  .sidebar {
+    background-color: #127c85;
+    color: #f8f8ff;
+    .nav {
+      li{
+        .active{
+          background-color: #000;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .main {
+  }
+}
+
+.event-item--2cols > .event-item-cell {
+  width: 50%;
+}
+.event-item {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 3em 0;
+  padding: 0;
+
+  .event-item-cell {
+    box-sizing: border-box;
+    flex-grow: 1;
+    width: 100%;  // Default to full width
+    padding: 0.8em 1.2em;
+    overflow: hidden; // Or flex might break
+    list-style: none;
+    border: solid 1px white;
+    background: fade(slategrey,20%);
+    > h1, > h2, > h3, > h4, > h5, > h6 { margin: 0; }
+  }
+}

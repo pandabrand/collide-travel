@@ -10,6 +10,9 @@ import Events from './components/events/events.jsx';
 import Event from './containers/event.jsx';
 import AccountUI from './components/accounts/accountUI.jsx';
 import Dashboard from './components/admin/dashboard.jsx';
+import AdminEventContainer from './containers/admin/event.jsx';
+import AddNewEvent from './components/admin/events/new-event.jsx';
+import AddEditEvent from './components/admin/events/edit-event.jsx';
 
 publicRoutes = FlowRouter.group({});
 
@@ -89,14 +92,15 @@ eventSection.route('/:id', {
 });
 
 privateRoutes = FlowRouter.group({
+  prefix: '/admin',
  triggersEnter: [ function() {
    if (!Meteor.loggingIn() && !Meteor.userId()) {
      let route = FlowRouter.current();
-     console.log('route: ' + route);
-     if (route.route.name !== 'login') {
+     console.log('route: ' + route.route.name);
+     if (route && route.route.name !== 'login') {
        Session.set('redirectAfterLogin', route.path);
      }
-     return FlowRouter.go('dashboard');
+     return FlowRouter.go('login');
    }
  }
  ]
@@ -109,6 +113,36 @@ privateRoutes.route('/dashboard', {
       content: <Dashboard/>,
     });
   }
+});
+
+privateRoutes.route('/events', {
+    name: 'admin-events',
+    action() {
+      mount(AdminApp, {
+        content: <AdminEventContainer/>,
+      });
+    }
+});
+
+privateRoutes.route('/events/new', {
+    name: 'admin-events-new',
+    action() {
+      mount(AdminApp, {
+        content: <AddNewEvent showNew={true}/>,
+      });
+    }
+});
+
+privateRoutes.route('/events/:id', {
+    name: 'admin-events-edit',
+    subscriptions: function(params) {
+      this.register('editEvent', Meteor.subscribe('edit-event', params.id));
+    },
+    action(params) {
+      mount(AdminApp, {
+        content: <AddEditEvent id={params.id}/>,
+      });
+    }
 });
 
 privateRoutes.route('/logout', {

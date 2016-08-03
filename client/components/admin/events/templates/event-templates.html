@@ -1,0 +1,29 @@
+<template name="addNewEvent">
+  <div class="well">
+    <h1>New Event</h1>
+    {{> quickForm id="AddEventForm"
+    collection=Events
+    template="bootstrap3-horizontal"
+    label-class="col-sm-2"
+    input-col-class="col-sm-10"
+
+    type="method"
+    meteormethod="events.insert"
+    resetOnSuccess=true}}
+  </div>
+</template>
+
+<template name="updateEvent">
+  <div class="well">
+    {{> quickForm id="UpdateEventForm"
+    collection=Events
+    template="bootstrap3-horizontal"
+    label-class="col-sm-2"
+    input-col-class="col-sm-10"
+
+    type="method-update"
+    meteormethod="events.update"
+    doc=event
+    buttonContent="Update"}}
+  </div>
+</template>

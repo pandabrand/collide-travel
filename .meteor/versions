@@ -27,6 +27,7 @@ caching-html-compiler@1.0.6
 callback-hook@1.0.9
 check@1.2.3
 coffeescript@1.1.4
+cosio55:autoform-cloudinary@0.0.2
 dburles:collection-helpers@1.0.4
 ddp@1.2.5
 ddp-client@1.2.9
@@ -74,9 +75,12 @@ momentjs:moment@2.10.6
 mongo@1.1.9_1
 mongo-id@1.0.5
 mpowaga:autoform-summernote@0.4.2
+mxab:simple-schema-jsdoc@0.1.1
+nekojira:cloudinary-jquery-upload@0.1.0
 npm-bcrypt@0.8.6_3
 npm-mongo@1.4.45
 observe-sequence@1.0.12
+ongoworks:security@2.0.1
 ordered-dict@1.0.8
 pauldowman:dotenv@1.0.1
 promise@0.7.3
@@ -100,6 +104,7 @@ spacebars-compiler@1.0.12
 srp@1.0.9
 standard-minifier-js@1.0.8
 summernote:standalone@0.6.16
+summernote:summernote@0.8.1
 templating@1.1.14
 templating-tools@1.0.4
 tmeasday:check-npm-versions@0.2.0

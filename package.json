@@ -13,6 +13,7 @@
     "google-map-react": "^0.15.1",
     "icons": "^0.1.1",
     "meteor-node-stubs": "~0.2.0",
+    "momentjs": "^1.1.14",
     "react": "^15.2.1",
     "react-addons-create-fragment": "^15.2.1",
     "react-addons-css-transition-group": "^15.2.1",

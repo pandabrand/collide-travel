@@ -1,0 +1,8 @@
+.EventTable-appear {
+  opacity: 0.01;
+}
+
+.EventTable-appear.EventTable-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}

@@ -2,6 +2,12 @@ import { Cities } from '../lib/collections/cities.js';
 import { Locations } from '../lib/collections/locations.js';
 import { Artists } from '../lib/collections/artists.js';
 import { ArtistComments } from '../lib/collections/artist-comments.js';
+import { Events } from '../lib/collections/events.js';
+import { EPFiles } from '../lib/collections/event-photos.js';
+
+Meteor.publish('images', function() {
+  return EPFiles.find();
+});
 
 Meteor.publish('cities', function() {
   return Cities.find();
@@ -51,4 +57,12 @@ Meteor.publish('artist-name', function(name){
 
 Meteor.publish('artist-comments', function(artistId) {
   return ArtistComments.find({artistId: artistId});
+})
+
+Meteor.publish('admin-events', function() {
+  return Events.find({});
+})
+
+Meteor.publish('edit-event', function(eventId) {
+  return Events.find({_id: eventId});
 })
