@@ -2,10 +2,10 @@ import React, {PropTypes, Component} from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 
 import {markerStyle, markerCircleStyle, markerCircleStyleHover} from './marker-style.js';
-import MapIcon from './map-icons.jsx';
+import MapIconComponent from './map-icons.jsx';
 
 
-export default class MapMarker extends Component {
+export default class MapMarkerComponent extends Component {
   static propTypes = {
     $hover: PropTypes.bool,
     item: PropTypes.string,
@@ -28,7 +28,7 @@ export default class MapMarker extends Component {
     return (
       <div style={style}>
         <div style={circleStyle}>
-           <MapIcon type={type}/>
+           <MapIconComponent type={type}/>
         </div>
       </div>
     );

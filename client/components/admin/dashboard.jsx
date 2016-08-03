@@ -22,5 +22,5 @@ const getDashboard = (content) => {
          </div>;
 }
 
-export default Dashboard = ( {content} ) =>
+export default DashboardComponent = ( {content} ) =>
 (<div className="container-fluid">{getDashboard(content)}</div>);

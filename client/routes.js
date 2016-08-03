@@ -1,33 +1,33 @@
 import React from 'react';
 import { mount } from 'react-mounter';
-import { App } from './components/application/App.jsx';
-import {AdminApp} from './components/application/AdminApp.jsx';
+import { AppComponent } from './components/application/App.jsx';
+import {AdminAppComponent} from './components/application/AdminApp.jsx';
 import HomeContainer from './containers/home.jsx';
-import City from './containers/city.jsx';
-import Category from './containers/category.jsx';
-import PrintPage  from './components/print-page/print-page.jsx';
+import CityContainer from './containers/city.jsx';
+import CategoryContainer from './containers/category.jsx';
+import PrintPageComponent  from './components/print-page/print-page.jsx';
 import EventsContainer from './containers/events.jsx';
-import Event from './containers/event.jsx';
-import AccountUI from './components/accounts/accountUI.jsx';
-import Dashboard from './components/admin/dashboard.jsx';
+import EventContainer from './containers/event.jsx';
+import AccountUIComponent from './components/accounts/accountUI.jsx';
+import DashboardComponent from './components/admin/dashboard.jsx';
 import AdminEventContainer from './containers/admin/event.jsx';
-import AddNewEvent from './components/admin/events/new-event.jsx';
-import AddEditEvent from './components/admin/events/edit-event.jsx';
+import AddNewEventComponent from './components/admin/events/new-event.jsx';
+import EditEventComponent from './components/admin/events/edit-event.jsx';
 
 publicRoutes = FlowRouter.group({});
 
 publicRoutes.route('/login', {
   name: 'login',
   action() {
-    mount(AdminApp, {
-      content: <AccountUI/>,
+    mount(AdminAppComponent, {
+      content: <AccountUIComponent/>,
     });
   }
 });
 
 publicRoutes.route('/', {
   action() {
-    mount(App, {
+    mount(AppComponent, {
       content: (<HomeContainer />),
     });
   }
@@ -35,8 +35,8 @@ publicRoutes.route('/', {
 
 publicRoutes.route('/category/:type', {
   action(params) {
-    mount(App, {
-      content: <Category {...params}/>
+    mount(AppComponent, {
+      content: <CategoryContainer {...params}/>
     });
   }
 });
@@ -47,16 +47,16 @@ const citySection = publicRoutes.group({
 
 citySection.route('/:name', {
   action(params) {
-    mount(App, {
-      content: <City {...params}/>
+    mount(AppComponent, {
+      content: <CityContainer {...params}/>
     });
   }
 });
 
 citySection.route('/:name/:artistName', {
   action(params) {
-    mount(App, {
-      content: <City {...params}/>
+    mount(AppComponent, {
+      content: <CityContainer {...params}/>
     });
   }
 });
@@ -64,8 +64,8 @@ citySection.route('/:name/:artistName', {
 
 publicRoutes.route('/in-print', {
   action() {
-    mount(App, {
-      content: (<PrintPage/>),
+    mount(AppComponent, {
+      content: (<PrintPageComponent/>),
     });
   }
 });
@@ -76,7 +76,7 @@ var eventSection = publicRoutes.group({
 
 eventSection.route('/', {
   action() {
-    mount(App, {
+    mount(AppComponent, {
       content: (<EventsContainer/>),
     });
   }
@@ -85,8 +85,8 @@ eventSection.route('/', {
 eventSection.route('/:id', {
   name:'Event',
   action(params) {
-    mount( Layout, {
-      content: (<Event id={params.id}/>)
+    mount( AppComponent, {
+      content: (<EventContainer id={params.id}/>)
     });
   }
 });
@@ -109,8 +109,8 @@ privateRoutes = FlowRouter.group({
 privateRoutes.route('/dashboard', {
   name: 'dashboard',
   action() {
-    mount(AdminApp, {
-      content: <Dashboard/>,
+    mount(AdminAppComponent, {
+      content: <DashboardComponent/>,
     });
   }
 });
@@ -118,7 +118,7 @@ privateRoutes.route('/dashboard', {
 privateRoutes.route('/events', {
     name: 'admin-events',
     action() {
-      mount(AdminApp, {
+      mount(AdminAppComponent, {
         content: <AdminEventContainer/>,
       });
     }
@@ -127,8 +127,8 @@ privateRoutes.route('/events', {
 privateRoutes.route('/events/new', {
     name: 'admin-events-new',
     action() {
-      mount(AdminApp, {
-        content: <AddNewEvent showNew={true}/>,
+      mount(AdminAppComponent, {
+        content: <AddNewEventComponent showNew={true}/>,
       });
     }
 });
@@ -139,8 +139,8 @@ privateRoutes.route('/events/:id', {
       this.register('editEvent', Meteor.subscribe('edit-event', params.id));
     },
     action(params) {
-      mount(AdminApp, {
-        content: <AddEditEvent id={params.id}/>,
+      mount(AdminAppComponent, {
+        content: <EditEventComponent id={params.id}/>,
       });
     }
 });

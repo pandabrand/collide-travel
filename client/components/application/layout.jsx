@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import UIHeader from './header.jsx';
-import UIFooter from './footer.jsx';
-import ExploreBar from '../../containers/explore-bar-container.jsx';
+import UIHeaderComponent from './header.jsx';
+import UIFooterComponent from './footer.jsx';
+import ExploreBarComponent from '../../containers/explore-bar-container.jsx';
 
-export const Layout = ({content}) => (
+export const LayoutComponent = ({content}) => (
   <div>
-    <UIHeader/>
-    <ExploreBar/>
+    <UIHeaderComponent/>
+    <ExploreBarComponent/>
     <div>{content}</div>
-    <UIFooter/>
+    <UIFooterComponent/>
   </div>
 );

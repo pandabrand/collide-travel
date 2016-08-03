@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default MapIcon = ({type}) => {
+export default MapIconComponent = ({type}) => {
   switch (type) {
     case 'bar':
       return <i className="fa fa-beer" aria-hidden="true"></i>;

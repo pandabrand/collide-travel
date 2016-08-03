@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-export default class EventsRow extends Component {
+export default class EventsRowContainer extends Component {
 
   handleClick = function() {
     FlowRouter.go('/events/'+ this.props.event._id);
@@ -29,6 +29,6 @@ export default class EventsRow extends Component {
   }
 }
 
-EventsRow.propTypes = {
+EventsRowContainer.propTypes = {
   event: PropTypes.object.isRequired,
 }

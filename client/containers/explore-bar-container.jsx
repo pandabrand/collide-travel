@@ -3,28 +3,28 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
 import { composeWithTracker } from 'react-komposer';
-import { Cities } from '../../lib/collections/cities.js';
-import { Locations } from '../../lib/collections/locations.js';
-import { Artists } from '../../lib/collections/artists.js';
-import { ExploreBar } from '../components/includes/explore.jsx';
+import { CitiesCollection } from '../../lib/collections/cities.js';
+import { LocationsCollection } from '../../lib/collections/locations.js';
+import { ArtistsCollection } from '../../lib/collections/artists.js';
+import { ExploreBarComponent } from '../components/includes/explore.jsx';
 
 const composer = (props, onData) => {
   const citySubscription = Meteor.subscribe('cities');
   const locationCategorySubscription = Meteor.subscribe('categories');
   const artistSubscription = Meteor.subscribe('artists');
   if(citySubscription.ready() && locationCategorySubscription.ready() && artistSubscription.ready()) {
-    const cities = Cities.find().fetch();
+    const cities = CitiesCollection.find().fetch();
 
-    const allLocationCategories = _.uniq(Locations.find({}, {sort: {type: 1}}).fetch(), false, function(l){return l.type});
+    const allLocationCategories = _.uniq(LocationsCollection.find({}, {sort: {type: 1}}).fetch(), false, function(l){return l.type});
     const locationCategories = _.pluck(allLocationCategories, 'type');
 
-    const artists = Artists.find().fetch();
+    const artists = ArtistsCollection.find().fetch();
 
     const cityData = {cities, locationCategories, artists, props}
     onData(null, cityData);
   }
 };
 
-const ExploreBarContainer = composeWithTracker(composer)(ExploreBar);
+const ExploreBarContainer = composeWithTracker(composer)(ExploreBarComponent);
 
 export default connect()(ExploreBarContainer);

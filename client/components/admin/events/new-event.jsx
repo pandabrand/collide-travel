@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 
 import Moment from 'momentjs';
 
-import Dashboard from '../dashboard.jsx';
-import {BlazeNewEvent} from './blaze-new-event.jsx';
+import DashboardComponent from '../dashboard.jsx';
+import {BlazeNewEventComponent} from './blaze-new-event.jsx';
 
 const getNewEvent = (props) => {
-  return <BlazeNewEvent {...props}/>;
+  return <BlazeNewEventComponent {...props}/>;
 }
 
-export default NewEvent = ({props}) => {
-  return <Dashboard content={getNewEvent(props)}/>;
+export default NewEventComponent = ({props}) => {
+  return <DashboardComponent content={getNewEvent(props)}/>;
 };

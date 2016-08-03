@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Events } from '../../lib/collections/events.js';
+import { EventsCollection } from '../../lib/collections/events.js';
 
-import { EventsPage } from '../components/events/events.jsx';
+import { EventsComponent } from '../components/events/events.jsx';
 
 import { connect } from 'react-redux';
 import { compose,composeWithTracker, composeAll } from 'react-komposer';
@@ -11,12 +11,12 @@ import { compose,composeWithTracker, composeAll } from 'react-komposer';
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('admin-events');
   if(subscription.ready()) {
-    events = Events.find().fetch();
+    events = EventsCollection.find().fetch();
     const eventData = {events, props}
     onData(null, eventData);
   }
 };
 
-const EventsContainer = connect()(EventsPage);
+const EventsContainer = connect()(EventsComponent);
 
 export default composeWithTracker(composer)(EventsContainer);

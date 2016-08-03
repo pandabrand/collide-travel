@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import EventsRow from '../../containers/event-row.jsx';
+import EventsRowContainer from '../../containers/event-row.jsx';
 
 const getEvents = (events, props, dispatch) => {
   return <div id="main" className="container">
@@ -8,11 +8,11 @@ const getEvents = (events, props, dispatch) => {
       <h1>Events</h1>
     </div>
     {events.map((event, id) => {
-      return <EventsRow key={id} event={event}/>;
+      return <EventsRowContainer key={id} event={event}/>;
     })}
   </div>;
 }
 
-export const EventsPage = ( {events, props, dispatch} ) => {
+export const EventsComponent = ( {events, props, dispatch} ) => {
   return <div>{getEvents(events, props, dispatch)}</div>;
 }

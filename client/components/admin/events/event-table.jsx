@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Moment from 'momentjs';
 
-import Dashboard from '../dashboard.jsx';
+import DashboardComponent from '../dashboard.jsx';
 
 const getEventTable = (events, props) => {
   const deleteEvent = (id) => {
@@ -40,5 +40,5 @@ const getEventTable = (events, props) => {
          </div>;
 }
 
-export const EventTable = ( {events, props} ) =>
-(<Dashboard content={getEventTable(events, props)}/>);
+export const EventTableComponent = ( {events, props} ) =>
+(<DashboardComponent content={getEventTable(events, props)}/>);

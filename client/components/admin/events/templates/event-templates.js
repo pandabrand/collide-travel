@@ -1,15 +1,15 @@
 import { Template } from 'meteor/templating';
-import { Events } from "../../../../../lib/collections/events.js";
+import { EventsCollection } from "../../../../../lib/collections/events.js";
 
 Template.addNewEvent.helpers({
   Events() {
-    return Events;
+    return EventsCollection;
   }
 });
 
 Template.updateEvent.helpers({
   Events() {
-    return Events;
+    return EventsCollection;
   }
 });
 
@@ -24,7 +24,7 @@ Template.updateEvent.onCreated(function() {
 Template.updateEvent.helpers({
   event: function() {
     var id = FlowRouter.getParam('id');
-    var event = Events.findOne({_id: id}) || {};
+    var event = EventsCollection.findOne({_id: id}) || {};
     return event;
   }
 });

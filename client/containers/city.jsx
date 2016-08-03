@@ -3,31 +3,31 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
 import { composeWithTracker } from 'react-komposer';
-import { Cities } from '../../lib/collections/cities.js';
-import { Locations } from '../../lib/collections/locations.js';
-import { Artists } from '../../lib/collections/artists.js';
-import { ArtistComments } from '../../lib/collections/artist-comments.js';
+import { CitiesCollection } from '../../lib/collections/cities.js';
+import { LocationsCollection } from '../../lib/collections/locations.js';
+import { ArtistsCollection } from '../../lib/collections/artists.js';
+import { ArtistCommentsCollection } from '../../lib/collections/artist-comments.js';
 
-import { City } from '../components/city/city.jsx';
+import { CityComponent } from '../components/city/city.jsx';
 
 const getLocations = (id) => {
   const locations_sub = Meteor.subscribe('locations',id);
   if(locations_sub.ready()) {
-    return Locations.find({cityId: id}).fetch();
+    return LocationsCollection.find({cityId: id}).fetch();
   }
 }
 
 const getArtistLocations = (locationIds) => {
   const locations_sub = Meteor.subscribe('artist-locations', locationIds);
   if(locations_sub.ready()) {
-    return Locations.find({_id: {$in: locationIds}});
+    return LocationsCollection.find({_id: {$in: locationIds}});
   }
 }
 
 const getArtistComments = (artistId) => {
   const ac_sub = Meteor.subscribe('artist-comments', artistId);
   if(ac_sub.ready()) {
-    return ArtistComments.find({artistId: artistId}).fetch();
+    return ArtistCommentsCollection.find({artistId: artistId}).fetch();
   }
 }
 
@@ -38,11 +38,11 @@ const composer = (props, onData) => {
     let locations = [];
     let artist = {};
     let artistComments = [];
-    homeCity = Cities.findOne({cityName:props.name});
+    homeCity = CitiesCollection.findOne({cityName:props.name});
     if(props.artistName) {
       const artist_sub = Meteor.subscribe('artist-name', props.artistName);
       if(artist_sub.ready()) {
-        artist = Artists.findOne({artistName:props.artistName});
+        artist = ArtistsCollection.findOne({artistName:props.artistName});
         locations = getArtistLocations(artist.locationIds);
         artistComments = getArtistComments(artist._id);
       }
@@ -65,4 +65,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default CityContainer = connect(mapStateToProps)(composeWithTracker(composer)(City));
+export default CityContainer = connect(mapStateToProps)(composeWithTracker(composer)(CityComponent));

@@ -4,13 +4,13 @@ import Meteor from 'meteor/meteor';
 import { Provider } from 'react-redux';
 import Store from '../../../lib/client/store/store.js';
 
-import { AdminLayout } from './admin-layout.jsx';
+import { AdminLayoutComponent } from './admin-layout.jsx';
 
 //App component - base app
-export const AdminApp = ({content}) => {
+export const AdminAppComponent = ({content}) => {
   return <div id="wrapper">
     <Provider store={Store}>
-      <AdminLayout content={content} />
+      <AdminLayoutComponent content={content} />
     </Provider>
   </div>;
 }

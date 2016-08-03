@@ -3,9 +3,9 @@ import shouldPureComponentUpdate from 'react-pure-render/function';
 import { connect } from 'react-redux';
 
 import GoogleMap from 'google-map-react';
-import MapMarker from '../mapping/map-marker.jsx';
+import MapMarkerComponent from '../mapping/map-marker.jsx';
 import {K_CIRCLE_SIZE} from '../mapping/marker-style.js';
-import {MapTable} from '../mapping/map-table.jsx';
+import {MapTableComponent} from '../mapping/map-table.jsx';
 import setCircleHover from '../../../lib/client/actions/set-circle-hover.js';
 import Spinner from 'react-spinkit';
 
@@ -25,7 +25,7 @@ const getCoordsByCity = (homeCity, locations, artist, artistComments, dispatch, 
     homeCenter = Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick : {lat: homeCity.lat, lng: homeCity.lng};
     return <div className="map-container">
       <div className="table-container">
-        <MapTable dispatch={dispatch} markerCirlceHover={props.markerCirlceHover} locations={locations} artist={artist} artistComments={artistComments} />
+        <MapTableComponent dispatch={dispatch} markerCirlceHover={props.markerCirlceHover} locations={locations} artist={artist} artistComments={artistComments} />
       </div>
       <div className="map-layout">
         <GoogleMap
@@ -40,7 +40,7 @@ const getCoordsByCity = (homeCity, locations, artist, artistComments, dispatch, 
           onGoogleApiLoaded={({map, maps}) => { trafficLayerInit(map, maps); } }
             yesIWantToUseGoogleMapApiInternals>
           {locations.map(function(location,i){
-              return <MapMarker lat={location.lat} lng={location.lng} key={i} item={(i+1).toString()} type={location.type} zIndex={i} mapTableHoverIndex={props.mapTableHover}/>
+              return <MapMarkerComponent lat={location.lat} lng={location.lng} key={i} item={(i+1).toString()} type={location.type} zIndex={i} mapTableHoverIndex={props.mapTableHover}/>
             })
           }
         </GoogleMap>
@@ -51,7 +51,7 @@ const getCoordsByCity = (homeCity, locations, artist, artistComments, dispatch, 
   }
 }
 
-export default GoogleMaps = ( {homeCity, locations, artist, artistComments, dispatch, props} ) =>
+export default GoogleMapsComponent = ( {homeCity, locations, artist, artistComments, dispatch, props} ) =>
 (
   <div>{getCoordsByCity(homeCity, locations, artist, artistComments, dispatch, props)}</div>
 );

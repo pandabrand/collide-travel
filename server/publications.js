@@ -1,68 +1,63 @@
-import { Cities } from '../lib/collections/cities.js';
-import { Locations } from '../lib/collections/locations.js';
-import { Artists } from '../lib/collections/artists.js';
-import { ArtistComments } from '../lib/collections/artist-comments.js';
-import { Events } from '../lib/collections/events.js';
-import { EPFiles } from '../lib/collections/event-photos.js';
-
-Meteor.publish('images', function() {
-  return EPFiles.find();
-});
+import { CitiesCollection } from '../lib/collections/cities.js';
+import { LocationsCollection } from '../lib/collections/locations.js';
+import { ArtistsCollection } from '../lib/collections/artists.js';
+import { ArtistCommentsCollection } from '../lib/collections/artist-comments.js';
+import { EventsCollection } from '../lib/collections/events.js';
 
 Meteor.publish('cities', function() {
-  return Cities.find();
+  return CitiesCollection.find();
 });
 
 Meteor.publish('find-city', function(cityName) {
-  cities = Cities.find({cityName:cityName});
+  cities = CitiesCollection.find({cityName:cityName});
   return cities;
 });
 
 Meteor.publish('find-city-id', function(id) {
-  cities = Cities.find({_id:id});
+  cities = CitiesCollection.find({_id:id});
   return cities;
 });
 
 Meteor.publish('promoted-city', function() {
-  return Cities.find({$or: [{isPromoted: true},{isDefault: true}]});
+  return CitiesCollection.find({$or: [{isPromoted: true},{isDefault: true}]});
 });
 
 Meteor.publish('locations', function(cityId){
-  return Locations.find({cityId});
+  return LocationsCollection.find({cityId});
 });
 
 Meteor.publish('artist-locations', function(locationIds) {
-  return Locations.find({_id: {$in: locationIds}});
+  return LocationsCollection.find({_id: {$in: locationIds}});
 });
 
 Meteor.publish('type-locations', function(categoryType) {
-    return Locations.find({type: categoryType});
+    return LocationsCollection.find({type: categoryType});
 });
 
 Meteor.publish('categories', function(){
-  return Locations.find();
+  return LocationsCollection.find();
 });
 
 Meteor.publish('artists', function(){
-  return Artists.find();
+  return ArtistsCollection.find();
 })
 
 Meteor.publish('artist', function(id){
-  return Artists.find({_id: id});
+  return ArtistsCollection.find({_id: id});
 })
 
 Meteor.publish('artist-name', function(name){
-  return Artists.find({artistName: name});
+  return ArtistsCollection.find({artistName: name});
 })
 
 Meteor.publish('artist-comments', function(artistId) {
-  return ArtistComments.find({artistId: artistId});
+  return ArtistCommentsCollection.find({artistId: artistId});
 })
 
 Meteor.publish('admin-events', function() {
-  return Events.find({});
+  return EventsCollection.find({});
 })
 
 Meteor.publish('edit-event', function(eventId) {
-  return Events.find({_id: eventId});
+  return EventsCollection.find({_id: eventId});
 })

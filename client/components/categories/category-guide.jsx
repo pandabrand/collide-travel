@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CityGuide({category}) {
+export default function CategoryGuideComponent({category}) {
   return (
     <div className="content-header">
       <h1>{category}</h1>

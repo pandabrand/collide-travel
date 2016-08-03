@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
-import Magazine from '../../containers/magazine.jsx';
+import MagazineContainer from '../../containers/magazine.jsx';
 
-export default class PrintPage extends Component {
+export default class PrintPageComponent extends Component {
 
   getPrints() {
     return [
@@ -26,7 +26,7 @@ export default class PrintPage extends Component {
 
   renderPrintElements() {
     return this.getPrints().map((print) => (
-      <Magazine key={print._id} print={print}/>
+      <MagazineContainer key={print._id} print={print}/>
     ));
   }
 

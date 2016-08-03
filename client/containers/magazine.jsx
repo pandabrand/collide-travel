@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-export default class Magazine extends Component {
+export default class MagazineContainer extends Component {
   render() {
     const soldout = !this.props.print.purchase && !this.props.print.download;
     return (
@@ -26,6 +26,6 @@ export default class Magazine extends Component {
   }
 }
 
-Magazine.propTypes = {
+MagazineContainer.propTypes = {
   print: PropTypes.object.isRequired,
 }

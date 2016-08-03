@@ -2,9 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 
-import { Cities } from '../../../lib/collections/cities.js';
-import { Locations } from '../../../lib/collections/locations.js';
-import { Artists } from '../../../lib/collections/artists.js';
+import { CitiesCollection } from '../../../lib/collections/cities.js';
+import { LocationsCollection } from '../../../lib/collections/locations.js';
+import { ArtistsCollection } from '../../../lib/collections/artists.js';
 
 import setCitySelection from '../../../lib/client/actions/set-city-selection.js';
 import setArtistSelection from '../../../lib/client/actions/set-artist-selection.js';
@@ -65,7 +65,7 @@ const getExploreBar = (cities, locationCategories, artists, dispatch) => {
     return <Spinner spinnerName='cube-grid'/>;
   }
 }
-export const ExploreBar = ({cities, locationCategories, artists, dispatch}) =>
+export const ExploreBarComponent = ({cities, locationCategories, artists, dispatch}) =>
 (
   <div>{getExploreBar(cities, locationCategories, artists, dispatch)}</div>
 );

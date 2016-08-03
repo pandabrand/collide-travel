@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import {markerTableCircleStyle,markerTableCircleStyleHover} from './marker-style.js';
 import setMapTableHover from '../../../lib/client/actions/set-map-table-hover.js';
 import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-click.js';
-import MapIcon from './map-icons.jsx';
+import MapIconComponent from './map-icons.jsx';
 import store from '../../../lib/client/store/store.js';
 
-export default function MapRow({location, item, hoverIndex, artist, comment, dispatch}){
+export default function MapRowComponent({location, item, hoverIndex, artist, comment, dispatch}){
   const handleScroll = () => {
     document.getElementById(location._id).scrollIntoView();
   };
@@ -28,7 +28,7 @@ export default function MapRow({location, item, hoverIndex, artist, comment, dis
       <td><img src={location.photo}/></td>
       <td>
         <div className="name-item">
-          <div style={item === parseInt(hoverIndex) ? markerTableCircleStyleHover : markerTableCircleStyle}><MapIcon type={location.type}/></div>
+          <div style={item === parseInt(hoverIndex) ? markerTableCircleStyleHover : markerTableCircleStyle}><MapIconComponent type={location.type}/></div>
           <div className="table-map-location-name">{location.name}</div>
         </div>
         <p>{location.address}</p>

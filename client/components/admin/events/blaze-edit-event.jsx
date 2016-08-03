@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Template } from 'meteor/templating';
 import { Blaze } from 'meteor/blaze';
 
-import Dashboard from '../dashboard.jsx';
+import DashboardComponent from '../dashboard.jsx';
 
-export class BlazeEditEvent extends Component {
+export class BlazeEditEventComponent extends Component {
   componentDidMount() {
     this.view = Blaze.render(Template.updateEvent,this.refs.container);
   }

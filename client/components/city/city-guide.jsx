@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CityGuide({city}) {
+export default function CityGuideComponent({city}) {
   return (
     <div className="content-header">
       {city.displayName}

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 
-export default class UIHeader extends Component {
+export default class UIHeaderComponent extends Component {
   render() {
     return (
       <header id="header">

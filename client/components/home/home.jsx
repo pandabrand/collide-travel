@@ -1,7 +1,7 @@
 import React from 'react';
 
-import SelectBar from '../includes/select-bar.jsx';
-import GoogleMaps from './google-maps.jsx';
+import SelectBarComponent from '../includes/select-bar.jsx';
+import GoogleMapsComponent from './google-maps.jsx';
 
 const getHome = (homeCity, locations, props, dispatch) => {
   return (<div id="main">
@@ -10,11 +10,11 @@ const getHome = (homeCity, locations, props, dispatch) => {
         <div className="hero-title">This is where text will go.</div>
         <div className="hero-copy">Now we will have more text below.</div>
       </div>
-      <SelectBar/>
-      <GoogleMaps props={props} homeCity={homeCity} locations={locations} dispatch={dispatch}/>
+      <SelectBarComponent />
+      <GoogleMapsComponent props={props} homeCity={homeCity} locations={locations} dispatch={dispatch}/>
     </div>);
 }
 
-export const Home = ({homeCity, locations, props, dispatch}) => (
+export const HomeComponent = ({homeCity, locations, props, dispatch}) => (
   <div>{getHome(homeCity, locations, props, dispatch)}</div>
 )
