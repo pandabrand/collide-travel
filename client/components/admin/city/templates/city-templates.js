@@ -37,7 +37,7 @@ Template.updateCity.onCreated(function() {
   var self = this;
   self.autorun(function() {
     var id = FlowRouter.getParam('id');
-    self.subscribe('edit-event', id);
+    self.subscribe('edit-city', id);
   });
 });
 

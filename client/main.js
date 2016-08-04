@@ -4,6 +4,5 @@ if (Meteor.isClient) {
   Meteor.startup(function() {
     const key =  Meteor.settings.public.GMAP_KEY;
     GoogleMaps.load({key:key,libraries:'places'});
-    console.log("map is loading");
   });
 }

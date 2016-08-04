@@ -61,3 +61,7 @@ Meteor.publish('admin-events', function() {
 Meteor.publish('edit-event', function(eventId) {
   return EventsCollection.find({_id: eventId});
 })
+
+Meteor.publish('edit-city', function(cityId) {
+  return CitiesCollection.find({_id: cityId});
+})
