@@ -22,7 +22,7 @@ const getCoordsByCity = (homeCity, locations, artist, artistComments, dispatch, 
     trafficLayer.setMap(map);
   }
   if(homeCity && locations) {
-    homeCenter = Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick : {lat: homeCity.lat, lng: homeCity.lng};
+    homeCenter = Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick : homeCity.location;
     return <div className="map-container">
       <div className="table-container">
         <MapTableComponent dispatch={dispatch} markerCirlceHover={props.markerCirlceHover} locations={locations} artist={artist} artistComments={artistComments} />

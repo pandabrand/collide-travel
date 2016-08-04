@@ -6,7 +6,7 @@ const getDashboard = (content) => {
             <ul className="nav nav-sidebar">
               <li className="active"><a href={FlowRouter.path('dashboard')}>Overview</a></li>
               <li>Pages</li>
-              <li>City Guides</li>
+              <li><a href={FlowRouter.path('admin-city')}>City Guides</a></li>
               <li>Locations</li>
               <li>Artists</li>
               <li><a href={FlowRouter.path('admin-events')}>Events</a></li>

@@ -8,11 +8,16 @@ import CategoryContainer from './containers/category.jsx';
 import PrintPageComponent  from './components/print-page/print-page.jsx';
 import EventsContainer from './containers/events.jsx';
 import EventContainer from './containers/event.jsx';
+
 import AccountUIComponent from './components/accounts/accountUI.jsx';
+
 import DashboardComponent from './components/admin/dashboard.jsx';
 import AdminEventContainer from './containers/admin/event.jsx';
 import AddNewEventComponent from './components/admin/events/new-event.jsx';
 import EditEventComponent from './components/admin/events/edit-event.jsx';
+import AdminCityContainer from './containers/admin/city.jsx';
+import AddNewCityComponent from './components/admin/city/new-city.jsx';
+import EditCityComponent from './components/admin/city/edit-city.jsx';
 
 publicRoutes = FlowRouter.group({});
 
@@ -115,7 +120,11 @@ privateRoutes.route('/dashboard', {
   }
 });
 
-privateRoutes.route('/events', {
+const adminEventRoutes = privateRoutes.group({
+  prefix: '/events',
+});
+
+adminEventRoutes.route('/', {
     name: 'admin-events',
     action() {
       mount(AdminAppComponent, {
@@ -124,7 +133,7 @@ privateRoutes.route('/events', {
     }
 });
 
-privateRoutes.route('/events/new', {
+adminEventRoutes.route('/new', {
     name: 'admin-events-new',
     action() {
       mount(AdminAppComponent, {
@@ -133,7 +142,7 @@ privateRoutes.route('/events/new', {
     }
 });
 
-privateRoutes.route('/events/:id', {
+adminEventRoutes.route('/:id', {
     name: 'admin-events-edit',
     subscriptions: function(params) {
       this.register('editEvent', Meteor.subscribe('edit-event', params.id));
@@ -141,6 +150,40 @@ privateRoutes.route('/events/:id', {
     action(params) {
       mount(AdminAppComponent, {
         content: <EditEventComponent id={params.id}/>,
+      });
+    }
+});
+
+const adminCityRoutes = privateRoutes.group({
+  prefix: '/city',
+});
+
+adminCityRoutes.route('/', {
+    name: 'admin-city',
+    action() {
+      mount(AdminAppComponent, {
+        content: <AdminCityContainer/>,
+      });
+    }
+});
+
+adminCityRoutes.route('/new', {
+    name: 'admin-city-new',
+    action() {
+      mount(AdminAppComponent, {
+        content: <AddNewCityComponent showNew={true}/>,
+      });
+    }
+});
+
+adminCityRoutes.route('/:id', {
+    name: 'admin-city-edit',
+    subscriptions: function(params) {
+      this.register('editCity', Meteor.subscribe('edit-city', params.id));
+    },
+    action(params) {
+      mount(AdminAppComponent, {
+        content: <EditCityComponent id={params.id}/>,
       });
     }
 });
