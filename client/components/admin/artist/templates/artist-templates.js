@@ -6,13 +6,21 @@ import { LocationsCollection } from "../../../../../lib/collections/locations.js
 Template.addNewArtist.helpers({
   Artists() {
     return ArtistsCollection;
-  }
+  },
+  locationOptions: function() {
+    var form_city = AutoForm.getFieldValue('cityId');
+    locations = LocationsCollection.find({cityId: form_city}).fetch();
+    return locations.map((loc) => {
+      return {label: loc.name, value: loc._id};
+    });
+  },
 });
 
 Template.addNewArtist.onCreated(function() {
   var self = this;
   self.autorun(function() {
     self.subscribe('cities');
+    self.subscribe('all-locations');
     // self.subscribe('locations', null);
   });
 });
@@ -36,14 +44,6 @@ Template.updateArtist.helpers({
   Artists() {
     return ArtistsCollection;
   },
-  s2opts: function() {
-    var id = FlowRouter.getParam('id');
-    var artist = ArtistsCollection.findOne({_id: id}) || {};
-    return {placeholder: 'Select a City Where the Artist Lives.', tags: true};
-  },
-  ls2opts: function() {
-    return {placeholder: 'Select a Locations Where the Artist Likes to hang.', tags: true};
-  }
 });
 
 Template.updateArtist.onCreated(function() {
@@ -62,20 +62,12 @@ Template.updateArtist.helpers({
     var artist = ArtistsCollection.findOne({_id: id}) || {};
     return artist;
   },
-  cityOptions: function() {
-
-  },
   locationOptions: function() {
-    var id = FlowRouter.getParam('id');
-    var artist = ArtistsCollection.findOne({_id: id}) || {};
     var form_city = AutoForm.getFieldValue('cityId');
-    console.log('locations: city: ' + form_city);
-    if(artist) {
-      locations = LocationsCollection.find({cityId: form_city}).fetch();
-      return locations.map((loc) => {
-        return {label: loc.name, value: loc._id};
-      });
-    }
+    locations = LocationsCollection.find({cityId: form_city}).fetch();
+    return locations.map((loc) => {
+      return {label: loc.name, value: loc._id};
+    });
   }
 });
 

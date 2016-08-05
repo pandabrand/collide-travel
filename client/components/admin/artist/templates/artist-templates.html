@@ -11,8 +11,9 @@
     meteormethod="artist.insert"
     resetOnSuccess=true}}
       {{> afQuickField name="artistName"}}
-      {{> afFormGroup name="cityId"}}
+      {{> afQuickField name="cityId"}}
       {{> afQuickField name="cityName"}}
+      {{> afFormGroup name="locationIds" options=locationOptions}}
       <button type="submit" class="btn btn-primary">Submit</button>
     {{/autoForm}}
   </div>
