@@ -44,9 +44,9 @@ if(LocationsCollection.find().count() === 0) {
 }
 
 if(ArtistsCollection.find().count() === 0) {
-  ArtistsCollection.insert({_id: '1', artistName: 'Le1f', cityId: '1', cityName: 'new-york', locationIds: ['1','3','5']});
-  ArtistsCollection.insert({_id: '2', artistName: 'St. Vincent', cityId: '1', cityName: 'new-york', locationIds: ['2','3','4']});
-  ArtistsCollection.insert({_id: '3', artistName: 'Rise Against', cityId: '2', cityName: 'chicago', locationIds: ['6','7']});
+  ArtistsCollection.insert({_id: '1', artistName: 'Le1f', artistSlug: 'le1f', cityId: '1', cityName: 'new-york', locationIds: ['1','3','5']});
+  ArtistsCollection.insert({_id: '2', artistName: 'St. Vincent', artistSlug: 'st-vincent', cityId: '1', cityName: 'new-york', locationIds: ['2','3','4']});
+  ArtistsCollection.insert({_id: '3', artistName: 'Rise Against', artistSlug: 'rise-against', cityId: '2', cityName: 'chicago', locationIds: ['6','7']});
 }
 
 if(ArtistCommentsCollection.find().count() === 0) {

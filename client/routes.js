@@ -12,12 +12,18 @@ import EventContainer from './containers/event.jsx';
 import AccountUIComponent from './components/accounts/accountUI.jsx';
 
 import DashboardComponent from './components/admin/dashboard.jsx';
+
 import AdminEventContainer from './containers/admin/event.jsx';
 import AddNewEventComponent from './components/admin/events/new-event.jsx';
 import EditEventComponent from './components/admin/events/edit-event.jsx';
+
 import AdminCityContainer from './containers/admin/city.jsx';
 import AddNewCityComponent from './components/admin/city/new-city.jsx';
 import EditCityComponent from './components/admin/city/edit-city.jsx';
+
+import AdminArtistContainer from './containers/admin/artist.jsx';
+import AddNewArtistComponent from './components/admin/artist/new-artist.jsx';
+import EditArtistComponent from './components/admin/artist/edit-artist.jsx';
 
 publicRoutes = FlowRouter.group({});
 
@@ -111,6 +117,11 @@ privateRoutes = FlowRouter.group({
  ]
 });
 
+privateRoutes.route('/logout', {
+  name: 'logout',
+  action() { Meteor.logout(() => FlowRouter.go(FlowRouter.path('login'))); }
+});
+
 privateRoutes.route('/dashboard', {
   name: 'dashboard',
   action() {
@@ -188,7 +199,37 @@ adminCityRoutes.route('/:id', {
     }
 });
 
-privateRoutes.route('/logout', {
-  name: 'logout',
-  action() { Meteor.logout(() => FlowRouter.go(FlowRouter.path('login'))); }
+const adminArtistRoutes = privateRoutes.group({
+  prefix: '/artist',
+});
+
+adminArtistRoutes.route('/', {
+    name: 'admin-artist',
+    action() {
+      mount(AdminAppComponent, {
+        content: <AdminArtistContainer/>,
+      });
+    }
+});
+
+adminArtistRoutes.route('/new', {
+    name: 'admin-artist-new',
+    action() {
+      mount(AdminAppComponent, {
+        content: <AddNewArtistComponent showNew={true}/>,
+      });
+    }
+});
+
+adminArtistRoutes.route('/:id', {
+    name: 'admin-artist-edit',
+    subscriptions: function(params) {
+      this.register('editArtist', Meteor.subscribe('artist', params.id));
+      this.register('cities', Meteor.subscribe('cities'));
+    },
+    action(params) {
+      mount(AdminAppComponent, {
+        content: <EditArtistComponent id={params.id}/>,
+      });
+    }
 });

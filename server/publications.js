@@ -26,6 +26,10 @@ Meteor.publish('locations', function(cityId){
   return LocationsCollection.find({cityId});
 });
 
+Meteor.publish('all-locations', function(){
+  return LocationsCollection.find({});
+});
+
 Meteor.publish('artist-locations', function(locationIds) {
   return LocationsCollection.find({_id: {$in: locationIds}});
 });
