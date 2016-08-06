@@ -3,6 +3,7 @@ import { LocationsCollection } from '../lib/collections/locations.js';
 import { ArtistsCollection } from '../lib/collections/artists.js';
 import { ArtistCommentsCollection } from '../lib/collections/artist-comments.js';
 import { EventsCollection } from '../lib/collections/events.js';
+import { PagesCollection } from '../lib/collections/pages.js';
 
 Meteor.publish('cities', function() {
   return CitiesCollection.find();
@@ -73,3 +74,15 @@ Meteor.publish('edit-event', function(eventId) {
 Meteor.publish('edit-city', function(cityId) {
   return CitiesCollection.find({_id: cityId});
 })
+
+Meteor.publish('pages', function() {
+  return PagesCollection.find();
+});
+
+Meteor.publish('page', function(pageId) {
+  return PagesCollection.find({_id:pageId});
+});
+
+Meteor.publish('home-page', function(isHome) {
+  return PagesCollection.find({isHome:isHome});
+});

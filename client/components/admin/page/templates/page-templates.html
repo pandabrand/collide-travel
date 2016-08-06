@@ -1,0 +1,13 @@
+<template name="addNewPage">
+  <div class="well">
+    <h1>New Page</h1>
+    {{> quickForm collection=PagesCollection id="AddPageForm" type="method" meteormethod="pages.insert"}}
+  </div>
+</template>
+
+<template name="updatePage">
+  <div class="well">
+    <h1>Update Page</h1>
+    {{> quickForm collection=PagesCollection doc=editpage id="UpdatePageForm" type="method-update" meteormethod="pages.update"}}
+  </div>
+</template>

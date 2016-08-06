@@ -29,6 +29,10 @@ import AdminLocationContainer from './containers/admin/location.jsx';
 import AddNewLocationComponent from './components/admin/location/new-location.jsx';
 import EditLocationComponent from './components/admin/location/edit-location.jsx';
 
+import AdminPageContainer from './containers/admin/page.jsx';
+import AddNewPageComponent from './components/admin/page/new-page.jsx';
+import EditPageComponent from './components/admin/page/edit-page.jsx';
+
 publicRoutes = FlowRouter.group({});
 
 publicRoutes.route('/login', {
@@ -269,6 +273,40 @@ adminLocationRoutes.route('/:id', {
     action(params) {
       mount(AdminAppComponent, {
         content: <EditLocationComponent id={params.id}/>,
+      });
+    }
+});
+
+const adminPageRoutes = privateRoutes.group({
+  prefix: '/pages',
+});
+
+adminPageRoutes.route('/', {
+    name: 'admin-page',
+    action() {
+      mount(AdminAppComponent, {
+        content: <AdminPageContainer/>,
+      });
+    }
+});
+
+adminPageRoutes.route('/new', {
+    name: 'admin-page-new',
+    action() {
+      mount(AdminAppComponent, {
+        content: <AddNewPageComponent showNew={true}/>,
+      });
+    }
+});
+
+adminPageRoutes.route('/:id', {
+    name: 'admin-page-edit',
+    subscriptions: function(params) {
+      this.register('editPage', Meteor.subscribe('page', params.id));
+    },
+    action(params) {
+      mount(AdminAppComponent, {
+        content: <EditPageComponent id={params.id}/>,
       });
     }
 });

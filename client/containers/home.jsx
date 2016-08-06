@@ -6,6 +6,7 @@ import { composeWithTracker } from 'react-komposer';
 import { CitiesCollection } from '../../lib/collections/cities.js';
 import { LocationsCollection } from '../../lib/collections/locations.js';
 import { ArtistsCollection } from '../../lib/collections/artists.js';
+import { PagesCollection } from '../../lib/collections/pages.js';
 import { HomeComponent } from '../components/home/home.jsx';
 
 const getLocations = (id) => {
@@ -24,6 +25,7 @@ const composer = (props, onData) => {
     let homeCity = {};
     let locations = [];
     let artist = {};
+    let homePage = {};
 
     if(props.cityExploreSelection !== '0') {
       homeCity = getCity({_id:props.cityExploreSelection});
@@ -54,8 +56,12 @@ const composer = (props, onData) => {
       locations = getLocations(homeCity._id);
     }
 
+    const homePage_sub = Meteor.subscribe('home-page', true);
+    if(homePage_sub.ready()) {
+      homePage = PagesCollection.findOne({isHome: true});
+    }
 
-    const homeData = {homeCity, locations, props}
+    const homeData = {homePage, homeCity, locations, props}
     onData(null, homeData);
   }
 };
