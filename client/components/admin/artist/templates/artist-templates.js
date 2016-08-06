@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { ArtistsCollection } from "../../../../../lib/collections/artists.js";
+import { ArtistCommentsCollection } from "../../../../../lib/collections/artist-comments.js";
 import { CitiesCollection } from "../../../../../lib/collections/cities.js";
 import { LocationsCollection } from "../../../../../lib/collections/locations.js";
 
@@ -73,3 +74,29 @@ Template.updateArtist.helpers({
 
 Template.updateArtist.onRendered(function() {
 })
+
+Template.updateArtistComments.onCreated(function() {
+  var self = this;
+  self.autorun(function() {
+    var id = FlowRouter.getParam('id');
+    self.subscribe('artist-comments-edit', id);
+  });
+});
+
+Template.updateArtistComments.helpers({
+  artist: function() {
+    return ArtistsCollection.findOne();
+  },
+  location: function() {
+    return LocationsCollection.findOne({_id:this.locationId});
+  },
+  ArtistCommentsCollection() {
+    return ArtistCommentsCollection;
+  },
+  comments: function() {
+    return ArtistCommentsCollection.find({artistId:FlowRouter.getParam('id')});
+  },
+  formId: function() {
+    return 'artist-comments-' + this._id;
+  },
+});

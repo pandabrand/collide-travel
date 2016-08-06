@@ -24,6 +24,7 @@ import EditCityComponent from './components/admin/city/edit-city.jsx';
 import AdminArtistContainer from './containers/admin/artist.jsx';
 import AddNewArtistComponent from './components/admin/artist/new-artist.jsx';
 import EditArtistComponent from './components/admin/artist/edit-artist.jsx';
+import EditArtistCommentsComponent from './components/admin/artist/edit-artist-comments.jsx';
 
 import AdminLocationContainer from './containers/admin/location.jsx';
 import AddNewLocationComponent from './components/admin/location/new-location.jsx';
@@ -238,6 +239,18 @@ adminArtistRoutes.route('/:id', {
     action(params) {
       mount(AdminAppComponent, {
         content: <EditArtistComponent id={params.id}/>,
+      });
+    }
+});
+
+adminArtistRoutes.route('/comments/:id', {
+    name: 'admin-artist-comments-edit',
+    subscriptions: function(params) {
+      this.register('editArtistComments', Meteor.subscribe('artist-comments-edit', params.id));
+    },
+    action(params) {
+      mount(AdminAppComponent, {
+        content: <EditArtistCommentsComponent id={params.id}/>,
       });
     }
 });

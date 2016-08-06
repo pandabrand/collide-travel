@@ -40,3 +40,13 @@
     {{/autoForm}}
   </div>
 </template>
+
+<template name="updateArtistComments">
+  <div class="well">
+    <h1>Edit {{artist.artistName}} Comments</h1>
+    {{#each comments}}
+      <h3>{{location.name}}</h3>
+      {{> quickForm collection=ArtistCommentsCollection doc=this id=formId type="method-update" meteormethod="comments.update"}}
+    {{/each}}
+  </div>
+</template>

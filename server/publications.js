@@ -63,6 +63,15 @@ Meteor.publish('artist-comments', function(artistId) {
   return ArtistCommentsCollection.find({artistId: artistId});
 })
 
+Meteor.publish('artist-comments-edit', function(artistId) {
+  return [
+    ArtistCommentsCollection.find({artistId: artistId}),
+    ArtistsCollection.find({_id:artistId}),
+    LocationsCollection.find(),
+  ];
+})
+
+
 Meteor.publish('admin-events', function() {
   return EventsCollection.find({});
 })
