@@ -1,0 +1,54 @@
+<template name="addNewLocation">
+  <div class="well">
+    <h1>New Location</h1>
+    {{# autoForm id="AddLocationForm"
+    collection=Locations
+    template="bootstrap3-horizontal"
+    label-class="col-sm-2"
+    input-col-class="col-sm-10"
+
+    type="method"
+    meteormethod="locations.insert"
+    resetOnSuccess=true}}
+      {{> afQuickField name="name"}}
+      {{> afQuickField name="type"}}
+      <div class="geo-details">
+        {{> afQuickField name="address"}}
+        {{> afQuickField name="location"}}
+      </div>
+      {{> afQuickField name="cityId"}}
+      {{> afQuickField name="description"}}
+      {{> afQuickField name="photo"}}
+      {{> afQuickField name="website"}}
+      <button type="submit" class="btn btn-primary">Submit</button>
+    {{/autoForm}}
+  </div>
+</template>
+
+<template name="updateLocation">
+  <div class="well">
+    <h1>Update Location</h1>
+    {{# autoForm id="UpdateLocationForm"
+    collection=Locations
+    template="bootstrap3-horizontal"
+    label-class="col-sm-2"
+    input-col-class="col-sm-10"
+
+    type="method-update"
+    meteormethod="locations.update"
+    doc=location
+    buttonContent="Update"}}
+      {{> afQuickField name="name"}}
+      {{> afQuickField name="type"}}
+      <div class="geo-details">
+        {{> afQuickField name="address"}}
+        {{> afQuickField name="location"}}
+      </div>
+      {{> afQuickField name="cityId"}}
+      {{> afQuickField name="description"}}
+      {{> afQuickField name="photo"}}
+      {{> afQuickField name="website"}}
+      <button type="submit" class="btn btn-primary">Update</button>
+    {{/autoForm}}
+  </div>
+</template>

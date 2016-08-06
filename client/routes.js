@@ -25,6 +25,10 @@ import AdminArtistContainer from './containers/admin/artist.jsx';
 import AddNewArtistComponent from './components/admin/artist/new-artist.jsx';
 import EditArtistComponent from './components/admin/artist/edit-artist.jsx';
 
+import AdminLocationContainer from './containers/admin/location.jsx';
+import AddNewLocationComponent from './components/admin/location/new-location.jsx';
+import EditLocationComponent from './components/admin/location/edit-location.jsx';
+
 publicRoutes = FlowRouter.group({});
 
 publicRoutes.route('/login', {
@@ -64,7 +68,7 @@ citySection.route('/:name', {
   }
 });
 
-citySection.route('/:name/:artistName', {
+citySection.route('/:name/:locationName', {
   action(params) {
     mount(AppComponent, {
       content: <CityContainer {...params}/>
@@ -230,6 +234,41 @@ adminArtistRoutes.route('/:id', {
     action(params) {
       mount(AdminAppComponent, {
         content: <EditArtistComponent id={params.id}/>,
+      });
+    }
+});
+
+const adminLocationRoutes = privateRoutes.group({
+  prefix: '/location',
+});
+
+adminLocationRoutes.route('/', {
+    name: 'admin-location',
+    action() {
+      mount(AdminAppComponent, {
+        content: <AdminLocationContainer/>,
+      });
+    }
+});
+
+adminLocationRoutes.route('/new', {
+    name: 'admin-location-new',
+    action() {
+      mount(AdminAppComponent, {
+        content: <AddNewLocationComponent showNew={true}/>,
+      });
+    }
+});
+
+adminLocationRoutes.route('/:id', {
+    name: 'admin-location-edit',
+    subscriptions: function(params) {
+      this.register('editLocation', Meteor.subscribe('location', params.id));
+      this.register('cities', Meteor.subscribe('cities'));
+    },
+    action(params) {
+      mount(AdminAppComponent, {
+        content: <EditLocationComponent id={params.id}/>,
       });
     }
 });

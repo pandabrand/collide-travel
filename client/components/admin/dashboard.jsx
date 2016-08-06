@@ -7,7 +7,7 @@ const getDashboard = (content) => {
               <li className="active"><a href={FlowRouter.path('dashboard')}>Overview</a></li>
               <li>Pages</li>
               <li><a href={FlowRouter.path('admin-city')}>City Guides</a></li>
-              <li>Locations</li>
+              <li><a href={FlowRouter.path('admin-location')}>Locations</a></li>
               <li><a href={FlowRouter.path('admin-artist')}>Artists</a></li>
               <li><a href={FlowRouter.path('admin-events')}>Events</a></li>
               <li><a href="/logout">Log out</a></li>

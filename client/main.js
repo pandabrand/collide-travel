@@ -1,8 +1,8 @@
 AutoForm.debug();
-if (Meteor.isClient) {
-  const MAP_ZOOM = 16;
-  Meteor.startup(function() {
-    const key =  Meteor.settings.public.GMAP_KEY;
-    GoogleMaps.load({key:key,libraries:'places'});
+
+Meteor.startup(function() {
+  GoogleMaps.load({
+    key: Meteor.settings.public.GMAP_KEY,
+    libraries: 'places'  // also accepts an array if you need more than one
   });
-}
+})

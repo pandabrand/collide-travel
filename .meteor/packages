@@ -21,13 +21,12 @@ seba:minifiers-autoprefixer
 fourseven:scss
 twbs:bootstrap
 fortawesome:fontawesome
-session@1.1.6
+session
 react-meteor-data
 accounts-ui@1.1.9
 accounts-password@1.2.12
 useraccounts:bootstrap
 pauldowman:dotenv
-aldeed:geocoder
 underscore@1.0.9
 reywood:publish-composite
 accounts-base@1.2.9
@@ -41,7 +40,6 @@ buishi:autoform-ufs
 momentjs:moment
 aldeed:autoform
 summernote:summernote
-ongoworks:security
 jalik:ufs
 cosio55:autoform-cloudinary
 check@1.2.3
@@ -49,3 +47,4 @@ mxab:simple-schema-jsdoc
 yogiben:autoform-map
 jquery
 vazco:universe-autoform-select
+jeremy:geocomplete
