@@ -146,6 +146,12 @@ privateRoutes.route('/dashboard', {
 
 const adminUsersRoutes = privateRoutes.group({
   prefix: '/users',
+  triggersEnter: [ function() {
+      if(!Roles.userIsInRole(Meteor.userId(), ['super-admin','admin'],'default')) {
+        return FlowRouter.go('dashboard');
+      }
+    }
+  ],
 });
 
 adminUsersRoutes.route('/', {
@@ -180,6 +186,12 @@ adminUsersRoutes.route('/new', {
 
 const adminEventRoutes = privateRoutes.group({
   prefix: '/events',
+  triggersEnter: [ function() {
+      if(!Roles.userIsInRole(Meteor.userId(), ['super-admin','admin','editor'],'default')) {
+        return FlowRouter.go('dashboard');
+      }
+    }
+  ],
 });
 
 adminEventRoutes.route('/', {
@@ -214,6 +226,12 @@ adminEventRoutes.route('/:id', {
 
 const adminCityRoutes = privateRoutes.group({
   prefix: '/city',
+  triggersEnter: [ function() {
+      if(!Roles.userIsInRole(Meteor.userId(), ['super-admin','admin','editor'],'default')) {
+        return FlowRouter.go('dashboard');
+      }
+    }
+  ],
 });
 
 adminCityRoutes.route('/', {
@@ -248,6 +266,12 @@ adminCityRoutes.route('/:id', {
 
 const adminArtistRoutes = privateRoutes.group({
   prefix: '/artist',
+  triggersEnter: [ function() {
+      if(!Roles.userIsInRole(Meteor.userId(), ['super-admin','admin','editor','artist-editor'],'default')) {
+        return FlowRouter.go('dashboard');
+      }
+    }
+  ],
 });
 
 adminArtistRoutes.route('/', {
@@ -295,6 +319,12 @@ adminArtistRoutes.route('/comments/:id', {
 
 const adminLocationRoutes = privateRoutes.group({
   prefix: '/location',
+  triggersEnter: [ function() {
+      if(!Roles.userIsInRole(Meteor.userId(), ['super-admin','admin','editor'],'default')) {
+        return FlowRouter.go('dashboard');
+      }
+    }
+  ],
 });
 
 adminLocationRoutes.route('/', {
@@ -330,6 +360,12 @@ adminLocationRoutes.route('/:id', {
 
 const adminPageRoutes = privateRoutes.group({
   prefix: '/pages',
+  triggersEnter: [ function() {
+      if(!Roles.userIsInRole(Meteor.userId(), ['super-admin','admin','editor'],'default')) {
+        return FlowRouter.go('dashboard');
+      }
+    }
+  ],
 });
 
 adminPageRoutes.route('/', {

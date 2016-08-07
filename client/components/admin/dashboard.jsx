@@ -5,10 +5,10 @@ const getDashboard = (content) => {
           <div className="col-sm-3 col-md-2 sidebar">
             <ul className="nav nav-sidebar">
               <li className="active"><a href={FlowRouter.path('dashboard')}>Overview</a></li>
+              <li><a href={FlowRouter.path('admin-artist')}>Artists</a></li>
               <li><a href={FlowRouter.path('admin-page')}>Pages</a></li>
               <li><a href={FlowRouter.path('admin-city')}>City Guides</a></li>
               <li><a href={FlowRouter.path('admin-location')}>Locations</a></li>
-              <li><a href={FlowRouter.path('admin-artist')}>Artists</a></li>
               <li><a href={FlowRouter.path('admin-events')}>Events</a></li>
               <li><a href={FlowRouter.path('admin-users')}>Users</a></li>
               <li><a href={FlowRouter.path('logout')}>Log out</a></li>
