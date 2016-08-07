@@ -95,3 +95,11 @@ Meteor.publish('page', function(pageId) {
 Meteor.publish('home-page', function(isHome) {
   return PagesCollection.find({isHome:isHome});
 });
+
+Meteor.publish('edit-user', function(usrnm) {
+ return Meteor.users.find({'username':usrnm});
+});
+
+Meteor.publish('user-list', function (){
+  return Meteor.users.find({});
+});

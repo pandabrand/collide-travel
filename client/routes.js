@@ -13,6 +13,10 @@ import AccountUIComponent from './components/accounts/accountUI.jsx';
 
 import DashboardComponent from './components/admin/dashboard.jsx';
 
+import AdminUserContainer from './containers/admin/user.jsx';
+import EditUserComponent from './components/admin/users/edit-user.jsx';
+import AddNewUserComponent from './components/admin/users/new-user.jsx';
+
 import AdminEventContainer from './containers/admin/event.jsx';
 import AddNewEventComponent from './components/admin/events/new-event.jsx';
 import EditEventComponent from './components/admin/events/edit-event.jsx';
@@ -136,6 +140,40 @@ privateRoutes.route('/dashboard', {
   action() {
     mount(AdminAppComponent, {
       content: <DashboardComponent/>,
+    });
+  }
+});
+
+const adminUsersRoutes = privateRoutes.group({
+  prefix: '/users',
+});
+
+adminUsersRoutes.route('/', {
+  name: 'admin-users',
+  action() {
+    mount(AdminAppComponent, {
+      content: <AdminUserContainer/>,
+    });
+  }
+});
+
+adminUsersRoutes.route('/edit/:username', {
+  name: 'admin-edit-user',
+  subscriptions: function(params) {
+    this.register('editUser', Meteor.subscribe('edit-user', params.username));
+  },
+  action(params) {
+    mount(AdminAppComponent, {
+      content: <EditUserComponent id={params.username}/>,
+    });
+  }
+});
+
+adminUsersRoutes.route('/new', {
+  name: 'admin-user-new',
+  action() {
+    mount(AdminAppComponent, {
+      content: <AddNewUserComponent />,
     });
   }
 });

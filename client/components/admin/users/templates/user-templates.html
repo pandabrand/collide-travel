@@ -1,0 +1,13 @@
+<template name="addNewUser">
+  <div class="well">
+    <h1>New User</h1>
+    {{> quickForm collection="Meteor.users" id="AddUserForm" type="method" meteormethod="user.insert"}}
+  </div>
+</template>
+
+<template name="updateUser">
+  <div class="well">
+    <h1>Update {{user.username}}</h1>
+    {{> quickForm collection="Meteor.users" doc=user id="UpdateUserForm" type="method-update" meteormethod="user.update"}}
+  </div>
+</template>
