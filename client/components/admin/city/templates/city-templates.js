@@ -20,22 +20,22 @@ Template.addNewCity.helpers({
 });
 
 Template.addNewCity.events({
-  'click': function() {
-    displayName = document.getElementsByName('displayName')[0];
-    cityName = document.getElementsByName('cityName')[0];
-    cityName.value = slug(displayName.value, {lower: true}, '-');
-    console.log('cityName: ' + cityName.value);
-    return true;
-  }
+  // 'click': function() {
+  //   displayName = document.getElementsByName('displayName')[0];
+  //   cityName = document.getElementsByName('cityName')[0];
+  //   cityName.value = slug(displayName.value, {lower: true}, '-');
+  //   console.log('cityName: ' + cityName.value);
+  //   return true;
+  // }
 });
 
 Template.updateCity.events({
-  'click': function() {
-    displayName = document.getElementsByName('displayName')[0];
-    cityName = document.getElementsByName('cityName')[0];
-    cityName.value = slug(displayName.value, {lower: true}, '-');
-    return true;
-  }
+  // 'click': function() {
+  //   displayName = document.getElementsByName('displayName')[0];
+  //   cityName = document.getElementsByName('cityName')[0];
+  //   cityName.value = slug(displayName.value, {lower: true}, '-');
+  //   return true;
+  // }
 });
 
 Template.updateCity.helpers({

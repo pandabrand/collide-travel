@@ -11,6 +11,7 @@
     meteormethod="artists.insert"
     resetOnSuccess=true}}
       {{> afQuickField name="artistName"}}
+      {{> afQuickField name="artistSlug"}}
       {{> afQuickField name="cityId"}}
       {{> afQuickField name="cityName"}}
       {{> afFormGroup name="locationIds" options=locationOptions}}
@@ -33,6 +34,7 @@
     doc=artist
     buttonContent="Update"}}
       {{> afQuickField name="artistName"}}
+      {{> afQuickField name="artistSlug"}}
       {{> afQuickField name="cityId"}}
       {{> afQuickField name="cityName"}}
       {{> afFormGroup name="locationIds" options=locationOptions}}
