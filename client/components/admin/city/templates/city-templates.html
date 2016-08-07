@@ -1,7 +1,7 @@
 <template name="addNewCity">
   <div class="well">
     <h1>New City</h1>
-    {{> quickForm id="AddCityForm"
+    {{# autoForm id="AddCityForm"
     collection=Cities
     template="bootstrap3-horizontal"
     label-class="col-sm-2"
@@ -10,12 +10,23 @@
     type="method"
     meteormethod="cities.insert"
     resetOnSuccess=true}}
+      <div class="geo-details">
+        {{> afQuickField name="displayName"}}
+        {{> afQuickField name="state"}}
+        {{> afQuickField name="location"}}
+      </div>
+      {{> afQuickField name="description"}}
+      {{> afQuickField name="guidePreview"}}
+      {{> afQuickField name="isDefault"}}
+      {{> afQuickField name="isPromoted"}}
+      <button type="submit" class="btn btn-primary">Submit</button>
+    {{/autoForm}}
   </div>
 </template>
 
 <template name="updateCity">
   <div class="well">
-    {{> quickForm id="UpdateCityForm"
+    {{# autoForm id="UpdateCityForm"
     collection=Cities
     template="bootstrap3-horizontal"
     label-class="col-sm-2"
@@ -25,5 +36,16 @@
     meteormethod="cities.update"
     doc=city
     buttonContent="Update"}}
+      <div class="geo-details">
+        {{> afQuickField name="displayName"}}
+        {{> afQuickField name="state"}}
+        {{> afQuickField name="location"}}
+      </div>
+      {{> afQuickField name="description"}}
+      {{> afQuickField name="guidePreview"}}
+      {{> afQuickField name="isDefault"}}
+      {{> afQuickField name="isPromoted"}}
+      <button type="submit" class="btn btn-primary">Submit</button>
+    {{/autoForm}}
   </div>
 </template>

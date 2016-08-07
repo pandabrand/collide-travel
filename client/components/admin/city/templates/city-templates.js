@@ -2,6 +2,17 @@ import { Template } from 'meteor/templating';
 import { CitiesCollection } from "../../../../../lib/collections/cities.js";
 import slug from 'slug';
 
+Template.addNewCity.onRendered(function() {
+  this.autorun(function() {
+    if(GoogleMaps.loaded()) {
+      $('[name="displayName"]').geocomplete({
+        details: '.geo-details',
+        detailsAttribute: 'data-geo',
+      });
+    }
+  });
+});
+
 Template.addNewCity.helpers({
   Cities() {
     return CitiesCollection;
@@ -47,4 +58,15 @@ Template.updateCity.helpers({
     var city = CitiesCollection.findOne({_id: id}) || {};
     return city;
   }
+});
+
+Template.updateCity.onRendered(function() {
+  this.autorun(function() {
+    if(GoogleMaps.loaded()) {
+      $('[name="displayName"]').geocomplete({
+        details: '.geo-details',
+        detailsAttribute: 'data-geo',
+      });
+    }
+  });
 });
