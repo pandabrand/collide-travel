@@ -5,6 +5,17 @@ import { ArtistCommentsCollection } from '../lib/collections/artist-comments.js'
 import { EventsCollection } from '../lib/collections/events.js';
 import { PagesCollection } from '../lib/collections/pages.js';
 
+Meteor.publish('everything', function() {
+    return [
+      CitiesCollection.find({}),
+      LocationsCollection.find({}),
+      ArtistsCollection.find({}),
+      EventsCollection.find({}),
+      PagesCollection.find({}),
+      Meteor.users.find(),
+    ];
+});
+
 Meteor.publish('cities', function() {
   return CitiesCollection.find();
 });

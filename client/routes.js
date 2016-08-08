@@ -11,7 +11,7 @@ import EventContainer from './containers/event.jsx';
 
 import AccountUIComponent from './components/accounts/accountUI.jsx';
 
-import DashboardComponent from './components/admin/dashboard.jsx';
+import AdminOverviewContainer from './containers/admin/overview.jsx';
 
 import AdminUserContainer from './containers/admin/user.jsx';
 import EditUserComponent from './components/admin/users/edit-user.jsx';
@@ -139,7 +139,7 @@ privateRoutes.route('/dashboard', {
   name: 'dashboard',
   action() {
     mount(AdminAppComponent, {
-      content: <DashboardComponent/>,
+      content: <AdminOverviewContainer/>,
     });
   }
 });

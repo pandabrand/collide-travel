@@ -1,17 +1,78 @@
+#wrapper {
+  height: 100%;
+  // overflow-y: hidden;
+}
+
 .dashboard {
+  .fa {
+    display: inline;
+  }
   .sidebar {
-    background-color: #127c85;
-    color: #f8f8ff;
+    background-color: $main-background;
+    color: $whitish;
     .nav {
+      padding-left: 0;
       li{
-        .active{
-          background-color: #000;
-          color: #fff;
+        position: relative;
+        display: block;
+        a {
+          padding: 10px 20px 5px;
+          &:hover, &:focus, .active {
+            background-color: $table-grey !important;
+            color: $main-background;
+          }
+        }
+        a.active {
+         background-color: $table-grey !important;
+         color: $main-background;
+         ;
+       }
+      }
+    }
+    .nav-sidebar {
+    margin-right: -15px;
+    margin-bottom: 20px;
+    margin-left: -20px;
+    }
+  }
+  .main {
+  }
+  .item-stats{
+    .collection-info {
+      .collection-info-box {
+        margin: 20px;
+        background-color: $light-accent;
+        border: $dark-accent 5px solid;
+        border-bottom: none;
+      }
+      .collection-info-header {
+        padding-left: 10px;
+        font-size: 1.25em;
+      }
+      .collection-info-details {
+        padding-left: 10px;
+        font-size: 4em;
+        line-height: .75em;
+        span {
+          font-size: .25em;
+        }
+      }
+      .collection-info-link {
+        padding-left: 10px;
+        background-color: $dark-accent;
+        color: $whitish;
+        a {
+          color: $whitish;
         }
       }
     }
   }
-  .main {
+  :after {
+  	content: ".";
+  	display: block;
+  	height: 0;
+  	clear: both;
+  	visibility: hidden
   }
 }
 
