@@ -85,6 +85,13 @@ citySection.route('/:name/:locationName', {
   }
 });
 
+citySection.route('/:name/artist/:artistName', {
+  action(params) {
+    mount(AppComponent, {
+      content: <CityContainer {...params}/>
+    });
+  }
+});
 
 publicRoutes.route('/in-print', {
   action() {

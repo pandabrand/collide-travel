@@ -6,7 +6,7 @@ import CityMapComponent from '../home/google-maps.jsx';
 
 const getCity = (homeCity, locations, artist, artistComments, props, dispatch) => {
   const header = Object.keys(artist).length > 0 ? <ArtistCityGuideComponent artist={artist} city={homeCity} /> : <CityGuideComponent city={homeCity} />;
-  return <div id="main">
+  return <div id="main" className="container">
           {header}
           <CityMapComponent homeCity={homeCity} locations={locations} artist={artist} artistComments={artistComments} props={props} dispatch={dispatch}/>
          </div>;

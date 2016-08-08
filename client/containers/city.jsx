@@ -42,7 +42,7 @@ const composer = (props, onData) => {
     if(props.artistName) {
       const artist_sub = Meteor.subscribe('artist-name', props.artistName);
       if(artist_sub.ready()) {
-        artist = ArtistsCollection.findOne({artistName:props.artistName});
+        artist = ArtistsCollection.findOne({artistSlug:props.artistName});
         locations = getArtistLocations(artist.locationIds);
         artistComments = getArtistComments(artist._id);
       }

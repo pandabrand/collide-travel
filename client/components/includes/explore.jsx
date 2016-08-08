@@ -40,11 +40,11 @@ const getExploreBar = (cities, locationCategories, artists, dispatch) => {
             </select>
           </form-group>
           <form-group>
-            <select name="artist" onChange={(e) => { gotoRoute('/city/:name/:artistName', e);}} className="form-control explore-select">
+            <select name="artist" onChange={(e) => { gotoRoute('/city/:name/artist/:artistName', e);}} className="form-control explore-select">
               <option value='0'>Search by artist:</option>
               {artists.map(
                 function(artist,i) {
-                  return <option data-value={JSON.stringify({'artistName':artist.artistName,'name':artist.cityName})} value={artist._id} key={i}>{artist.artistName}</option>
+                  return <option data-value={JSON.stringify({'artistName':artist.artistSlug,'name':artist.cityName})} value={artist._id} key={i}>{artist.artistName}</option>
                 })
               }
             </select>
@@ -67,5 +67,5 @@ const getExploreBar = (cities, locationCategories, artists, dispatch) => {
 }
 export const ExploreBarComponent = ({cities, locationCategories, artists, dispatch}) =>
 (
-  <div>{getExploreBar(cities, locationCategories, artists, dispatch)}</div>
+  <div className="bottom-border">{getExploreBar(cities, locationCategories, artists, dispatch)}</div>
 );

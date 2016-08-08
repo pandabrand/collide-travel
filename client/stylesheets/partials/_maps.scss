@@ -9,15 +9,42 @@
     overflow: auto;
     height: 500px;
   }
+  .map-photo {
+    width: 100px;
+    height: 100px;
+    padding-top: 10px;
+    img {
+      width: 100%;
+    }
+  }
   .front-map-description {
-    font-size: .75em;
+    font-family: $sans-light;
+    font-size: 1em;
   }
   .map-layout {
     float: left;
     width: 62%;
     height: 100%;
   }
+  .address {
+    font-size: .75em;
+    a {
+      text-decoration: none;
+      color: $blackish;
+    }
+  }
+  .location-website {
+    display: block;
+    padding: 3px;
+    width: 65px;
+    text-align: center;
+    background-color: $contrast-light;
+    color: $contrast-dark;
+    font-size: .75em;
+  }
   .table-map-location-name {
     display: inline-block;
+    font-size: 1.25em;
+    line-height: 1.75em;
   }
 }
