@@ -4,7 +4,7 @@ import UIFooterComponent from './footer.jsx';
 import ExploreBarComponent from '../../containers/explore-bar-container.jsx';
 
 export const LayoutComponent = ({content}) => (
-  <div className="fullheight">
+  <div>
     <UIHeaderComponent/>
     <ExploreBarComponent/>
     <div>{content}</div>

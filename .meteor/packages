@@ -19,7 +19,6 @@ kadira:flow-router
 kadira:blaze-layout
 seba:minifiers-autoprefixer
 fourseven:scss
-twbs:bootstrap
 fortawesome:fontawesome
 session
 react-meteor-data
@@ -49,3 +48,5 @@ jquery
 vazco:universe-autoform-select
 jeremy:geocomplete
 djedi:sanitize-html
+kadira:dochead
+twbs:bootstrap

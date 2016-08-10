@@ -190,7 +190,7 @@ a.navbar-brand {
   border-color: #000;
   text-transform: uppercase;
   border-radius: 0;
-  height: 122px;
+  height: 95px;
   margin-bottom: 0;
   li {
     margin: 15px 10px 15px 0px;
@@ -361,6 +361,7 @@ footer {
 
 /* --- IMPORTS --- */
 @import "partials/variables";
+@import "partials/navbar";
 @import "partials/maps";
 @import "partials/explore";
 @import "partials/main";
