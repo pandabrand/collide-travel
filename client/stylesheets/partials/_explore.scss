@@ -1,13 +1,25 @@
 .explore-bar {
-  margin: 0 10px;
-  text-transform: uppercase;
-  input {
-    border: none;
-  }
-  .explore-select {
+  width: 100%;
+  @extend %clearfix;
+  .form-group {
+    margin-bottom: 0;
     display: inline-block;
-    width: 25%;
-    height: 21px;
-    border-style: none;
+    @media (min-width: 768px) {
+      width: 25%;
+    }
+    @media (max-width: 767px) {
+      width: 33%;
+    }
+    .explore-select {
+      float: left;
+      border: none;
+    }
+  }
+  .select2-container {
+    width: 100% !important;
+    padding: 0;
+  }
+  .select2-selection--single {
+    border: none;
   }
 }

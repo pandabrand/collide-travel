@@ -11,7 +11,7 @@ const getHome = (homePage, homeCity, locations, props, dispatch) => {
         <div className="hero-copy">{homePage.subheader}</div>
       </div>
       <SelectBarComponent />
-      <GoogleMapsComponent props={props} homeCity={homeCity} locations={locations} dispatch={dispatch}/>
+      {/*<GoogleMapsComponent props={props} homeCity={homeCity} locations={locations} dispatch={dispatch}/>*/}
     </div>);
 }
 

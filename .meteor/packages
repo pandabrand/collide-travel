@@ -45,8 +45,9 @@ check@1.2.3
 mxab:simple-schema-jsdoc
 yogiben:autoform-map
 jquery
-vazco:universe-autoform-select
 jeremy:geocomplete
 djedi:sanitize-html
 kadira:dochead
 twbs:bootstrap
+aldeed:autoform-select2
+natestrauser:select2

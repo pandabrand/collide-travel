@@ -50,6 +50,7 @@ publicRoutes.route('/login', {
 });
 
 publicRoutes.route('/', {
+  name: 'home',
   action() {
     mount(AppComponent, {
       content: (<HomeContainer />),
