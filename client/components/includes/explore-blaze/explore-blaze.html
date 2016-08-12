@@ -1,0 +1,15 @@
+<template name="blazeExploreBar">
+  {{#autoForm id="blazeExplorebar"
+    schema=ExploreSchema
+  }}
+    <div class="form-group">
+      {{> afFieldInput placeholder="Explore a city" name="cities"}}
+    </div>
+    <div class="form-group">
+      {{> afFieldInput name="artists"}}
+    </div>
+    <div class="form-group">
+      {{> afFieldInput name="categories"}}
+    </div>
+  {{/autoForm}}
+</template>
