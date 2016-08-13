@@ -1,0 +1,36 @@
+.featured-city-guides {
+  background-color: $blackish;
+  padding-bottom: 25px;
+  .featured-row {
+    background-color: $blackish;
+    @extend %clearfix;
+    .featured-header {
+      margin: 20px 0;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: .5em;
+      text-align: center;
+      color: $whitish;
+    }
+  }
+  .featured-gallery {
+    @extend %clearfix;
+    .feature-city-guide {
+      a {
+        display: block;
+        text-align: center;
+        color: $link-grey;
+        &:hover {
+          color: $link-hover-grey;
+        }
+      }
+      img{
+        width: 100%;
+      }
+      .featured-city-guide-callout {
+        margin: 14px 14px 28px;
+        font-size: 1.5em;
+      }
+    }
+  }
+}

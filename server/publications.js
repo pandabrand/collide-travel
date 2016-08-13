@@ -20,12 +20,18 @@ Meteor.publish('cities', function() {
   return CitiesCollection.find();
 });
 
+Meteor.publish('featured-cities', function() {
+  return CitiesCollection.find({isFeatured:true},{skip:0, limit: 4});
+});
+
 Meteor.publish('find-city', function(cityName) {
+  check(cityName, String);
   cities = CitiesCollection.find({cityName:cityName});
   return cities;
 });
 
 Meteor.publish('find-city-id', function(id) {
+  check(id, String);
   cities = CitiesCollection.find({_id:id});
   return cities;
 });
@@ -35,6 +41,7 @@ Meteor.publish('promoted-city', function() {
 });
 
 Meteor.publish('locations', function(cityId){
+  check(cityId, String);
   return LocationsCollection.find({cityId});
 });
 
@@ -43,14 +50,18 @@ Meteor.publish('all-locations', function(){
 });
 
 Meteor.publish('location', function(locationId){
+  check(locationId, String);
   return LocationsCollection.find({_id:locationId});
 });
 
 Meteor.publish('artist-locations', function(locationIds) {
+  check(locationIds, [String]);
+
   return LocationsCollection.find({_id: {$in: locationIds}});
 });
 
 Meteor.publish('type-locations', function(categoryType) {
+  check(categoryType, String);
     return LocationsCollection.find({type: categoryType});
 });
 
@@ -63,18 +74,22 @@ Meteor.publish('artists', function(){
 })
 
 Meteor.publish('artist', function(id){
+  check(id, String);
   return ArtistsCollection.find({_id: id});
 })
 
 Meteor.publish('artist-name', function(name){
+  check(name, String);
   return ArtistsCollection.find({artistName: name});
 })
 
 Meteor.publish('artist-comments', function(artistId) {
+  check(artistId, String);
   return ArtistCommentsCollection.find({artistId: artistId});
 })
 
 Meteor.publish('artist-comments-edit', function(artistId) {
+  check(artistId, String);
   return [
     ArtistCommentsCollection.find({artistId: artistId}),
     ArtistsCollection.find({_id:artistId}),
@@ -88,10 +103,12 @@ Meteor.publish('admin-events', function() {
 })
 
 Meteor.publish('edit-event', function(eventId) {
+  check(eventId, String);
   return EventsCollection.find({_id: eventId});
 })
 
 Meteor.publish('edit-city', function(cityId) {
+  check(cityId, String);
   return CitiesCollection.find({_id: cityId});
 })
 
@@ -100,14 +117,17 @@ Meteor.publish('pages', function() {
 });
 
 Meteor.publish('page', function(pageId) {
+  check(pageId, String);
   return PagesCollection.find({_id:pageId});
 });
 
 Meteor.publish('home-page', function(isHome) {
+  check(isHome, Boolean);
   return PagesCollection.find({isHome:isHome});
 });
 
 Meteor.publish('edit-user', function(usrnm) {
+  check(usrnm, String);
  return Meteor.users.find({'username':usrnm});
 });
 

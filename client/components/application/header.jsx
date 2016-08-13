@@ -25,7 +25,7 @@ export default class UIHeaderComponent extends Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand-collide navbar-brand" href="#">
+            <a className="navbar-brand-collide navbar-brand" href={FlowRouter.path('home')}>
               <img src="/image/new-logo.png" srcSet="/images/new-logo.png 1x, /images/new-logo@2x.png"/>
             </a>
           </div>

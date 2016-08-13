@@ -20,8 +20,9 @@ const getCityTable = (cities, props) => {
         <tr>
           <th>City</th>
           <th>State</th>
-          <th>Default?</th>
-          <th>Promoted?</th>
+          <th>Featured Guide</th>
+          <th>Default</th>
+          <th>Promoted</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
@@ -31,14 +32,36 @@ const getCityTable = (cities, props) => {
           return <tr key={i}>
             <td>{city.displayName}</td>
             <td>{city.state}</td>
+            <td>{city.isFeatured ? 'yes' : 'no'}</td>
             <td>{city.isDefault ? 'yes' : 'no'}</td>
             <td>{city.isPromoted ? 'yes' : 'no'}</td>
             <td><button onClick={() => {editCity(city._id)}} type="button" className="btn btn-primary btn-sm update"><i className="fa fa-edit"/></button></td>
             <td><button onClick={() => {deleteCity(city._id)}} type="button" className="btn btn-danger btn-sm delete"><i className="fa fa-trash"/></button></td>
+            {/*<td><button type="button" className="btn btn-danger btn-sm delete" data-toggle="modal" data-target="#deleteModal" data-delete={city._id}><i className="fa fa-trash"/></button></td>*/}
           </tr>;
         })}
       </tbody>
     </table>
+    <div className="modal fade" id="deleteModal" role="dialog" aria-labelledby="deleteModalLabel">
+      <div className="modal-dialog" role="document">
+        <div className="modal-content">
+          <div className="modal-header">
+            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 className="modal-title" id="deleteModalLabel">Delete City Guide</h4>
+          </div>
+          <div className="modal-body bg-danger">
+            You are about to delete this City Guide permanently. Are you sure?
+          </div>
+          <div className="modal-footer">
+            <input type="hidden" value="" name="cityDeleteId"/>
+            <button type="button" className="btn btn-default" data-dismiss="modal">No</button>
+            <button type="button" className="btn btn-danger">Yes, Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>;
 }
 

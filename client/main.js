@@ -1,5 +1,3 @@
-AutoForm.debug();
-
 Meteor.startup(function() {
   GoogleMaps.load({
     key: Meteor.settings.public.GMAP_KEY,
@@ -15,4 +13,8 @@ Tracker.autorun(function() {
   if (Roles.subscription.ready() && !FlowRouter._initialized) {
      return FlowRouter.initialize();
    }
+});
+
+$.cloudinary.config ({
+	cloud_name:Meteor.settings.public.CLOUDINARY_CLOUD_NAME
 });

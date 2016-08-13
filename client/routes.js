@@ -51,9 +51,10 @@ publicRoutes.route('/login', {
 
 publicRoutes.route('/', {
   name: 'home',
-  action() {
+  action(params) {
+    console.dir(this);
     mount(AppComponent, {
-      content: (<HomeContainer />),
+      content: (<HomeContainer/>),
     });
   }
 });
@@ -71,6 +72,7 @@ const citySection = publicRoutes.group({
 });
 
 citySection.route('/:name', {
+  name: 'city-guide',
   action(params) {
     mount(AppComponent, {
       content: <CityContainer {...params}/>
@@ -79,6 +81,7 @@ citySection.route('/:name', {
 });
 
 citySection.route('/:name/:locationName', {
+  name: 'location',
   action(params) {
     mount(AppComponent, {
       content: <CityContainer {...params}/>
@@ -128,7 +131,6 @@ privateRoutes = FlowRouter.group({
  triggersEnter: [ function() {
    if (!Meteor.loggingIn() && !Meteor.userId()) {
      let route = FlowRouter.current();
-     console.log('route: ' + route.route.name);
      if (route && route.route.name !== 'login') {
        Session.set('redirectAfterLogin', route.path);
      }
