@@ -2,17 +2,17 @@ import React from 'react';
 
 import ArtistHeaderComponent from './artist-header.jsx';
 import ArtistMapAndTableComponent from './artist-map-and-table.jsx';
-import ArtistSoundcloudComponent from './soundcloud.jsx';
+import {ArtistSoundcloudComponent} from './soundcloud.jsx';
 
-const getArtistGuide = (props, dispatch) => {
+const getArtistGuide = (artist, homeCity, locations, artistComments, props, dispatch) => {
   return <div id="main">
-          <ArtistHeaderComponent/>
-          <ArtistMapAndTableComponent/>
+          <ArtistHeaderComponent artist={artist} homeCity={homeCity}/>
+          <ArtistMapAndTableComponent artist={artist} homeCity={homeCity} locations={locations} artistComments={artistComments} dispatch={dispatch} props={props}/>
           <ArtistSoundcloudComponent/>
          </div>;
 }
 
-export const ArtistGuideComponent = ( {props, dispatch} ) =>
+export const ArtistGuideComponent = ( {artist, homeCity, locations, artistComments, props, dispatch} ) =>
 (
-  <div>{getArtistGuide(props, dispatch)}</div>
+  <div>{getArtistGuide(artist, homeCity, locations, artistComments, props, dispatch)}</div>
 );

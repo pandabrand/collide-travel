@@ -85,7 +85,7 @@ Meteor.publish('artists-city-by-name', function(cityName) {
 
 Meteor.publish('artist-name', function(name){
   check(name, String);
-  return ArtistsCollection.find({artistName: name});
+  return ArtistsCollection.find({artistSlug:name});
 })
 
 Meteor.publish('artist-comments', function(artistId) {

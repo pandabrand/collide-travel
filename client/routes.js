@@ -4,6 +4,7 @@ import { AppComponent } from './components/application/App.jsx';
 import {AdminAppComponent} from './components/application/AdminApp.jsx';
 import HomeContainer from './containers/home.jsx';
 import CityContainer from './containers/city.jsx';
+import ArtistGuideContainer from './containers/artist.jsx';
 import CategoryContainer from './containers/category.jsx';
 import PrintPageComponent  from './components/print-page/print-page.jsx';
 import EventsContainer from './containers/events.jsx';
@@ -93,7 +94,7 @@ citySection.route('/:name/artist/:artistName', {
   name: 'artist-guide',
   action(params) {
     mount(AppComponent, {
-      content: <CityContainer {...params}/>
+      content: <ArtistGuideContainer {...params}/>
     });
   }
 });

@@ -27,18 +27,22 @@ export default function MapRowComponent({location, item, hoverIndex, artist, com
     return 'https://www.google.com/maps/dir/Current+Location/'+location.location.lat+','+location.location.lng;
   }
 
+  const imgFile = location.photo.substr(location.photo.lastIndexOf('/') + 1);
+  const imgSrc = $.cloudinary.url( imgFile, {width:150, height:150, crop:"fill"});
+
   return (
     <tr id={location._id} onClick={() => {return dispatch(setMapTableRowClick({lat: location.lat, lng: location.lng}))}} onMouseOver={() => {return dispatch(setMapTableHover(item))}} onMouseOut={() => {return dispatch(setMapTableHover(-1))}}>
-      <td><div className="map-photo"><img src={location.photo}/></div></td>
+      <td><div className="map-photo"><img src={imgSrc}/></div></td>
       <td>
         <div className="name-item">
-          <div style={item === parseInt(hoverIndex) ? markerTableCircleStyleHover : markerTableCircleStyle}><MapIconComponent type={location.type}/></div>
+          {/*<div style={item === parseInt(hoverIndex) ? markerTableCircleStyleHover : markerTableCircleStyle}><MapIconComponent type={location.type}/></div>*/}
           <div className="table-map-location-name">{location.name}</div>
         </div>
-        <p className="front-map-description">{location.description}</p>
-        <p className="address"><a href={mapLink(location)} target="_blank">{location.address}</a></p>
-        <a className="location-website" href={location.website} target="_blank">website</a>
         {addComment()}
+        <p className="front-map-description">{location.description}</p>
+        <p className="address">{location.address}</p>
+        <p className="address"><a href={mapLink(location)} target="_blank">Directions <i className="fa fa-map-o"></i></a></p>
+        <a className="location-website" href={location.website} target="_blank">Website <i className="fa fa-laptop"></i></a>
       </td>
     </tr>
   );

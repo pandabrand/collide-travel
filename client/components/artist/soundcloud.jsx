@@ -1,11 +1,11 @@
 import React from 'react';
 
-export const ArtistSoundcloudComponent = () =>
+export const ArtistSoundcloudComponent = ({props, dispatch}) =>
 (
-<div class="fluid-container">
-  <div class="row">
-    <div class="soundcloud-embed">
-      <div class="soundcloud-container">
+<div className="fluid-container">
+  <div className="row">
+    <div className="soundcloud-embed">
+      <div className="soundcloud-container">
         MUSIC PLEASE
       </div>
     </div>

@@ -12,7 +12,7 @@ const getComment = (comments,locationId) => {
 }
 
 export const MapTableComponent = ({locations, markerCirlceHover, artist, artistComments, dispatch}) => {
-  return <table className="table table-hover">
+  return <table className="table table-hover map-table">
     <tbody>
       {locations.map(function(location,i){
           const comment = getComment(artistComments,location._id);

@@ -1,5 +1,6 @@
 .artist-map-container {
   height: 700px;
+  margin-bottom: 2px;
   .artist-map-row {
     height: inherit;
     border-top: $blackish solid 1px;
@@ -8,6 +9,10 @@
       overflow-y: auto;
     }
   }
+}
+
+.artist-map {
+  height: 700px;
 }
 
 .map-table {
