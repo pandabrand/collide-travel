@@ -53,6 +53,9 @@ const markerCircleStyle = {
   boxShadow: '0 0 0 1px white'
 };
 
+const markerPointerStyle = {
+
+};
 
 const markerCircleStyleHover = {
   ...markerCircleStyle,
@@ -66,4 +69,4 @@ const markerTableCircleStyleHover = {
   color: '#f44336'
 };
 
-export {markerStyle, markerCircleStyle,markerCircleStyleHover, markerTableCircleStyle, markerTableCircleStyleHover, K_CIRCLE_SIZE};
+export {markerStyle, markerCircleStyle,markerCircleStyleHover, markerTableCircleStyle, markerTableCircleStyleHover, K_CIRCLE_SIZE, markerPointerStyle};

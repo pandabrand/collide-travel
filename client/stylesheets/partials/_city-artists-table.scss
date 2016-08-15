@@ -1,0 +1,54 @@
+.city-guides {
+  height: 700px;
+  .city-guides-row {
+    height: inherit;
+    .artist-tiles {
+      height: 700px;
+      overflow-y: scroll;
+    }
+    .city-map-column {
+      height: inherit;
+      .map {
+        height: inherit;
+      }
+    }
+  }
+}
+
+.masonry-guides {
+  @extend %clearfix;
+}
+
+.gutter-sizer {
+  width: 4%;
+}
+.grid-sizer,
+.grid-item {
+  width: 48%;
+}
+
+.grid-item {
+  position: relative;
+  // height: 120px;
+  float: left;
+  background: #D26;
+  margin: 1%;
+  @extend %clearfix;
+  img {
+    width: 100%;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.grid-description {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  background-color: $pink;
+  width: 100%;
+  line-height: 50px;
+  text-align: center;
+}
+.grid-item--width2 { width: 98%; }

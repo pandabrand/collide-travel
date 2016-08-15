@@ -18,7 +18,7 @@ const getFeaturedCities = (featuredCities, dispatch, props) => {
         {/*280x390*/}
         {featuredCities.map((city,i) => {
           const imgFile = city.printPreview.substr(city.printPreview.lastIndexOf('/') + 1);
-          const imgSrc = $.cloudinary.url( imgFile, width=280, height=390, crop="scale");
+          const imgSrc = $.cloudinary.url( imgFile, {width:280, height:390, crop:"fill"});
           const pathTo = FlowRouter.path('city-guide',{name:city.cityName});
           return <div key={i} className="col-md-3 col-sm-6 feature-city-guide">
             <a href={pathTo} >

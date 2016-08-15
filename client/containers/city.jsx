@@ -33,26 +33,24 @@ const getArtistComments = (artistId) => {
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('find-city',props.name);
-  if(subscription.ready()) {
-    let homeCity = {};
-    let locations = [];
-    let artist = {};
-    let artistComments = [];
+  const artists_sub = Meteor.subscribe('artists-city-by-name', props.name);
+  let homeCity = {};
+  let locations = {};
+  let artists = {};
+  let artistComments = [];
+  if(subscription.ready() && artists_sub.ready()) {
     homeCity = CitiesCollection.findOne({cityName:props.name});
-    if(props.artistName) {
-      const artist_sub = Meteor.subscribe('artist-name', props.artistName);
-      if(artist_sub.ready()) {
-        artist = ArtistsCollection.findOne({artistSlug:props.artistName});
-        locations = getArtistLocations(artist.locationIds);
-        artistComments = getArtistComments(artist._id);
-      }
-    } else {
-      locations = getLocations(homeCity._id);
-    }
+    artists = ArtistsCollection.find({cityName:props.name});
 
-    const homeData = {homeCity, locations, artist, artistComments, props}
-    onData(null, homeData);
+    const locations_sub = Meteor.subscribe('locations', homeCity._id);
+    if(locations_sub.ready()) {
+        locations = LocationsCollection.find({cityId:homeCity._id}).fetch();
+
+        const homeData = {homeCity, locations, artists, props}
+        onData(null, homeData);
+    }
   }
+
 };
 
 function mapStateToProps(state) {
@@ -61,7 +59,8 @@ function mapStateToProps(state) {
     mapTableHover: state.mapTableHover,
     mapTableRowClick: state.mapTableRowClick,
     artistExploreSelection: state.artistExploreSelection,
-    categoryExploreSelection: state.categoryExploreSelection
+    categoryExploreSelection: state.categoryExploreSelection,
+    mapLocationClick: state.mapLocationClick,
   }
 }
 

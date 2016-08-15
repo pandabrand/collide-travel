@@ -42,7 +42,7 @@ Meteor.publish('promoted-city', function() {
 
 Meteor.publish('locations', function(cityId){
   check(cityId, String);
-  return LocationsCollection.find({cityId});
+  return LocationsCollection.find({cityId:cityId});
 });
 
 Meteor.publish('all-locations', function(){
@@ -76,6 +76,11 @@ Meteor.publish('artists', function(){
 Meteor.publish('artist', function(id){
   check(id, String);
   return ArtistsCollection.find({_id: id});
+})
+
+Meteor.publish('artists-city-by-name', function(cityName) {
+    check(cityName, String);
+    return ArtistsCollection.find({cityName:cityName});
 })
 
 Meteor.publish('artist-name', function(name){

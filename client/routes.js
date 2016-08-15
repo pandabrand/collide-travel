@@ -90,6 +90,7 @@ citySection.route('/:name/:locationName', {
 });
 
 citySection.route('/:name/artist/:artistName', {
+  name: 'artist-guide',
   action(params) {
     mount(AppComponent, {
       content: <CityContainer {...params}/>
