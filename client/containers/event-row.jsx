@@ -8,7 +8,7 @@ export default class EventsRowContainer extends Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="row event-row">
         <div className="col-xs-12 col-sm-6 col-md-6">
           <div className="event-image-container">
             <div className="event-image">
