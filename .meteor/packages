@@ -18,7 +18,7 @@ ecmascript@0.5.7              # Enable ECMAScript2015+ syntax in app code
 kadira:flow-router
 kadira:blaze-layout
 seba:minifiers-autoprefixer
-fourseven:scss
+fourseven:scss@=3.8.0_1
 fortawesome:fontawesome
 session
 react-meteor-data
