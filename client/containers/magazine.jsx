@@ -1,31 +1,19 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 
-export default class MagazineContainer extends Component {
-  render() {
-    const soldout = !this.props.print.purchase && !this.props.print.download;
-    return (
-      <div className="print-issue col-sm-6 col-md-4">
-        <div className="print-preview-image thumbnail">
-          <img src={this.props.print.preview}/>
-        </div>
-        <div className="print-control caption">
-          <h2>Issue #{this.props.print.issue}</h2>
-          <p>{this.props.print.featured}</p>
-          { !this.props.print.purchase && !this.props.print.download ?
-            <div className="soldout">
-            <h3 className="soldout">Sold Out</h3>
-            <p className="cta">I still want it!</p></div> :
-            <div className="purchse-download">
-            {this.props.print.purchase ? <button className="btn btn-primary print-control-button buy">Buy Now</button> : ''}
-            {this.props.print.download ? <button className="btn btn-primary print-control-button download">Download</button> : ''}
-            </div>
-          }
-        </div>
-      </div>
-    );
+import { composeWithTracker } from 'react-komposer';
+import { CitiesCollection } from '../../lib/collections/cities.js';
+
+import  PrintPageComponent  from '../components/print-page/print-page.jsx';
+
+const composer = (props, onData) => {
+  const citySubscription = Meteor.subscribe('cities');
+  if(citySubscription.ready()) {
+    cities = CitiesCollection.find({});
+    const cityData = {cities, props}
+    onData(null, cityData);
   }
-}
+};
 
-MagazineContainer.propTypes = {
-  print: PropTypes.object.isRequired,
-}
+export default composeWithTracker(composer)(PrintPageComponent);

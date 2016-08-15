@@ -6,7 +6,7 @@ import HomeContainer from './containers/home.jsx';
 import CityContainer from './containers/city.jsx';
 import ArtistGuideContainer from './containers/artist.jsx';
 import CategoryContainer from './containers/category.jsx';
-import PrintPageComponent  from './components/print-page/print-page.jsx';
+import MagazineContainer  from './containers/magazine.jsx';
 import EventsContainer from './containers/events.jsx';
 import EventContainer from './containers/event.jsx';
 
@@ -103,7 +103,7 @@ citySection.route('/:name/artist/:artistName', {
 publicRoutes.route('/in-print', {
   action() {
     mount(AppComponent, {
-      content: (<PrintPageComponent/>),
+      content: (<MagazineContainer/>),
     });
   }
 });
