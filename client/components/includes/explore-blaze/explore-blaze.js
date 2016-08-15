@@ -24,12 +24,11 @@ Template.blazeExploreBar.onRendered(function(){
     allowClear: true,
   });
   if(_fr.route.name === 'city-guide' || _fr.route.name === 'artist-guide') {
-    console.log(_fr.route.name);
-    $('.city-select-explore').val(_fr.params.name).trigger('change');
+    $('.city-select-explore').select2('data',{id:_fr.params.name});
   } else if (_fr.route.name === 'artist-guide') {
-    $('.artist-select-explore').val(_fr.params.artistName).trigger('change');
+    $('.artist-select-explore').select2('data',{id:_fr.params.artistName});
   } else if(_fr.route.name === 'category-guide') {
-    $('.category-select-explore').val(_fr.params.type).trigger('change');
+    $('.category-select-explore').select2('data',{id:_fr.params.type});
   }
 });
 
