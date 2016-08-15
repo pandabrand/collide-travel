@@ -25,7 +25,7 @@ Template.blazeExploreBar.onRendered(function(){
   });
   if(_fr.route.name === 'city-guide' || _fr.route.name === 'artist-guide') {
     console.log(_fr.route.name);
-    $('.city-select-explore').select2('val', _fr.params.name);
+    $('.city-select-explore').val(_fr.params.name).trigger('change');
   } else if (_fr.route.name === 'artist-guide') {
     $('.artist-select-explore').val(_fr.params.artistName).trigger('change');
   } else if(_fr.route.name === 'category-guide') {
