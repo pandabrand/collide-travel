@@ -10,7 +10,7 @@ Template.blazeExploreBar.onCreated(function() {
 });
 
 Template.blazeExploreBar.onRendered(function(){
-  console.dir(FlowRouter.current());
+  const _fr = FlowRouter.current();
   $('.city-select-explore').select2({
     placeholder: 'Explore a city',
     allowClear: true,
@@ -23,6 +23,14 @@ Template.blazeExploreBar.onRendered(function(){
     placeholder: 'Select a category',
     allowClear: true,
   });
+  if(_fr.route.name === 'city-guide' || _fr.route.name === 'artist-guide') {
+    console.log(_fr.route.name);
+    $('.city-select-explore').select2('val', _fr.params.name);
+  } else if (_fr.route.name === 'artist-guide') {
+    $('.artist-select-explore').val(_fr.params.artistName).trigger('change');
+  } else if(_fr.route.name === 'category-guide') {
+    $('.category-select-explore').val(_fr.params.type).trigger('change');
+  }
 });
 
 Template.blazeExploreBar.rendered = function() {

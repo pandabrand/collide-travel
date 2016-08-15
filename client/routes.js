@@ -61,6 +61,7 @@ publicRoutes.route('/', {
 });
 
 publicRoutes.route('/category/:type', {
+  name: 'category-guide',
   action(params) {
     mount(AppComponent, {
       content: <CategoryContainer {...params}/>
