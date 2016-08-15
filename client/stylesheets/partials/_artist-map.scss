@@ -1,0 +1,25 @@
+.artist-map-container {
+  height: 700px;
+  .artist-map-row {
+    height: inherit;
+    border-top: $blackish solid 1px;
+    .map-table-col {
+      height: inherit;
+      overflow-y: auto;
+    }
+  }
+}
+
+.map-table {
+  overflow-y: auto;
+  td {
+    text-align: left;
+    .map-table-title {
+      font-size: 1.5em;
+      font-weight: 700;
+    }
+    .map-table-body {
+      margin: 1em 1.5em;
+    }
+  }
+}

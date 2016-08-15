@@ -1,0 +1,9 @@
+.soundcloud-embed {
+  height: 180px;
+  background-color: $orange;
+  border-top: $blackish solid 1px;
+  border-bottom: $blackish solid 1px;
+  .soundcloud-container {
+    margin: auto;
+  }
+}
