@@ -10,6 +10,7 @@ Template.blazeExploreBar.onCreated(function() {
 });
 
 Template.blazeExploreBar.onRendered(function(){
+  console.dir(FlowRouter.current());
   $('.city-select-explore').select2({
     placeholder: 'Explore a city',
     allowClear: true,
