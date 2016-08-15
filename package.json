@@ -1,6 +1,9 @@
 {
   "name": "collide-travel",
   "private": true,
+  "engines" : {
+    "node": "6.1.0"
+  },
   "scripts": {
     "start": "meteor run"
   },
