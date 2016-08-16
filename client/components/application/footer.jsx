@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 export default class UIFooterComponent extends Component {
   render() {
     return (
-      <footer id="footer"><div className="container">This is a footer.</div></footer>
+      <footer id="footer"><div className="container">&copy; {new Date().getFullYear()} Culture Collide</div></footer>
     );
   }
 }
