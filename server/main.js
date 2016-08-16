@@ -1,3 +1,4 @@
+
 import { Meteor } from 'meteor/meteor';
 import { CitiesCollection } from '../lib/collections/cities.js';
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
