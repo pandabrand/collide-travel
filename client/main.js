@@ -8,6 +8,7 @@ Meteor.startup(function() {
   });
 })
 
+
 FlowRouter.wait();
 Tracker.autorun(function() {
   // if the roles subscription is ready, start routing
