@@ -3,6 +3,7 @@ import React from 'react';
 import SelectBarComponent from '../includes/select-bar.jsx';
 import GoogleMapsComponent from './google-maps.jsx';
 import FeaturedCitiesComponent from '../city/featured-cities.jsx';
+import TrendingContainer from '../../containers/trending.jsx';
 
 const getHome = (homePage, featuredCities, props, dispatch) => {
   return (<div>
@@ -14,6 +15,7 @@ const getHome = (homePage, featuredCities, props, dispatch) => {
       </div>
     </div>
     <FeaturedCitiesComponent props={props} featuredCities={featuredCities} dispatch={dispatch}/>
+    <TrendingContainer/>
   </div>);
 }
 

@@ -71,6 +71,8 @@ matb33:collection-hooks@0.8.3
 mdg:validation-error@0.5.1
 meteor@1.2.16
 meteor-base@1.0.4
+meteorhacks:async@1.0.0
+meteorhacks:npm@1.5.0
 michalvalasek:autoform-bootstrap-colorpicker@0.1.0
 minifier-css@1.2.13
 minifier-js@1.2.13
@@ -87,6 +89,7 @@ mxab:simple-schema-jsdoc@0.1.1
 natestrauser:select2@4.0.2
 nekojira:cloudinary-jquery-upload@0.1.0
 npm-bcrypt@0.8.7_1
+npm-container@1.2.0
 npm-mongo@1.5.45
 observe-sequence@1.0.12
 ordered-dict@1.0.8

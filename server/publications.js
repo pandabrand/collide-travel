@@ -4,6 +4,7 @@ import { ArtistsCollection } from '../lib/collections/artists.js';
 import { ArtistCommentsCollection } from '../lib/collections/artist-comments.js';
 import { EventsCollection } from '../lib/collections/events.js';
 import { PagesCollection } from '../lib/collections/pages.js';
+import { TrendingCollections } from '../lib/collections/trending.js';
 
 Meteor.publish('everything', function() {
     return [
@@ -138,4 +139,13 @@ Meteor.publish('edit-user', function(usrnm) {
 
 Meteor.publish('user-list', function (){
   return Meteor.users.find({});
+});
+
+Meteor.publish('trending', function() {
+  Meteor.call('get.feed', function(err, result){
+    if(err){
+      console.err('Something went wrong getting the feed from CC.');
+    }
+  })
+  return TrendingCollections.find({},{sort:{_id:-1},limit:3});
 });

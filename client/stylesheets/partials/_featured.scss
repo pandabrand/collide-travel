@@ -1,0 +1,15 @@
+.featured-container {
+  background-color: $blackish;
+  .featured-row {
+    background-color: $blackish;
+    margin: 10px 0;
+    .featured-header {
+      color: $whitish;
+      margin: 20px 0;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: .5em;
+      text-align: center;
+    }
+  }
+}
