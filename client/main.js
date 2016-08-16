@@ -3,6 +3,9 @@ Meteor.startup(function() {
     key: Meteor.settings.public.GMAP_KEY,
     libraries: 'places'  // also accepts an array if you need more than one
   });
+  $.cloudinary.config ({
+  	cloud_name:Meteor.settings.public.CLOUDINARY_CLOUD_NAME
+  });
 })
 
 FlowRouter.wait();
@@ -13,8 +16,4 @@ Tracker.autorun(function() {
   if (Roles.subscription.ready() && !FlowRouter._initialized) {
      return FlowRouter.initialize();
    }
-});
-
-$.cloudinary.config ({
-	cloud_name:Meteor.settings.public.CLOUDINARY_CLOUD_NAME
 });
