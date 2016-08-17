@@ -8,7 +8,6 @@ import {K_CIRCLE_SIZE} from '../mapping/marker-style.js';
 import {MapTableComponent} from '../mapping/map-table.jsx';
 import setCircleHover from '../../../lib/client/actions/set-circle-hover.js';
 import setMapLocationClick from '../../../lib/client/actions/set-map-location-click.js';
-import Spinner from 'react-spinkit';
 
 
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
@@ -49,7 +48,8 @@ const getCoordsByCity = (homeCity, locations, artist, artistComments, dispatch, 
       </div>
       </div>;
   } else {
-    return <Spinner spinnerName='cube-grid'/>;
+    return <div className="trending-loading"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+    </div>;
   }
 }
 

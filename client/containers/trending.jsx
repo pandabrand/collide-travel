@@ -7,9 +7,9 @@ import { composeWithTracker } from 'react-komposer';
 import { TrendingCollections } from '../../lib/collections/trending.js';
 
 import TrendingComponent  from '../components/trending/trending.jsx';
-import Spinner from 'react-spinkit';
 
-const Loading = () => (<Spinner spinnerName='cube-grid'/>);
+const Loading = () => (<div className="trending-loading"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+</div>);
 
 const composer = (props, onData) => {
   const trendingSubscription = Meteor.subscribe('trending');

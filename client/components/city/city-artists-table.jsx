@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Cloudinary } from 'meteor/lepozepo:cloudinary';
 
 import CityArtistsGridItem from './city-artists-grid-item.jsx';
-import Spinner from 'react-spinkit';
 
 const getCityArtistsTable = (city, artists, dispatch, props) => {
   if(city && artists) {
@@ -28,7 +27,8 @@ const getCityArtistsTable = (city, artists, dispatch, props) => {
           </div>
         </div>;
   } else {
-    return <Spinner spinnerName='cube-grid'/>;
+    return <div className="trending-loading"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+    </div>;
   }
 }
 
