@@ -1,0 +1,29 @@
+.trending-container {
+  width: 350px;
+  height: 445px;
+  margin: 0 auto;
+}
+.trending-image {
+  width: 345px;
+  height: 190px;
+  object-fit: contain;
+  img {
+    height: 190px;
+    margin: 0 auto;
+  }
+}
+
+.trending-article {
+  width: 345px;
+  font-family: $open-sans;
+  color: $whitish;
+  padding: 10px;
+  .trending-header {
+    font-size: 1.5em;
+    text-align: center;
+  }
+  .trending-body {
+    padding: 5px;
+    text-align: center;
+  }
+}
