@@ -27,7 +27,7 @@ const getCityArtistsTable = (city, artists, dispatch, props) => {
           </div>
         </div>;
   } else {
-    return <div className="trending-loading"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+    return <div className="trending-loading"><i className="fa fa-cog fa-spin fa-3x fa-fw"></i>
     </div>;
   }
 }

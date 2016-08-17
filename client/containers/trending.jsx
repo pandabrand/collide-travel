@@ -8,7 +8,7 @@ import { TrendingCollections } from '../../lib/collections/trending.js';
 
 import TrendingComponent  from '../components/trending/trending.jsx';
 
-const Loading = () => (<div className="trending-loading"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+const Loading = () => (<div className="trending-loading"><i className="fa fa-cog fa-spin fa-3x fa-fw"></i>
 </div>);
 
 const composer = (props, onData) => {
