@@ -5,7 +5,6 @@ import {MapTableComponent} from '../mapping/map-table.jsx';
 import GoogleMapsComponent from '../home/google-maps.jsx';
 
 export default ArtistMapAndTableComponent = ({artist, homeCity, locations, artistComments, props, dispatch}) => {
-  console.log(JSON.stringify(props));
   return (<div className="fluid-container artist-map-container">
           <GoogleMapsComponent homeCity={homeCity} locations={locations} artist={artist} artistComments={artistComments} dispatch={dispatch} props={props}/>
         </div>);

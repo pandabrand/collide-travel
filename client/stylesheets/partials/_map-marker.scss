@@ -64,6 +64,12 @@
   font-family: $open-sans;
   .title {
     font-weight: 800;
+    display: inline-block;
+    background-color: #fff !important;
+    border: none !important;
+  }
+  button.close {
+    padding: 5px !important;
   }
   .photo {
     width: 246px;

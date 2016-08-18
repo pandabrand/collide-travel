@@ -73,7 +73,19 @@ Template.updateArtist.helpers({
 });
 
 Template.updateArtist.onRendered(function() {
-})
+  const id = FlowRouter.getParam('id');
+  const artist = ArtistsCollection.findOne({_id: id}) || {};
+  let locationsToSelect = [];
+  Tracker.autorun(function() {
+    locations = LocationsCollection.find({cityId:artist.cityId}).fetch();
+    locations.map((loc) => {
+      if(_.contains(artist.locationIds,loc._id)) {
+        locationsToSelect.push({label: loc.name, value: loc._id});
+      }
+    });
+  });
+  $('.artist-location-select').select2('data', locationsToSelect);
+});
 
 Template.updateArtistComments.onCreated(function() {
   var self = this;
