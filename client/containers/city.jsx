@@ -40,14 +40,25 @@ const composer = (props, onData) => {
   let artistComments = [];
   if(subscription.ready() && artists_sub.ready()) {
     homeCity = CitiesCollection.findOne({cityName:props.name});
-    artists = ArtistsCollection.find({cityName:props.name});
+    artists = ArtistsCollection.find({cityName:props.name}).fetch();
 
     const locations_sub = Meteor.subscribe('locations', homeCity._id);
     if(locations_sub.ready()) {
         locations = LocationsCollection.find({cityId:homeCity._id}).fetch();
 
-        const homeData = {homeCity, locations, artists, props}
-        onData(null, homeData);
+        const ac_sub = Meteor.subscribe('all-artist-comments');
+        if(ac_sub.ready()) {
+          for(let x = 0; x < artists.length; x++) {
+            const _comm = ArtistCommentsCollection.find({artistId: artists[x]._id}).fetch();
+            for(let y = 0; y < _comm.length; y++) {
+              artistComments.push(_comm[y]);
+            }
+          }
+
+          const homeData = {homeCity, locations, artists, artistComments, props}
+          onData(null, homeData);
+          return ;
+        }
     }
   }
 

@@ -94,6 +94,10 @@ Meteor.publish('artist-comments', function(artistId) {
   return ArtistCommentsCollection.find({artistId: artistId});
 })
 
+Meteor.publish('all-artist-comments', function() {
+  return ArtistCommentsCollection.find({});
+})
+
 Meteor.publish('artist-comments-edit', function(artistId) {
   check(artistId, String);
   return [
