@@ -6,7 +6,7 @@ import { composeWithTracker } from 'react-komposer';
 import { CitiesCollection } from '../../lib/collections/cities.js';
 import { LocationsCollection } from '../../lib/collections/locations.js';
 import { ArtistsCollection } from '../../lib/collections/artists.js';
-import  ExploreBarComponent  from '../components/includes/explore.jsx';
+import  {ExploreBarComponent}  from '../components/includes/explore.jsx';
 
 const composer = (props, onData) => {
   const citySubscription = Meteor.subscribe('cities');

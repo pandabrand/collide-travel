@@ -17,7 +17,9 @@ const mapOptions = {
   scrollwheel: false,
 };
 
-const getCoordsByCity = (homeCity, locations, artist, artistComments, dispatch, props) => {
+const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, dispatch, props) => {
+
+  const markerArtists = artist ? [artist] : artists;
 
   _onChildClick = (key, childProps) => {
     // console.dir(childProps);
@@ -29,7 +31,7 @@ const getCoordsByCity = (homeCity, locations, artist, artistComments, dispatch, 
       const commentsForLocation = _.where(artistComments, {locationId: location._id});
 
       return (
-        <MapMarkerComponent dispatch={dispatch} artists={[artist]} comments={commentsForLocation} lat={location.lat} lng={location.lng} key={i} item={i.toString()} type={location.type} zIndex={i} mapTableHoverIndex={props.mapTableHover} mapTableRowClick={props.mapTableRowClick} mapLocationClick={props.mapLocationClick} location={location}/>
+        <MapMarkerComponent dispatch={dispatch} artists={markerArtists} comments={commentsForLocation} lat={location.lat} lng={location.lng} key={i} item={i.toString()} type={location.type} zIndex={i} mapTableHoverIndex={props.mapTableHover} mapTableRowClick={props.mapTableRowClick} mapLocationClick={props.mapLocationClick} location={location}/>
       );
     });
 
@@ -63,7 +65,7 @@ const getCoordsByCity = (homeCity, locations, artist, artistComments, dispatch, 
   }
 }
 
-export default GoogleMapsComponent = ( {homeCity, locations, artist, artistComments, dispatch, props} ) =>
+export default GoogleMapsComponent = ( {homeCity, locations, artist, artists, artistComments, dispatch, props} ) =>
 (
-  <div>{getCoordsByCity(homeCity, locations, artist, artistComments, dispatch, props)}</div>
+  <div>{getCoordsByCity(homeCity, locations, artist, artists, artistComments, dispatch, props)}</div>
 );

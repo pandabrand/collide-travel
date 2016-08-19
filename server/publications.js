@@ -89,6 +89,16 @@ Meteor.publish('artist-name', function(name){
   return ArtistsCollection.find({artistSlug:name});
 })
 
+Meteor.publish('artist-by-location', function(locationIds){
+  check(locationIds, [String]);
+  return ArtistsCollection.find({locationIds:{$in: locationIds}});
+})
+
+Meteor.publish('artist-comments-by-location', function(locationIds) {
+  check(locationIds, [String]);
+  return ArtistCommentsCollection.find({locationId: {$in: locationIds}});
+})
+
 Meteor.publish('artist-comments', function(artistId) {
   check(artistId, String);
   return ArtistCommentsCollection.find({artistId: artistId});

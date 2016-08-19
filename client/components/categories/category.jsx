@@ -3,7 +3,7 @@ import React from 'react';
 import CategoryGuideComponent from './category-guide.jsx';
 import CityMapComponent from '../home/google-maps.jsx';
 
-const getCategory = (homeCity, locations, props, dispatch) => {
+const getCategory = (homeCity, locations, artists, artistComments,  props, dispatch) => {
 
   return <div id="main">
           <CategoryGuideComponent category={props.type} />
@@ -11,7 +11,7 @@ const getCategory = (homeCity, locations, props, dispatch) => {
          </div>;
 }
 
-export const CategoryComponent = ( {homeCity, locations, props, dispatch} ) =>
+export const CategoryComponent = ( {homeCity, locations, artists, artistComments, props, dispatch} ) =>
 (
-  <div>{getCategory(homeCity, locations, props, dispatch)}</div>
+  <div>{getCategory(homeCity, locations, artists, artistComments, props, dispatch)}</div>
 );
