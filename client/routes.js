@@ -53,9 +53,8 @@ publicRoutes.route('/login', {
 publicRoutes.route('/', {
   name: 'home',
   action(params) {
-    console.dir(this);
     mount(AppComponent, {
-      content: (<HomeContainer/>),
+      content: (<HomeContainer routeName={this.name}/>),
     });
   }
 });
@@ -101,6 +100,7 @@ citySection.route('/:name/artist/:artistName', {
 });
 
 publicRoutes.route('/in-print', {
+  name: 'in-print',
   action() {
     mount(AppComponent, {
       content: (<MagazineContainer/>),
@@ -113,6 +113,7 @@ var eventSection = publicRoutes.group({
 });
 
 eventSection.route('/', {
+  name: 'events',
   action() {
     mount(AppComponent, {
       content: (<EventsContainer/>),
@@ -121,7 +122,7 @@ eventSection.route('/', {
 });
 
 eventSection.route('/:id', {
-  name:'Event',
+  name:'event',
   action(params) {
     mount( AppComponent, {
       content: (<EventContainer id={params.id}/>)

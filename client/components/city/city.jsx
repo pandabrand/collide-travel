@@ -6,6 +6,7 @@ import CityMapsComponent from './city-map.jsx';
 import CityArtistsTableComponent from './city-artists-table.jsx';
 
 const getCity = (homeCity, locations, artists, artistComments, props, dispatch) => {
+  console.dir(props);
   return <div id="main" className="container">
           <CityGuideComponent city={homeCity} />
           {/*<CityMapComponent homeCity={homeCity} locations={locations} artist={artist} artistComments={artistComments} props={props} dispatch={dispatch}/>*/}

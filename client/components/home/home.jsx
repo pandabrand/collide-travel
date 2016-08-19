@@ -4,9 +4,11 @@ import SelectBarComponent from '../includes/select-bar.jsx';
 import GoogleMapsComponent from './google-maps.jsx';
 import FeaturedCitiesComponent from '../city/featured-cities.jsx';
 import TrendingContainer from '../../containers/trending.jsx';
+import ExploreBarSearchComponent from '../../components/includes/explore-bar.jsx';
 
-const getHome = (homePage, featuredCities, props, dispatch) => {
+const getHome = (homePage, featuredCities, routeName, props, dispatch) => {
   return (<div>
+    <ExploreBarSearchComponent routeName={routeName} />
     <div id="main" className="fluid-container">
       <img className="hero-image" src={homePage.image} />
       <div className="hero-text">
@@ -19,6 +21,6 @@ const getHome = (homePage, featuredCities, props, dispatch) => {
   </div>);
 }
 
-export const HomeComponent = ({homePage, featuredCities, props, dispatch}) => (
-  <div>{getHome(homePage, featuredCities, props, dispatch)}</div>
+export const HomeComponent = ({homePage, featuredCities, routeName, props, dispatch}) => (
+  <div>{getHome(homePage, featuredCities, routeName, props, dispatch)}</div>
 )
