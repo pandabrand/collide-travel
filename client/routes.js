@@ -1,5 +1,8 @@
 import React from 'react';
 import { mount } from 'react-mounter';
+import { Geolocation } from 'meteor/mdg:geolocation';
+
+
 import { AppComponent } from './components/application/App.jsx';
 import {AdminAppComponent} from './components/application/AdminApp.jsx';
 import HomeContainer from './containers/home.jsx';
@@ -74,6 +77,38 @@ const citySection = publicRoutes.group({
 
 citySection.route('/:name', {
   name: 'city-guide',
+  action(params) {
+    mount(AppComponent, {
+      content: <CityContainer {...params}/>
+    });
+  }
+});
+
+function setGeolocation(context) {
+  // let coords;
+  // if(Meteor.isClient) {
+  //   console.log('setting...');
+  //   coords = Geolocation.latLng();
+  // }
+  // setTimeout( function() {
+  //   context.params['geolocation'] = {};
+  //   console.dir(context);
+  // }, 5000 );
+  // Meteor.setInterval(function() {
+  //     navigator.geolocation.getCurrentPosition(function(position) {
+  //       console.dir(position);
+  //         if(position.coords) {
+  //           context.params['geolocation'] = {lat: position.coords.latitude, lng: position.coords.longitude};
+  //
+  //         }
+  //     });
+  // }, 3000);
+  context.params['geolocation'] = {};
+}
+
+publicRoutes.route('/near-me', {
+  name: 'city-guide-near-me',
+  triggersEnter: [setGeolocation],
   action(params) {
     mount(AppComponent, {
       content: <CityContainer {...params}/>

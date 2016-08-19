@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
+import { Geolocation } from 'meteor/mdg:geolocation';
+var haversine = require('haversine');
 
 import { composeWithTracker } from 'react-komposer';
 import { CitiesCollection } from '../../lib/collections/cities.js';
@@ -31,16 +33,40 @@ const getArtistComments = (artistId) => {
   }
 }
 
-const composer = (props, onData) => {
-  const subscription = Meteor.subscribe('find-city',props.name);
-  const artists_sub = Meteor.subscribe('artists-city-by-name', props.name);
-  let homeCity = {};
+  const composeDataFromLocation = (position, props, onData) => {
+    const subscription = Meteor.subscribe('cities', {
+      onReady: function () {
+         const start = {latitude: position.latitude, longitude: position.longitude};
+         cities = CitiesCollection.find({}).fetch();
+         sortedCities = _.sortBy(cities, function(city) {
+           const end = {latitude: city.location.lat, longitude: city.location.lng};
+           const _d = haversine(start, end, {unit: 'km'});
+           return _d;
+         });
+         closestCity = sortedCities[0];
+         const _data = composeData(props, onData, closestCity);
+         return _data;
+       },
+      onError: function () { console.log("onError", arguments); }
+    });
+  }
+
+ const composeDataFromURL = (props, onData) => {
+   const subscription = Meteor.subscribe('find-city',props.name);
+   if(subscription.ready()) {
+     const city = CitiesCollection.findOne({cityName:props.name});
+     return composeData(props, onData, city);
+   }
+ }
+
+const composeData = (props, onData, city) => {
+  const artists_sub = Meteor.subscribe('artists-city-by-name', city.cityName);
+  let homeCity = city;
   let locations = {};
   let artists = {};
   let artistComments = [];
-  if(subscription.ready() && artists_sub.ready()) {
-    homeCity = CitiesCollection.findOne({cityName:props.name});
-    artists = ArtistsCollection.find({cityName:props.name}).fetch();
+  if(artists_sub.ready()) {
+    artists = ArtistsCollection.find({cityName:city.cityName}).fetch();
 
     const locations_sub = Meteor.subscribe('locations', homeCity._id);
     if(locations_sub.ready()) {
@@ -55,13 +81,27 @@ const composer = (props, onData) => {
             }
           }
 
-          const homeData = {homeCity, locations, artists, artistComments, props}
-          onData(null, homeData);
-          return ;
+          return {homeCity, locations, artists, artistComments, props}
         }
     }
   }
+}
 
+const composer = (props, onData) => {
+  if(props.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.dir(position);
+        if(position.coords) {
+          props.geolocation[{lat: position.coords.latitude, lng: position.coords.longitude}];
+          const homeData = composeDataFromLocation(position.coords, props, onData);
+          console.dir(homeData);
+          onData(null, homeData);
+        }
+    });
+  } else {
+    const homeData = composeDataFromURL(props, onData);
+    onData(null, homeData);
+  }
 };
 
 function mapStateToProps(state) {

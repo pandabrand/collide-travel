@@ -124,6 +124,9 @@
 }
 
 .navbar-collide-menu {
+  @media (min-width: 768px) {
+    margin-right: -20px !important;
+  }
   @media (max-width: 767px) {
     display: block !important;
     li {
