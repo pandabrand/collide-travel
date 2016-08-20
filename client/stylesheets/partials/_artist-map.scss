@@ -8,11 +8,26 @@
       height: inherit;
       overflow-y: auto;
     }
+    .fix-map {
+      position: fixed;
+      top: 130px;
+      width: 100%;
+      margin-right: 10%;
+      // right: 80px;
+    }
+
   }
 }
 
 .artist-map {
   height: 700px;
+  // height: inherit;
+  // width: 470px;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+  .map {
+    height: inherit;
+  }
 }
 
 .map-table {

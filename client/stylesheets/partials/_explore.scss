@@ -1,6 +1,12 @@
 .explore-bar {
   width: 100%;
   @extend %clearfix;
+  @media (min-width: 768px) {
+    position: fixed;
+    top: 95px;
+    z-index: 700;
+    background-color: $white;
+  }
   .dropdown {
     background: none !important;
     margin-left: 30px;

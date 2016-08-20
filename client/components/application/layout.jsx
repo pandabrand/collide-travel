@@ -8,7 +8,7 @@ export const LayoutComponent = ({content}) => (
   <div>
     <UIHeaderComponent/>
     <ExploreBarContainer/>
+    <div className="shim"></div>
     <div>{content}</div>
-    <UIFooterComponent/>
   </div>
 );

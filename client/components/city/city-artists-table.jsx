@@ -9,8 +9,7 @@ const getCityArtistsTable = (city, artists, dispatch, props) => {
   if(city && artists) {
     const imgFile = city.printPreview.substr(city.printPreview.lastIndexOf('/') + 1);
     const imgSrc = $.cloudinary.url( imgFile, {width:252, height:303, crop:"fill"});
-    return <div className="col-sm-6 col-xs-12 clear artist-tiles">
-          <div className="masonry-guides">
+    return <div className="masonry-guides">
             <div className="grid-item">
               <img src={imgSrc} />
             </div>
@@ -24,8 +23,7 @@ const getCityArtistsTable = (city, artists, dispatch, props) => {
               let showLong = i%3 === 0;
               return <CityArtistsGridItem key={i} artist={artist} city={city} showLong={showLong}/>;
             })}
-          </div>
-        </div>;
+          </div>;
   } else {
     return <div className="trending-loading"><i className="fa fa-cog fa-spin fa-3x fa-fw"></i>
     </div>;
@@ -34,5 +32,5 @@ const getCityArtistsTable = (city, artists, dispatch, props) => {
 
 export default CityArtistsTableComponent = ( {city, artists, dispatch, props} ) =>
 (
-  <div>{getCityArtistsTable(city, artists, dispatch, props)}</div>
+  <div className="col-sm-6 col-xs-12 clear artist-tiles">{getCityArtistsTable(city, artists, dispatch, props)}</div>
 );

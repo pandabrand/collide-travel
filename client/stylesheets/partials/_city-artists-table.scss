@@ -2,16 +2,29 @@
   height: 700px;
   .city-guides-row {
     height: inherit;
+    @extend %clearfix;
+    border-top: $blackish solid 1px;
     .artist-tiles {
       height: 700px;
-      overflow-y: scroll;
+      @extend %clearfix;
     }
     .city-map-column {
       height: inherit;
+      // width: 470px;
+      margin-right: 0 !important;
+      padding-right: 0 !important;
       .map {
         height: inherit;
       }
     }
+    .fix-map {
+      position: fixed;
+      top: 130px;
+      width: 100%;
+      margin-right: 10%;
+      // right: 80px;
+    }
+
   }
 }
 

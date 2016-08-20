@@ -6,6 +6,20 @@ Meteor.startup(function() {
   $.cloudinary.config ({
   	cloud_name:Meteor.settings.public.CLOUDINARY_CLOUD_NAME
   });
+
+  $(function(){
+    $(window).scroll(function(){
+      var mapComp = $('.map');
+      var aTop = mapComp.height();
+      // console.dir(aTop);
+      if($(this).scrollTop()>=400){
+        mapComp.addClass("fix-map");//.addClass("col-sm-offset-6");
+      } else {
+        mapComp.removeClass("fix-map");//.removeClass("col-sm-offset-6");
+      }
+    });
+  });
+
 })
 
 FlowRouter.wait();

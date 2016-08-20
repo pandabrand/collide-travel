@@ -41,22 +41,24 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
       <div className="col-md-6 col-sm-6 col-xs-12 map-table-col">
         <MapTableComponent dispatch={dispatch} markerCirlceHover={props.markerCirlceHover} locations={locations} artist={artist} artistComments={artistComments} />
       </div>
-      <div className="col-md-6 col-sm-6 col-xs-12 artist-map">
-        <GoogleMap
-          bootstrapURLKeys={{key: MAP_KEY}}
-          center={homeCenter}
-          zoom={DEFAULT_ZOOM}
-          hoverDistance={K_CIRCLE_SIZE}
-          onChildMouseEnter={(event) => { return dispatch(setCircleHover(event))}}
-          onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}
-          options={mapOptions}
-          onChildClick={_onChildClick}
-          //onChildClick={(event) => {return dispatch(setMapTableRowClick({item: item, coord: {lat: location.lat, lng: location.lng}}))}}
-          //onGoogleApiLoaded={({map, maps}) => { trafficLayerInit(map, maps); } }
-          //  yesIWantToUseGoogleMapApiInternals
-            >
-          {places}
-        </GoogleMap>
+      <div className="col-md-6 col-sm-6 col-xs-12 city-map-column pull-right artist-map">
+        <div className="map">
+          <GoogleMap
+            bootstrapURLKeys={{key: MAP_KEY}}
+            center={homeCenter}
+            zoom={DEFAULT_ZOOM}
+            hoverDistance={K_CIRCLE_SIZE}
+            onChildMouseEnter={(event) => { return dispatch(setCircleHover(event))}}
+            onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}
+            options={mapOptions}
+            onChildClick={_onChildClick}
+            //onChildClick={(event) => {return dispatch(setMapTableRowClick({item: item, coord: {lat: location.lat, lng: location.lng}}))}}
+            //onGoogleApiLoaded={({map, maps}) => { trafficLayerInit(map, maps); } }
+            //  yesIWantToUseGoogleMapApiInternals
+              >
+            {places}
+          </GoogleMap>
+        </div>
       </div>
       </div>;
   } else {

@@ -37,8 +37,10 @@
 
  .navbar-collide-top {
    margin-bottom: 0;
-   @media (max-width: 767px) {
-     height: 75px;
+   @media (min-width: 768px) {
+     height: 95px;
+     position: fixed;
+     width: 100%;
    }
    .container {
      height:inherit;
@@ -148,4 +150,9 @@
 
 .navbar-collide-collapse {
   background-color: $blackish;
+}
+
+.shim {
+  z-index: 0;
+  height: 130px;
 }
