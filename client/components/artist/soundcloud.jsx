@@ -1,13 +1,13 @@
 import React from 'react';
 
-const createMarkup = () => { return {__html: artist.soundcloud}; };
+import {createMarkup} from '../../lib/utils.js';
 
 const getSoundcloud = (artist) => {
   if(artist.soundcloud) {
     return <div className="row">
       <div className="soundcloud-embed">
         <div className="soundcloud-container">
-          <div dangerouslySetInnerHTML={createMarkup()}/>
+          <div dangerouslySetInnerHTML={createMarkup(artist.soundcloud)}/>
         </div>
       </div>
       </div>;

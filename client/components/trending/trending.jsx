@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-const createMarkup = (markup) => { return {__html: markup}; };
+import {createMarkup} from '../../lib/utils.js';
 
   export default TrendingComponent = ({trendingArticles}) =>
   (<div className="container-fluid featured-container">

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Cloudinary } from 'meteor/lepozepo:cloudinary';
+import {createMarkup} from '../../lib/utils.js';
 
 export default function ArtistHeaderComponent({artist, homeCity, props, dispatch}) {
-  const createMarkup = () => { return {__html: artist.description}; };
   const imgFile = artist.image.substr(artist.image.lastIndexOf('/') + 1);
   const imgSrc = $.cloudinary.url( imgFile, {width:335, height:335, crop:"fill"});
   return (<div className="jumbotron artist-jumbo">
@@ -13,7 +13,7 @@ export default function ArtistHeaderComponent({artist, homeCity, props, dispatch
       <div className="col-md-7 col-sm-6 col-xs-12 header-copy">
         <h1>{artist.artistName}'s Guide to {homeCity.displayName}</h1>
         <div className="header-body">
-          <div dangerouslySetInnerHTML={createMarkup()}/>
+          <div dangerouslySetInnerHTML={createMarkup(artist.description)}/>
         </div>
       </div>
     </div>

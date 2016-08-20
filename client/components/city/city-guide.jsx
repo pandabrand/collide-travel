@@ -1,7 +1,7 @@
 import React from 'react';
+import {createMarkup} from '../../lib/utils.js';
 
 export default function CityGuideComponent({city}) {
-  const createMarkup = () => { return {__html: city.description}; };
   const imgFile = city.guidePreview.substr(city.guidePreview.lastIndexOf('/') + 1);
   const imgSrc = $.cloudinary.url( imgFile, {width:335, height:335, crop:"fill"});
   return (
@@ -10,7 +10,7 @@ export default function CityGuideComponent({city}) {
       <div className="col-sm-9 col-md-8 content main">
         <h1 className="content-header">{city.displayName}</h1>
         <div className="city-copy">
-          <div dangerouslySetInnerHTML={createMarkup()}/>
+          <div dangerouslySetInnerHTML={createMarkup(city.description)}/>
         </div>
       </div>
     </div>

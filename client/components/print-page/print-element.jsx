@@ -1,8 +1,9 @@
 import React from 'react';
+import {createMarkup} from '../../lib/utils.js';
 
 export default PrintElementComponent = ({print}) => {
   const soldout = !print.purchase && !print.download;
-  const createMarkup = () => { return {__html: print.description}; };
+  // const createMarkup = () => { return {__html: print.description}; };
   const imgFile = print.guidePreview.substr(print.guidePreview.lastIndexOf('/') + 1);
   const imgSrc = $.cloudinary.url( imgFile, {width:280, height:390, crop:"fill"});
   return (

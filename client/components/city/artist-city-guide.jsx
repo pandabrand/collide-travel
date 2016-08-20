@@ -1,4 +1,5 @@
 import React from 'react';
+import createMarkup from '../../lib/utils.js';
 
 export default function ArtistCityGuideComponent({artist, city}) {
   return (
@@ -8,9 +9,7 @@ export default function ArtistCityGuideComponent({artist, city}) {
         <h1 className="content-header">{artist.artistName}</h1>
         <h4>{city.displayName}</h4>
         <div className="artist-copy">
-          <p>Duo et mentitum referrentur, ea menandri definiebas mea. Ex cum modo purto constituto, et malis iuvaret elaboraret nec, placerat iracundia ad per. Eos tantas tibique petentium et. Per no utinam consulatu, eos eu suas viderer tamquam. Liber utroque et quo, vel autem democritum et, in pro decore accusam propriae. Tamquam menandri patrioque id nam. Dictas pericula ex sit.</p>
-          <p>Vis scripta posidonium dissentiunt ne. Ut nam percipitur deterruisset, ad sea feugiat postulant repudiare. Usu ei elit pertinax, mutat soleat epicurei mel et, enim mollis ei mel. Id sed agam quando inermis, te facer offendit forensibus mei.</p>
-          <p>Habeo saperet constituto vel et, sea cu tale sumo labitur. Aliquip labitur vim ex, affert invenire sapientem an sit. Ut dico ponderum postulant pri, ex integre interpretaris qui, id nam habemus blandit reprehendunt. Novum iuvaret vix at, cu perfecto splendide duo. Appellantur reprehendunt sed ea, in vel dolor malorum, sed cu postea diceret voluptatum.</p>
+          <div dangerouslySetInnerHTML={createMarkup(city.description)}/>
         </div>
       </div>
     </div>
