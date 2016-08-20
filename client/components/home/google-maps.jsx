@@ -26,7 +26,7 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
     return dispatch(setMapTableRowClick({item: childProps.item, coord: {lat: childProps.location.lat, lng: childProps.location.lng}}));
   }
 
-  const places = locations
+  const markers = locations
     .map((location,i) => {
       const commentsForLocation = _.where(artistComments, {locationId: location._id});
 
@@ -52,11 +52,8 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
             onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}
             options={mapOptions}
             onChildClick={_onChildClick}
-            //onChildClick={(event) => {return dispatch(setMapTableRowClick({item: item, coord: {lat: location.lat, lng: location.lng}}))}}
-            //onGoogleApiLoaded={({map, maps}) => { trafficLayerInit(map, maps); } }
-            //  yesIWantToUseGoogleMapApiInternals
               >
-            {places}
+            {markers}
           </GoogleMap>
         </div>
       </div>
