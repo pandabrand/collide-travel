@@ -1,0 +1,13 @@
+.featured-city {
+  width: 100%;
+  .featured-map-col {
+    height: 400px;
+    .featured-map {
+      height: 400px;
+    }
+  }
+  .featured-table-col {
+    height: 400px;
+    overflow: auto;
+  }
+}
