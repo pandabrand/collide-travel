@@ -9,5 +9,20 @@
   .featured-table-col {
     height: 400px;
     overflow: auto;
+    padding-left: 18px;
+  }
+}
+
+.city-wrapper {
+  width: 100%;
+  .city-map-col {
+    height: 600px;
+    .city-map {
+      height: 600px;
+    }
+  }
+  .city-table-col {
+    height: 600px;
+    overflow: auto;
   }
 }

@@ -17,5 +17,5 @@ const getSoundcloud = (artist) => {
 
 }
 export default ArtistSoundcloudComponent = ({artist, props, dispatch}) => {
-  return (<div className="fluid-container">{getSoundcloud(artist)}</div>);
+  return (<div className="container">{getSoundcloud(artist)}</div>);
 }

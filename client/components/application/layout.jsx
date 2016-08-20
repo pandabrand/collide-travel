@@ -10,5 +10,6 @@ export const LayoutComponent = ({content}) => (
     <ExploreBarContainer/>
     <div className="shim"></div>
     <div>{content}</div>
+    <UIFooterComponent/>
   </div>
 );

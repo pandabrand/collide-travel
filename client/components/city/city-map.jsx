@@ -31,7 +31,7 @@ const getCityMap = (city, locations, artists, artistComments, dispatch, props) =
 
   if(city && locations) {
     homeCenter = city.location;
-    return <div id='artists-city-map-component' className="map">
+    return <div id='artists-city-map-component' className="city-map">
         <GoogleMap
           bootstrapURLKeys={{key: MAP_KEY}}
           center={homeCenter}
@@ -54,5 +54,5 @@ const getCityMap = (city, locations, artists, artistComments, dispatch, props) =
 
 export default CityMapsComponent = ( {city, locations, artists, artistComments, dispatch, props} ) =>
 (
-  <div className="col-sm-6 col-xs-12 city-map-column pull-right">{getCityMap(city, locations, artists, artistComments, dispatch, props)}</div>
+  <div className="col-sm-6 col-xs-12 city-map-col">{getCityMap(city, locations, artists, artistComments, dispatch, props)}</div>
 );

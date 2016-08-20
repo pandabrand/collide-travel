@@ -37,12 +37,12 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
 
   if(homeCity && locations) {
     homeCenter = Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : homeCity.location;
-    return <div className="row artist-map-row map-container">
-      <div className="col-md-6 col-sm-6 col-xs-12 map-table-col">
+    return <div className="row featured-city">
+      <div className="col-md-6 col-sm-6 col-xs-12 featured-table-col">
         <MapTableComponent dispatch={dispatch} markerCirlceHover={props.markerCirlceHover} locations={locations} artist={artist} artists={markerArtists} artistComments={artistComments} />
       </div>
-      <div className="col-md-6 col-sm-6 col-xs-12 city-map-column pull-right artist-map">
-        <div className="map">
+      <div className="col-md-6 col-sm-6 col-xs-12 featured-map-col">
+        <div className="featured-map">
           <GoogleMap
             bootstrapURLKeys={{key: MAP_KEY}}
             center={homeCenter}

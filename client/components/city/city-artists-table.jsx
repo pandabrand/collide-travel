@@ -9,7 +9,8 @@ const getCityArtistsTable = (city, artists, dispatch, props) => {
   if(city && artists) {
     const imgFile = city.printPreview.substr(city.printPreview.lastIndexOf('/') + 1);
     const imgSrc = $.cloudinary.url( imgFile, {width:252, height:303, crop:"fill"});
-    return <div className="masonry-guides">
+    return <div className="city-table-col">
+          <div className="masonry-guides">
             <div className="grid-item">
               <img src={imgSrc} />
             </div>
@@ -23,6 +24,7 @@ const getCityArtistsTable = (city, artists, dispatch, props) => {
               let showLong = i%3 === 0;
               return <CityArtistsGridItem key={i} artist={artist} city={city} showLong={showLong}/>;
             })}
+          </div>
           </div>;
   } else {
     return <div className="trending-loading"><i className="fa fa-cog fa-spin fa-3x fa-fw"></i>

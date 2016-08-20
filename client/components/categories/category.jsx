@@ -7,7 +7,9 @@ const getCategory = (homeCity, locations, artists, artistComments,  props, dispa
 
   return <div id="main">
           <CategoryGuideComponent category={props.type} />
-          <CityMapComponent homeCity={homeCity} locations={locations} artists={artists} artistComments={artistComments} props={props} dispatch={dispatch}/>
+          <div className="map-border">
+            <CityMapComponent homeCity={homeCity} locations={locations} artists={artists} artistComments={artistComments} props={props} dispatch={dispatch}/>
+          </div>
          </div>;
 }
 
