@@ -11,12 +11,12 @@ const getComment = (comments,locationId) => {
   });
 }
 
-export const MapTableComponent = ({locations, markerCirlceHover, artist, artistComments, dispatch}) => {
+export const MapTableComponent = ({locations, markerCirlceHover, artists, artistComments, dispatch}) => {
   return <table className="table table-hover map-table">
     <tbody>
       {locations.map(function(location,i){
           const comment = getComment(artistComments,location._id);
-          return (<MapRowComponent key={i} dispatch={dispatch} location={location} item={i} hoverIndex={markerCirlceHover} artist={artist} comment={comment} />)
+          return (<MapRowComponent key={i} dispatch={dispatch} location={location} item={i} hoverIndex={markerCirlceHover} artists={artists} comment={comment} />)
         })
       }
     </tbody>

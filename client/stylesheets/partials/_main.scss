@@ -56,6 +56,18 @@
   }
 }
 
+.home-map-container {
+  height: 500px;
+  overflow: auto;
+  .featured-city-copy {
+    text-align: center;
+    font-size: 1.5em;
+    padding: 25px;
+    line-height: 31px;
+    border-bottom: $blackish solid 1px;
+  }
+}
+
 .bottom-border {
   padding-bottom: 2px;
   border-bottom: 1px $table-grey solid ;

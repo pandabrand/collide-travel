@@ -19,20 +19,17 @@ const composer = (props, onData) => {
 
     locations = LocationsCollection.find({type: props.type}).fetch();
     if(locations.length > 0) {
-      console.dir('found locations...');
+
       const locationIds =  _.pluck(locations, '_id');
-      console.dir(locationIds);
 
       const city_sub = Meteor.subscribe('find-city-id', locations[0].cityId);
       const artist_sub = Meteor.subscribe('artist-by-location', locationIds);
       const comments_sub = Meteor.subscribe('artist-comments-by-location',locationIds);
       if(city_sub.ready() &&  artist_sub.ready() && comments_sub.ready()) {
-        console.log('sub subs are ready...')
         homeCity = CitiesCollection.findOne({_id:locations[0].cityId});
-        artists = ArtistsCollection.find({locationIds: {$in:locationIds}});
-        artistComments = ArtistCommentsCollection.find({locationId: {$in: locationIds}});
+        artists = ArtistsCollection.find({locationIds: {$in:locationIds}}).fetch();
+        artistComments = ArtistCommentsCollection.find({locationId: {$in: locationIds}}).fetch();
 
-        console.dir(artistComments);
         const categoryData = {homeCity, locations, artists, artistComments, props}
         onData(null, categoryData);
       }
