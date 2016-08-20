@@ -19,22 +19,15 @@ const mapOptions = {
 
 const getCityMap = (city, locations, artists, artistComments, dispatch, props) => {
 
-  const markers = locations
+  const places = locations
     .map((location,i) => {
       const commentsForLocation = _.where(artistComments, {locationId: location._id});
 
       return (
-        <MapMarkerComponent artists={artists} comments={commentsForLocation} dispatch={dispatch} lat={location.lat} lng={location.lng} key={i} item={i.toString()} type={location.type} zIndex={i} mapTableHoverIndex={props.mapTableHover} mapTableRowClick={props.mapTableRowClick} mapLocationClick={props.mapLocationClick} location={location}/>
+        <MapMarkerComponent dispatch={dispatch} artists={artists} comments={commentsForLocation} {...location.location} key={i} item={i.toString()} type={location.type} zIndex={i} mapTableHoverIndex={props.mapTableHover} mapTableRowClick={props.mapTableRowClick} mapLocationClick={props.mapLocationClick} location={location}/>
       );
     });
 
-    const fitBounds = (map) => {
-      let bounds = new google.maps.LatLngBounds();
-      locations.map((location) => {
-        bounds.extend(new google.maps.LatLng(location.location));
-      });
-      map.fitBounds(bounds);
-    }
 
   if(city && locations) {
     homeCenter = city.location;
@@ -47,10 +40,10 @@ const getCityMap = (city, locations, artists, artistComments, dispatch, props) =
           onChildMouseEnter={(event) => { return dispatch(setCircleHover(event))}}
           onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}
           options={mapOptions}
-          onGoogleApiLoaded={({map, maps}) => { fitBounds(map); } }
-            yesIWantToUseGoogleMapApiInternals
+          //onGoogleApiLoaded={({map, maps}) => { fitBounds(map); } }
+          //  yesIWantToUseGoogleMapApiInternals
             >
-          {markers}
+          {places}
         </GoogleMap>
       </div>;
   } else {

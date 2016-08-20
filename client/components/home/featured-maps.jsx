@@ -31,7 +31,7 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
       const commentsForLocation = _.where(artistComments, {locationId: location._id});
 
       return (
-        <MapMarkerComponent dispatch={dispatch} artists={markerArtists} comments={commentsForLocation} lat={location.lat} lng={location.lng} key={i} item={i.toString()} type={location.type} zIndex={i} mapTableHoverIndex={props.mapTableHover} mapTableRowClick={props.mapTableRowClick} mapLocationClick={props.mapLocationClick} location={location}/>
+        <MapMarkerComponent dispatch={dispatch} artists={markerArtists} comments={commentsForLocation} {...location.location} key={i} item={i.toString()} type={location.type} zIndex={i} mapTableHoverIndex={props.mapTableHover} mapTableRowClick={props.mapTableRowClick} mapLocationClick={props.mapLocationClick} location={location}/>
       );
     });
 

@@ -50,27 +50,25 @@ export default class MapMarkerComponent extends Component {
     }
 
     return (
-      <div>
         <div style={style}>
-          <div className={pinCssClassName} style={pinColorStyle} data-toggle="popover" data-placement="bottom">
+          <div className={pinCssClassName} style={pinColorStyle}>
+          </div>
+          <div className="pulse"></div>
+          <div id={'mapPopover'+item} className="popover popover-default location-popover" style={popoverStyle}>
+            <h3 className="popover-title title">{location.name}</h3><button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => { return  dispatch(setMapTableRowClick({item: '-1', coord: {}}))}}><span aria-hidden="true">&times;</span></button>
+            <div className="popover-content">
+              <div className="address">{location.addressNumber} {location.addressStreet}</div>
+              {comments.map((comment, i) => {
+                const _a = getArtistForComment(comment.artistId);
+                return <div key={i} style={{boxShadow: '1px 1px 2px 0 '+ _a.color}} className="pin-artist-comment">
+                          <div className="pin-artist">{_a.artistName}</div>
+                          <div className="pin-comment">{comment.comment}</div>
+                        </div>;
+              })}
+              <div className="links"><a href={mapLink(location)} target="_blank">Directions <i className="fa fa-map-o"></i></a></div>
+            </div>
           </div>
         </div>
-        <div className="pulse"></div>
-        <div id={'mapPopover'+item} className="popover popover-default location-popover" style={popoverStyle}>
-          <h3 className="popover-title title">{location.name}</h3><button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => { return  dispatch(setMapTableRowClick({item: '-1', coord: {}}))}}><span aria-hidden="true">&times;</span></button>
-          <div className="popover-content">
-            <div className="address">{location.addressNumber} {location.addressStreet}</div>
-            {comments.map((comment, i) => {
-              const _a = getArtistForComment(comment.artistId);
-              return <div key={i} style={{boxShadow: '1px 1px 2px 0 '+ _a.color}} className="pin-artist-comment">
-                        <div className="pin-artist">{_a.artistName}</div>
-                        <div className="pin-comment">{comment.comment}</div>
-                      </div>;
-            })}
-            <div className="links"><a href={mapLink(location)} target="_blank">Directions <i className="fa fa-map-o"></i></a></div>
-          </div>
-        </div>
-      </div>
     );
   }
 }

@@ -26,12 +26,12 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
     return dispatch(setMapTableRowClick({item: childProps.item, coord: {lat: childProps.location.lat, lng: childProps.location.lng}}));
   }
 
-  const markers = locations
+  const places = locations
     .map((location,i) => {
       const commentsForLocation = _.where(artistComments, {locationId: location._id});
 
       return (
-        <MapMarkerComponent dispatch={dispatch} artists={markerArtists} comments={commentsForLocation} lat={location.lat} lng={location.lng} key={i} item={i.toString()} type={location.type} zIndex={i} mapTableHoverIndex={props.mapTableHover} mapTableRowClick={props.mapTableRowClick} mapLocationClick={props.mapLocationClick} location={location}/>
+        <MapMarkerComponent dispatch={dispatch} artists={markerArtists} comments={commentsForLocation} {...location.location} key={i} item={i.toString()} type={location.type} zIndex={i} mapTableHoverIndex={props.mapTableHover} mapTableRowClick={props.mapTableRowClick} mapLocationClick={props.mapLocationClick} location={location}/>
       );
     });
 
@@ -53,7 +53,7 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
             options={mapOptions}
             onChildClick={_onChildClick}
               >
-            {markers}
+            {places}
           </GoogleMap>
         </div>
       </div>
