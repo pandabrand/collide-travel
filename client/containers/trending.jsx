@@ -12,6 +12,9 @@ const Loading = () => (<div className="trending-loading"><i className="fa fa-cog
 </div>);
 
 const composer = (props, onData) => {
+  if(Meteor.isServer) {
+    Meteor.call('get.feed');
+  }
   const trendingSubscription = Meteor.subscribe('trending');
   if(trendingSubscription.ready()) {
     trendingArticles = TrendingCollections.find({});

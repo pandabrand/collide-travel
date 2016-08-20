@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SelectBarComponent from '../includes/select-bar.jsx';
-import GoogleMapsComponent from './google-maps.jsx';
+import FeaturedMapsComponent from './featured-maps.jsx';
 import FeaturedCitiesComponent from '../city/featured-cities.jsx';
 import TrendingContainer from '../../containers/trending.jsx';
 
@@ -16,7 +16,7 @@ const getHome = (homePage, featuredCities, routeName, promotedCity, locations, a
     </div>
     <div className="home-map-container">
       <div className="featured-city-copy">This month's featured city: {promotedCity.displayName}</div>
-      <GoogleMapsComponent homeCity={promotedCity} locations={locations} artists={artists} artistComments={artistComments} props={props} dispatch={dispatch}/>
+      <FeaturedMapsComponent homeCity={promotedCity} locations={locations} artists={artists} artistComments={artistComments} props={props} dispatch={dispatch}/>
     </div>
     <FeaturedCitiesComponent props={props} featuredCities={featuredCities} dispatch={dispatch}/>
     <TrendingContainer/>
