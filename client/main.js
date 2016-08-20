@@ -12,11 +12,11 @@ Meteor.startup(function() {
       var mapComp = $('.map');
       var aTop = mapComp.height();
       // console.dir(aTop);
-      if($(this).scrollTop()>=400){
-        mapComp.addClass("fix-map");//.addClass("col-sm-offset-6");
-      } else {
-        mapComp.removeClass("fix-map");//.removeClass("col-sm-offset-6");
-      }
+      // if($(this).scrollTop()>=400){
+      //   mapComp.addClass("fix-map");//.addClass("col-sm-offset-6");
+      // } else {
+      //   mapComp.removeClass("fix-map");//.removeClass("col-sm-offset-6");
+      // }
     });
   });
 
