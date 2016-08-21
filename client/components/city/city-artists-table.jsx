@@ -34,5 +34,5 @@ const getCityArtistsTable = (city, artists, dispatch, props) => {
 
 export default CityArtistsTableComponent = ( {city, artists, dispatch, props} ) =>
 (
-  <div className="col-sm-6 col-xs-12 clear artist-tiles">{getCityArtistsTable(city, artists, dispatch, props)}</div>
+  <div className="col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6 clear artist-tiles">{getCityArtistsTable(city, artists, dispatch, props)}</div>
 );

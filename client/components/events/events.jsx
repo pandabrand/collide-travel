@@ -4,7 +4,7 @@ import EventsRowContainer from '../../containers/event-row.jsx';
 
 const getEvents = (events, props, dispatch) => {
   return <div id="main" className="container">
-    <div className="row title">
+    <div className="row event-page-title">
       <h1>Events</h1>
     </div>
     {events.map((event, id) => {

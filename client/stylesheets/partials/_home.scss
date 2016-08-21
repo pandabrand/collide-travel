@@ -1,15 +1,32 @@
 .featured-city {
   width: 100%;
+  @media(max-width: 767px) {
+    margin: 0 !important;
+  }
   .featured-map-col {
-    height: 400px;
-    .featured-map {
+    @media(min-width: 768px) {
       height: 400px;
+    }
+    @media (max-width: 767px) {
+      height: 150px;
+      padding: 0 !important;
+    }
+    .featured-map {
+      @media(min-width: 768px) {
+        height: 400px;
+      }
+      @media (max-width: 767px) {
+        height: 150px;
+      }
     }
   }
   .featured-table-col {
     height: 400px;
     overflow: auto;
     padding-left: 18px;
+    @media (max-width: 767px) {
+      padding: 0 !important;
+    }
   }
 }
 

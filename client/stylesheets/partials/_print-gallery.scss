@@ -2,10 +2,45 @@
   margin-bottom: 15px;
 }
 
+.print-preview-image {
+  img {
+    @media (max-width: 767px) {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
 .buy, .download {
   margin-right: 10px;
 }
 
+.btn-collide {
+  color: $link-grey;
+  background-color: $blackish;
+  border-color: $black;
+  &:hover {
+    color: $white;
+  }
+}
+
 .print-issue {
   padding-top: 15px;
+  @media (max-width: 767px) {
+    border-bottom: $blackish solid 1px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    &:last-child {
+      border-bottom: transparent solid 1px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.print-control {
+  h2 {
+    text-align: center;
+  }
+  .purchase-download {
+    text-align: center;
+  }
 }

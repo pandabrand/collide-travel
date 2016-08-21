@@ -17,8 +17,8 @@ const getCity = (homeCity, locations, artists, artistComments, props, dispatch) 
           {/*<CityMapComponent homeCity={homeCity} locations={locations} artist={artist} artistComments={artistComments} props={props} dispatch={dispatch}/>*/}
           <div className="container-fluid map-border full-fluid">
             <div className="row city-wrapper">
-              <CityArtistsTableComponent city={homeCity} artists={artists}/>
               <CityMapsComponent key="artists-city-map-component" dispatch={dispatch} props={props} city={homeCity} locations={locations} artists={artists} artistComments={artistComments}/>
+              <CityArtistsTableComponent city={homeCity} artists={artists}/>
               <div className="get-clear"></div>
             </div>
          </div>

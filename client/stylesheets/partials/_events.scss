@@ -10,11 +10,22 @@
     font-weight: bold;
     color: $white;
     position: absolute;
-    top: 45%;
-    margin: 2% auto;
-    width: 100%;
+    top: 25%;
+    margin: 15px;
     text-align: center;
+    @media(max-width: 767px) {
+      font-size: 1.5em;
+    }
   }
+}
+.event-page-title {
+  h1 {
+    margin-left: 15px;
+  }
+}
+
+.event-header {
+  text-transform: capitalize;
 }
 
 .event-row {

@@ -3,6 +3,9 @@
 }
 
 .navbar {
+  @media(max-width: 767px) {
+    height: 75px;
+  }
   li {
     margin: 10px 10px 15px 0;
   }
@@ -154,5 +157,10 @@
 
 .shim {
   z-index: 0;
-  height: 130px;
+  @media (min-width: 768px) {
+    height: 130px;
+  }
+  @media (max-width: 767px) {
+    height: 0;
+  }
 }

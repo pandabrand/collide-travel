@@ -54,5 +54,5 @@ const getCityMap = (city, locations, artists, artistComments, dispatch, props) =
 
 export default CityMapsComponent = ( {city, locations, artists, artistComments, dispatch, props} ) =>
 (
-  <div className="col-sm-6 col-xs-12 city-map-col">{getCityMap(city, locations, artists, artistComments, dispatch, props)}</div>
+  <div className="col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 city-map-col">{getCityMap(city, locations, artists, artistComments, dispatch, props)}</div>
 );

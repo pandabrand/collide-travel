@@ -5,21 +5,21 @@ import { Meteor } from 'meteor/meteor';
 const showCityLabel = (cities) => {
   const CURRENT_ROUTE = FlowRouter.current();
   if(CURRENT_ROUTE.params) {
-    return CURRENT_ROUTE.params.name ? 'Exploring ' + _.findWhere(cities, {cityName: CURRENT_ROUTE.params.name}).displayName : 'Explore a city';
+    return CURRENT_ROUTE.params.name ? _.findWhere(cities, {cityName: CURRENT_ROUTE.params.name}).displayName : 'City';
   }
 }
 
 const showArtistLabel = (artists) => {
   const CURRENT_ROUTE = FlowRouter.current();
   if(CURRENT_ROUTE.params) {
-    return CURRENT_ROUTE.params.artistName ? 'Exploring with ' + _.findWhere(artists, {artistSlug: CURRENT_ROUTE.params.artistName}).artistName : 'Explore by artist ';
+    return CURRENT_ROUTE.params.artistName ? _.findWhere(artists, {artistSlug: CURRENT_ROUTE.params.artistName}).artistName : 'Artist ';
   }
 }
 
 const showCategoryLabel = (locationCategories) => {
   const CURRENT_ROUTE = FlowRouter.current();
   if(CURRENT_ROUTE.params) {
-    return CURRENT_ROUTE.params.type ? 'Exploring ' + _.find(locationCategories, function(category){return CURRENT_ROUTE.params.type === category}) : 'Explore by category ';
+    return CURRENT_ROUTE.params.type ? _.find(locationCategories, function(category){return CURRENT_ROUTE.params.type === category}) : 'Category ';
   }
 }
 
@@ -31,8 +31,12 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
     return(
       <div className="explore-bar">
         <div className="dropdown">
-          <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <button className="btn btn-default dropdown-toggle show-mobile-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             {showCityLabel(cities)}
+            <span className="caret"></span>
+          </button>
+          <button className="btn btn-default dropdown-toggle show-lrgscrn-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Exploring {showCityLabel(cities)}
             <span className="caret"></span>
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -43,8 +47,12 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
           </ul>
         </div>
         <div className="dropdown">
-          <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <button className="btn btn-default dropdown-toggle show-mobile-button" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             {showArtistLabel(artists)}
+            <span className="caret"></span>
+          </button>
+          <button className="btn btn-default dropdown-toggle show-lrgscrn-button" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Exploring with {showArtistLabel(artists)}
             <span className="caret"></span>
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -55,8 +63,12 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
           </ul>
         </div>
         <div className="dropdown">
-          <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <button className="btn btn-default dropdown-toggle show-mobile-button" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             {showCategoryLabel(locationCategories)}
+            <span className="caret"></span>
+          </button>
+          <button className="btn btn-default dropdown-toggle show-lrgscrn-button" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Exploring {showCategoryLabel(locationCategories)}
             <span className="caret"></span>
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">

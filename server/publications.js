@@ -17,6 +17,11 @@ Meteor.publish('everything', function() {
     ];
 });
 
+Meteor.publish('event', function(id) {
+  check(id, String);
+  return EventsCollection.find({_id:id});
+});
+
 Meteor.publish('cities', function() {
   return CitiesCollection.find();
 });

@@ -58,7 +58,12 @@
 
 .home-map-container {
   height: 500px;
-  overflow: auto;
+  @media(min-width: 768px) {
+    overflow: auto;
+  }
+  @media(max-width: 767px) {
+    overflow: hidden;
+  }
   .featured-city-copy {
     text-align: center;
     font-size: 1.5em;
@@ -77,4 +82,11 @@
 .get-clear {
   clear: both;
   width: 100%;
+}
+
+a {
+  color: $link-grey;
+  &:focus, &:hover {
+    color: $white;
+  }
 }

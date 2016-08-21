@@ -15,7 +15,9 @@ export default class EventsRowContainer extends Component {
               <img src={this.props.event.image}/>
             </div>
             <div className="event-title">
-              {this.props.event.title}
+              <div className="event-title-text">
+                {this.props.event.title}
+              </div>
             </div>
           </div>
         </div>
