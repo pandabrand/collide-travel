@@ -60,10 +60,10 @@ export default class MapMarkerComponent extends Component {
               <div className="address">{location.addressNumber} {location.addressStreet}</div>
               {comments.map((comment, i) => {
                 const _a = getArtistForComment(comment.artistId);
-                return <div key={i} style={{boxShadow: '1px 1px 2px 0 '+ _a.color}} className="pin-artist-comment">
+                return comment.comment.length > 0 ? <div key={i} style={{boxShadow: '1px 1px 2px 0 '+ _a.color}} className="pin-artist-comment">
                           <div className="pin-artist">{_a.artistName}</div>
                           <div className="pin-comment">{comment.comment}</div>
-                        </div>;
+                        </div> : '';
               })}
               <div className="links"><a href={mapLink(location)} target="_blank">Directions <i className="fa fa-map-o"></i></a></div>
             </div>

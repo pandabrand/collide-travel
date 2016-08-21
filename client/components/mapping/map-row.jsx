@@ -19,7 +19,7 @@ export default function MapRowComponent({location, item, hoverIndex, artists, co
   })
 
   const addComment = () => {
-    if(comment && comment.length > 0){
+    if(comment && comment[0] && comment[0].comment.length > 0){
       const _a = _.findWhere(artists, {_id:comment[0].artistId});
       return <div style={{boxShadow: '1px 1px 2px 0 '+ _a.color}} className="artist-comments"><div className="artist-comments-header">{_a.artistName} says: </div><div className="artist-comments-body">{comment[0].comment}</div></div>;
     }
