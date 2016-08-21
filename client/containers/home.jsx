@@ -13,7 +13,7 @@ import { ArtistCommentsCollection } from '../../lib/collections/artist-comments.
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('featured-cities');
   const homePage_sub = Meteor.subscribe('home-page', true);
-  const promoted_sub = Meteor.subscribe('promoted-city',true);
+  const promoted_sub = Meteor.subscribe('promoted-city');
 
   if(subscription.ready() && homePage_sub.ready() && promoted_sub.ready()) {
     const featuredCities = CitiesCollection.find({isFeatured:true},{skip:0,limit:4}).fetch();

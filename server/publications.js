@@ -37,8 +37,8 @@ Meteor.publish('find-city-id', function(id) {
   return cities;
 });
 
-Meteor.publish('promoted-city', function(isPromoted) {
-  return CitiesCollection.find({isPromoted: isPromoted});
+Meteor.publish('promoted-city', function() {
+  return CitiesCollection.find({isPromoted: true});
 });
 
 Meteor.publish('locations', function(cityId){
