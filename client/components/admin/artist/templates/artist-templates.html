@@ -56,7 +56,7 @@
     <h1>Edit {{artist.artistName}} Comments</h1>
     {{#each comments}}
       <h3>{{location.name}}</h3>
-      {{> quickForm collection=ArtistCommentsCollection doc=this id=formId type="method-update" meteormethod="comments.update"}}
+      {{> quickForm collection=ArtistCommentsCollection doc=this id=formId type="method-update" meteormethod="comments.update" buttonContent="update"}}
     {{/each}}
   </div>
 </template>

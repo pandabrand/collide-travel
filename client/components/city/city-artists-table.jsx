@@ -15,7 +15,7 @@ const getCityArtistsTable = (city, artists, dispatch, props) => {
               <img src={imgSrc} />
             </div>
             <div className="grid-item">
-              <img src="http://lorempixel.com/252/303/fashion" />
+              <img src={imgSrc} />
               <div className="grid-description">
                 AD GOES HERE
               </div>
@@ -34,5 +34,5 @@ const getCityArtistsTable = (city, artists, dispatch, props) => {
 
 export default CityArtistsTableComponent = ( {city, artists, dispatch, props} ) =>
 (
-  <div className="col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6 clear artist-tiles">{getCityArtistsTable(city, artists, dispatch, props)}</div>
+  <div className="col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6 artist-tiles">{getCityArtistsTable(city, artists, dispatch, props)}</div>
 );
