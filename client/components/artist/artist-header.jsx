@@ -11,7 +11,7 @@ export default function ArtistHeaderComponent({artist, homeCity, props, dispatch
         <img className="img-circle img-responsive" src={imgSrc} />
       </div>
       <div className="col-md-7 col-sm-6 col-xs-12 header-copy">
-        <h1>{artist.artistName}'s Guide to {homeCity.displayName}</h1>
+        <h1>{artist.artistName} Guide to {homeCity.displayName}</h1>
         <div className="header-body">
           <div dangerouslySetInnerHTML={createMarkup(artist.description)}/>
         </div>

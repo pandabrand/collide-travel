@@ -6,8 +6,9 @@ import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-c
 import MapIconComponent from './map-icons.jsx';
 import store from '../../../lib/client/store/store.js';
 import {createMarkup} from '../../lib/utils.js';
+import {MapCommentComponent} from './map-comments.jsx';
 
-export default function MapRowComponent({location, item, hoverIndex, artists, comment, dispatch}){
+export default function MapRowComponent({location, item, hoverIndex, artists, comments, dispatch}){
   const handleScroll = () => {
     document.getElementById(location._id).scrollIntoView();
   };
@@ -19,12 +20,25 @@ export default function MapRowComponent({location, item, hoverIndex, artists, co
     }
   })
 
+  const getArtist = (comment, artists) => {
+    if(!comment)
+      return;
+
+    const _a = artists.filter((artist) => {
+      return artist._id === comment.artistId;
+    });
+    console.dir(_a);
+    return _a[0];
+  }
+
+
   const addComment = () => {
+
     if(comment && comment[0] && !comment[0].hideComment && comment[0].comment && comment[0].comment.length > 0  && comment.comment !== 'undefined') {
       const _a = _.findWhere(artists, {_id:comment[0].artistId});
       return <div style={{boxShadow: '1px 1px 2px 0 '+ _a.color}} className="artist-comments"><div className="artist-comments-header">{_a.artistName} says: </div><div className="artist-comments-body">{comment[0].comment}</div></div>;
     } else {
-      return '';
+      return <div style={{boxShadow: '1px 1px 2px 0 '+ _a.color}} className="artist-comments"><div className="artist-comments-header">{_a.artistName} Recommendation</div></div>;
     }
   }
 
@@ -43,7 +57,9 @@ export default function MapRowComponent({location, item, hoverIndex, artists, co
           {/*<div style={item === parseInt(hoverIndex) ? markerTableCircleStyleHover : markerTableCircleStyle}><MapIconComponent type={location.type}/></div>*/}
           <div className="table-map-location-name">{location.name}</div>
         </div>
-        {addComment()}
+        {comments.map((comment) => {
+          return <MapCommentComponent key={comment._id} artist={getArtist(comment, artists)} comment={comment}/>;
+        })}
         <div className="front-map-description"><div dangerouslySetInnerHTML={createMarkup(location.description)}/></div>
         <p className="address">{location.address}</p>
         <div className="map-links"><a href={mapLink(location)} target="_blank">Directions <i className="fa fa-map-o"></i></a></div>

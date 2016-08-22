@@ -99,7 +99,7 @@ export default class MapMarkerComponent extends Component {
                             <a href={pinterestLink(location, _a, comment)} data-pin-do="buttonPin" target="_blank" className="external"><i className="fa fa-pinterest"></i></a>
                             <a href={tumblrLink(location, _a, comment)} target="_blank" className="external"><i className="fa fa-tumblr"></i></a>
                           </div>
-                        </div> : '';
+                        </div> : <div key={i} style={{boxShadow: '1px 1px 2px 0 '+ _a.color}} className="pin-artist-comment"><div className="pin-artist">{_a.artistName} Recommendation</div></div>;
               })}
               <div className="map-links"><a href={mapLink(location)} target="_blank">Directions <i className="fa fa-map-o"></i></a></div>
               <div className="map-links"><a className="location-website" href={location.website} target="_blank">Website <i className="fa fa-laptop"></i></a></div>
