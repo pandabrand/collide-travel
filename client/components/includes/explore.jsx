@@ -63,15 +63,15 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
           </ul>
         </div>
         <div className="dropdown">
-          <button className="btn btn-default dropdown-toggle show-mobile-button" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <button className="btn btn-default dropdown-toggle show-mobile-button" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             {showCategoryLabel(locationCategories)}
             <span className="caret"></span>
           </button>
-          <button className="btn btn-default dropdown-toggle show-lrgscrn-button" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <button className="btn btn-default dropdown-toggle show-lrgscrn-button" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Exploring {showCategoryLabel(locationCategories)}
             <span className="caret"></span>
           </button>
-          <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <ul className="dropdown-menu right-dropdown-menu" aria-labelledby="dropdownMenu3">
             <li><a href='/'>Home</a></li>
             {locationCategories.map((category, i) => {
               return <li key={i}><a href={FlowRouter.path('category-guide',{type:category})}>{category}</a></li>

@@ -42,6 +42,11 @@
         }
       }
     }
+    .right-dropdown-menu {
+      @media(max-width: 511px) {
+        left: -100px !important;
+      }
+    }
   }
   .open{
     .dropdown-toggle.btn-default{

@@ -1,6 +1,6 @@
 .pin {
-  width:35px;
-  height:35px;
+  width:30px;
+  height:30px;
   border-radius:50% 50% 50% 0;
   background:$pink;
   position:absolute;
@@ -13,8 +13,8 @@
   animation-duration:1s;
   &:after {
     content:'';
-    width:19px;
-    height:19px;
+    width:14px;
+    height:14px;
     margin:8px 0 0 8px;
     background:$whitish;
     position:absolute;
@@ -30,8 +30,8 @@
   background: $pink;
   background: -moz-linear-gradient(top, rgba(255, 0, 0, 1) 0%, rgba(255, 255, 0, 1) 15%, rgba(0, 255, 0, 1) 30%, rgba(0, 255, 255, 1) 50%, rgba(0, 0, 255, 1) 65%, rgba(255, 0, 255, 1) 80%, rgba(255, 0, 0, 1) 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 0, 0, 1)), color-stop(15%, rgba(255, 255, 0, 1)), color-stop(30%, rgba(0, 255, 0, 1)), color-stop(50%, rgba(0, 255, 255, 1)), color-stop(65%, rgba(0, 0, 255, 1)), color-stop(80%, rgba(255, 0, 255, 1)), color-stop(100%, rgba(255, 0, 0, 1)));
-  width:35px;
-  height:35px;
+  width:30px;
+  height:30px;
   border-radius:50% 50% 50% 0;
   position:absolute;
   transform:rotate(-45deg);
@@ -43,8 +43,8 @@
   animation-duration:1s;
   &:after {
     content:'';
-    width:19px;
-    height:19px;
+    width:14px;
+    height:14px;
     margin:8px 0 0 8px;
     background:$whitish;
     position:absolute;
@@ -58,8 +58,8 @@
 .pulse {
   background:rgba(0,0,0,0.2);
   border-radius:50%;
-  height:19px;
-  width :19px;
+  height:14px;
+  width :14px;
   position:absolute;
   left:50%;
   top:50%;
@@ -69,8 +69,8 @@
   &:after {
     content:" ";
     border-radius:50%;
-    height:45px;
-    width:45px;
+    height:40px;
+    width:40px;
     position:absolute;
     margin:-13px 0 0 -13px;
     animation:pulsate 1s ease-out;

@@ -101,7 +101,8 @@ export default class MapMarkerComponent extends Component {
                           </div>
                         </div> : '';
               })}
-              <div className="popover-links"><a href={mapLink(location)} target="_blank">Directions <i className="fa fa-map-o"></i></a></div>
+              <div className="map-links"><a href={mapLink(location)} target="_blank">Directions <i className="fa fa-map-o"></i></a></div>
+              <div className="map-links"><a className="location-website" href={location.website} target="_blank">Website <i className="fa fa-laptop"></i></a></div>
             </div>
           </div>
         </div>

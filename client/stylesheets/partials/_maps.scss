@@ -7,6 +7,28 @@
   }
 }
 
+.front-map-description {
+  font-family: $sans-light;
+  font-size: .9em;
+}
+.map-links {
+  font-family: $sans-serif;
+  display: inline-block;
+  margin-right: 3px;
+  padding: 3px;
+  text-align: center;
+  color: $contrast-dark;
+  font-size: .75em;
+  &:last-child {
+    margin-right: 0;
+  }
+  a {
+    &:hover {
+      color: $callout-grey;
+    }
+  }
+}
+
 .map-container {
   width: 100%;
   max-width: 100%;
@@ -17,10 +39,6 @@
     width: 38%;
     overflow: auto;
     height: 500px;
-  }
-  .front-map-description {
-    font-family: $sans-light;
-    font-size: .9em;
   }
   .map-layout {
     float: left;
@@ -33,15 +51,6 @@
       text-decoration: none;
       color: $blackish;
     }
-  }
-  .location-website {
-    display: block;
-    padding: 3px;
-    width: 65px;
-    text-align: center;
-    background-color: $contrast-light;
-    color: $contrast-dark;
-    font-size: .75em;
   }
   .table-map-location-name {
     display: inline-block;
