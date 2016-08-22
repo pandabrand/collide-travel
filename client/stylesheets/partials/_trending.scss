@@ -1,22 +1,22 @@
 .trending-container {
   @media(max-width: 510px) {
     width: 290px;
-    height: 381px;
+    // height: 381px;
   }
   @media(min-width: 511px) {
     width: 350px;
-    height: 445px;
+    // height: 445px;
   }
   margin: 0 auto;
 }
 .trending-image {
   @media(max-width: 510px) {
     width: 290px;
-    height: 165px;
+    // height: 165px;
   }
   @media(min-width: 511px) {
     width: 345px;
-    height: 190px;
+    // height: 190px;
     }
   object-fit: contain;
   img {

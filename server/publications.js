@@ -166,5 +166,5 @@ Meteor.publish('trending', function() {
       console.err('Something went wrong getting the feed from CC.');
     }
   })
-  return TrendingCollections.find({},{sort:{_id:-1},limit:3});
+  return TrendingCollections.find({},{sort:{date:-1},limit:3});
 });

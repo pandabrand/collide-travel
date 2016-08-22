@@ -1,7 +1,7 @@
 .explore-bar {
   width: 100%;
   @extend %clearfix;
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     position: fixed;
     top: 95px;
     z-index: 700;
@@ -9,20 +9,20 @@
   }
   .dropdown {
     background: none !important;
-    @media (min-width: 768px) {
+    @media (min-width: 769px) {
       margin-left: 30px;
     }
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       margin-left: 10px;
     }
     display: inline;
     .dropdown-toggle {
       background: none !important;
       border: 1px solid transparent;
-      @media (min-width: 768px) {
+      @media (min-width: 769px) {
         width: 24%;
       }
-      @media (max-width: 767px) {
+      @media (max-width: 768px) {
         width: 29%;
       }
       text-align: left;
@@ -59,10 +59,10 @@
   .form-group {
     margin-bottom: 0;
     display: inline-block;
-    @media (min-width: 768px) {
+    @media (min-width: 769px) {
       width: 25%;
     }
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       width: 33%;
     }
     .explore-select {

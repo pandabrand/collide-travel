@@ -1,7 +1,9 @@
 #react-root {
   height: 100%;
   margin-bottom: 60px;
-  overflow-x: hidden;
+  @media(max-width: 768px) {
+    overflow-x: hidden;
+  }
   // padding-bottom: 60px;
 }
 .fullheight {
@@ -24,10 +26,10 @@
     text-align: center;
     color: $white;
     .hero-title {
-      @media (min-width: 768px) {
+      @media (min-width: 769px) {
         font-size: 72px;
       }
-      @media (max-width: 767px) and (min-width: 500px) {
+      @media (max-width: 768px) and (min-width: 500px) {
         font-size: 32px;
       }
       @media (max-width: 499px) {
@@ -37,10 +39,10 @@
       text-transform: uppercase;
     }
     .hero-copy {
-      @media (min-width: 768px) {
+      @media (min-width: 769px) {
         font-size: 24px;
       }
-      @media (max-width: 767px) and (min-width: 500px) {
+      @media (max-width: 768px) and (min-width: 500px) {
         font-size: 19px;
       }
       @media (max-width: 499px) {
@@ -58,10 +60,10 @@
 
 .home-map-container {
   height: 500px;
-  @media(min-width: 768px) {
+  @media(min-width: 769px) {
     overflow: auto;
   }
-  @media(max-width: 767px) {
+  @media(max-width: 768px) {
     overflow: hidden;
   }
   .featured-city-copy {

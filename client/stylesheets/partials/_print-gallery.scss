@@ -4,7 +4,7 @@
 
 .print-preview-image {
   img {
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       display: block;
       margin: 0 auto;
     }
@@ -25,7 +25,7 @@
 
 .print-issue {
   padding-top: 15px;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     border-bottom: $blackish solid 1px;
     margin-bottom: 30px;
     padding-bottom: 15px;

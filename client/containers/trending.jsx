@@ -17,7 +17,7 @@ const composer = (props, onData) => {
   }
   const trendingSubscription = Meteor.subscribe('trending');
   if(trendingSubscription.ready()) {
-    trendingArticles = TrendingCollections.find({});
+    trendingArticles = TrendingCollections.find({},{sort:{date:-1},limit:3});
     const trendingData = {trendingArticles, props}
     onData(null, trendingData);
   }

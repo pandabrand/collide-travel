@@ -1,21 +1,21 @@
 .featured-city {
   width: 100%;
-  @media(max-width: 767px) {
+  @media(max-width: 768px) {
     margin: 0 !important;
   }
   .featured-map-col {
-    @media(min-width: 768px) {
+    @media(min-width: 769px) {
       height: 400px;
     }
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       height: 200px;
       padding: 0 !important;
     }
     .featured-map {
-      @media(min-width: 768px) {
+      @media(min-width: 769px) {
         height: 400px;
       }
-      @media (max-width: 767px) {
+      @media (max-width: 768px) {
         height: 200px;
       }
     }
@@ -24,7 +24,7 @@
     height: 400px;
     overflow: auto;
     padding-left: 18px;
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       padding: 0 !important;
     }
   }
@@ -33,18 +33,18 @@
 .city-wrapper {
   width: 100%;
   .city-map-col {
-    @media(min-width: 768px) {
+    @media(min-width: 769px) {
       height: 400px;
     }
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       height: 200px;
       padding: 0 !important;
     }
     .city-map {
-      @media(min-width: 768px) {
+      @media(min-width: 769px) {
         height: 400px;
       }
-      @media (max-width: 767px) {
+      @media (max-width: 768px) {
         height: 200px;
       }
     }
@@ -53,7 +53,7 @@
     height: 400px;
     overflow: auto;
     padding-left: 18px;
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       padding: 0 !important;
     }
   }
