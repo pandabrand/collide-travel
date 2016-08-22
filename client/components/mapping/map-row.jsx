@@ -36,7 +36,7 @@ export default function MapRowComponent({location, item, hoverIndex, artists, co
   const imgSrc = $.cloudinary.url( imgFile, {width:150, height:150, crop:"fill"});
 
   return (
-    <tr id={location._id} onClick={() => {return dispatch(setMapTableRowClick({item: item, coord: {lat: location.lat, lng: location.lng}}))}} onMouseOver={() => {return dispatch(setMapTableHover(item))}} onMouseOut={() => {return dispatch(setMapTableHover(-1))}}>
+    <tr id={location._id} onClick={() => {return dispatch(setMapTableRowClick({item: item, coord: location.location}))}} onMouseOver={() => {return dispatch(setMapTableHover(item))}} onMouseOut={() => {return dispatch(setMapTableHover(-1))}}>
       <td><div className="map-photo"><img src={imgSrc}/></div></td>
       <td>
         <div className="name-item">

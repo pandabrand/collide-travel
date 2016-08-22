@@ -12,6 +12,33 @@ export default class UIHeaderComponent extends Component {
     DocHead.addMeta(http_content);
     const viewport = {name: 'viewport', content: 'width=device-width, initial-scale=1'};
     DocHead.addMeta(viewport);
+
+    // <!-- Open Graph Meta Tags -->
+    const fb_type = {property:'og:type', content:'website'};
+    const fb_title = {property:'og:title', content:'Travel Collide'};
+    const fb_description = {property:'og:description', content:'Get out of town'};
+    const fb_site_name = {property:'og:site_name', content:'Travel Collide'};
+    const fb_url = {property:'og:url', content:'https://www.facebook.com/culturecollideofficial/'};
+    DocHead.addMeta(fb_type);
+    DocHead.addMeta(fb_title);
+    DocHead.addMeta(fb_description);
+    DocHead.addMeta(fb_site_name);
+    DocHead.addMeta(fb_url);
+    // const fb_image = {property:'og:image', content:''};
+
+    // <!-- Twitter Card Meta Tags -->
+    const twitter_card = {name:'twitter:card', content:'summary'};
+    const twitter_title = {name:'twitter:title', content:'Travel Collide'};
+    const twitter_description = {name:'twitter:description', content:'Get out of town.'};
+    // const twitter_card = {name:'twitter:image', content:'url'};
+    const twitter_site = {name:'twitter:site', content:'@culturecollide'};
+    DocHead.addMeta(twitter_card);
+    DocHead.addMeta(twitter_title);
+    DocHead.addMeta(twitter_description);
+    DocHead.addMeta(twitter_site);
+
+    // <meta name="twitter:creator" content="@{{userTwitter user.profile.twitterHandle}}"/>
+
   }
 
   render() {

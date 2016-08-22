@@ -28,6 +28,10 @@ const getCityMap = (city, locations, artists, artistComments, dispatch, props) =
       );
     });
 
+    _onChildClick = (key, childProps) => {
+      // console.dir(childProps);
+      return dispatch(setMapTableRowClick({item: childProps.item, coord: childProps.location.location}));
+    }
 
   if(city && locations) {
     homeCenter = city.location;
@@ -40,6 +44,7 @@ const getCityMap = (city, locations, artists, artistComments, dispatch, props) =
           onChildMouseEnter={(event) => { return dispatch(setCircleHover(event))}}
           onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}
           options={mapOptions}
+          onChildClick={_onChildClick}
           //onGoogleApiLoaded={({map, maps}) => { fitBounds(map); } }
           //  yesIWantToUseGoogleMapApiInternals
             >

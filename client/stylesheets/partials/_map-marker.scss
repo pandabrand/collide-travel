@@ -92,6 +92,9 @@
 .location-popover {
   width: 276px;
   font-family: $open-sans;
+  position: absolute;
+  top: 40px;
+  left: 10px;
   .title {
     font-weight: 800;
     display: inline-block;
@@ -116,6 +119,30 @@
     padding: 5px;
     margin: 5px;
   }
+}
+.popover-links {
+  a {
+      color: $link-grey;
+      border-right: $link-grey solid 1px;
+      &:hover {
+        color: $callout-grey;
+      }
+    }
+}
+
+.popover-social-icons {
+  a {
+      display: inline-block;
+      color: $link-grey;
+      border-right: $link-grey solid 1px;
+      padding: 0 5px;
+      &:hover {
+        color: $callout-grey;
+      }
+      &:last-child {
+        border-right: transparent solid 1px;
+      }
+    }
 }
 @keyframes pulsate {
   0% {

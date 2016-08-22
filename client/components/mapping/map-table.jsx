@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 import MapRowComponent from './map-row.jsx';
+import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-click.js';
 
 const getComment = (comments,locationId) => {
   if(!comments)
