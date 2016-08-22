@@ -19,6 +19,8 @@ const mapOptions = {
 
 const getCityMap = (city, locations, artists, artistComments, dispatch, props) => {
 
+  let bounds = [];
+
   const places = locations
     .map((location,i) => {
       const commentsForLocation = _.where(artistComments, {locationId: location._id});
@@ -33,6 +35,16 @@ const getCityMap = (city, locations, artists, artistComments, dispatch, props) =
       return dispatch(setMapTableRowClick({item: childProps.item, coord: childProps.location.location}));
     }
 
+    const bounding = (map) => {
+      const bound = new google.maps.LatLngBounds();
+
+      const bounds = locations.map((location, i) =>{
+        bound.extend(new google.maps.LatLng({lat:location.location.lat, lng:location.location.lng}));
+      });
+      
+      map.fitBounds(bound);
+    }
+
   if(city && locations) {
     homeCenter = city.location;
     return <div id='artists-city-map-component' className="city-map">
@@ -45,8 +57,8 @@ const getCityMap = (city, locations, artists, artistComments, dispatch, props) =
           onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}
           options={mapOptions}
           onChildClick={_onChildClick}
-          //onGoogleApiLoaded={({map, maps}) => { fitBounds(map); } }
-          //  yesIWantToUseGoogleMapApiInternals
+          onGoogleApiLoaded={({map, maps}) => { bounding(map) } }
+            yesIWantToUseGoogleMapApiInternals
             >
           {places}
         </GoogleMap>

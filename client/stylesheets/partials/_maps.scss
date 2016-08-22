@@ -1,3 +1,12 @@
+.map-photo {
+  width: 100px;
+  height: 100px;
+  padding-top: 10px;
+  img {
+    width: 100%;
+  }
+}
+
 .map-container {
   width: 100%;
   max-width: 100%;
@@ -8,14 +17,6 @@
     width: 38%;
     overflow: auto;
     height: 500px;
-  }
-  .map-photo {
-    width: 100px;
-    height: 100px;
-    padding-top: 10px;
-    img {
-      width: 100%;
-    }
   }
   .front-map-description {
     font-family: $sans-light;

@@ -21,9 +21,21 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
 
   const markerArtists = artist ? [artist] : artists;
 
+  let bounds = [];
+
   _onChildClick = (key, childProps) => {
     // console.dir(childProps);
     return dispatch(setMapTableRowClick({item: childProps.item, coord: childProps.location.location}));
+  }
+
+  const bounding = (map) => {
+    const bound = new google.maps.LatLngBounds();
+
+    const bounds = locations.map((location, i) =>{
+      bound.extend(new google.maps.LatLng({lat:location.location.lat, lng:location.location.lng}));
+    });
+
+    map.fitBounds(bound);
   }
 
   const places = locations
@@ -50,8 +62,8 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
             options={mapOptions}
             onChildClick={_onChildClick}
             //onChildClick={(event) => {return dispatch(setMapTableRowClick({item: item, coord: location.location}))}}
-            //onGoogleApiLoaded={({map, maps}) => { trafficLayerInit(map, maps); } }
-            //  yesIWantToUseGoogleMapApiInternals
+            onGoogleApiLoaded={({map, maps}) => { bounding(map) } }
+              yesIWantToUseGoogleMapApiInternals
               >
             {places}
           </GoogleMap>

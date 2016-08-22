@@ -9,7 +9,7 @@ import {createMarkup} from '../../lib/utils.js';
           <div className="row">
             <div className="trending-gallery">
             {trendingArticles.map((article, i) => {
-              return <div key={i} className="col-md-4 col-sm-6">
+              return <div key={i} className="col-md-4 col-sm-6 col-xs-12">
                 <a href={article.link} target="_blank">
                 <div className="trending-container">
                   <div className="trending-image">

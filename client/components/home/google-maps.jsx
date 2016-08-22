@@ -26,6 +26,16 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
     return dispatch(setMapTableRowClick({item: childProps.item, coord: {lat: childProps.location.lat, lng: childProps.location.lng}}));
   }
 
+  const bounding = (map) => {
+    const bound = new google.maps.LatLngBounds();
+
+    const bounds = locations.map((location, i) =>{
+      bound.extend(new google.maps.LatLng({lat:location.location.lat, lng:location.location.lng}));
+    });
+
+    map.fitBounds(bound);
+  }
+
   const places = locations
     .map((location,i) => {
       const commentsForLocation = _.where(artistComments, {locationId: location._id});
@@ -49,6 +59,8 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
             onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}
             options={mapOptions}
             onChildClick={_onChildClick}
+            onGoogleApiLoaded={({map, maps}) => { bounding(map) } }
+              yesIWantToUseGoogleMapApiInternals
               >
             {places}
           </GoogleMap>
