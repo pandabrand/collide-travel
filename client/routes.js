@@ -21,6 +21,8 @@ import AccountUIComponent from './components/accounts/accountUI.jsx';
 
 import AdminOverviewContainer from './containers/admin/overview.jsx';
 
+import EditAdComponent from './components/admin/ads/edit-ad.jsx';
+
 import AdminUserContainer from './containers/admin/user.jsx';
 import EditUserComponent from './components/admin/users/edit-user.jsx';
 import AddNewUserComponent from './components/admin/users/new-user.jsx';
@@ -229,6 +231,24 @@ privateRoutes.route('/dashboard', {
   action() {
     mount(AdminAppComponent, {
       content: <AdminOverviewContainer/>,
+    });
+  }
+});
+
+const adminAdRoutes = privateRoutes.group({
+  prefix: '/ads',
+  triggersEnter: [ function() {
+    if(!Roles.userIsInRole(Meteor.userId(), ['super-admin','admin'],'default')) {
+      return FlowRouter.go('dashboard');
+    }
+  }],
+});
+
+adminAdRoutes.route('/', {
+  name: 'admin-ads',
+  action() {
+    mount(AdminAppComponent, {
+      content: <EditAdComponent/>,
     });
   }
 });

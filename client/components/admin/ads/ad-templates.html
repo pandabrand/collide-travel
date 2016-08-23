@@ -1,0 +1,6 @@
+<template name="updateAd">
+  <div class="well">
+    <h1>Ad placement</h1>
+    {{> quickForm collection=AdZoneCollection doc=ad id="UpdateAdForm" type="method-update" meteormethod="ad.update"}}
+  </div>
+</template>

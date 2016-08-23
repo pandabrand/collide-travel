@@ -9,6 +9,7 @@ const getDashboard = (content) => {
           <div className="col-sm-3 col-md-2 sidebar fullheight">
             <ul className="nav nav-sidebar">
               <li><a className={showActiveRoute('dashboard')} href={FlowRouter.path('dashboard')}>Overview</a></li>
+              <li><a className={showActiveRoute('admin-ads')} href={FlowRouter.path('admin-ads')}>Ads</a></li>
               <li><a className={showActiveRoute('admin-artist')} href={FlowRouter.path('admin-artist')}>Artists</a></li>
               <li><a className={showActiveRoute('admin-page')} href={FlowRouter.path('admin-page')}>Pages</a></li>
               <li><a className={showActiveRoute('admin-city')} href={FlowRouter.path('admin-city')}>City Guides</a></li>

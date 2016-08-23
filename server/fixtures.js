@@ -5,7 +5,13 @@ import { EventsCollection } from '../lib/collections/events.js';
 import { LocationsCollection } from '../lib/collections/locations.js';
 import { ArtistsCollection } from '../lib/collections/artists.js';
 import { ArtistCommentsCollection } from '../lib/collections/artist-comments.js';
+import { AdZoneCollection } from '../lib/collections/ad-zone.js';
 
+if(AdZoneCollection.find().count() === 0) {
+  AdZoneCollection.insert({
+    topAd: '', cityGuideAd: '', takeoverAd: '', showAdTakeover: false,
+  });
+}
 // if(MagazinesCollection.find().count() === 0) {
 //   for(var i = 0; i < 5; i++) {
 //     MagazinesCollection.insert(

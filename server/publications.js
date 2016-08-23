@@ -5,6 +5,7 @@ import { ArtistCommentsCollection } from '../lib/collections/artist-comments.js'
 import { EventsCollection } from '../lib/collections/events.js';
 import { PagesCollection } from '../lib/collections/pages.js';
 import { TrendingCollections } from '../lib/collections/trending.js';
+import { AdZoneCollection } from '../lib/collections/ad-zone.js';
 
 Meteor.publish('everything', function() {
     return [
@@ -172,4 +173,8 @@ Meteor.publish('trending', function() {
   //   }
   // })
   return TrendingCollections.find({},{sort:{date:-1},limit:3});
+});
+
+Meteor.publish('get-ad', function(){
+  return AdZoneCollection.find({});
 });
