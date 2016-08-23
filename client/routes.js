@@ -12,6 +12,10 @@ import CategoryContainer from './containers/category.jsx';
 import MagazineContainer  from './containers/magazine.jsx';
 import EventsContainer from './containers/events.jsx';
 import EventContainer from './containers/event.jsx';
+import ContestContainer from './containers/contests.jsx';
+import {AboutComponent} from './components/home/about.jsx';
+import {TermsComponent} from './components/home/terms.jsx';
+import {PrivacyComponent} from './components/home/privacy.jsx';
 
 import AccountUIComponent from './components/accounts/accountUI.jsx';
 
@@ -58,6 +62,42 @@ publicRoutes.route('/', {
   action(params) {
     mount(AppComponent, {
       content: (<HomeContainer routeName={this.name}/>),
+    });
+  }
+});
+
+publicRoutes.route('/contests', {
+  name: 'contests',
+  action(params) {
+    mount(AppComponent, {
+      content: (<ContestContainer/>),
+    });
+  }
+});
+
+publicRoutes.route('/about', {
+  name: 'about',
+  action(params) {
+    mount(AppComponent, {
+      content: (<AboutComponent/>),
+    });
+  }
+});
+
+publicRoutes.route('/terms', {
+  name: 'terms',
+  action(params) {
+    mount(AppComponent, {
+      content: (<TermsComponent/>),
+    });
+  }
+});
+
+publicRoutes.route('/privacy', {
+  name: 'privacy',
+  action(params) {
+    mount(AppComponent, {
+      content: (<PrivacyComponent/>),
     });
   }
 });

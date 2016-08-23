@@ -36,7 +36,7 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
             <span className="caret"></span>
           </button>
           <button className="btn btn-default dropdown-toggle show-lrgscrn-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Exploring {showCityLabel(cities)}
+            Explore {showCityLabel(cities)}
             <span className="caret"></span>
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -52,7 +52,7 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
             <span className="caret"></span>
           </button>
           <button className="btn btn-default dropdown-toggle show-lrgscrn-button" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Exploring with {showArtistLabel(artists)}
+            Explore {showArtistLabel(artists)}
             <span className="caret"></span>
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -68,7 +68,7 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
             <span className="caret"></span>
           </button>
           <button className="btn btn-default dropdown-toggle show-lrgscrn-button" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Exploring {showCategoryLabel(locationCategories)}
+            Explore {showCategoryLabel(locationCategories)}
             <span className="caret"></span>
           </button>
           <ul className="dropdown-menu right-dropdown-menu" aria-labelledby="dropdownMenu3">

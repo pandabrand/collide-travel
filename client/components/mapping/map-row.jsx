@@ -27,7 +27,7 @@ export default function MapRowComponent({location, item, hoverIndex, artists, co
     const _a = artists.filter((artist) => {
       return artist._id === comment.artistId;
     });
-    console.dir(_a);
+
     return _a[0];
   }
 

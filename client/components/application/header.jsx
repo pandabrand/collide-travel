@@ -84,6 +84,7 @@ export default class UIHeaderComponent extends Component {
               <li><a href="/events">Events</a></li>
               <li><a href="/contests">Contests</a></li>
               <li><a href="/newsletters">Newsletters</a></li>
+              <li><a href="/about">About</a></li>
             </ul>
             <ul className="nav navbar-nav navbar-right navbar-social-search navbar-mobile-social-search">
               <div className="social-icons">

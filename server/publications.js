@@ -161,10 +161,10 @@ Meteor.publish('user-list', function (){
 });
 
 Meteor.publish('trending', function() {
-  Meteor.call('get.feed', function(err, result){
-    if(err){
-      console.err('Something went wrong getting the feed from CC.');
-    }
-  })
+  // Meteor.call('get.feed', function(err, result){
+  //   if(err){
+  //     console.dir('Something went wrong getting the feed from CC.');
+  //   }
+  // })
   return TrendingCollections.find({},{sort:{date:-1},limit:3});
 });

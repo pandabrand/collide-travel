@@ -1,4 +1,5 @@
 import React from 'react';
+import { Session } from 'meteor/session';
 
 import SelectBarComponent from '../includes/select-bar.jsx';
 import FeaturedMapsComponent from './featured-maps.jsx';
