@@ -31,3 +31,14 @@
     font-family: $sans-light;
   }
 }
+
+.related-img {
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.related-copy {
+  text-align: center;
+}

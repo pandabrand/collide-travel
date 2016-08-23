@@ -17,6 +17,8 @@ const composer = (props, onData) => {
   let locations = {};
   let artist = {};
   let artistComments = {};
+  let relatedArtists = [];
+
   if(subscription.ready() && artist_sub.ready()) {
     homeCity = CitiesCollection.findOne({cityName:props.name});
     artist = ArtistsCollection.findOne({artistSlug:props.artistName});
@@ -25,10 +27,13 @@ const composer = (props, onData) => {
         locations = LocationsCollection.find({_id: {$in: artist.locationIds}}).fetch();
 
         const comments_sub = Meteor.subscribe('artist-comments', artist._id);
-        if (comments_sub.ready()) {
-          artistComments = ArtistCommentsCollection.find({artistId: artist._id}).fetch();
+        const related_sub = Meteor.subscribe('artist-related', artist._id);
 
-          const homeData = {homeCity, locations, artist, artistComments, props}
+        if (comments_sub.ready() && related_sub.ready()) {
+          artistComments = ArtistCommentsCollection.find({artistId: artist._id}).fetch();
+          relatedArtists = ArtistsCollection.find({ _id: { $nin: [artist._id] }, cityId: artist.cityId },{limit:3}).fetch();
+
+          const homeData = {homeCity, locations, artist, artistComments, relatedArtists, props}
           onData(null, homeData);
         }
     }

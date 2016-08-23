@@ -99,6 +99,11 @@ Meteor.publish('artist-by-location', function(locationIds){
   return ArtistsCollection.find({locationIds:{$in: locationIds}});
 })
 
+Meteor.publish('artist-related', function(artistId){
+  check(artistId, String);
+  return ArtistsCollection.find({ _id: { $nin: [artistId] } },{limit:3});
+})
+
 Meteor.publish('artist-comments-by-location', function(locationIds) {
   check(locationIds, [String]);
   return ArtistCommentsCollection.find({locationId: {$in: locationIds}});
