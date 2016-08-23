@@ -58,3 +58,9 @@
     line-height: 1.75em;
   }
 }
+
+.artist-comment-link {
+  &:hover {
+    color: $callout-grey;
+  }
+}
