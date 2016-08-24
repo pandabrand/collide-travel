@@ -20,7 +20,7 @@ const getRelatedArtists = (homeCity, artists) => {
               <img className="img-responsive" src={imgSrc} />
             </div>
             <div className="related-copy">
-              <h3>{artist.artistName} Guide to {homeCity.displayName}</h3>
+              <h3>{artist.artistName}: Guide to {homeCity.displayName}</h3>
             </div>
           </a>
         </div>;
