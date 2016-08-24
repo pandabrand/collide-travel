@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
-// import { DocHead } from 'dochead';
+import {createMarkup} from '../../lib/utils.js';
 
 export default class UIHeaderComponent extends Component {
   componentWillMount = () => {
@@ -42,8 +42,13 @@ export default class UIHeaderComponent extends Component {
   }
 
   render() {
+    const {ads} = this.props;
+    const topAd = ads ? ads.topAd : null;
+    const ad = (topAd && topAd.length > 0) ? <div className="banner-ad fluid-container ad-container"><div dangerouslySetInnerHTML={createMarkup(topAd)}/></div> : '';
     return (
-      <nav className="navbar navbar-inverse navbar-static-top navbar-collide-top">
+      <div className="nav-wrapper">
+      {ad}
+      <nav className="navbar navbar-inverse navbar-collide-top">
         <div className="container">
           <div className="navbar-header">
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -109,6 +114,7 @@ export default class UIHeaderComponent extends Component {
           </div>
         </div>
       </nav>
+      </div>
     );
   }
 }

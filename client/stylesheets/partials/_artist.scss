@@ -10,7 +10,12 @@
     }
   }
   .main {
-    padding-left: 45px;
+    @media(min-width: 769px) {
+      padding-left: 45px;
+    }
+    @media(max-width: 768px) {
+      padding-left: 15px;
+    }
   }
   .content-header {
     margin-top: 0;

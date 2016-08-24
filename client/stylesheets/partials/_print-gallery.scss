@@ -1,13 +1,11 @@
 .print-gallery {
-  margin-bottom: 15px;
+  margin: 0 0 15px 0 !important;
 }
 
 .print-preview-image {
   img {
-    @media (max-width: 768px) {
-      display: block;
-      margin: 0 auto;
-    }
+    display: block;
+    margin: 0 auto;
   }
 }
 .buy, .download {

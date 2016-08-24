@@ -8,15 +8,18 @@ import { LocationsCollection } from '../../lib/collections/locations.js';
 import { ArtistsCollection } from '../../lib/collections/artists.js';
 import { ArtistCommentsCollection } from '../../lib/collections/artist-comments.js';
 import { CategoryComponent } from '../components/categories/category.jsx';
+import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('type-locations',props.type);
-  if(subscription.ready()) {
+  const adSubscription = Meteor.subscribe('get-ad');
+  if(subscription.ready() && adSubscription.ready()) {
     let homeCity = {};
     let locations = [];
     let artists = [];
     let artistComments = [];
 
+    ads = AdZoneCollection.findOne({});
     locations = LocationsCollection.find({type: props.type}).fetch();
     if(locations.length > 0) {
 
@@ -30,7 +33,7 @@ const composer = (props, onData) => {
         artists = ArtistsCollection.find({locationIds: {$in:locationIds}}).fetch();
         artistComments = ArtistCommentsCollection.find({locationId: {$in: locationIds}}).fetch();
 
-        const categoryData = {homeCity, locations, artists, artistComments, props}
+        const categoryData = {homeCity, locations, artists, artistComments, ads, props}
         onData(null, categoryData);
       }
     }

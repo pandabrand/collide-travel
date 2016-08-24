@@ -2,9 +2,9 @@
   width: 100%;
   @extend %clearfix;
   @media (min-width: 769px) {
-    position: fixed;
-    top: 95px;
-    z-index: 700;
+    // position: fixed;
+    // top: 95px;
+    // z-index: 700;
     background-color: $white;
   }
   .dropdown {

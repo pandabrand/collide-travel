@@ -65,7 +65,7 @@
 .home-map-container {
   height: 500px;
   @media(min-width: 769px) {
-    overflow: auto;
+    overflow: inherit;
   }
   @media(max-width: 768px) {
     overflow: hidden;

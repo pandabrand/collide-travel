@@ -9,7 +9,7 @@ import { CitiesCollection } from '../../lib/collections/cities.js';
 import { LocationsCollection } from '../../lib/collections/locations.js';
 import { ArtistsCollection } from '../../lib/collections/artists.js';
 import { ArtistCommentsCollection } from '../../lib/collections/artist-comments.js';
-
+import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 import { CityComponent } from '../components/city/city.jsx';
 
 const getLocations = (id) => {
@@ -61,12 +61,14 @@ const getArtistComments = (artistId) => {
 
 const composeData = (props, onData, city) => {
   const artists_sub = Meteor.subscribe('artists-city-by-name', city.cityName);
+  const adSubscription = Meteor.subscribe('get-ad');
   let homeCity = city;
   let locations = {};
   let artists = {};
   let artistComments = [];
-  if(artists_sub.ready()) {
+  if(artists_sub.ready() && adSubscription.ready()) {
     artists = ArtistsCollection.find({cityName:city.cityName}).fetch();
+    ads = AdZoneCollection.findOne({});
 
     const locations_sub = Meteor.subscribe('locations', homeCity._id);
     if(locations_sub.ready()) {
@@ -81,7 +83,7 @@ const composeData = (props, onData, city) => {
             }
           }
 
-          return {homeCity, locations, artists, artistComments, props}
+          return {homeCity, locations, artists, artistComments, ads, props}
         }
     }
   }

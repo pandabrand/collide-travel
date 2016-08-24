@@ -4,8 +4,15 @@ import { connect } from 'react-redux';
 import { Cloudinary } from 'meteor/lepozepo:cloudinary';
 
 import CityArtistsGridItem from './city-artists-grid-item.jsx';
+import {createMarkup} from '../../lib/utils.js';
 
-const getCityArtistsTable = (city, artists, dispatch, props) => {
+const serveCityAd = (ads) => {
+  const cityGuideAd = ads ? ads.cityGuideAd : null;
+  const ad = (cityGuideAd && cityGuideAd.length > 0) ? <div className="guide-ad"><div dangerouslySetInnerHTML={createMarkup(cityGuideAd)}/></div> : <div className="guide-ad"><img src="/image/new-logo.png" className="img-responsive" srcSet="/images/new-logo.png 1x, /images/new-logo@2x.png"/></div>;
+  return ad;
+}
+
+const getCityArtistsTable = (city, artists, ads, dispatch, props) => {
   if(city && artists) {
     const imgFile = city.printPreview.substr(city.printPreview.lastIndexOf('/') + 1);
     const imgSrc = $.cloudinary.url( imgFile, {width:252, height:303, crop:"fill"});
@@ -15,10 +22,7 @@ const getCityArtistsTable = (city, artists, dispatch, props) => {
               <img src={imgSrc} />
             </div>
             <div className="grid-item">
-              <img src={imgSrc} />
-              <div className="grid-description">
-                AD GOES HERE
-              </div>
+                {serveCityAd(ads)}
             </div>
             {artists.map((artist,i) => {
               let showLong = i%3 === 0;
@@ -32,7 +36,7 @@ const getCityArtistsTable = (city, artists, dispatch, props) => {
   }
 }
 
-export default CityArtistsTableComponent = ( {city, artists, dispatch, props} ) =>
+export default CityArtistsTableComponent = ( {city, artists, ads, dispatch, props} ) =>
 (
-  <div className="col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6 artist-tiles">{getCityArtistsTable(city, artists, dispatch, props)}</div>
+  <div className="col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6 artist-tiles">{getCityArtistsTable(city, artists, ads, dispatch, props)}</div>
 );

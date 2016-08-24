@@ -3,7 +3,8 @@ import { mount } from 'react-mounter';
 import { Geolocation } from 'meteor/mdg:geolocation';
 
 
-import { AppComponent } from './components/application/App.jsx';
+// import { AppComponent } from './components/application/App.jsx';
+import AppContainer from './containers/app.jsx';
 import {AdminAppComponent} from './components/application/AdminApp.jsx';
 import HomeContainer from './containers/home.jsx';
 import CityContainer from './containers/city.jsx';
@@ -48,6 +49,8 @@ import AdminPageContainer from './containers/admin/page.jsx';
 import AddNewPageComponent from './components/admin/page/new-page.jsx';
 import EditPageComponent from './components/admin/page/edit-page.jsx';
 
+import AdZoneCollection from '../lib/collections/ad-zone.js';
+
 publicRoutes = FlowRouter.group({});
 
 publicRoutes.route('/login', {
@@ -62,16 +65,16 @@ publicRoutes.route('/login', {
 publicRoutes.route('/', {
   name: 'home',
   action(params) {
-    mount(AppComponent, {
-      content: (<HomeContainer routeName={this.name}/>),
+    mount(AppContainer, {
+      content: (<HomeContainer routeName={this.name} />),
     });
-  }
+  },
 });
 
 publicRoutes.route('/contests', {
   name: 'contests',
   action(params) {
-    mount(AppComponent, {
+    mount(AppContainer, {
       content: (<ContestContainer/>),
     });
   }
@@ -80,7 +83,7 @@ publicRoutes.route('/contests', {
 publicRoutes.route('/about', {
   name: 'about',
   action(params) {
-    mount(AppComponent, {
+    mount(AppContainer, {
       content: (<AboutComponent/>),
     });
   }
@@ -89,7 +92,7 @@ publicRoutes.route('/about', {
 publicRoutes.route('/terms', {
   name: 'terms',
   action(params) {
-    mount(AppComponent, {
+    mount(AppContainer, {
       content: (<TermsComponent/>),
     });
   }
@@ -98,7 +101,7 @@ publicRoutes.route('/terms', {
 publicRoutes.route('/privacy', {
   name: 'privacy',
   action(params) {
-    mount(AppComponent, {
+    mount(AppContainer, {
       content: (<PrivacyComponent/>),
     });
   }
@@ -107,7 +110,7 @@ publicRoutes.route('/privacy', {
 publicRoutes.route('/category/:type', {
   name: 'category-guide',
   action(params) {
-    mount(AppComponent, {
+    mount(AppContainer, {
       content: <CategoryContainer {...params}/>
     });
   }
@@ -120,7 +123,7 @@ const citySection = publicRoutes.group({
 citySection.route('/:name', {
   name: 'city-guide',
   action(params) {
-    mount(AppComponent, {
+    mount(AppContainer, {
       content: <CityContainer {...params}/>
     });
   }
@@ -152,7 +155,7 @@ publicRoutes.route('/near-me', {
   name: 'city-guide-near-me',
   triggersEnter: [setGeolocation],
   action(params) {
-    mount(AppComponent, {
+    mount(AppContainer, {
       content: <CityContainer {...params}/>
     });
   }
@@ -161,7 +164,7 @@ publicRoutes.route('/near-me', {
 citySection.route('/:name/:locationName', {
   name: 'location',
   action(params) {
-    mount(AppComponent, {
+    mount(AppContainer, {
       content: <CityContainer {...params}/>
     });
   }
@@ -170,7 +173,7 @@ citySection.route('/:name/:locationName', {
 citySection.route('/:name/artist/:artistName', {
   name: 'artist-guide',
   action(params) {
-    mount(AppComponent, {
+    mount(AppContainer, {
       content: <ArtistGuideContainer {...params}/>
     });
   }
@@ -179,7 +182,7 @@ citySection.route('/:name/artist/:artistName', {
 publicRoutes.route('/in-print', {
   name: 'in-print',
   action() {
-    mount(AppComponent, {
+    mount(AppContainer, {
       content: (<MagazineContainer/>),
     });
   }
@@ -192,7 +195,7 @@ var eventSection = publicRoutes.group({
 eventSection.route('/', {
   name: 'events',
   action() {
-    mount(AppComponent, {
+    mount(AppContainer, {
       content: (<EventsContainer/>),
     });
   }
@@ -201,7 +204,7 @@ eventSection.route('/', {
 eventSection.route('/:id', {
   name:'event',
   action(params) {
-    mount( AppComponent, {
+    mount( AppContainer, {
       content: (<EventContainer id={params.id}/>)
     });
   }

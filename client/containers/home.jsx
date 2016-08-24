@@ -9,19 +9,22 @@ import { HomeComponent } from '../components/home/home.jsx';
 import { LocationsCollection } from '../../lib/collections/locations.js';
 import { ArtistsCollection } from '../../lib/collections/artists.js';
 import { ArtistCommentsCollection } from '../../lib/collections/artist-comments.js';
+import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('featured-cities');
   const homePage_sub = Meteor.subscribe('home-page', true);
   const promoted_sub = Meteor.subscribe('promoted-city');
+  const adSubscription = Meteor.subscribe('get-ad');
 
-  if(subscription.ready() && homePage_sub.ready() && promoted_sub.ready()) {
+  if(subscription.ready() && homePage_sub.ready() && promoted_sub.ready() && adSubscription.ready()) {
     const featuredCities = CitiesCollection.find({isFeatured:true},{skip:0,limit:4}).fetch();
 
     const homePage = PagesCollection.findOne({isHome: true});
 
     const promotedCity = CitiesCollection.findOne({isPromoted: true});
 
+    const ads = AdZoneCollection.findOne({});
 
     const artists_sub = Meteor.subscribe('artists-city-by-name', promotedCity.cityName);
     let locations = {};
@@ -43,7 +46,7 @@ const composer = (props, onData) => {
               }
             }
 
-            const homeData = {homePage, featuredCities, promotedCity, locations, artists, artistComments, props}
+            const homeData = {homePage, featuredCities, promotedCity, locations, artists, artistComments, ads, props}
             onData(null, homeData);
           }
       }
