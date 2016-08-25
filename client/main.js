@@ -8,14 +8,17 @@ Meteor.startup(function() {
   });
 
   function sticky_relocate() {
-      var window_top = $(window).scrollTop();
-      var div_top = $('#sticky-anchor').offset().top;
-      if (window_top && window_top > div_top) {
-          $('#sticky-ad').addClass('fix-ad');
-          $('#sticky-anchor').height($('#sticky-ad').outerHeight());
-      } else {
-          $('#sticky-ad').removeClass('fix-ad');
-          $('#sticky-anchor').height(0);
+      let window_top = $(window).scrollTop();
+      let sticky_div = $('#sticky-anchor');
+      if(sticky_div) {
+        let div_top = sticky_div.offset().top;
+        if (window_top && window_top > div_top) {
+            $('#sticky-ad').addClass('fix-ad');
+            $('#sticky-anchor').height($('#sticky-ad').outerHeight());
+        } else {
+            $('#sticky-ad').removeClass('fix-ad');
+            $('#sticky-anchor').height(0);
+        }
       }
   }
 
@@ -23,20 +26,6 @@ Meteor.startup(function() {
       $(window).scroll(sticky_relocate);
       sticky_relocate();
   });
-
-
-  // $(function(){
-  //   $(window).scroll(function(){
-  //     var mapComp = $('#sticky-ad');
-  //     var window_top = $(window).scrollTop();
-  //     var div_top = $('#sticky-ad').offset().top;
-  //     if(window_top > div_top){
-  //       mapComp.addClass("fix-ad");//.addClass("col-sm-offset-6");
-  //     } else {
-  //       mapComp.removeClass("fix-ad");//.removeClass("col-sm-offset-6");
-  //     }
-  //   });
-  // });
 
 })
 

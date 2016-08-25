@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 import { connect } from 'react-redux';
-import { Cloudinary } from 'meteor/lepozepo:cloudinary';
+import {cloudinaryURL} from '../../lib/utils.js';
 
 const getFeaturedCities = (featuredCities, dispatch, props) => {
   const CLOUD_KEY = Meteor.settings.public.CLOUDINARY_API_KEY;
@@ -14,14 +14,11 @@ const getFeaturedCities = (featuredCities, dispatch, props) => {
     </div>
     <div className="container-fluid featured-city-guides">
       <div className="row featured-gallery">
-        {/*280x390*/}
         {featuredCities.map((city,i) => {
-          const imgFile = city.printPreview.substr(city.printPreview.lastIndexOf('/') + 1);
-          const imgSrc = $.cloudinary.url( imgFile, {width:280, height:390, crop:"fill"});
           const pathTo = FlowRouter.path('city-guide',{name:city.cityName});
           return <div key={i} className="col-md-3 col-sm-6 col-xs-6 feature-city-guide">
             <a href={pathTo} >
-              <img src={imgSrc}/>
+              <img src={cloudinaryURL(city.printPreview, 280, 390)}/>
             </a>
             <div className="featured-city-guide-callout">
               <a href={pathTo} >

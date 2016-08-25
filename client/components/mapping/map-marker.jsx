@@ -4,6 +4,7 @@ import shouldPureComponentUpdate from 'react-pure-render/function';
 import {markerStyle, markerCircleStyle, markerCircleStyleHover, markerPointerStyle} from './marker-style.js';
 import MapIconComponent from './map-icons.jsx';
 import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-click.js';
+import {cloudinaryURL} from '../../lib/utils.js';
 
 
 export default class MapMarkerComponent extends Component {
@@ -28,7 +29,7 @@ export default class MapMarkerComponent extends Component {
     const circleStyle = this.props.$hover || (parseInt(mapTableHoverIndex)+1) === parseInt(item) ? markerCircleStyleHover : markerPointerStyle;
     const popoverStyle = (mapTableRowClick && parseInt(mapTableRowClick.item) === parseInt(item)) ? {display:'block'} : {display:'none'};
     const imgFile = location.photo.substr(location.photo.lastIndexOf('/') + 1);
-    const imgSrc = $.cloudinary.url( imgFile, {width:246, height:246, crop:"fill"});
+    const imgSrc = cloudinaryURL( location.photo, 246, 246 );
     const mapLink = (location) => {
       return 'https://www.google.com/maps/dir/Current+Location/'+location.location.lat+','+location.location.lng;
     }

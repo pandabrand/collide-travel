@@ -1,13 +1,11 @@
 import React from 'react';
-import {createMarkup} from '../../lib/utils.js';
+import {createMarkup, cloudinaryURL} from '../../lib/utils.js';
 
 export default function CityGuideComponent({city}) {
-  const imgFile = city.guidePreview.substr(city.guidePreview.lastIndexOf('/') + 1);
-  const imgSrc = $.cloudinary.url( imgFile, {width:335, height:335, crop:"fill"});
   return (
     <div className="row city-row">
-      <div className="col-sm-3 col-md-4 image side"><div className="side-image"><img src={imgSrc}/></div></div>
-      <div className="col-sm-9 col-md-8 content main">
+      <div className="col-sm-2 col-md-3 image side"><div className="side-image"><img src={cloudinaryURL(city.guidePreview, 235, 235)}/></div></div>
+      <div className="col-sm-10 col-md-9 content main">
         <h1 className="content-header">{city.displayName}</h1>
         <div className="city-copy">
           <div dangerouslySetInnerHTML={createMarkup(city.description)}/>

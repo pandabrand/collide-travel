@@ -1,15 +1,12 @@
 import React from 'react';
-import {createMarkup} from '../../lib/utils.js';
+import {createMarkup, cloudinaryURL} from '../../lib/utils.js';
 
 export default PrintElementComponent = ({print}) => {
   const soldout = !print.purchase && !print.download;
-  // const createMarkup = () => { return {__html: print.description}; };
-  const imgFile = print.guidePreview.substr(print.guidePreview.lastIndexOf('/') + 1);
-  const imgSrc = $.cloudinary.url( imgFile, {width:280, height:390, crop:"fill"});
   return (
     <div className="print-issue col-xs-12 col-sm-6 col-md-4">
       <div className="print-preview-image">
-        <img src={imgSrc}/>
+        <img src={cloudinaryURL(print.guidePreview, 280, 390)}/>
       </div>
       <div className="print-control caption">
         <h2>{print.displayName} Issue</h2>

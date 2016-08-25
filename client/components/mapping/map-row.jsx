@@ -5,7 +5,7 @@ import setMapTableHover from '../../../lib/client/actions/set-map-table-hover.js
 import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-click.js';
 import MapIconComponent from './map-icons.jsx';
 import store from '../../../lib/client/store/store.js';
-import {createMarkup} from '../../lib/utils.js';
+import {createMarkup, cloudinaryURL} from '../../lib/utils.js';
 import {MapCommentComponent} from './map-comments.jsx';
 
 export default function MapRowComponent({location, item, hoverIndex, artists, comments, dispatch}){
@@ -47,7 +47,7 @@ export default function MapRowComponent({location, item, hoverIndex, artists, co
   }
 
   const imgFile = location.photo.substr(location.photo.lastIndexOf('/') + 1);
-  const imgSrc = $.cloudinary.url( imgFile, {width:150, height:150, crop:"fill"});
+  const imgSrc = cloudinaryURL( location.photo, 150, 150);
 
   return (
     <tr id={location._id} onClick={() => {return dispatch(setMapTableRowClick({item: item, coord: location.location}))}} onMouseOver={() => {return dispatch(setMapTableHover(item))}} onMouseOut={() => {return dispatch(setMapTableHover(-1))}}>

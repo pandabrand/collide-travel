@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 import { connect } from 'react-redux';
-import {Cloudinary} from 'meteor/lepozepo:cloudinary';
+import {cloudinaryURL} from '../../lib/utils.js';
 
 const getCityArtistsGridItem = (artist,city, showLong) => {
   const goToArtistGuide = (city,artistName) => {
@@ -10,9 +10,8 @@ const getCityArtistsGridItem = (artist,city, showLong) => {
   };
 
   const artistColorStyle = { backgroundColor: artist.color };
-  const imgFile = artist.image.substr(artist.image.lastIndexOf('/') + 1);
   let width = showLong ? 515 : 252;
-  const imgSrc = $.cloudinary.url( imgFile, {width:width, height:252, crop:"fill"});
+  const imgSrc = cloudinaryURL(artist.image, width, 252);
   return <div onClick={() => {goToArtistGuide(city.cityName,artist.artistSlug)}} className={showLong ? 'grid-item grid-item--width2' : 'grid-item'}>
     <img src={imgSrc} />
     <div className="grid-description" style={artistColorStyle}>
