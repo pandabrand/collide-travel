@@ -91,10 +91,8 @@ const composeData = (props, onData, city) => {
 const composer = (props, onData) => {
   if(props.geolocation) {
     position = Geolocation.latLng();
-    // console.dir(position);
     if(position) {
       props.geolocation[position];
-      // console.dir(props);
       const homeData = composeDataFromLocation(position, props, onData);
       onData(null, homeData);
     }
