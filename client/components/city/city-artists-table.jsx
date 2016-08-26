@@ -16,7 +16,7 @@ const getCityArtistsTable = (city, artists, ads, dispatch, props) => {
     return <div className="city-table-col">
           <div className="masonry-guides">
             <div className="grid-item">
-              <img src={cloudinaryURL(city.printPreview, 252, 303)} />
+              <img src={cloudinaryURL(city.printPreview, 270, 324, "fit")} />
             </div>
             <div className="grid-item">
                 {serveCityAd(ads, city)}

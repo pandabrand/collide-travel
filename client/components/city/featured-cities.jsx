@@ -18,7 +18,7 @@ const getFeaturedCities = (featuredCities, dispatch, props) => {
           const pathTo = FlowRouter.path('city-guide',{name:city.cityName});
           return <div key={i} className="col-md-3 col-sm-6 col-xs-6 feature-city-guide">
             <a href={pathTo} >
-              <img src={cloudinaryURL(city.printPreview, 280, 390)}/>
+              <img src={cloudinaryURL(city.printPreview, 280, 390, "fit")}/>
             </a>
             <div className="featured-city-guide-callout">
               <a href={pathTo} >

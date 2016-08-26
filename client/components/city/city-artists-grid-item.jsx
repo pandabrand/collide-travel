@@ -10,8 +10,8 @@ const getCityArtistsGridItem = (artist,city, showLong) => {
   };
 
   const artistColorStyle = { backgroundColor: artist.color };
-  let width = showLong ? 515 : 252;
-  const imgSrc = cloudinaryURL(artist.image, width, 252);
+  let width = showLong ? 551 : 269;
+  const imgSrc = cloudinaryURL(artist.image, width, 269);
   return <div onClick={() => {goToArtistGuide(city.cityName,artist.artistSlug)}} className={showLong ? 'grid-item grid-item--width2' : 'grid-item'}>
     <img src={imgSrc} />
     <div className="grid-description" style={artistColorStyle}>
