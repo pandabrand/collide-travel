@@ -1,8 +1,7 @@
-.loading {
-  min-height: 350px;
-  .defaultSpinner {
+.loading-spinner {
+  min-height: 90px;
+  i {
+    display: block;
     margin: auto;
-    width: 55px !important;
-    height: 55px !important;
   }
 }

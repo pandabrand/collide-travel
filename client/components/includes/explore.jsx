@@ -30,7 +30,7 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
     return(
       <div className="explore-bar">
         <div className="dropdown">
-          <a className="btn" href={FlowRouter.path('city-guide-near-me')}>Find City Near Me</a>
+          <a className="btn" href={FlowRouter.path('city-guide-near-me')}><i className="fa fa-crosshairs"/> Near Me</a>
         </div>
         <div className="dropdown">
           <button className="btn btn-default dropdown-toggle show-mobile-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
