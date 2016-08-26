@@ -7,6 +7,7 @@ import { composeWithTracker } from 'react-komposer';
 import { PagesCollection } from '../../../lib/collections/pages.js';
 
 import {PageTableComponent} from '../../components/admin/page/page-table.jsx';
+import SpinnerComponent from '../../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('pages');
@@ -17,6 +18,6 @@ const composer = (props, onData) => {
   }
 };
 
-const AdminPageContainer = composeWithTracker(composer)(PageTableComponent);
+const AdminPageContainer = composeWithTracker(composer, SpinnerComponent)(PageTableComponent);
 
 export default connect()(AdminPageContainer);

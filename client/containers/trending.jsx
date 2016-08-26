@@ -8,9 +8,7 @@ import { TrendingCollections } from '../../lib/collections/trending.js';
 import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 
 import TrendingComponent  from '../components/trending/trending.jsx';
-
-const Loading = () => (<div className="trending-loading"><i className="fa fa-cog fa-spin fa-3x fa-fw"></i>
-</div>);
+import SpinnerComponent from '../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const adSubscription = Meteor.subscribe('get-ad');
@@ -26,4 +24,4 @@ const composer = (props, onData) => {
   }
 };
 
-export default composeWithTracker(composer,Loading)(TrendingComponent);
+export default composeWithTracker(composer,SpinnerComponent)(TrendingComponent);

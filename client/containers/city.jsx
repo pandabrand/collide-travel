@@ -11,6 +11,7 @@ import { ArtistsCollection } from '../../lib/collections/artists.js';
 import { ArtistCommentsCollection } from '../../lib/collections/artist-comments.js';
 import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 import { CityComponent } from '../components/city/city.jsx';
+import SpinnerComponent from '../components/includes/spinner.jsx';
 
 const getLocations = (id) => {
   const locations_sub = Meteor.subscribe('locations',id);
@@ -33,23 +34,21 @@ const getArtistComments = (artistId) => {
   }
 }
 
-  const composeDataFromLocation = (position, props, onData) => {
-    const subscription = Meteor.subscribe('cities', {
-      onReady: function () {
-         const start = {latitude: position.latitude, longitude: position.longitude};
-         cities = CitiesCollection.find({}).fetch();
-         sortedCities = _.sortBy(cities, function(city) {
-           const end = {latitude: city.location.lat, longitude: city.location.lng};
-           const _d = haversine(start, end, {unit: 'km'});
-           return _d;
-         });
-         closestCity = sortedCities[0];
-         const _data = composeData(props, onData, closestCity);
-         return _data;
-       },
-      onError: function () { console.log("onError", arguments); }
+const composeDataFromLocation = (position, props, onData) => {
+  const subscription = Meteor.subscribe('cities');
+  if(subscription.ready()) {
+    const cities = CitiesCollection.find().fetch();
+    const start = {latitude: position.lat, longitude: position.lng};
+    const sortedCities = _.sortBy(cities, function(city) {
+      const end = {latitude: city.location.lat, longitude: city.location.lng};
+      const _d = haversine(start, end, {unit: 'km'});
+      return _d;
     });
+
+    const city = sortedCities[0];
+    return composeData(props, onData, city);
   }
+}
 
  const composeDataFromURL = (props, onData) => {
    const subscription = Meteor.subscribe('find-city',props.name);
@@ -91,17 +90,17 @@ const composeData = (props, onData, city) => {
 
 const composer = (props, onData) => {
   if(props.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      console.dir(position);
-        if(position.coords) {
-          props.geolocation[{lat: position.coords.latitude, lng: position.coords.longitude}];
-          const homeData = composeDataFromLocation(position.coords, props, onData);
-          console.dir(homeData);
-          onData(null, homeData);
-        }
-    });
+    position = Geolocation.latLng();
+    // console.dir(position);
+    if(position) {
+      props.geolocation[position];
+      // console.dir(props);
+      const homeData = composeDataFromLocation(position, props, onData);
+      onData(null, homeData);
+    }
   } else {
     const homeData = composeDataFromURL(props, onData);
+    console.dir(homeData);
     onData(null, homeData);
   }
 };
@@ -117,4 +116,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default CityContainer = connect(mapStateToProps)(composeWithTracker(composer)(CityComponent));
+export default CityContainer = connect(mapStateToProps)(composeWithTracker(composer,SpinnerComponent)(CityComponent));

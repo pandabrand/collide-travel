@@ -10,6 +10,7 @@ import { LocationsCollection } from '../../lib/collections/locations.js';
 import { ArtistsCollection } from '../../lib/collections/artists.js';
 import { ArtistCommentsCollection } from '../../lib/collections/artist-comments.js';
 import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
+import SpinnerComponent from '../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('featured-cities');
@@ -69,4 +70,4 @@ function mapStateToProps(state) {
 }
 
 
-export default HomeContainer = connect(mapStateToProps)(composeWithTracker(composer)(HomeComponent));
+export default HomeContainer = connect(mapStateToProps)(composeWithTracker(composer, SpinnerComponent)(HomeComponent));

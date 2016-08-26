@@ -1,5 +1,6 @@
 import React from 'react';
 
-const SpinnerComponent = () => <div className="map-container">Custom spinner...</div>
+const SpinnerComponent = () => <div className="trending-loading"><i className="fa fa-cog fa-spin fa-3x fa-fw"></i>
+</div>
 
 export default SpinnerComponent;

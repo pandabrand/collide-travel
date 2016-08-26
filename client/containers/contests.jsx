@@ -7,9 +7,7 @@ import { composeWithTracker } from 'react-komposer';
 
 import ContestComponent  from '../components/contests/contests.jsx';
 import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
-
-const Loading = () => (<div className="trending-loading"><i className="fa fa-cog fa-spin fa-3x fa-fw"></i>
-</div>);
+import SpinnerComponent from '../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const adSubscription = Meteor.subscribe('get-ad');
@@ -25,4 +23,4 @@ const composer = (props, onData) => {
   }
 };
 
-export default composeWithTracker(composer,Loading)(ContestComponent);
+export default composeWithTracker(composer,SpinnerComponent)(ContestComponent);

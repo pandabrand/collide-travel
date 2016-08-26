@@ -7,6 +7,7 @@ import { composeWithTracker } from 'react-komposer';
 import { CitiesCollection } from '../../../lib/collections/cities.js';
 
 import {CityTableComponent} from '../../components/admin/city/city-table.jsx';
+import SpinnerComponent from '../../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('cities');
@@ -17,6 +18,6 @@ const composer = (props, onData) => {
   }
 };
 
-const AdminCityContainer = composeWithTracker(composer)(CityTableComponent);
+const AdminCityContainer = composeWithTracker(composer, SpinnerComponent)(CityTableComponent);
 
 export default connect()(AdminCityContainer);

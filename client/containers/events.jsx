@@ -8,6 +8,7 @@ import { EventsComponent } from '../components/events/events.jsx';
 
 import { connect } from 'react-redux';
 import { compose,composeWithTracker, composeAll } from 'react-komposer';
+import SpinnerComponent from '../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('admin-events');
@@ -22,4 +23,4 @@ const composer = (props, onData) => {
 
 const EventsContainer = connect()(EventsComponent);
 
-export default composeWithTracker(composer)(EventsContainer);
+export default composeWithTracker(composer, SpinnerComponent)(EventsContainer);

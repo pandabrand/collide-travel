@@ -7,6 +7,7 @@ import { composeWithTracker } from 'react-komposer';
 import { ArtistsCollection } from '../../../lib/collections/artists.js';
 
 import {ArtistTableComponent} from '../../components/admin/artist/artist-table.jsx';
+import SpinnerComponent from '../../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('artists');
@@ -17,6 +18,6 @@ const composer = (props, onData) => {
   }
 };
 
-const AdminArtistContainer = composeWithTracker(composer)(ArtistTableComponent);
+const AdminArtistContainer = composeWithTracker(composer, SpinnerComponent)(ArtistTableComponent);
 
 export default connect()(AdminArtistContainer);

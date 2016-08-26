@@ -130,24 +130,6 @@ citySection.route('/:name', {
 });
 
 function setGeolocation(context) {
-  // let coords;
-  // if(Meteor.isClient) {
-  //   console.log('setting...');
-  //   coords = Geolocation.latLng();
-  // }
-  // setTimeout( function() {
-  //   context.params['geolocation'] = {};
-  //   console.dir(context);
-  // }, 5000 );
-  // Meteor.setInterval(function() {
-  //     navigator.geolocation.getCurrentPosition(function(position) {
-  //       console.dir(position);
-  //         if(position.coords) {
-  //           context.params['geolocation'] = {lat: position.coords.latitude, lng: position.coords.longitude};
-  //
-  //         }
-  //     });
-  // }, 3000);
   context.params['geolocation'] = {};
 }
 

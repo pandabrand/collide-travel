@@ -7,6 +7,7 @@ import { composeWithTracker } from 'react-komposer';
 import { EventsCollection } from '../../../lib/collections/events.js';
 
 import {EventTableComponent} from '../../components/admin/events/event-table.jsx';
+import SpinnerComponent from '../../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('admin-events');
@@ -17,6 +18,6 @@ const composer = (props, onData) => {
   }
 };
 
-const AdminEventContainer = composeWithTracker(composer)(EventTableComponent);
+const AdminEventContainer = composeWithTracker(composer, SpinnerComponent)(EventTableComponent);
 
 export default connect()(AdminEventContainer);

@@ -9,6 +9,7 @@ import { ArtistsCollection } from '../../lib/collections/artists.js';
 import { ArtistCommentsCollection } from '../../lib/collections/artist-comments.js';
 import { CategoryComponent } from '../components/categories/category.jsx';
 import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
+import SpinnerComponent from '../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('type-locations',props.type);
@@ -51,4 +52,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default CategoryContainer = connect(mapStateToProps)(composeWithTracker(composer)(CategoryComponent));
+export default CategoryContainer = connect(mapStateToProps)(composeWithTracker(composer, SpinnerComponent)(CategoryComponent));

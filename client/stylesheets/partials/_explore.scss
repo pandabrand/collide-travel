@@ -6,6 +6,12 @@
     // top: 95px;
     // z-index: 700;
     background-color: $white;
+    @media (min-width: 769px) {
+      margin-left: 2%;
+    }
+    @media (max-width: 768px) {
+      margin-left: 0;
+    }
   }
   .dropdown {
     background: none !important;
@@ -23,7 +29,7 @@
         width: 24%;
       }
       @media (max-width: 768px) {
-        width: 29%;
+        width: 20%;
       }
       text-align: left;
       &:hover {

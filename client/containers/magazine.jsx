@@ -7,6 +7,7 @@ import { CitiesCollection } from '../../lib/collections/cities.js';
 import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 
 import  PrintPageComponent  from '../components/print-page/print-page.jsx';
+import SpinnerComponent from '../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const citySubscription = Meteor.subscribe('cities');
@@ -19,4 +20,4 @@ const composer = (props, onData) => {
   }
 };
 
-export default composeWithTracker(composer)(PrintPageComponent);
+export default composeWithTracker(composer, SpinnerComponent)(PrintPageComponent);

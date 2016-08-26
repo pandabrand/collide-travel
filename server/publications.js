@@ -6,6 +6,7 @@ import { EventsCollection } from '../lib/collections/events.js';
 import { PagesCollection } from '../lib/collections/pages.js';
 import { TrendingCollections } from '../lib/collections/trending.js';
 import { AdZoneCollection } from '../lib/collections/ad-zone.js';
+let haversine = require('haversine');
 
 Meteor.publish('everything', function() {
     return [

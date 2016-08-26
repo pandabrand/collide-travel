@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { composeWithTracker } from 'react-komposer';
 
 import {UsersTableComponent} from '../../components/admin/users/users.jsx';
+import SpinnerComponent from '../../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('user-list');
@@ -15,6 +16,6 @@ const composer = (props, onData) => {
   }
 };
 
-const AdminUserContainer = composeWithTracker(composer)(UsersTableComponent);
+const AdminUserContainer = composeWithTracker(composer, SpinnerComponent)(UsersTableComponent);
 
 export default connect()(AdminUserContainer);

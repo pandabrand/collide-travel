@@ -9,6 +9,7 @@ import { ArtistsCollection } from '../../lib/collections/artists.js';
 import { ArtistCommentsCollection } from '../../lib/collections/artist-comments.js';
 import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 import { ArtistGuideComponent } from '../components/artist/artist.jsx';
+import SpinnerComponent from '../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('find-city',props.name);
@@ -54,4 +55,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default ArtistGuideContainer = connect(mapStateToProps)(composeWithTracker(composer)(ArtistGuideComponent));
+export default ArtistGuideContainer = connect(mapStateToProps)(composeWithTracker(composer, SpinnerComponent)(ArtistGuideComponent));

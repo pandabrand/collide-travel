@@ -11,6 +11,7 @@ import { EventsCollection } from '../../../lib/collections/events.js';
 import { PagesCollection } from '../../../lib/collections/pages.js';
 
 import {OverviewTableComponent} from '../../components/admin/overview.jsx';
+import SpinnerComponent from '../../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('everything');
@@ -25,6 +26,6 @@ const composer = (props, onData) => {
   }
 };
 
-const AdminOverviewContainer = composeWithTracker(composer)(OverviewTableComponent);
+const AdminOverviewContainer = composeWithTracker(composer, SpinnerComponent)(OverviewTableComponent);
 
 export default connect()(AdminOverviewContainer);

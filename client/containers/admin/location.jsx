@@ -8,6 +8,7 @@ import { LocationsCollection } from '../../../lib/collections/locations.js';
 import { CitiesCollection } from '../../../lib/collections/cities.js';
 
 import {LocationTableComponent} from '../../components/admin/location/location-table.jsx';
+import SpinnerComponent from '../../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('all-locations');
@@ -23,6 +24,6 @@ const composer = (props, onData) => {
   }
 };
 
-const AdminLocationContainer = composeWithTracker(composer)(LocationTableComponent);
+const AdminLocationContainer = composeWithTracker(composer, SpinnerComponent)(LocationTableComponent);
 
 export default connect()(AdminLocationContainer);

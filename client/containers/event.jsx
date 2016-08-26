@@ -7,6 +7,7 @@ import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 import EventComponent from '../components/events/event.jsx';
 
 import { composeWithTracker } from 'react-komposer';
+import SpinnerComponent from '../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('event',props.id);
@@ -19,4 +20,4 @@ const composer = (props, onData) => {
   }
 };
 
-export default composeWithTracker(composer)(EventComponent);
+export default composeWithTracker(composer, SpinnerComponent)(EventComponent);
