@@ -44,7 +44,8 @@ export default class UIHeaderComponent extends Component {
   render() {
     const {ads} = this.props;
     const topAd = ads ? ads.topAd : null;
-    const ad = (topAd && topAd.length > 0) ? <div className="banner-ad fluid-container ad-container"><div dangerouslySetInnerHTML={createMarkup(topAd)}/></div> : '';
+    const showTopAd = ads ? ads.showTopBannerAd : false;
+    const ad = (topAd && topAd.length > 0 && showTopAd) ? <div className="banner-ad fluid-container ad-container"><div dangerouslySetInnerHTML={createMarkup(topAd)}/></div> : '';
     return (
       <div className="nav-wrapper">
       {ad}

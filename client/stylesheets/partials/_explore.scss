@@ -39,6 +39,11 @@
     .dropdown-menu {
       margin: 10px;
       padding: 10px;
+      height: 300px;
+      overflow-y: auto;
+      @media(max-width: 509px) {
+        height: 200px;
+      }
       li {
         @extend %clearfix;
         a {
