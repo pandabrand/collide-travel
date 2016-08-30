@@ -10,7 +10,7 @@ Meteor.startup(function() {
   function sticky_relocate() {
       let window_top = $(window).scrollTop();
       let sticky_div = $('#sticky-anchor');
-      if(sticky_div) {
+      if(sticky_div.length > 0) {
         let div_top = sticky_div.offset().top;
         if (window_top && window_top > div_top) {
             $('#sticky-ad').addClass('fix-ad');

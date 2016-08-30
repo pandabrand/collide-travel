@@ -30,7 +30,7 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
     return(
       <div className="explore-bar">
         <div className="dropdown">
-          <a className="btn" href={FlowRouter.path('city-guide-near-me')}><i className="fa fa-crosshairs"/> Near Me</a>
+          <a className="btn" className="explore-btn" href={FlowRouter.path('city-guide-near-me')}><i className="fa fa-crosshairs"/> Near Me</a>
         </div>
         <div className="dropdown">
           <button className="btn btn-default dropdown-toggle show-mobile-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -38,7 +38,7 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
             <span className="caret"></span>
           </button>
           <button className="btn btn-default dropdown-toggle show-lrgscrn-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Explore {showCityLabel(cities)}
+            Explore by {showCityLabel(cities)}
             <span className="caret"></span>
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -54,7 +54,7 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
             <span className="caret"></span>
           </button>
           <button className="btn btn-default dropdown-toggle show-lrgscrn-button" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Explore {showArtistLabel(artists)}
+            Explore by {showArtistLabel(artists)}
             <span className="caret"></span>
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -70,7 +70,7 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
             <span className="caret"></span>
           </button>
           <button className="btn btn-default dropdown-toggle show-lrgscrn-button" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Explore {showCategoryLabel(locationCategories)}
+            Explore by {showCategoryLabel(locationCategories)}
             <span className="caret"></span>
           </button>
           <ul className="dropdown-menu right-dropdown-menu" aria-labelledby="dropdownMenu3">

@@ -15,6 +15,15 @@
   }
   .dropdown {
     background: none !important;
+    .explore-btn {
+      font-size: 10px;
+      @media (min-width: 509px) {
+        font-size: 12px;
+      }
+      &:hover {
+        color: #333;
+      }
+    }
     @media (min-width: 769px) {
       margin-left: 30px;
     }
@@ -39,10 +48,12 @@
     .dropdown-menu {
       margin: 10px;
       padding: 10px;
-      height: 300px;
+      max-height: 300px;
       overflow-y: auto;
+      font-size: 12px;
       @media(max-width: 509px) {
-        height: 200px;
+        max-height: 200px;
+        font-size: 10px;
       }
       li {
         @extend %clearfix;
@@ -96,12 +107,14 @@
   }
   @media (min-width: 511px) {
     display: inline-block;
+    font-size: 12px;
   }
 }
 
 .show-mobile-button {
   @media (max-width: 510px) {
     display: inline-block;
+    font-size: 10px;
   }
   @media (min-width: 511px) {
     display: none;
