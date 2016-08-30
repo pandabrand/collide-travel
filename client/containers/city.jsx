@@ -16,14 +16,14 @@ import SpinnerComponent from '../components/includes/spinner.jsx';
 const getLocations = (id) => {
   const locations_sub = Meteor.subscribe('locations',id);
   if(locations_sub.ready()) {
-    return LocationsCollection.find({cityId: id}).fetch();
+    return LocationsCollection.find({cityId: id}, {sort:{name: 1}}).fetch();
   }
 }
 
 const getArtistLocations = (locationIds) => {
   const locations_sub = Meteor.subscribe('artist-locations', locationIds);
   if(locations_sub.ready()) {
-    return LocationsCollection.find({_id: {$in: locationIds}});
+    return LocationsCollection.find({_id: {$in: locationIds}},{sort:{name: 1}});
   }
 }
 
@@ -37,7 +37,7 @@ const getArtistComments = (artistId) => {
 const composeDataFromLocation = (position, props, onData) => {
   const subscription = Meteor.subscribe('cities');
   if(subscription.ready()) {
-    const cities = CitiesCollection.find().fetch();
+    const cities = CitiesCollection.find({}).fetch();
     const start = {latitude: position.lat, longitude: position.lng};
     const sortedCities = _.sortBy(cities, function(city) {
       const end = {latitude: city.location.lat, longitude: city.location.lng};
@@ -66,12 +66,12 @@ const composeData = (props, onData, city) => {
   let artists = {};
   let artistComments = [];
   if(artists_sub.ready() && adSubscription.ready()) {
-    artists = ArtistsCollection.find({cityName:city.cityName}).fetch();
+    artists = ArtistsCollection.find({cityName:city.cityName}, {sort:{isFeatured: -1, artistName: 1}}).fetch();
     ads = AdZoneCollection.findOne({});
 
     const locations_sub = Meteor.subscribe('locations', homeCity._id);
     if(locations_sub.ready()) {
-        locations = LocationsCollection.find({cityId:homeCity._id}).fetch();
+        locations = LocationsCollection.find({cityId:homeCity._id}, {sort:{name: 1}}).fetch();
 
         const ac_sub = Meteor.subscribe('all-artist-comments');
         if(ac_sub.ready()) {
