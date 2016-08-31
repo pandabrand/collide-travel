@@ -1,3 +1,7 @@
+.page-copy {
+  padding: 0 60px;
+}
+
 .print-gallery {
   margin: 0 0 15px 0 !important;
 }
@@ -35,10 +39,17 @@
 }
 
 .print-control {
+  @media(max-width: 768px) {
+    margin: 0 20px;
+  }
   h2 {
-    text-align: center;
+    // text-align: center;
   }
   .purchase-download {
-    text-align: center;
+    // text-align: center;
   }
+}
+
+.print-row {
+  margin-bottom: 25px;
 }

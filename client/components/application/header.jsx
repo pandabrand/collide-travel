@@ -86,7 +86,6 @@ export default class UIHeaderComponent extends Component {
             <ul className="nav navbar-nav navbar-right navbar-collide-menu">
               <li><a href="/city-guides">City Guides</a></li>
               <li><a href="/trending">Trending</a></li>
-              <li><a href="/in-print">In Print</a></li>
               <li><a href="/events">Events</a></li>
               <li><a href="/contests">Contests</a></li>
               <li><a href="/newsletters">Newsletters</a></li>

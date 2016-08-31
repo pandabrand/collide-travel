@@ -13,7 +13,7 @@ const composer = (props, onData) => {
   const citySubscription = Meteor.subscribe('cities');
   const adSubscription = Meteor.subscribe('get-ad');
   if(citySubscription.ready() && adSubscription.ready()) {
-    cities = CitiesCollection.find({});
+    cities = CitiesCollection.find({},{sort:{isFeature: -1, displayName: 1}});
     ads = AdZoneCollection.findOne({});
     const cityData = {cities, ads, props}
     onData(null, cityData);

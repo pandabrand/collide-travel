@@ -93,6 +93,15 @@
 a {
   color: $link-grey;
   &:focus, &:hover {
-    color: $white;
+    color: $link-hover-white;
   }
+}
+
+a.hover-grey {
+  &:focus, &:hover {
+    color: $link-hover-grey;
+  }
+}
+.main-title {
+  padding: 0 60px;
 }

@@ -161,8 +161,8 @@ citySection.route('/:name/artist/:artistName', {
   }
 });
 
-publicRoutes.route('/in-print', {
-  name: 'in-print',
+publicRoutes.route('/city-guides', {
+  name: 'city-guides',
   action() {
     mount(AppContainer, {
       content: (<MagazineContainer/>),
