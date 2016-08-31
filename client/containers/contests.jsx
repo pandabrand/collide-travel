@@ -12,12 +12,10 @@ import SpinnerComponent from '../components/includes/spinner.jsx';
 const composer = (props, onData) => {
   const adSubscription = Meteor.subscribe('get-ad');
   if(adSubscription.ready()) {
-    Session.setDefault('contestItem', null);
     Meteor.call('get.contest', (err, res) => {
-      Session.set('contestItem', res);
-      trendingArticles = [];
+      const items = res;
       ads = AdZoneCollection.findOne({});
-      const trendingData = {ads, props}
+      const trendingData = {ads, items, props}
       onData(null, trendingData);
     });
   }

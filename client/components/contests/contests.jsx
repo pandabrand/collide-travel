@@ -16,8 +16,7 @@ const serveTakeoverAd = (ads) => {
 }
 
 
-  export default ContestComponent = ({ads}) => {
-  const items = Session.get('contestItem');
+  export default ContestComponent = ({ads, items}) => {
   return (<div className="fluid-container featured-container">
           <div className="featured-row row">
             <h1 className="featured-header">CONTESTS</h1>
