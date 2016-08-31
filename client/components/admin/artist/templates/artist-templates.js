@@ -10,7 +10,7 @@ Template.addNewArtist.helpers({
   },
   locationOptions: function() {
     var form_city = AutoForm.getFieldValue('cityId');
-    locations = LocationsCollection.find({cityId: form_city}).fetch();
+    locations = LocationsCollection.find({cityId: form_city}, {sort:{cityId: 1,name: 1}}).fetch();
     return locations.map((loc) => {
       return {label: loc.name, value: loc._id};
     });
@@ -65,7 +65,7 @@ Template.updateArtist.helpers({
   },
   locationOptions: function() {
     var form_city = AutoForm.getFieldValue('cityId');
-    locations = LocationsCollection.find({cityId: form_city}).fetch();
+    locations = LocationsCollection.find({cityId: form_city}, {sort:{cityId: 1,name: 1}}).fetch();
     return locations.map((loc) => {
       return {label: loc.name, value: loc._id};
     });
@@ -77,7 +77,7 @@ Template.updateArtist.onRendered(function() {
   const artist = ArtistsCollection.findOne({_id: id}) || {};
   let locationsToSelect = [];
   Tracker.autorun(function() {
-    locations = LocationsCollection.find({cityId:artist.cityId}).fetch();
+    locations = LocationsCollection.find({cityId:artist.cityId}, {sort:{cityId: 1,name: 1}}).fetch();
     locations.map((loc) => {
       if(_.contains(artist.locationIds,loc._id)) {
         locationsToSelect.push({label: loc.name, value: loc._id});

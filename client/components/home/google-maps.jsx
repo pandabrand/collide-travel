@@ -12,7 +12,7 @@ import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-c
 
 
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
-const DEFAULT_ZOOM = 12;
+const DEFAULT_ZOOM = 9;
 const mapOptions = {
   scrollwheel: false,
 };
@@ -59,8 +59,8 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
             onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}
             options={mapOptions}
             onChildClick={_onChildClick}
-            onGoogleApiLoaded={({map, maps}) => { bounding(map) } }
-              yesIWantToUseGoogleMapApiInternals
+            //onGoogleApiLoaded={({map, maps}) => { bounding(map) } }
+            //  yesIWantToUseGoogleMapApiInternals
               >
             {places}
           </GoogleMap>

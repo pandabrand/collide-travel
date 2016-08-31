@@ -50,7 +50,7 @@ Meteor.publish('promoted-city', function() {
 
 Meteor.publish('locations', function(cityId){
   check(cityId, String);
-  return LocationsCollection.find({cityId:cityId});
+  return LocationsCollection.find({cityId:cityId},{sort:{isFeatured: -1, name: 1}});
 });
 
 Meteor.publish('all-locations', function(){

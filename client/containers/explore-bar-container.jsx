@@ -20,7 +20,7 @@ const composer = (props, onData) => {
     const allLocationCategories = _.uniq(LocationsCollection.find({}, {sort: {type: 1}}).fetch(), false, function(l){return l.type});
     const locationCategories = _.pluck(allLocationCategories, 'type');
 
-    const artists = ArtistsCollection.find({},{sort: {artistName: 1}}).fetch();
+    const artists = ArtistsCollection.find({},{sort: {isFeatured: -1, artistName: 1}}).fetch();
 
     const cityData = {cities, locationCategories, artists, props}
     onData(null, cityData);

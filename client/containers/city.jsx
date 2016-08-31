@@ -16,14 +16,14 @@ import SpinnerComponent from '../components/includes/spinner.jsx';
 const getLocations = (id) => {
   const locations_sub = Meteor.subscribe('locations',id);
   if(locations_sub.ready()) {
-    return LocationsCollection.find({cityId: id}, {sort:{name: 1}}).fetch();
+    return LocationsCollection.find({cityId: id}, {sort:{isFeatured: -1, name: 1}}).fetch();
   }
 }
 
 const getArtistLocations = (locationIds) => {
   const locations_sub = Meteor.subscribe('artist-locations', locationIds);
   if(locations_sub.ready()) {
-    return LocationsCollection.find({_id: {$in: locationIds}},{sort:{name: 1}});
+    return LocationsCollection.find({_id: {$in: locationIds}},{sort:{isFeatured: -1, name: 1}});
   }
 }
 
@@ -71,7 +71,7 @@ const composeData = (props, onData, city) => {
 
     const locations_sub = Meteor.subscribe('locations', homeCity._id);
     if(locations_sub.ready()) {
-        locations = LocationsCollection.find({cityId:homeCity._id}, {sort:{name: 1}}).fetch();
+        locations = LocationsCollection.find({cityId:homeCity._id}, {sort:{isFeatured: -1, name: 1}}).fetch();
 
         const ac_sub = Meteor.subscribe('all-artist-comments');
         if(ac_sub.ready()) {

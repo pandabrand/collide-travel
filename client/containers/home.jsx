@@ -19,7 +19,7 @@ const composer = (props, onData) => {
   const adSubscription = Meteor.subscribe('get-ad');
 
   if(subscription.ready() && homePage_sub.ready() && promoted_sub.ready() && adSubscription.ready()) {
-    const featuredCities = CitiesCollection.find({isFeatured:true},{skip:0,limit:4}).fetch();
+    const featuredCities = CitiesCollection.find({isFeatured:true},{skip:0,limit:6}).fetch();
 
     const homePage = PagesCollection.findOne({isHome: true});
 
@@ -32,11 +32,11 @@ const composer = (props, onData) => {
     let artists = {};
     let artistComments = [];
     if(artists_sub.ready()) {
-      artists = ArtistsCollection.find({cityName:promotedCity.cityName}).fetch();
+      artists = ArtistsCollection.find({cityName:promotedCity.cityName},{sort:{artistName:1}}).fetch();
 
       const locations_sub = Meteor.subscribe('locations', promotedCity._id);
       if(locations_sub.ready()) {
-          locations = LocationsCollection.find({cityId:promotedCity._id}).fetch();
+          locations = LocationsCollection.find({cityId:promotedCity._id},{sort:{isFeatured:-1,name: 1}}).fetch();
 
           const ac_sub = Meteor.subscribe('all-artist-comments');
           if(ac_sub.ready()) {

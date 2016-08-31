@@ -27,7 +27,7 @@ const composer = (props, onData) => {
     ads = AdZoneCollection.findOne({});
     const locations_sub = Meteor.subscribe('artist-locations', artist.locationIds);
     if(locations_sub.ready()) {
-        locations = LocationsCollection.find({_id: {$in: artist.locationIds}}).fetch();
+        locations = LocationsCollection.find({_id: {$in: artist.locationIds}}).fetch({},{sort: {isFeatured: -1, name: 1}});
 
         const comments_sub = Meteor.subscribe('artist-comments', artist._id);
         const related_sub = Meteor.subscribe('artist-related', artist._id);

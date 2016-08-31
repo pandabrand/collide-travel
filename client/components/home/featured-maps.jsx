@@ -30,12 +30,14 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
 
   const bounding = (map) => {
     const bound = new google.maps.LatLngBounds();
-
+    const ZOOM = 13;
     const bounds = locations.map((location, i) =>{
       bound.extend(new google.maps.LatLng({lat:location.location.lat, lng:location.location.lng}));
     });
 
     map.fitBounds(bound);
+    map.setZoom(ZOOM);
+
   }
 
   const places = locations
@@ -61,9 +63,9 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
             onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}
             options={mapOptions}
             onChildClick={_onChildClick}
-            //onChildClick={(event) => {return dispatch(setMapTableRowClick({item: item, coord: location.location}))}}
+            onChildClick={(event) => {return dispatch(setMapTableRowClick({item: item, coord: location.location}))}}
             onGoogleApiLoaded={({map, maps}) => { bounding(map) } }
-              yesIWantToUseGoogleMapApiInternals
+            //  yesIWantToUseGoogleMapApiInternals
               >
             {places}
           </GoogleMap>
