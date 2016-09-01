@@ -28,6 +28,7 @@ export default class MapMarkerComponent extends Component {
     const style = {...markerStyle, zIndex: this.props.$hover || (parseInt(mapTableHoverIndex)+1) === parseInt(item) || (mapTableRowClick && parseInt(mapTableRowClick.item) === parseInt(item)) ? 1000 : zIndex};
     const circleStyle = this.props.$hover || (parseInt(mapTableHoverIndex)+1) === parseInt(item) ? markerCircleStyleHover : markerPointerStyle;
     const popoverStyle = (mapTableRowClick && parseInt(mapTableRowClick.item) === parseInt(item)) ? {display:'block'} : {display:'none'};
+    const pulse = (mapTableRowClick && parseInt(mapTableRowClick.item) === parseInt(item)) ? 'pulse' : '';
     const imgFile = location.photo.substr(location.photo.lastIndexOf('/') + 1);
     const imgSrc = cloudinaryURL( location.photo, 246, 246 );
     const mapLink = (location) => {
@@ -83,7 +84,7 @@ export default class MapMarkerComponent extends Component {
         <div style={style}>
           <div className={pinCssClassName} style={pinColorStyle}>
           </div>
-          <div className="pulse"></div>
+          <div className={pulse}></div>
           <div id={'mapPopover'+item} className="popover popover-default location-popover" style={popoverStyle}>
             <h3 className="popover-title title">{location.name}</h3><button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => { return  dispatch(setMapTableRowClick({item: '-1', coord: {}}))}}><span aria-hidden="true">&times;</span></button>
             <div className="popover-content">

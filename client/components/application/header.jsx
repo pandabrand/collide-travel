@@ -13,6 +13,9 @@ export default class UIHeaderComponent extends Component {
     const viewport = {name: 'viewport', content: 'width=device-width, initial-scale=1'};
     DocHead.addMeta(viewport);
 
+    const cloudinary_dpr_hint =  {'http-equiv':'Accept-CH', content:'DPR, Viewport-Width, Width'};
+    DocHead.addMeta(cloudinary_dpr_hint);
+    //
     // <!-- Open Graph Meta Tags -->
     const fb_type = {property:'og:type', content:'website'};
     const fb_title = {property:'og:title', content:'Travel Collide'};
