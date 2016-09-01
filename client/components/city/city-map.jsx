@@ -12,7 +12,7 @@ import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-c
 
 
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
-const DEFAULT_ZOOM = 13;
+const DEFAULT_ZOOM = 14;
 const mapOptions = {
   scrollwheel: false,
 };
