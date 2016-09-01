@@ -1,6 +1,6 @@
 import React from 'react';
 import { Session } from 'meteor/session';
-import {createMarkup} from '../../lib/utils.js';
+import {createMarkup, cloudinaryURL} from '../../lib/utils.js';
 
 import SelectBarComponent from '../includes/select-bar.jsx';
 import FeaturedMapsComponent from './featured-maps.jsx';
@@ -24,7 +24,7 @@ const serveTakeoverAd = (ads) => {
 const getHome = (homePage, featuredCities, routeName, promotedCity, locations, artists, artistComments, ads, props, dispatch) => {
   return (<div>
     <div id="main" className="fluid-container">
-      <img className="hero-image" src={homePage.image} />
+      <img className="hero-image" src={cloudinaryURL(homePage.image, 1240, 310)} />
       <div className="hero-text">
         <div className="hero-title">{homePage.title}</div>
         <div className="hero-copy">{homePage.subheader}</div>
