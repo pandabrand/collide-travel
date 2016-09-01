@@ -36,7 +36,7 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
     });
 
     map.fitBounds(bound);
-    map.setZoom(ZOOM);
+    // map.setZoom(ZOOM);
 
   }
 
