@@ -12,7 +12,7 @@ import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-c
 
 
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
-const DEFAULT_ZOOM = 12;
+const DEFAULT_ZOOM = 13;
 const mapOptions = {
   scrollwheel: false,
 };
@@ -30,13 +30,11 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
 
   const bounding = (map) => {
     const bound = new google.maps.LatLngBounds();
-    const ZOOM = 13;
     const bounds = locations.map((location, i) =>{
       bound.extend(new google.maps.LatLng({lat:location.location.lat, lng:location.location.lng}));
     });
 
     map.fitBounds(bound);
-    // map.setZoom(ZOOM);
 
   }
 
@@ -50,7 +48,8 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
     });
 
   if(homeCity && locations) {
-    homeCenter = Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : homeCity.location;
+    console.dir(locations[0].location);
+    homeCenter = Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : locations[0].location;
     return <div className="row featured-city">
       <div className="col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col">
         <div className="featured-map">
@@ -64,7 +63,7 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
             options={mapOptions}
             onChildClick={_onChildClick}
             onChildClick={(event) => {return dispatch(setMapTableRowClick({item: item, coord: location.location}))}}
-            onGoogleApiLoaded={({map, maps}) => { bounding(map) } }
+            //onGoogleApiLoaded={({map, maps}) => { bounding(map) } }
             //  yesIWantToUseGoogleMapApiInternals
               >
             {places}

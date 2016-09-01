@@ -5,21 +5,21 @@ import { Meteor } from 'meteor/meteor';
 const showCityLabel = (cities) => {
   const CURRENT_ROUTE = FlowRouter.current();
   if(CURRENT_ROUTE.params) {
-    return CURRENT_ROUTE.params.name ? _.findWhere(cities, {cityName: CURRENT_ROUTE.params.name}).displayName : 'City';
+    return CURRENT_ROUTE.params.name ? 'City: '+_.findWhere(cities, {cityName: CURRENT_ROUTE.params.name}).displayName : 'City';
   }
 }
 
 const showArtistLabel = (artists) => {
   const CURRENT_ROUTE = FlowRouter.current();
   if(CURRENT_ROUTE.params) {
-    return CURRENT_ROUTE.params.artistName ? _.findWhere(artists, {artistSlug: CURRENT_ROUTE.params.artistName}).artistName : 'Artist ';
+    return CURRENT_ROUTE.params.artistName ? 'Artist: ' +_.findWhere(artists, {artistSlug: CURRENT_ROUTE.params.artistName}).artistName : 'Artist ';
   }
 }
 
 const showCategoryLabel = (locationCategories) => {
   const CURRENT_ROUTE = FlowRouter.current();
   if(CURRENT_ROUTE.params) {
-    return CURRENT_ROUTE.params.type ? _.find(locationCategories, function(category){return CURRENT_ROUTE.params.type === category}) : 'Category ';
+    return CURRENT_ROUTE.params.type ? 'Category: '+_.find(locationCategories, function(category){return CURRENT_ROUTE.params.type === category}) : 'Category ';
   }
 }
 

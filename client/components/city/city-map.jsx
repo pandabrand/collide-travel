@@ -12,7 +12,7 @@ import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-c
 
 
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
-const DEFAULT_ZOOM = 12;
+const DEFAULT_ZOOM = 13;
 const mapOptions = {
   scrollwheel: false,
 };
@@ -41,12 +41,12 @@ const getCityMap = (city, locations, artists, artistComments, dispatch, props) =
       const bounds = locations.map((location, i) =>{
         bound.extend(new google.maps.LatLng({lat:location.location.lat, lng:location.location.lng}));
       });
-      
+
       map.fitBounds(bound);
     }
 
   if(city && locations) {
-    homeCenter = city.location;
+    homeCenter = locations[0].location;
     return <div id='artists-city-map-component' className="city-map">
         <GoogleMap
           bootstrapURLKeys={{key: MAP_KEY}}
