@@ -47,7 +47,7 @@ export default function MapRowComponent({location, item, hoverIndex, artists, co
   }
 
   const imgFile = location.photo.substr(location.photo.lastIndexOf('/') + 1);
-  const imgSrc = cloudinaryURL( location.photo, 150, 150);
+  const imgSrc = cloudinaryURL(location.photo, 150, 150, 'fill', 'faces');
 
   return (
     <tr id={location._id} onClick={() => {return dispatch(setMapTableRowClick({item: item, coord: location.location}))}} onMouseOver={() => {return dispatch(setMapTableHover(item))}} onMouseOut={() => {return dispatch(setMapTableHover(-1))}}>
