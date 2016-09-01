@@ -14,12 +14,18 @@ const composer = (props, onData) => {
   const adSubscription = Meteor.subscribe('get-ad');
   if(adSubscription.ready()) {
     Session.setDefault('item', null);
+    const ads = AdZoneCollection.findOne({});
     Meteor.call('get.feed', (err, res) => {
-      Session.set('item', res);
-      trendingArticles = [];
-      const ads = AdZoneCollection.findOne({});
-      const trendingData = {trendingArticles, ads, props}
-      onData(null, trendingData);
+      if(!err) {
+        Session.set('item', res);
+        trendingArticles = [];
+        const trendingData = {trendingArticles, ads, props}
+        onData(null, trendingData);
+      } else {
+        console.dir(err);
+        const trendingData = {ads, props}
+        onData(null, trendingData);
+      }
     });
   }
 };

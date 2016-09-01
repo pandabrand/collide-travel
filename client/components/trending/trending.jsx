@@ -3,7 +3,7 @@ import {createMarkup} from '../../lib/utils.js';
 
   export default TrendingComponent = ({}) => {
   const items = Session.get('item');
-  return (<div className="container-fluid featured-container">
+  return (!items ? <div className="container-fluid featured-container">
           <div className="featured-row row">
             <h1 className="featured-header">TRENDING</h1>
           </div>
@@ -31,5 +31,5 @@ import {createMarkup} from '../../lib/utils.js';
             })}
             </div>
           </div>
-        </div>);
+        </div> : null);
 };
