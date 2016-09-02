@@ -18,9 +18,9 @@ const composer = (props, onData) => {
     let cities = {};
     if(city_sub.ready()) {
       cities = CitiesCollection.find({},{displayName:1}).fetch();
+      const locationData = {locations, cities, props};
+      onData(null, locationData);
     }
-    const locationData = {locations, cities, props};
-    onData(null, locationData);
   }
 };
 

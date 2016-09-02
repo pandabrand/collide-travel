@@ -34,10 +34,12 @@ const getLocationTable = (locations, cities, props) => {
       <tbody>
         {locations.map((location,i) => {
           console.log('location: ' + location.name + ' city: ' + location.cityId);
+          const city = getCity(location.cityId);
+          console.dir(city);
           return <tr key={i}>
             <td>{location.name}</td>
             <td>{location.type}</td>
-            <td>{getCity(location.cityId).displayName}</td>
+            <td>{city.displayName}</td>
             <td>{location.address ? 'yes' : 'no'}</td>
             <td><button onClick={() => {editLocation(location._id)}} type="button" className="btn btn-primary btn-sm update"><i className="fa fa-edit"/></button></td>
             <td><button onClick={() => {deleteLocation(location._id)}} type="button" className="btn btn-danger btn-sm delete"><i className="fa fa-trash"/></button></td>
