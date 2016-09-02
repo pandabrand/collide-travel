@@ -10,7 +10,7 @@ export default class UIHeaderComponent extends Component {
     DocHead.addMeta(charset);
     const http_content = {'http-equiv': 'X-UA-Compatible', content: 'IE=edge'};
     DocHead.addMeta(http_content);
-    const viewport = {name: 'viewport', content: 'width=device-width, initial-scale=1'};
+    const viewport = {name: 'viewport', content: 'width=device-width'};
     DocHead.addMeta(viewport);
 
     const cloudinary_dpr_hint =  {'http-equiv':'Accept-CH', content:'DPR, Viewport-Width, Width'};

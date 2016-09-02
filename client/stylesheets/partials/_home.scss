@@ -20,6 +20,13 @@
       }
     }
   }
+  .affix {
+    // @media(max-width: 768px) {
+      position: fixed;
+      top: 0;
+      width: 100%;
+    // }
+  }
   .featured-table-col {
     height: 400px;
     overflow: auto;

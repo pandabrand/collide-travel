@@ -7,13 +7,13 @@ export default PrintElementComponent = ({print}) => {
     <div className="row print-row print-issue">
     <div className="col-xs-12 col-sm-6 col-md-4">
         <div className="print-preview-image">
-          <img src={cloudinaryURL(print.guidePreview, 280, 390)}/>
+          <img className="img-responsive" src={cloudinaryURL(print.printPreview, 280, 390, 'fit')}/>
         </div>
     </div>
     <div className="col-xs-12 col-sm-6 col-md-8">
         <div className="print-control caption">
           <h2>{print.displayName}</h2>
-          <p><div dangerouslySetInnerHTML={createMarkup(print.printCopy)}/></p>
+          <div><div dangerouslySetInnerHTML={createMarkup(print.printCopy)}/></div>
           { !print.showDownloadLink && !print.showPurchaseLink ?
             <div className="soldout">
             <h3 className="soldout">Sold Out</h3>

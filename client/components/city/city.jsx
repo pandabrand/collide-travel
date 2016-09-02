@@ -36,6 +36,7 @@ const getCity = (homeCity, locations, artists, artistComments, ads, props, dispa
           </div>
           <div className="fluid-container map-border">
             <div className="row city-wrapper featured-city">
+              <div id="map-anchor"></div>
               <CityMapsComponent key="artists-city-map-component" dispatch={dispatch} props={props} city={homeCity} locations={locations} artists={artists} artistComments={artistComments}/>
               <CityArtistsTableComponent ads={ads} city={homeCity} artists={artists}/>
               <div className="get-clear"></div>

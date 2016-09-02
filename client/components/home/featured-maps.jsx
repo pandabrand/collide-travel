@@ -48,10 +48,10 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
     });
 
   if(homeCity && locations) {
-    console.dir(locations[0].location);
     homeCenter = Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : locations[0].location;
     return <div className="row featured-city">
-      <div className="col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col">
+      <div id="map-anchor"></div>
+      <div className="col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col" data-spy="affix" data-offset-top="368">
         <div className="featured-map">
           <GoogleMap
             bootstrapURLKeys={{key: MAP_KEY}}

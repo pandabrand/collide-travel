@@ -23,10 +23,35 @@ Meteor.startup(function() {
   }
 
   $(function() {
-      $(window).scroll(sticky_relocate);
-      sticky_relocate();
+    $(window).scroll(sticky_relocate);
+    sticky_relocate();
   });
 
+//   function sticky_map() {
+//     const mobileCheck = window.matchMedia('(max-width: 511px)');
+//     if(mobileCheck.matches) {
+//       let window_top = $(window).scrollTop();
+//       let map_anchor = document.querySelector('#map-anchor');
+//       console.dir($('#map-anchor'));
+//       console.dir(map_anchor);
+//       let div_top = map_anchor.offset().top;
+//       if (window_top && window_top > div_top) {
+//           $('.featured-map-col').addClass('fix-map');
+//           $('#map-anchor').height($('.featured-map-col').outerHeight());
+//       } else {
+//           $('.featured-map-col').removeClass('fix-map');
+//           $('#map-anchor').height(0);
+//       }
+//     }
+//   }
+//
+// if(Meteor.isClient) {
+//   $(document).ready(function() {
+//     $(window).scroll(sticky_map);
+//     sticky_map();
+//   });
+// }
+  $('.featured-map-col').affix({});
 })
 
 FlowRouter.wait();

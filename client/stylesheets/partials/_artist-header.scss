@@ -1,13 +1,22 @@
 .artist-jumbo {
   background-color: #fff;
   padding: 24px 0;
+  float: left;
   .img-center {
-    position: absolute;
-    top: 50%;
+    // position: absolute;
+    // top: 50%;
     height: 234px;
   }
 }
 .artist-guide {
+  float: left;
+  margin: 0 40px;
+  @media(max-width: 415px) {
+    margin: 0 15px;
+  }
+  .header-img {
+    padding: 2% 0;
+  }
   h1 {
     text-transform: uppercase;
     font-weight: 800;
