@@ -62,7 +62,6 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
             onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}
             options={mapOptions}
             onChildClick={_onChildClick}
-            onChildClick={(event) => {return dispatch(setMapTableRowClick({item: item, coord: location.location}))}}
             //onGoogleApiLoaded={({map, maps}) => { bounding(map) } }
             //  yesIWantToUseGoogleMapApiInternals
               >

@@ -35,6 +35,11 @@
       "resolved": "https://registry.npmjs.org/node-expat/-/node-expat-2.3.15.tgz",
       "from": "node-expat@>=2.3.9 <3.0.0"
     },
+    "react-waypoint": {
+      "version": "3.1.1",
+      "resolved": "https://registry.npmjs.org/react-waypoint/-/react-waypoint-3.1.1.tgz",
+      "from": "react-waypoint@3.1.1"
+    },
     "topo": {
       "version": "1.1.0",
       "resolved": "https://registry.npmjs.org/topo/-/topo-1.1.0.tgz",

@@ -31,6 +31,7 @@ export default class MapMarkerComponent extends Component {
     const pulse = (mapTableRowClick && parseInt(mapTableRowClick.item) === parseInt(item)) ? 'pulse' : '';
     const imgFile = location.photo.substr(location.photo.lastIndexOf('/') + 1);
     const imgSrc = cloudinaryURL( location.photo, 246, 246 );
+    
     const mapLink = (location) => {
       return 'https://www.google.com/maps/dir/Current+Location/'+location.location.lat+','+location.location.lng;
     }

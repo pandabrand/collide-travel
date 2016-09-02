@@ -22,7 +22,6 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
   const markerArtists = artist ? [artist] : artists;
 
   _onChildClick = (key, childProps) => {
-    // console.dir(childProps);
     return dispatch(setMapTableRowClick({item: childProps.item, coord: {lat: childProps.location.lat, lng: childProps.location.lng}}));
   }
 

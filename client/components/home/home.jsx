@@ -1,3 +1,4 @@
+import Meteor from 'meteor/meteor';
 import React from 'react';
 import { Session } from 'meteor/session';
 import {createMarkup, cloudinaryURL} from '../../lib/utils.js';
@@ -6,6 +7,9 @@ import SelectBarComponent from '../includes/select-bar.jsx';
 import FeaturedMapsComponent from './featured-maps.jsx';
 import FeaturedCitiesComponent from '../city/featured-cities.jsx';
 import TrendingContainer from '../../containers/trending.jsx';
+
+// let Waypoint = Meteor.require('react-waypoint');
+let Waypoint = require('react-waypoint');
 
 const serveStickyAd = (ads) => {
   const takeoverAd = ads ? ads.takeoverAd : null;
@@ -21,6 +25,23 @@ const serveTakeoverAd = (ads) => {
   return ad;
 }
 
+const _onWaypointEnter = () => {
+  console.log('entering...');
+}
+
+const _onWaypointLeave = () => {
+  console.log('leaving...');
+}
+
+const _onWaypointPositionChange = () => {
+  let cityEl = document.getElementById('city-copied');
+  console.dir(cityEl.offsetTop);
+}
+
+const setWaypoint = (onWaypointEnter, onWaypointLeave, onWaypointPositionChange) => {
+  return <Waypoint onEnter={onWaypointEnter} onLeave={onWaypointLeave} onPositionChange={onWaypointPositionChange} />
+}
+
 const getHome = (homePage, featuredCities, routeName, promotedCity, locations, artists, artistComments, ads, props, dispatch) => {
   return (<div>
     <div id="main" className="fluid-container">
@@ -32,7 +53,8 @@ const getHome = (homePage, featuredCities, routeName, promotedCity, locations, a
     </div>
     {serveStickyAd(ads)}
     <div className="home-map-container">
-      <div className="featured-city-copy">This month's featured city: {promotedCity.displayName}</div>
+      <div id="city-copied" className="featured-city-copy">This month's featured city: {promotedCity.displayName}</div>
+      {setWaypoint(_onWaypointEnter, _onWaypointLeave, _onWaypointPositionChange)}
       <FeaturedMapsComponent homeCity={promotedCity} locations={locations} artists={artists} artistComments={artistComments} props={props} dispatch={dispatch}/>
     </div>
     {serveTakeoverAd(ads)}
