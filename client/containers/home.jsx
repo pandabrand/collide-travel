@@ -65,7 +65,9 @@ function mapStateToProps(state) {
     mapTableRowClick: state.mapTableRowClick,
     cityExploreSelection: state.cityExploreSelection,
     artistExploreSelection: state.artistExploreSelection,
-    categoryExploreSelection: state.categoryExploreSelection
+    categoryExploreSelection: state.categoryExploreSelection,
+    mapPosition: state.mapPosition,
+    mobileMapRowPosition: state.mobileMapRowPosition,
   }
 }
 

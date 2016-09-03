@@ -9,7 +9,9 @@ import {MapTableComponent} from '../mapping/map-table.jsx';
 import setCircleHover from '../../../lib/client/actions/set-circle-hover.js';
 import setMapLocationClick from '../../../lib/client/actions/set-map-location-click.js';
 import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-click.js';
+import setMapPosition from '../../../lib/client/actions/set-map-position.js';
 
+let Waypoint = require('react-waypoint');
 
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
 const DEFAULT_ZOOM = 14;
@@ -17,8 +19,12 @@ const mapOptions = {
   scrollwheel: false,
 };
 
-const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, dispatch, props) => {
+const setWaypoint = (onWaypointEnter, onWaypointLeave, onWaypointPositionChange, dispatch, props) => {
+  return <Waypoint onEnter={onWaypointEnter} onLeave={onWaypointLeave} onPositionChange={onWaypointPositionChange} dispatch={dispatch} props={props}/>
+}
 
+const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, dispatch, props) => {
+  console.dir(props);
   const markerArtists = artist ? [artist] : artists;
 
   let bounds = [];
@@ -47,15 +53,44 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
       );
     });
 
+  const _onWaypointEnter = (currentPosition) => {
+    if(window.matchMedia('(max-width: 511px)').matches && currentPosition.currentPosition === 'inside') {
+      return dispatch(setMapPosition(false));
+    }
+  }
+
+  const _onWaypointLeave = (currentPosition) => {
+    if(window.matchMedia('(max-width: 511px)').matches && currentPosition.currentPosition === 'above') {
+      return dispatch(setMapPosition(currentPosition.currentPosition === 'above'));
+    }
+  }
+
+  const _onWaypointPositionChange = (currentPosition) => {
+  }
+
+  const fixedMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col' : 'col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col fix-map';
+
+  const _homeCenter = () => {
+    if(window.innerWidth < 511 && props.mobileMapRowPosition && props.mobileMapRowPosition !== '-1') {
+      return props.mobileMapRowPosition;
+    } else if (Object.keys(props.mapTableRowClick).length > 0) {
+      return props.mapTableRowClick.coord;
+    } else {
+      return locations[0].location;
+    }
+  }
+
   if(homeCity && locations) {
-    homeCenter = Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : locations[0].location;
+    homeCenter = window.matchMedia('max-width: 511px').matches && Object.keys(props.mobileMapRowPosition).length > 0 ? props.mobileMapRowPosition : Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : locations[0].location;
+    // homeCenter = _homeCenter();
     return <div className="row featured-city">
-      <div id="map-anchor"></div>
-      <div className="col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col" data-spy="affix" data-offset-top="368">
+      <Waypoint onEnter={_onWaypointEnter} onLeave={_onWaypointLeave} onPositionChange={_onWaypointPositionChange}/>
+      {/*{setWaypoint(_onWaypointEnter, _onWaypointLeave, _onWaypointPositionChange, dispatch)}*/}
+      <div className={fixedMapClass}>
         <div className="featured-map">
           <GoogleMap
             bootstrapURLKeys={{key: MAP_KEY}}
-            center={homeCenter}
+            center={_homeCenter()}
             zoom={DEFAULT_ZOOM}
             hoverDistance={K_CIRCLE_SIZE}
             onChildMouseEnter={(event) => { return dispatch(setCircleHover(event))}}
@@ -70,6 +105,7 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
         </div>
       </div>
       <div className="col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col">
+        {/*{setWaypoint(_onWaypointEnter, _onWaypointLeave, _onWaypointPositionChange)}*/}
         <MapTableComponent dispatch={dispatch} markerCirlceHover={props.markerCirlceHover} locations={locations} artist={artist} artists={markerArtists} artistComments={artistComments} />
       </div>
       </div>;

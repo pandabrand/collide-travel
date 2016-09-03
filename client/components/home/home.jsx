@@ -25,17 +25,19 @@ const serveTakeoverAd = (ads) => {
   return ad;
 }
 
-const _onWaypointEnter = () => {
-  console.log('entering...');
+const _onWaypointEnter = (event, currentPosition) => {
+  console.dir(currentPosition);
+  console.dir('entering...');
 }
 
-const _onWaypointLeave = () => {
+const _onWaypointLeave = (currentPosition) => {
+  console.dir(currentPosition);
   console.log('leaving...');
 }
 
-const _onWaypointPositionChange = () => {
-  let cityEl = document.getElementById('city-copied');
-  console.dir(cityEl.offsetTop);
+const _onWaypointPositionChange = (currentPosition) => {
+  console.dir(currentPosition);
+  console.log('changing...');
 }
 
 const setWaypoint = (onWaypointEnter, onWaypointLeave, onWaypointPositionChange) => {
@@ -54,7 +56,7 @@ const getHome = (homePage, featuredCities, routeName, promotedCity, locations, a
     {serveStickyAd(ads)}
     <div className="home-map-container">
       <div id="city-copied" className="featured-city-copy">This month's featured city: {promotedCity.displayName}</div>
-      {setWaypoint(_onWaypointEnter, _onWaypointLeave, _onWaypointPositionChange)}
+      {/*{setWaypoint(_onWaypointEnter, _onWaypointLeave, _onWaypointPositionChange)}*/}
       <FeaturedMapsComponent homeCity={promotedCity} locations={locations} artists={artists} artistComments={artistComments} props={props} dispatch={dispatch}/>
     </div>
     {serveTakeoverAd(ads)}

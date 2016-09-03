@@ -14,7 +14,7 @@ export const MapTableComponent = ({locations, markerCirlceHover, artists, artist
   }
 
 
-  return <table className="table table-hover map-table">
+  return <table id="map-table" className="table table-hover map-table">
     <tbody>
       {locations.map(function(location,i){
           return (<MapRowComponent key={i} dispatch={dispatch} location={location} item={i} hoverIndex={markerCirlceHover} artists={artists} comments={getComments(artistComments, location._id)} />)
