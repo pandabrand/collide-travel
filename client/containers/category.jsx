@@ -48,7 +48,9 @@ function mapStateToProps(state) {
     mapTableHover: state.mapTableHover,
     mapTableRowClick: state.mapTableRowClick,
     artistExploreSelection: state.artistExploreSelection,
-    categoryExploreSelection: state.categoryExploreSelection
+    categoryExploreSelection: state.categoryExploreSelection,
+    mapPosition: state.mapPosition,
+    mobileMapRowPosition: state.mobileMapRowPosition,
   }
 }
 
