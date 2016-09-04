@@ -65,7 +65,7 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
   const tableMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col' : 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col mobile-map-table';
 
   if(homeCity && locations) {
-    homeCenter = window.innerWidth < 511 && Object.keys(props.mobileMapRowPosition).length > 0 && props.mobileMapRowPosition !== '-1' ? props.mobileMapRowPosition : Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : locations[0].location;
+    homeCenter = window.innerWidth < 511 && props.mobileMapRowPosition && Object.keys(props.mobileMapRowPosition).length > 0 && props.mobileMapRowPosition !== '-1' ? props.mobileMapRowPosition : Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : locations[0].location;
     return <div className="row featured-city">
       <Waypoint onEnter={_onWaypointEnter} onLeave={_onWaypointLeave} onPositionChange={_onWaypointPositionChange}/>
       <div className={fixedMapClass}>
