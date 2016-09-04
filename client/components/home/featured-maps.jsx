@@ -82,10 +82,8 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
 
   if(homeCity && locations) {
     homeCenter = window.matchMedia('max-width: 511px').matches && Object.keys(props.mobileMapRowPosition).length > 0 ? props.mobileMapRowPosition : Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : locations[0].location;
-    // homeCenter = _homeCenter();
     return <div className="row featured-city">
       <Waypoint onEnter={_onWaypointEnter} onLeave={_onWaypointLeave} onPositionChange={_onWaypointPositionChange}/>
-      {/*{setWaypoint(_onWaypointEnter, _onWaypointLeave, _onWaypointPositionChange, dispatch)}*/}
       <div className={fixedMapClass}>
         <div className="featured-map">
           <GoogleMap
@@ -105,7 +103,6 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
         </div>
       </div>
       <div className={tableMapClass}>
-        {/*{setWaypoint(_onWaypointEnter, _onWaypointLeave, _onWaypointPositionChange)}*/}
         <MapTableComponent dispatch={dispatch} markerCirlceHover={props.markerCirlceHover} locations={locations} artist={artist} artists={markerArtists} artistComments={artistComments} />
       </div>
       </div>;

@@ -7,6 +7,9 @@ import CityMapsComponent from './city-map.jsx';
 import CityArtistsTableComponent from './city-artists-table.jsx';
 import TrendingContainer from '../../containers/trending.jsx';
 import {createMarkup} from '../../lib/utils.js';
+import setMapPosition from '../../../lib/client/actions/set-map-position.js';
+
+let Waypoint = require('react-waypoint');
 
 const serveStickyAd = (ads) => {
   const takeoverAd = ads ? ads.takeoverAd : null;
@@ -24,8 +27,22 @@ const serveTakeoverAd = (ads) => {
 
 const getCity = (homeCity, locations, artists, artistComments, ads, props, dispatch) => {
   _onChildScroll = (key, childProps) => {
-    console.dir(key);
-    console.dir(childProps);
+  }
+
+
+  const _onWaypointEnter = (currentPosition) => {
+    if(window.matchMedia('(max-width: 511px)').matches && currentPosition.currentPosition === 'inside') {
+      return dispatch(setMapPosition(false));
+    }
+  }
+
+  const _onWaypointLeave = (currentPosition) => {
+    if(window.matchMedia('(max-width: 511px)').matches && currentPosition.currentPosition === 'above') {
+      return dispatch(setMapPosition(currentPosition.currentPosition === 'above'));
+    }
+  }
+
+  const _onWaypointPositionChange = (currentPosition) => {
   }
 
   return <div id="main" className="fluid-container">
@@ -36,9 +53,9 @@ const getCity = (homeCity, locations, artists, artistComments, ads, props, dispa
           </div>
           <div className="fluid-container map-border">
             <div className="row city-wrapper featured-city">
-              <div id="map-anchor"></div>
+              <Waypoint onEnter={_onWaypointEnter} onLeave={_onWaypointLeave} onPositionChange={_onWaypointPositionChange}/>
               <CityMapsComponent key="artists-city-map-component" dispatch={dispatch} props={props} city={homeCity} locations={locations} artists={artists} artistComments={artistComments}/>
-              <CityArtistsTableComponent ads={ads} city={homeCity} artists={artists}/>
+              <CityArtistsTableComponent ads={ads} city={homeCity} artists={artists} props={props}/>
               <div className="get-clear"></div>
             </div>
          </div>

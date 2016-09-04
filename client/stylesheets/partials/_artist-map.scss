@@ -8,14 +8,6 @@
       height: inherit;
       overflow-y: auto;
     }
-    .fix-map {
-      position: fixed;
-      top: 130px;
-      width: 100%;
-      margin-right: 10%;
-      // right: 80px;
-    }
-
   }
 }
 
@@ -51,6 +43,9 @@
   border-top: $blackish solid 1px;
   border-bottom: $blackish solid 1px;
   margin-bottom: 60px;
+  @media(max-width: 768px) {
+    border-bottom: transparent solid 1px;
+  }
 }
 
 .fix-ad {

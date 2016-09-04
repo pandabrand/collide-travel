@@ -10,7 +10,6 @@ import setCircleHover from '../../../lib/client/actions/set-circle-hover.js';
 import setMapLocationClick from '../../../lib/client/actions/set-map-location-click.js';
 import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-click.js';
 
-
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
 const DEFAULT_ZOOM = 14;
 const mapOptions = {
@@ -30,24 +29,26 @@ const getCityMap = (city, locations, artists, artistComments, dispatch, props) =
       );
     });
 
-    _onChildClick = (key, childProps) => {
-      // console.dir(childProps);
-      return dispatch(setMapTableRowClick({item: childProps.item, coord: childProps.location.location}));
-    }
+  _onChildClick = (key, childProps) => {
+    return dispatch(setMapTableRowClick({item: childProps.item, coord: childProps.location.location}));
+  }
 
-    const bounding = (map) => {
-      const bound = new google.maps.LatLngBounds();
+  const bounding = (map) => {
+    const bound = new google.maps.LatLngBounds();
 
-      const bounds = locations.map((location, i) =>{
-        bound.extend(new google.maps.LatLng({lat:location.location.lat, lng:location.location.lng}));
-      });
+    const bounds = locations.map((location, i) =>{
+      bound.extend(new google.maps.LatLng({lat:location.location.lat, lng:location.location.lng}));
+    });
 
-      map.fitBounds(bound);
-    }
+    map.fitBounds(bound);
+  }
+
+  const fixedMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 city-map-col' : 'col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 city-map-col fix-map';
 
   if(city && locations) {
     homeCenter = locations[0].location;
-    return <div id='artists-city-map-component' className="city-map">
+    return <div className={fixedMapClass}>
+      <div id='artists-city-map-component' className="city-map">
         <GoogleMap
           bootstrapURLKeys={{key: MAP_KEY}}
           center={homeCenter}
@@ -57,12 +58,13 @@ const getCityMap = (city, locations, artists, artistComments, dispatch, props) =
           onChildMouseLeave={() => { return dispatch(setCircleHover(-1))}}
           options={mapOptions}
           onChildClick={_onChildClick}
-          onGoogleApiLoaded={({map, maps}) => { bounding(map) } }
-            yesIWantToUseGoogleMapApiInternals
+          //onGoogleApiLoaded={({map, maps}) => { bounding(map) } }
+          //  yesIWantToUseGoogleMapApiInternals
             >
           {places}
         </GoogleMap>
-      </div>;
+      </div>
+    </div>;
   } else {
     return <div className="trending-loading"><i className="fa fa-cog fa-spin fa-3x fa-fw"></i>
     </div>;
@@ -71,5 +73,5 @@ const getCityMap = (city, locations, artists, artistComments, dispatch, props) =
 
 export default CityMapsComponent = ( {city, locations, artists, artistComments, dispatch, props} ) =>
 (
-  <div className="col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 city-map-col">{getCityMap(city, locations, artists, artistComments, dispatch, props)}</div>
+  <div>{getCityMap(city, locations, artists, artistComments, dispatch, props)}</div>
 );

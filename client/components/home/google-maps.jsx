@@ -9,7 +9,9 @@ import {MapTableComponent} from '../mapping/map-table.jsx';
 import setCircleHover from '../../../lib/client/actions/set-circle-hover.js';
 import setMapLocationClick from '../../../lib/client/actions/set-map-location-click.js';
 import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-click.js';
+import setMapPosition from '../../../lib/client/actions/set-map-position.js';
 
+let Waypoint = require('react-waypoint');
 
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
 const DEFAULT_ZOOM = 14;
@@ -44,10 +46,29 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
       );
     });
 
+    const _onWaypointEnter = (currentPosition) => {
+      if(window.matchMedia('(max-width: 511px)').matches && currentPosition.currentPosition === 'inside') {
+        return dispatch(setMapPosition(false));
+      }
+    }
+
+    const _onWaypointLeave = (currentPosition) => {
+      if(window.matchMedia('(max-width: 511px)').matches && currentPosition.currentPosition === 'above') {
+        return dispatch(setMapPosition(currentPosition.currentPosition === 'above'));
+      }
+    }
+
+    const _onWaypointPositionChange = (currentPosition) => {
+    }
+
+  const fixedMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col' : 'col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col fix-map';
+  const tableMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col' : 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col mobile-map-table';
+
   if(homeCity && locations) {
     homeCenter = Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : locations[0].location;
     return <div className="row featured-city">
-      <div className="col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col">
+      <Waypoint onEnter={_onWaypointEnter} onLeave={_onWaypointLeave} onPositionChange={_onWaypointPositionChange}/>
+      <div className={fixedMapClass}>
         <div className="featured-map">
           <GoogleMap
             bootstrapURLKeys={{key: MAP_KEY}}
@@ -65,7 +86,7 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
           </GoogleMap>
         </div>
       </div>
-      <div className="col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6 featured-table-col">
+      <div className={tableMapClass}>
         <MapTableComponent dispatch={dispatch} markerCirlceHover={props.markerCirlceHover} locations={locations} artist={artist} artists={markerArtists} artistComments={artistComments} />
       </div>
       </div>;

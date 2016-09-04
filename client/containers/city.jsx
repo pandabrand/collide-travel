@@ -111,6 +111,8 @@ function mapStateToProps(state) {
     artistExploreSelection: state.artistExploreSelection,
     categoryExploreSelection: state.categoryExploreSelection,
     mapLocationClick: state.mapLocationClick,
+    mapPosition: state.mapPosition,
+    mobileMapRowPosition: state.mobileMapRowPosition,
   }
 }
 

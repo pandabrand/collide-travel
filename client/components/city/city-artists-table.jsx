@@ -12,8 +12,11 @@ const serveCityAd = (ads, city) => {
 }
 
 const getCityArtistsTable = (city, artists, ads, dispatch, props) => {
+  const tableMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 artist-tiles' : 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12  artist-tiles mobile-map-table';
+
   if(city && artists) {
-    return <div className="city-table-col">
+    return <div className={tableMapClass}>
+      <div className="city-table-col">
           <div className="masonry-guides">
             <div className="grid-item">
               <img src={cloudinaryURL(city.printPreview, 270, 324, "fit")} />
@@ -26,7 +29,8 @@ const getCityArtistsTable = (city, artists, ads, dispatch, props) => {
               return <CityArtistsGridItem key={i} artist={artist} city={city} showLong={showLong}/>;
             })}
           </div>
-          </div>;
+          </div>
+        </div>;
   } else {
     return <div className="trending-loading"><i className="fa fa-cog fa-spin fa-3x fa-fw"></i>
     </div>;
@@ -35,5 +39,5 @@ const getCityArtistsTable = (city, artists, ads, dispatch, props) => {
 
 export default CityArtistsTableComponent = ( {city, artists, ads, dispatch, props} ) =>
 (
-  <div className="col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6 artist-tiles">{getCityArtistsTable(city, artists, ads, dispatch, props)}</div>
+  <div>{getCityArtistsTable(city, artists, ads, dispatch, props)}</div>
 );

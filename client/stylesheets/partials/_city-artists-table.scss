@@ -6,6 +6,9 @@
     border-top: $blackish solid 1px;
     .artist-tiles {
       height: 700px;
+      @media(max-width: 768px) {
+        height: auto;
+      }
       @extend %clearfix;
     }
     .city-map-column {
@@ -17,14 +20,6 @@
         height: inherit;
       }
     }
-    .fix-map {
-      position: fixed;
-      top: 130px;
-      width: 100%;
-      margin-right: 10%;
-      // right: 80px;
-    }
-
   }
 }
 
