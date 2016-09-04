@@ -69,7 +69,7 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
   }
 
   const fixedMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col' : 'col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col fix-map';
-
+  const tableMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col' : 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col mobile-map-table';
   const _homeCenter = () => {
     if(window.innerWidth < 511 && props.mobileMapRowPosition && props.mobileMapRowPosition !== '-1') {
       return props.mobileMapRowPosition;
@@ -104,7 +104,7 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
           </GoogleMap>
         </div>
       </div>
-      <div className="col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col">
+      <div className={tableMapClass}>
         {/*{setWaypoint(_onWaypointEnter, _onWaypointLeave, _onWaypointPositionChange)}*/}
         <MapTableComponent dispatch={dispatch} markerCirlceHover={props.markerCirlceHover} locations={locations} artist={artist} artists={markerArtists} artistComments={artistComments} />
       </div>

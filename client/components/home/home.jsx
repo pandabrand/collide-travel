@@ -56,7 +56,6 @@ const getHome = (homePage, featuredCities, routeName, promotedCity, locations, a
     {serveStickyAd(ads)}
     <div className="home-map-container">
       <div id="city-copied" className="featured-city-copy">This month's featured city: {promotedCity.displayName}</div>
-      {/*{setWaypoint(_onWaypointEnter, _onWaypointLeave, _onWaypointPositionChange)}*/}
       <FeaturedMapsComponent homeCity={promotedCity} locations={locations} artists={artists} artistComments={artistComments} props={props} dispatch={dispatch}/>
     </div>
     {serveTakeoverAd(ads)}

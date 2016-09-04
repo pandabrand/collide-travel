@@ -32,6 +32,9 @@
 
 .map-table {
   overflow-y: auto;
+  @media(max-width: 786px) {
+    overflow-y: visible;
+  }
   td {
     text-align: left;
     .map-table-title {

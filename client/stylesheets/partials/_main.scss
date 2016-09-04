@@ -68,7 +68,8 @@
     overflow: inherit;
   }
   @media(max-width: 768px) {
-    overflow: hidden;
+    // overflow: hidden;
+    height: auto;
   }
   .featured-city-copy {
     text-align: center;

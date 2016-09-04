@@ -6,6 +6,7 @@
 .navbar {
   @media(max-width: 768px) {
     height: 75px;
+    z-index: 9999;
   }
   li {
     margin: 10px 10px 15px 0;
@@ -178,8 +179,8 @@
         display: block;
     }
     .navbar-collapse {
-        border-top: 1px solid transparent;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+      border-top: 1px solid transparent;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
     }
     .navbar-fixed-top {
 		top: 0;
