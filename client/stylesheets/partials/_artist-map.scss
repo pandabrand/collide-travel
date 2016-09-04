@@ -41,11 +41,7 @@
 
 .map-border {
   border-top: $blackish solid 1px;
-  border-bottom: $blackish solid 1px;
-  margin-bottom: 60px;
-  @media(max-width: 768px) {
-    border-bottom: transparent solid 1px;
-  }
+  margin-bottom: 25px;
 }
 
 .fix-ad {

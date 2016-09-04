@@ -10,10 +10,11 @@ export default function ArtistHeaderComponent({artist, homeCity, props, dispatch
       <div className="col-md-9 col-sm-8 col-xs-12 header-copy">
         <h1>{artist.artistName}: Guide to {homeCity.displayName}</h1>
         <div className="header-body">
-          <div dangerouslySetInnerHTML={createMarkup(artist.description)}/>
+          <div dangerouslySetInnerHTML={createMarkup(artist.description)}></div>
         </div>
       </div>
     </div>
+    <div className="get-clear"></div>
   </div>
   );
 };
