@@ -55,11 +55,11 @@ export default class UIHeaderComponent extends Component {
       <nav className="navbar navbar-inverse navbar-collide-top">
         <div className="container">
           <div className="navbar-header">
-            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span className="sr-only">Toggle navigation</span>
+            <button type="button" className="navbar-toggle collapsed c-hamburger c-hamburger--htx" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span>Toggle navigation</span>
+              {/*<span className="icon-bar"></span>
               <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>*/}
             </button>
             <a className="navbar-brand-collide navbar-brand" href={FlowRouter.path('home')}>
               <img src="/image/new-logo.png" className="img-responsive" srcSet="/images/new-logo.png 1x, /images/new-logo@2x.png"/>

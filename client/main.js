@@ -22,9 +22,17 @@ Meteor.startup(function() {
       }
   }
 
+  function toggleHandler(toggle) {
+    document.querySelector('.c-hamburger').addEventListener( "click", function(e) {
+      e.preventDefault();
+      (this.classList.contains("is-active") === true) ? this.classList.remove("is-active") : this.classList.add("is-active");
+    });
+  }
+
   $(function() {
     $(window).scroll(sticky_relocate);
     sticky_relocate();
+    // toggleHandler();
   });
 
   // function sticky_map() {

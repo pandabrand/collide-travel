@@ -71,7 +71,7 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
   const fixedMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col' : 'col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col fix-map';
   const tableMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col' : 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col mobile-map-table';
   const _homeCenter = () => {
-    if(window.innerWidth < 511 && props.mobileMapRowPosition && props.mobileMapRowPosition !== '-1') {
+    if(window.innerWidth <= 768 && props.mobileMapRowPosition && props.mobileMapRowPosition !== '-1') {
       return props.mobileMapRowPosition;
     } else if (Object.keys(props.mapTableRowClick).length > 0) {
       return props.mapTableRowClick.coord;
@@ -81,7 +81,7 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
   }
 
   if(homeCity && locations) {
-    homeCenter = window.matchMedia('max-width: 511px').matches && Object.keys(props.mobileMapRowPosition).length > 0 ? props.mobileMapRowPosition : Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : locations[0].location;
+    homeCenter = window.matchMedia('max-width: 768px').matches && Object.keys(props.mobileMapRowPosition).length > 0 ? props.mobileMapRowPosition : Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : locations[0].location;
     return <div className="row featured-city">
       <Waypoint onEnter={_onWaypointEnter} onLeave={_onWaypointLeave} onPositionChange={_onWaypointPositionChange}/>
       <div className={fixedMapClass}>

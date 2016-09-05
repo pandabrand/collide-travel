@@ -110,3 +110,15 @@ a.hover-grey {
 .float-left {
   float: left;
 }
+
+.mobile-top-button {
+  position: absolute;
+  top: 90%;
+  right: 0;
+  background: $blackish;
+  border-radius: 5px 0 0 5px;
+  padding: 0 5px 3px;
+  @media(min-width: 769px) {
+    display: none;
+  }
+}
