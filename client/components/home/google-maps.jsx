@@ -47,13 +47,13 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
     });
 
     const _onWaypointEnter = (currentPosition) => {
-      if(window.matchMedia('(max-width: 511px)').matches && currentPosition.currentPosition === 'inside') {
+      if(window.matchMedia('(max-width: 768px)').matches && currentPosition.currentPosition === 'inside') {
         return dispatch(setMapPosition(false));
       }
     }
 
     const _onWaypointLeave = (currentPosition) => {
-      if(window.matchMedia('(max-width: 511px)').matches && currentPosition.currentPosition === 'above') {
+      if(window.matchMedia('(max-width: 768px)').matches && currentPosition.currentPosition === 'above') {
         return dispatch(setMapPosition(currentPosition.currentPosition === 'above'));
       }
     }
@@ -65,7 +65,6 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
   const tableMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col' : 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col mobile-map-table';
 
   if(homeCity && locations) {
-    console.log('window: ' + window.innerWidth);
     homeCenter = window.innerWidth <= 768 && props.mobileMapRowPosition && Object.keys(props.mobileMapRowPosition).length > 0 && props.mobileMapRowPosition !== '-1' ? props.mobileMapRowPosition : Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : locations[0].location;
     return <div className="row featured-city">
       <Waypoint onEnter={_onWaypointEnter} onLeave={_onWaypointLeave} onPositionChange={_onWaypointPositionChange}/>
