@@ -24,7 +24,6 @@ const setWaypoint = (onWaypointEnter, onWaypointLeave, onWaypointPositionChange,
 }
 
 const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, dispatch, props) => {
-  console.dir(props);
   const markerArtists = artist ? [artist] : artists;
 
   let bounds = [];
@@ -70,15 +69,6 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
 
   const fixedMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col' : 'col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col fix-map';
   const tableMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col' : 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col mobile-map-table';
-  const _homeCenter = () => {
-    if(window.innerWidth <= 768 && props.mobileMapRowPosition && props.mobileMapRowPosition !== '-1') {
-      return props.mobileMapRowPosition;
-    } else if (Object.keys(props.mapTableRowClick).length > 0) {
-      return props.mapTableRowClick.coord;
-    } else {
-      return locations[0].location;
-    }
-  }
 
   if(homeCity && locations) {
     homeCenter = window.innerWidth <= 768 && props.mobileMapRowPosition && Object.keys(props.mobileMapRowPosition).length > 0 && props.mobileMapRowPosition !== '-1' ? props.mobileMapRowPosition : Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : locations[0].location;

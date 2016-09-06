@@ -32,6 +32,9 @@ $button-transistion-duration: 0.3s;     // The transition duration
 
 .c-hamburger {
   display: block;
+  @media(min-width: 769px) {
+    display: none;
+  }
   position: relative;
   overflow: hidden;
   margin: 0;

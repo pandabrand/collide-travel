@@ -52,14 +52,13 @@ export default function MapRowComponent({location, item, hoverIndex, artists, co
   const imgSrc = cloudinaryURL(location.photo, 150, 150, 'fill', 'faces');
 
   const _onWaypointEnter = (currentPosition) => {
-    console.log(item, JSON.stringify(currentPosition));
-    if(window.matchMedia('(max-width: 511px)').matches && currentPosition.currentPosition === 'inside') {
+    if(window.matchMedia('(max-width: 768px)').matches && currentPosition.currentPosition === 'inside') {
       return dispatch(setMobileMapRowPosition(location.location));
     }
   }
 
   const _onWaypointLeave = (currentPosition) => {
-    if(window.matchMedia('(max-width: 511px)').matches) {
+    if(window.matchMedia('(max-width: 768px)').matches) {
       // return dispatch(setMobileMapRowPosition(-1));
     }
   }
