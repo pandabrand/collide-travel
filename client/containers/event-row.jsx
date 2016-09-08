@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import {createMarkup} from '../lib/utils.js';
 
 export default class EventsRowContainer extends Component {
 
@@ -8,23 +9,25 @@ export default class EventsRowContainer extends Component {
 
   render() {
     return (
-      <div className="row event-row">
-        <div className="col-xs-12 col-sm-6 col-md-6">
-          <div className="event-image-container">
-            <div className="event-image">
-              <img src={this.props.event.image}/>
-            </div>
-            <div className="event-title">
-              <div className="event-title-text">
-                {this.props.event.title}
+      <div className="row trending-row">
+        <div className="row">
+          <div className="trending-header col-md-12 col-sm-12 col-xs-12">
+            <h1 className="main-title">
+              {this.props.event.title}
+            </h1>
+          </div>
+          <div className="col-xs-12 col-sm-12 col-md-4">
+              <div className="trending-image">
+                <img className="img-responsive" src={this.props.event.image}/>
               </div>
+          </div>
+          <div className="col-xs-12 col-sm-12 col-md-8">
+            <div className="trending-body">
+              <div className="event-date">{this.props.event.date}</div>
+              <div className="event-location">{this.props.event.location}</div>
+              <div dangerouslySetInnerHTML={createMarkup(this.props.event.description)}></div>
             </div>
           </div>
-        </div>
-        <div className="col-xs-12 col-sm-6 col-md-6">
-          <div className="event-date">{this.props.event.date}</div>
-          <div className="event-location">{this.props.event.location}</div>
-          <div className="event-more-info"><button className="btn btn-info" type="button" className="more-info-button" onClick={this.handleClick.bind(this)}>more info</button></div>
         </div>
       </div>
     );

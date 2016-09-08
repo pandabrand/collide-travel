@@ -17,35 +17,34 @@ const serveTakeoverAd = (ads) => {
 
 
   export default ContestComponent = ({ads, items}) => {
-  return (<div className="fluid-container featured-container">
-          <div className="featured-row row">
-            <h1 className="featured-header">CONTESTS</h1>
-          </div>
+  return (<div className="fluid-container">
+          <h1 className="main-title">CONTESTS</h1>
           {serveStickyAd(ads)}
-          <div className="row">
-            <div className="trending-gallery">
             {items.map((article, i) => {
               const url = 'http://www.culturecollide.com'+article['dc:image'];
-              return <div key={i} className="col-md-6 col-sm-6 col-xs-12">
-                <a href={article.link} target="_blank">
-                <div className="trending-container">
+              return <div key={i} className="row trending-row">
+                <div className="row">
+                <div className="trending-header col-sm-12 col-xs-12 col-md-12">
+                  <h1 className="main-title" dangerouslySetInnerHTML={createMarkup(article.title)}></h1>
+                </div>
+                <div className="col-md-4 col-sm-12 col-xs-12 contest-box">
                   <div className="trending-image">
-                    <img className="img-responsive" src={url} />
-                  </div>
-                  <div className="trending-article">
-                    <div className="trending-header">
-                      <div dangerouslySetInnerHTML={createMarkup(article.title)}/>
-                    </div>
-                    <div className="trending-body">
-                      <div dangerouslySetInnerHTML={createMarkup(article.description)}/>
-                    </div>
+                    <a href={article.link} target="_blank">
+                      <img className="img-responsive" src={url} />
+                    </a>
                   </div>
                 </div>
-                </a>
-              </div>;
+                <div className="col-md-8 col-sm-12 col-xs-12">
+                  <div className="trending-body">
+                    <div dangerouslySetInnerHTML={createMarkup(article.description)}></div>
+                  </div>
+                  <div className="breakout-row">
+                    Enter at <a href={article.link} target="_blank">Culture Collide</a>.
+                  </div>
+                </div>
+              </div>
+            </div>;
             })}
-            </div>
-          </div>
           {serveTakeoverAd(ads)}
         </div>);
 };

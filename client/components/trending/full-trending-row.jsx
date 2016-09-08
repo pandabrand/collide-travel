@@ -27,14 +27,14 @@ export class FullTrendingRow extends Component {
           <div className="trending-header col-md-12 col-sm-12 col-xs-12">
             <h1 className="main-title" dangerouslySetInnerHTML={createMarkup(this.props.article.title)}></h1>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 col-sm-12 col-xs-12">
             <div className="trending-image">
               <a href={this.props.article.link} target="_blank">
                 <img className="img-responsive" src={url} />
               </a>
             </div>
           </div>
-          <div className="col-md-8">
+          <div className="col-md-8 col-sm-12 col-xs-12">
             <div className="trending-body">
               <div dangerouslySetInnerHTML={createMarkup(this.props.article.description)}></div>
             </div>

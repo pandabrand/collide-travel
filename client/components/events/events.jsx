@@ -19,9 +19,7 @@ const serveTakeoverAd = (ads) => {
 
 const getEvents = (events, ads, props, dispatch) => {
   return <div id="main" className="fluid-container">
-    <div className="row event-page-title">
-      <h1>Events</h1>
-    </div>
+    <h1 className="main-title">Events</h1>
     {serveStickyAd(ads)}
     {events.map((event, id) => {
       return <EventsRowContainer key={id} event={event}/>;

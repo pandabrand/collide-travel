@@ -143,7 +143,7 @@ $button-transistion-duration: 0.3s;     // The transition duration
 /* active state, i.e. menu open */
 
 .c-hamburger--htx.is-active {
-  background-color: darken(rgb(255,50,100), 20%);
+  background-color: darken($blackish, 20%);
 }
 
 .c-hamburger--htx.is-active span {

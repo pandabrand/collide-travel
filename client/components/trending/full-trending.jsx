@@ -3,10 +3,8 @@ import {createMarkup} from '../../lib/utils.js';
 import FullTrendingRow from './full-trending-row.jsx';
 
   export default FullTrendingComponent = ({res, props}) => {
-  return (res ? <div className="container-fluid">
-          <div className="featured-row row">
-            <h1 className="main-trending-header">TRENDING</h1>
-          </div>
+  return (res ? <div className="fluid-container">
+            <h1 className="main-title">TRENDING</h1>
             {res.map((article, i) => {
               return <FullTrendingRow article={article} />;
             })}
