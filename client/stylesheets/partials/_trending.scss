@@ -10,12 +10,10 @@
   margin: 0 auto;
 }
 .trending-image {
-  width: 100%;
-  @media(min-width: 768px) {
+  @media(min-width: 1023px) {
     padding: 0 0 0 60px;
     margin: 0;
   }
-  margin: 10px 30px;
   img {
     object-fit: cover;
   }
@@ -78,8 +76,9 @@
 }
 
 .trending-row {
-  padding: 10px;
-  margin-bottom: 35px;
+  border: $blackish solid 1px;
+  padding: 10px 10px 35px;
+  margin: 25px;
   .trending-header {
     h1 {
       // text-align: center;

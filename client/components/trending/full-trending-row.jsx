@@ -25,7 +25,7 @@ export class FullTrendingRow extends Component {
       <div className='row trending-row'>
         <div className='row' ref='box1'>
           <div className="trending-header col-md-12 col-sm-12 col-xs-12">
-            <h1 className="main-title" dangerouslySetInnerHTML={createMarkup(this.props.article.title)}></h1>
+            <h1 className="main-title" dangerouslySetInnerHTML={createMarkup(this.props.article.secondaryTitle)}></h1>
           </div>
           <div className="col-md-4 col-sm-12 col-xs-12">
             <div className="trending-image">
@@ -36,7 +36,10 @@ export class FullTrendingRow extends Component {
           </div>
           <div className="col-md-8 col-sm-12 col-xs-12">
             <div className="trending-body">
-              <div dangerouslySetInnerHTML={createMarkup(this.props.article.description)}></div>
+              <div dangerouslySetInnerHTML={createMarkup(this.props.article.secondaryDescription)}></div>
+            </div>
+            <div className="trending-body breakout-row">
+              Read more at <a href={this.props.article.link} target="_blank">Culture Collide</a>.
             </div>
           </div>
         </div>

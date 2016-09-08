@@ -9,7 +9,7 @@ import FullTrendingRow from './full-trending-row.jsx';
               return <FullTrendingRow article={article} />;
             })}
           <div className="breakout-row row">
-            <div className="breakout-box">Find more at <a href="http://culturecollide.com" target="_blank">Culture Collide</a>.</div>
+            <div className="breakout-box">Find more at <a href="http://www.culturecollide.com/feed/" target="_blank">Culture Collide</a>.</div>
           </div>
         </div> : null);
 };
