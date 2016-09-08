@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import {createMarkup} from '../../lib/utils.js';
 import store from '../../../lib/client/store/store.js';
+import { connect } from 'react-redux';
 import setMobileMenuClick from '../../../lib/client/actions/set-mobile-menu-click.js';
 
 export default class UIHeaderComponent extends Component {
@@ -46,11 +47,22 @@ export default class UIHeaderComponent extends Component {
 
   }
 
+  componentDidMount = () => {
+    this.unsubscribe = store.subscribe(() =>
+      this.forceUpdate()
+    );
+  }
+
+  componentWillUnmount = () => {
+    this.unsubscribe();
+  }
+
   render() {
     const {ads} = this.props;
+    const state = store.getState();
     const topAd = ads ? ads.topAd : null;
     const showTopAd = ads ? ads.showTopBannerAd : false;
-    const mobileButtonClasses = store.getState().mobileMenuClick ? 'navbar-toggle c-hamburger c-hamburger--htx is-active' : 'navbar-toggle c-hamburger c-hamburger--htx';
+    const mobileButtonClasses = state.mobileMenuClick ? 'navbar-toggle c-hamburger c-hamburger--htx is-active' : 'navbar-toggle c-hamburger c-hamburger--htx';
     const ad = (topAd && topAd.length > 0 && showTopAd) ? <div className="banner-ad fluid-container ad-container"><div dangerouslySetInnerHTML={createMarkup(topAd)}/></div> : '';
     return (
       <div className="nav-wrapper">
@@ -58,7 +70,7 @@ export default class UIHeaderComponent extends Component {
       <nav className="navbar navbar-inverse navbar-collide-top">
         <div className="container">
           <div className="navbar-header">
-            <button type="button" onClick={() => {return store.dispatch(setMobileMenuClick(!store.getState().mobileMenuClick))}} className={mobileButtonClasses} data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" onClick={() => {return store.dispatch(setMobileMenuClick(!state.mobileMenuClick))}} className={mobileButtonClasses} data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span>Toggle navigation</span>
               {/*<span className="icon-bar"></span>
               <span className="icon-bar"></span>

@@ -44,9 +44,46 @@
     }
     font-size: 1.5em;
     text-align: center;
+    h2{
+      text-align: center;
+    }
   }
   .trending-body {
     padding: 5px;
     text-align: center;
+  }
+}
+
+.main-trending-header {
+  margin: 20px 0;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: .5em;
+  text-align: center;
+}
+
+.trending-row {
+  padding: 10px;
+  margin-bottom: 35px;
+  .trending-header {
+    h1 {
+      // text-align: center;
+      margin-bottom: 1em;
+    }
+  }
+}
+
+.breakout-row {
+  .breakout-box {
+    width: 275px;
+    padding: 25px;
+    margin: 5px auto;
+    text-align: center;
+    border: $blackish 1px solid;
+    a {
+      &:hover {
+        color: $link-hover-grey;
+      }
+    }
   }
 }

@@ -1,6 +1,10 @@
 import { Cloudinary } from 'meteor/lepozepo:cloudinary';
 
-const createMarkup = (markup) => { return {__html: markup}; };
+const createMarkup = (markup) => {
+  const imgRegex = /"\/images\//gi;
+  updateImgRef = markup.replace(imgRegex, '"http:\/\/www.culturecollide.com/images/');
+  return {__html: updateImgRef};
+};
 
 const cloudinaryURL = (imgStr, w, h, crop="fill", gravity="auto") => {
   const imgFile = imgStr.substr(imgStr.lastIndexOf('/') + 1);

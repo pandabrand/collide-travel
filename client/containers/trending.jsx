@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Meteor } from 'meteor/meteor';
 
 import { composeWithTracker } from 'react-komposer';
-import { TrendingCollections } from '../../lib/collections/trending.js';
 import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 
 import TrendingComponent  from '../components/trending/trending.jsx';
@@ -15,17 +14,17 @@ const composer = (props, onData) => {
   if(adSubscription.ready()) {
     Session.setDefault('item', null);
     const ads = AdZoneCollection.findOne({});
-    Meteor.call('get.feed', (err, res) => {
-      if(!err) {
+    Meteor.call('get.feed.partial', (err, res) => {
+      // if(!err) {
         Session.set('item', res);
         trendingArticles = [];
-        const trendingData = {trendingArticles, ads, props}
+        const trendingData = {trendingArticles, res, ads, props}
         onData(null, trendingData);
-      } else {
-        console.dir(err);
-        const trendingData = {ads, props}
-        onData(null, trendingData);
-      }
+      // } else {
+      //   console.dir(err);
+      //   const trendingData = {ads, props}
+      //   onData(null, trendingData);
+      // }
     });
   }
 };

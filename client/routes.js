@@ -14,6 +14,7 @@ import MagazineContainer  from './containers/magazine.jsx';
 import EventsContainer from './containers/events.jsx';
 import EventContainer from './containers/event.jsx';
 import ContestContainer from './containers/contests.jsx';
+import FullTrendingContainer from './containers/full-trending.jsx';
 import {AboutComponent} from './components/home/about.jsx';
 import {TermsComponent} from './components/home/terms.jsx';
 import {PrivacyComponent} from './components/home/privacy.jsx';
@@ -76,6 +77,15 @@ publicRoutes.route('/contests', {
   action(params) {
     mount(AppContainer, {
       content: (<ContestContainer/>),
+    });
+  }
+});
+
+publicRoutes.route('/trending', {
+  name: 'trending',
+  action(params) {
+    mount(AppContainer, {
+      content: (<FullTrendingContainer/>),
     });
   }
 });

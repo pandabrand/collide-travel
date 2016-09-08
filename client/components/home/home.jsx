@@ -25,25 +25,6 @@ const serveTakeoverAd = (ads) => {
   return ad;
 }
 
-const _onWaypointEnter = (event, currentPosition) => {
-  console.dir(currentPosition);
-  console.dir('entering...');
-}
-
-const _onWaypointLeave = (currentPosition) => {
-  console.dir(currentPosition);
-  console.log('leaving...');
-}
-
-const _onWaypointPositionChange = (currentPosition) => {
-  console.dir(currentPosition);
-  console.log('changing...');
-}
-
-const setWaypoint = (onWaypointEnter, onWaypointLeave, onWaypointPositionChange) => {
-  return <Waypoint onEnter={onWaypointEnter} onLeave={onWaypointLeave} onPositionChange={onWaypointPositionChange} />
-}
-
 const getHome = (homePage, featuredCities, routeName, promotedCity, locations, artists, artistComments, ads, props, dispatch) => {
   return (<div>
     <div id="main" className="fluid-container">
