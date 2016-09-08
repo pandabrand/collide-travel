@@ -11,7 +11,7 @@
 }
 .trending-image {
   @media(min-width: 1023px) {
-    padding: 0 0 0 60px;
+    padding: 0 0 0 25px;
     margin: 0;
   }
   img {
@@ -26,7 +26,7 @@
 .trending-body {
   padding-right: 60px;
   @media(max-width: 768px) {
-    padding: 10px 60px;
+    padding: 10px 2px;
   }
   img {
     width: 90%;
@@ -79,10 +79,19 @@
   border: $blackish solid 1px;
   padding: 10px 10px 35px;
   margin: 25px;
+  @media(max-width: 768px) {
+    margin: 25px 60px;
+  }
+  @media(max-width: 510px) {
+    margin: 15px;
+  }
   .trending-header {
     h1 {
-      // text-align: center;
-      margin-bottom: 1em;
+      margin: 0 20px 1em;
+      @media(max-width: 768px) {
+        margin: 0 2px 1em;
+        font-size: 26px;
+      }
     }
   }
 }
