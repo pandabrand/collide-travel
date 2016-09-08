@@ -34,6 +34,11 @@
     width: 90%;
     margin: 10px auto;
   }
+  a {
+    &:hover {
+      color: $link-hover-grey;
+    }
+  }
 }
 .trending-article {
   @media(max-width: 510px) {
