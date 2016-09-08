@@ -13,6 +13,7 @@ export class FullTrendingRow extends Component {
       distance: '500px',
       scale: 1,
       easing: 'ease',
+      mobile: false,
     }
 
     sr.reveal(this.refs.box1, config)
