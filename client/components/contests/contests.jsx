@@ -25,7 +25,7 @@ const serveTakeoverAd = (ads) => {
               return <div key={i} className="row trending-row">
                 <div className="row">
                 <div className="trending-header col-sm-12 col-xs-12 col-md-12">
-                  <h1 className="main-title" dangerouslySetInnerHTML={createMarkup(article.title)}></h1>
+                  <h1 dangerouslySetInnerHTML={createMarkup(article.title)}></h1>
                 </div>
                 <div className="col-md-4 col-sm-12 col-xs-12 contest-box">
                   <div className="trending-image">

@@ -20,6 +20,6 @@ const getEvent = (event, props, dispatch) => {
 
 export default function EventComponent ( {event, props, dispatch} ) {
   return <div className="fluid-container">
-  <h2 className="main-title">{event.title}</h2>
+  <h2>{event.title}</h2>
   {getEvent(event, props, dispatch)}</div>;
 }
