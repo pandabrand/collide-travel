@@ -1,0 +1,13 @@
+.newsletter-row {
+  padding: 10px 10px 35px;
+  margin: 25px 75px;
+  @media(max-width: 768px) {
+    margin: 25px 60px;
+  }
+  @media(max-width: 510px) {
+    margin: 15px;
+  }
+  .cc-form-container {
+    width: 50%;
+  }
+}
