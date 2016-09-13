@@ -49,7 +49,7 @@ export default function MapRowComponent({location, item, hoverIndex, artists, co
   }
 
   const imgFile = location.photo.substr(location.photo.lastIndexOf('/') + 1);
-  const imgSrc = cloudinaryURL(location.photo, 150, 150, 'fill', 'faces');
+  const imgSrc = cloudinaryURL(location.photo, 150, undefined, 'scale', 'faces');
 
   const _onWaypointEnter = (currentPosition) => {
     if(window.matchMedia('(max-width: 768px)').matches && currentPosition.currentPosition === 'inside') {
