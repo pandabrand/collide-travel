@@ -8,7 +8,11 @@ const createMarkup = (markup) => {
 
 const cloudinaryURL = (imgStr, w, h, crop="fill", gravity="auto") => {
   const imgFile = imgStr.substr(imgStr.lastIndexOf('/') + 1);
-  const imgSrc = (crop === "fill" || crop === "thumb") ? $.cloudinary.url( imgFile, {width:w, height:h, gravity: gravity, crop:crop, dpr: window.devicePixelRatio}) : $.cloudinary.url( imgFile, {width:w, height:h, crop:crop, dpr: window.devicePixelRatio});
+  let cloudObj = (crop === "fill" || crop === "thumb") ? {width:w, gravity: gravity, crop:crop, dpr: window.devicePixelRatio} : {width:w, crop:crop, dpr: window.devicePixelRatio};
+  if(h && h > 0) {
+    cloudObj.height = h;
+  }
+  const imgSrc = $.cloudinary.url( imgFile, cloudObj);
   return imgSrc;
 }
 

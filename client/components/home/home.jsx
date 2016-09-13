@@ -26,9 +26,10 @@ const serveTakeoverAd = (ads) => {
 }
 
 const getHome = (homePage, featuredCities, routeName, promotedCity, locations, artists, artistComments, ads, props, dispatch) => {
+  const _width = window.innerWidth;
   return (<div>
     <div id="main" className="fluid-container">
-      <img className="hero-image" src={cloudinaryURL(homePage.image, 1240, 310, 'crop', 'auto')} />
+      <img className="hero-image" src={cloudinaryURL(homePage.image, _width, undefined, 'fill', 'auto')} />
       <div className="hero-text">
         <div className="hero-title">{homePage.title}</div>
         <div className="hero-copy">{homePage.subheader}</div>
