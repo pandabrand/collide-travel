@@ -27,6 +27,10 @@ Meteor.publish('cities', function() {
   return CitiesCollection.find();
 });
 
+Meteor.publish('city-guides', function() {
+  return CitiesCollection.find({showPrintGuide:true});
+});
+
 Meteor.publish('featured-cities', function() {
   return CitiesCollection.find({isFeatured:true},{skip:0, limit: 4});
 });

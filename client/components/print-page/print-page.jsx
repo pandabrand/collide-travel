@@ -32,7 +32,9 @@ export default function PrintPageComponent({cities, ads}) {
       </div>
       {serveStickyAd(ads)}
       <div className="print-gallery">
-        {renderPrintElements(cities)}
+        <div className="row print-row">
+          {renderPrintElements(cities)}
+        </div>
       </div>
       {serveTakeoverAd(ads)}
     </div>);

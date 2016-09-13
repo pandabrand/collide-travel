@@ -1,5 +1,5 @@
 .page-copy {
-  padding: 0 75px;
+  padding: 0 60px;
 }
 
 .print-gallery {
@@ -12,16 +12,20 @@
     margin: 0 auto;
   }
 }
+.purchase-download {
+  padding: 10px 0;
+}
 .buy, .download {
-  margin-right: 10px;
+  margin: 10px 0 0 10px;
+  width: 45%;
 }
 
 .btn-collide {
   color: $link-grey;
-  background-color: $blackish;
-  border-color: $black;
+  background-color: $white;
+  border-color: $blackish;
   &:hover {
-    color: $white;
+    color: $link-hover-grey;
   }
 }
 
@@ -51,5 +55,9 @@
 }
 
 .print-row {
-  margin: 0 40px 25px;
+  margin: 0 25px;
+}
+
+.print-container {
+  margin: 20px
 }

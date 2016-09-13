@@ -1,7 +1,8 @@
 .featured-city {
-  width: 100%;
+  padding: 0 40px;
   @media(max-width: 768px) {
     margin: 0 !important;
+    padding: 0;
   }
   .featured-map-col {
     @media(min-width: 769px) {
