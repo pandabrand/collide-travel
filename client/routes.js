@@ -38,6 +38,10 @@ import AdminCityContainer from './containers/admin/city.jsx';
 import AddNewCityComponent from './components/admin/city/new-city.jsx';
 import EditCityComponent from './components/admin/city/edit-city.jsx';
 
+import AdminMagazineContainer from './containers/admin/magazine.jsx';
+import AddNewMagazineComponent from './components/admin/magazine/new-magazine.jsx';
+import EditMagazineComponent from './components/admin/magazine/edit-magazine.jsx';
+
 import AdminArtistContainer from './containers/admin/artist.jsx';
 import AddNewArtistComponent from './components/admin/artist/new-artist.jsx';
 import EditArtistComponent from './components/admin/artist/edit-artist.jsx';
@@ -167,7 +171,7 @@ citySection.route('/:name/:locationName', {
   name: 'location',
   action(params) {
     mount(AppContainer, {
-      content: <CityContainer {...params}/>
+      content: <Cityontainer {...params}/>
     });
   }
 });
@@ -508,6 +512,46 @@ adminPageRoutes.route('/:id', {
     action(params) {
       mount(AdminAppComponent, {
         content: <EditPageComponent id={params.id}/>,
+      });
+    }
+});
+
+const adminMagazineRoutes = privateRoutes.group({
+  prefix: '/magazine',
+  triggersEnter: [ function() {
+      if(!Roles.userIsInRole(Meteor.userId(), ['super-admin','admin','editor'],'default')) {
+        return FlowRouter.go('dashboard');
+      }
+    }
+  ],
+});
+
+adminMagazineRoutes.route('/', {
+    name: 'admin-magazine',
+    action() {
+      mount(AdminAppComponent, {
+        content: <AdminMagazineContainer/>,
+      });
+    }
+});
+
+adminMagazineRoutes.route('/new', {
+    name: 'admin-magazine-new',
+    action() {
+      mount(AdminAppComponent, {
+        content: <AddNewMagazineComponent showNew={true}/>,
+      });
+    }
+});
+
+adminMagazineRoutes.route('/:id', {
+    name: 'admin-magazine-edit',
+    subscriptions: function(params) {
+      this.register('editMagazine', Meteor.subscribe('edit-magazine', params.id));
+    },
+    action(params) {
+      mount(AdminAppComponent, {
+        content: <EditMagazineComponent id={params.id}/>,
       });
     }
 });

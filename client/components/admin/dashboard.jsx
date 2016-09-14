@@ -13,6 +13,7 @@ const getDashboard = (content) => {
               <li><a className={showActiveRoute('admin-artist')} href={FlowRouter.path('admin-artist')}>Artists</a></li>
               <li><a className={showActiveRoute('admin-page')} href={FlowRouter.path('admin-page')}>Pages</a></li>
               <li><a className={showActiveRoute('admin-city')} href={FlowRouter.path('admin-city')}>City Guides</a></li>
+              <li><a className={showActiveRoute('admin-magazine')} href={FlowRouter.path('admin-magazine')}>TWP Issues</a></li>
               <li><a className={showActiveRoute('admin-location')} href={FlowRouter.path('admin-location')}>Locations</a></li>
               <li><a className={showActiveRoute('admin-events')} href={FlowRouter.path('admin-events')}>Events</a></li>
               <li><a className={showActiveRoute('admin-users')} href={FlowRouter.path('admin-users')}>Users</a></li>

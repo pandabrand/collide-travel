@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import PrintElementComponent from './print-element.jsx';
+import MagazineElementComponent from './magazine-element.jsx';
 import {createMarkup} from '../../lib/utils.js';
 
 const serveStickyAd = (ads) => {
@@ -23,7 +24,13 @@ const renderPrintElements = (cities) => {
   });
 }
 
-export default function PrintPageComponent({cities, ads}) {
+const renderMagazineElements = (magazines) => {
+  return magazines.map((print, i) => {
+    return <PrintElementComponent key={i} print={print}/>;
+  });
+}
+
+export default function PrintPageComponent({cities, magazines, ads}) {
   return(<div id="main" className="fluid-container">
       <h1 className="main-title">City Guides</h1>
       <div className="page-copy">
@@ -32,6 +39,9 @@ export default function PrintPageComponent({cities, ads}) {
       </div>
       {serveStickyAd(ads)}
       <div className="print-gallery">
+        <div className="row print-row">
+          {renderMagazineElements(magazines)}
+        </div>
         <div className="row print-row">
           {renderPrintElements(cities)}
         </div>

@@ -1,4 +1,5 @@
 import { CitiesCollection } from '../lib/collections/cities.js';
+import { MagazinesCollection } from '../lib/collections/magazines.js';
 import { LocationsCollection } from '../lib/collections/locations.js';
 import { ArtistsCollection } from '../lib/collections/artists.js';
 import { ArtistCommentsCollection } from '../lib/collections/artist-comments.js';
@@ -173,3 +174,12 @@ Meteor.publish('user-list', function (){
 Meteor.publish('get-ad', function(){
   return AdZoneCollection.find({});
 });
+
+Meteor.publish('magazines', function() {
+  return CitiesCollection.find();
+});
+
+Meteor.publish('edit-magazine', function(magazineId) {
+  check(magazineId, String);
+  return MagazinesCollection.find({_id: magazineId});
+})
