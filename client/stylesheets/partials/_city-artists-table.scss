@@ -37,9 +37,7 @@
 
 .grid-item {
   position: relative;
-  // height: 120px;
   float: left;
-  background: #D26;
   margin: 1%;
   @extend %clearfix;
   img {
