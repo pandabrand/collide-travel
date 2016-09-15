@@ -11,6 +11,7 @@ export default function ArtistHeaderComponent({artist, homeCity, props, dispatch
         <h1>{artist.artistName}: Guide to {homeCity.displayName}</h1>
         <div className="header-body">
           <div dangerouslySetInnerHTML={createMarkup(artist.description)}></div>
+          <div className="photo-credit">{artist.photoCredit ? 'photography: ' + artist.photoCredit : ''}</div>
         </div>
       </div>
     </div>

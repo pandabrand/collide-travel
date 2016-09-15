@@ -9,6 +9,7 @@ export default function CityGuideComponent({city}) {
         <h1 className="content-header">{city.displayName}</h1>
         <div className="city-copy">
           <div dangerouslySetInnerHTML={createMarkup(city.description)}/>
+          <div className="photo-credit">{city.photoCredit ? 'photography: ' + city.photoCredit : ''}</div>
         </div>
       </div>
     </div>

@@ -84,6 +84,7 @@ export default function MapRowComponent({location, item, hoverIndex, artists, co
         <p className="address">{location.address}</p>
         <div className="map-links"><a href={mapLink(location)} target="_blank">Directions <i className="fa fa-map-o"></i></a></div>
         <div className="map-links"><a className="location-website" href={location.website} target="_blank">Website <i className="fa fa-laptop"></i></a></div>
+        <div className="photo-credit map-photo-credit">{location.photoCredit ? 'photography: ' + location.photoCredit : ''}</div>
         <Waypoint scrollableAncestor={document.getElementById('map-table')} key={item} onEnter={_onWaypointEnter} onLeave={_onWaypointLeave} onPositionChange={_onWaypointPositionChange}/>
       </td>
     </tr>
