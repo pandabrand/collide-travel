@@ -30,7 +30,6 @@ const getEventTable = (events, props) => {
               const doDelete = deleteEvent.bind(event.id);
               return <tr key={i}>
                 <td>{event.title}</td>
-                <td>{moment(event.eventDate).format('MM/DD/YYYY')}</td>
                 <td><button onClick={() => {editEvent(event._id)}} type="button" className="btn btn-primary btn-sm update"><i className="fa fa-edit"/></button></td>
                 <td><button onClick={() => {deleteEvent(event._id)}} type="button" className="btn btn-danger btn-sm delete"><i className="fa fa-trash"/></button></td>
                 </tr>;
