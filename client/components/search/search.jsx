@@ -34,10 +34,6 @@ export default class SearchComponent extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    highlight(this.props.search,'searchroot');
-  }
-
   render() {
     const {cityResults,artistResults,locationResults, search} = this.props;
     return (
@@ -58,11 +54,6 @@ export default class SearchComponent extends Component {
             {artistResultsDisplay(artistResults, search)}
           </div>
         </div>
-        {/*<div className="row print-row">
-          <div className="col-md-12 col-sm-10">
-            {locationResultsDisplay(locationResults, search)}
-          </div>
-        </div>*/}
       </div>
     );
   }

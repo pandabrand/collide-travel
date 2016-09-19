@@ -3,7 +3,6 @@ import { mount } from 'react-mounter';
 import { Geolocation } from 'meteor/mdg:geolocation';
 
 
-// import { AppComponent } from './components/application/App.jsx';
 import AppContainer from './containers/app.jsx';
 import {AdminAppComponent} from './components/application/AdminApp.jsx';
 import HomeContainer from './containers/home.jsx';
