@@ -98,7 +98,6 @@ const composer = (props, onData) => {
     }
   } else {
     const homeData = composeDataFromURL(props, onData);
-    console.dir(homeData);
     onData(null, homeData);
   }
 };
