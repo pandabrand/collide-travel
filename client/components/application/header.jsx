@@ -57,6 +57,18 @@ export default class UIHeaderComponent extends Component {
     this.unsubscribe();
   }
 
+  searchHandler = (event) => {
+    if(event.keyCode === 13) {
+      event.preventDefault();
+      let search = document.getElementById('searchBar');
+      let searchValue = search.value;
+      if(searchValue.length > 0) {
+        let path = FlowRouter.path('search', {search:searchValue});
+        return FlowRouter.go(path);
+      }
+    }
+  }
+
   render() {
     const {ads} = this.props;
     const state = store.getState();
@@ -72,9 +84,6 @@ export default class UIHeaderComponent extends Component {
           <div className="navbar-header">
             <button type="button" onClick={() => {return store.dispatch(setMobileMenuClick(!state.mobileMenuClick))}} className={mobileButtonClasses} data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span>Toggle navigation</span>
-              {/*<span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>*/}
             </button>
             <a className="navbar-brand-collide navbar-brand" href={FlowRouter.path('home')}>
               <img src="/image/new-logo.png" className="img-responsive" srcSet="/images/new-logo.png 1x, /images/new-logo@2x.png"/>
@@ -96,7 +105,7 @@ export default class UIHeaderComponent extends Component {
                 <form className="navbar-form navbar-right" role="search">
                   <div className="form-group icon-addon">
                     <i className="fa fa-search"></i>
-                    <input type="text" className="form-control navbar-search-bar" placeholder="Search"></input>
+                    <input type="text" id="searchBar" className="form-control navbar-search-bar" placeholder="Search" onKeyDown={this.searchHandler}></input>
                   </div>
                 </form>
               </li>

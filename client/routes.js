@@ -122,6 +122,15 @@ publicRoutes.route('/terms', {
   }
 });
 
+publicRoutes.route('/search/:search', {
+  name: 'search',
+  action(params) {
+    mount(AppContainer, {
+      content: (<SearchContainer {...params}/>),
+    });
+  }
+});
+
 publicRoutes.route('/privacy', {
   name: 'privacy',
   action(params) {

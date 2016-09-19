@@ -183,3 +183,19 @@ Meteor.publish('edit-magazine', function(magazineId) {
   check(magazineId, String);
   return MagazinesCollection.find({_id: magazineId});
 })
+
+Meteor.publish('search', function(searchTerm) {
+  check(searchTerm, Match.OneOf( String, null, undefined ));
+  let regex = new RegExp(searchTerm, 'i'),
+  projection = {limit: 10};
+  if(searchTerm) {
+    const cityQuery = {$or:[{displayName:regex},{description:regex}]};
+    const artistQuery = {$or:[{artistName:regex},{description:regex},{cityName:regex}]};
+    const locationQuery = {$or:[{name:regex},{description:regex},{address:regex}]};
+    return [
+      CitiesCollection.find(cityQuery, {limit:10,fields:{displayName:1,description:1,cityName:1}}),
+      ArtistsCollection.find(artistQuery, {limit:10,fields:{artistName:1,description:1,cityName:1,cityId:1,artistSlug:1}}),
+      LocationsCollection.find(locationQuery, {limit:10,fields:{name:1,description:1,address:1,cityId:1}}),
+    ];
+  }
+})

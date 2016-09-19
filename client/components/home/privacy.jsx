@@ -4,7 +4,7 @@ import { Session } from 'meteor/session';
 import TrendingContainer from '../../containers/trending.jsx';
 
 const getPrivacy = () => {
-  return (<div className="container">
+  return (<div className="container-fluid cc-container">
 					<div className="row">
 						<div className="col-md-12">
 							<h1>Privacy Policy</h1>
