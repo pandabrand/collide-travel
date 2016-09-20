@@ -26,7 +26,7 @@ const renderPrintElements = (cities) => {
 
 const renderMagazineElements = (magazines) => {
   return magazines.map((print, i) => {
-    return <PrintElementComponent key={i} print={print}/>;
+    return <MagazineElementComponent key={i} print={print}/>;
   });
 }
 

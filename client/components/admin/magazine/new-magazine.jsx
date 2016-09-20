@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import DashboardComponent from '../dashboard.jsx';
 import {BlazeNewMagazineComponent} from './blaze-new-magazine.jsx';
 
-const getNewCity = (props) => {
+const getNewMagazine = (props) => {
   return <BlazeNewMagazineComponent {...props}/>;
 }
 

@@ -181,7 +181,7 @@ Meteor.publish('get-ad', function(){
 });
 
 Meteor.publish('magazines', function() {
-  return CitiesCollection.find();
+  return MagazinesCollection.find();
 });
 
 Meteor.publish('edit-magazine', function(magazineId) {
