@@ -162,6 +162,11 @@ Meteor.publish('home-page', function(isHome) {
   return PagesCollection.find({isHome:isHome});
 });
 
+Meteor.publish('page-by-title', function(title) {
+  check(title, String);
+  return PagesCollection.find({title:title});
+});
+
 Meteor.publish('edit-user', function(usrnm) {
   check(usrnm, String);
  return Meteor.users.find({'username':usrnm});
