@@ -5,11 +5,11 @@ import { Blaze } from 'meteor/blaze';
 
 export class BlazeEditUserComponent extends Component {
   componentDidMount() {
-    this.view = Blaze.render(Template.updateUser,this.refs.container);
+    // this.view = Blaze.render(Template.updateUser,this.refs.container);
   }
 
   componentWillUnmount() {
-    Blaze.remove(this.view);
+    // Blaze.remove(this.view);
   }
 
   render() {

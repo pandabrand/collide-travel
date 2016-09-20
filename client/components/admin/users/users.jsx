@@ -30,8 +30,8 @@ const getUsersTable = (users) => {
               {user.username}
             </td>
             <td>{user.roles.default}</td>
-            <td><button onClick={() => {editUser(user.username)}} type="button" className="btn btn-primary btn-sm update"><i className="fa fa-edit"/></button></td>
-            <td><button onClick={() => {deleteUser(user._id)}} type="button" className="btn btn-danger btn-sm delete"><i className="fa fa-trash"/></button></td>
+            {/*<td><button onClick={() => {editUser(user.username)}} type="button" className="btn btn-primary btn-sm update"><i className="fa fa-edit"/></button></td>
+            <td><button onClick={() => {deleteUser(user._id)}} type="button" className="btn btn-danger btn-sm delete"><i className="fa fa-trash"/></button></td>*/}
           </tr>;
         })
       }
