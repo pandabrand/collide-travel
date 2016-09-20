@@ -28,7 +28,6 @@ caching-html-compiler@1.0.7
 callback-hook@1.0.9
 check@1.2.3
 coffeescript@1.2.4_1
-cosio55:autoform-cloudinary@0.0.2
 dburles:collection-helpers@1.0.4
 dburles:google-maps@1.1.5
 ddp@1.2.5
@@ -87,7 +86,6 @@ mongo-id@1.0.5
 mpowaga:autoform-summernote@0.4.3
 mxab:simple-schema-jsdoc@0.1.1
 natestrauser:select2@4.0.3
-nekojira:cloudinary-jquery-upload@0.1.0
 npm-bcrypt@0.9.1
 npm-container@1.2.0
 npm-mongo@1.5.49
