@@ -4,7 +4,7 @@ import {createMarkup} from '../../lib/utils.js';
 
 const getSoundcloud = (artist) => {
   if(artist.soundcloud) {
-    return <div className="row">
+    return <div className="row soundcloud-row">
       <div className="soundcloud-embed">
         <div className="soundcloud-container">
           <div dangerouslySetInnerHTML={createMarkup(artist.soundcloud)}/>

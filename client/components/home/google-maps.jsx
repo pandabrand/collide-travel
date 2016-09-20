@@ -66,7 +66,7 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
 
   if(homeCity && locations) {
     homeCenter = window.innerWidth <= 768 && props.mobileMapRowPosition && Object.keys(props.mobileMapRowPosition).length > 0 && props.mobileMapRowPosition !== '-1' ? props.mobileMapRowPosition : Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : locations[0].location;
-    return <div className="row featured-city">
+    return <div className="row featured-city soundcloud-border">
       <Waypoint onEnter={_onWaypointEnter} onLeave={_onWaypointLeave} onPositionChange={_onWaypointPositionChange}/>
       <div className={fixedMapClass}>
         <div className="featured-map">

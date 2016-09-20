@@ -1,9 +1,18 @@
+.soundcloud-row {
+  float: left;
+  margin: 0 20px;
+}
 .soundcloud-embed {
-  height: 300px;
+  // height: 300px;
   border-top: $blackish solid 1px;
   border-bottom: $blackish solid 1px;
   margin: 25px 0;
+  float: left;
   .soundcloud-container {
     margin: auto;
   }
+}
+
+.soundcloud-border {
+  border-bottom: $blackish solid 1px;
 }
