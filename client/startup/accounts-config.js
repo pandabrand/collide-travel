@@ -1,6 +1,7 @@
 import { Accounts } from 'meteor/accounts-base';
 
 if(Meteor.isClient) {
+  Accounts.config({passwordResetTokenExpirationInDays:5});
   Accounts.ui.config({
     passwordSignupFields: 'USERNAME_ONLY',
   });
