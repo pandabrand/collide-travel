@@ -5,7 +5,7 @@ import SocialShareComponent from '../includes/social-share.jsx';
 export default function CityGuideComponent({city}) {
   return (
     <div className="row city-row">
-      <div className="col-sm-2 col-md-3 image side"><div className="side-image"><img src={cloudinaryURL(city.guidePreview, 235, 235)}/></div></div>
+      <div className="col-sm-2 col-md-3 image side"><div className="side-image"><img src={cloudinaryURL(city.guidePreview, 334, 334)}/></div></div>
       <div className="col-sm-10 col-md-9 content main">
         <h1 className="content-header">{city.displayName}</h1>
         <div className="city-copy">
