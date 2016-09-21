@@ -59,6 +59,7 @@ const composeDataFromLocation = (position, props, onData) => {
  }
 
 const composeData = (props, onData, city) => {
+  const limit = window.matchMedia("(max-width: 600px)").matches ? 6 : 30;
   const artists_sub = Meteor.subscribe('artists-city-by-name', city.cityName);
   const adSubscription = Meteor.subscribe('get-ad');
   let homeCity = city;
