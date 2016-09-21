@@ -90,7 +90,7 @@ const composeData = (props, onData, city) => {
 }
 
 const composer = (props, onData) => {
-  Session.setDefault('mobileLimit',6);
+  Session.setDefault('mobileLimit',16);
   if(props.geolocation) {
     position = Geolocation.latLng();
     if(position) {

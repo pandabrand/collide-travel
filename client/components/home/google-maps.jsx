@@ -11,7 +11,7 @@ import setMapLocationClick from '../../../lib/client/actions/set-map-location-cl
 import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-click.js';
 import setMapPosition from '../../../lib/client/actions/set-map-position.js';
 
-let Waypoint = require('react-waypoint');
+import Waypoint from 'react-waypoint';
 
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
 const DEFAULT_ZOOM = 14;
@@ -47,13 +47,14 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
     });
 
     const _onWaypointEnter = (currentPosition) => {
-      if(window.matchMedia('(max-width: 768px)').matches && currentPosition.currentPosition === 'inside') {
+      console.log('entering');
+      if(window.innerWidth <= 768 && currentPosition.currentPosition === 'inside') {
         return dispatch(setMapPosition(false));
       }
     }
 
     const _onWaypointLeave = (currentPosition) => {
-      if(window.matchMedia('(max-width: 768px)').matches && currentPosition.currentPosition === 'above') {
+      if(window.innerWidth > 768 && currentPosition.currentPosition === 'above') {
         return dispatch(setMapPosition(currentPosition.currentPosition === 'above'));
       }
     }

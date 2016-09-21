@@ -54,7 +54,10 @@
   height: 50px;
   background-color: $pink;
   width: 100%;
-  line-height: 50px;
+  line-height: 15px;
   text-align: center;
+  font-size: .75em;
+  padding: 10px 0 0;
 }
+
 .grid-item--width2 { width: 98%; }
