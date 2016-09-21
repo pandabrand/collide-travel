@@ -5,14 +5,14 @@ import {createMarkup} from '../../lib/utils.js';
 cityResultsDisplay = (cityResults, searchTerm) => {
   for(let x = 0; x < cityResults.length; x++) {
     let highlightedHTML = highlight(searchTerm, cityResults[x].description);
-    return <div><div><h4><a className="hover-grey" href={FlowRouter.path('city-guide',{name:cityResults[x].cityName})}>{highlight(searchTerm, cityResults[x].displayName)}</a></h4></div><div><div dangerouslySetInnerHTML={createMarkup(highlightedHTML)}></div></div></div>;
+    return <div><div><h4 className={regexMatches(searchTerm, cityResults[x].displayName) ? 'highlight' : ''}><a className="hover-grey" href={FlowRouter.path('city-guide',{name:cityResults[x].cityName})}>{cityResults[x].displayName}</a></h4></div><div><div dangerouslySetInnerHTML={createMarkup(highlightedHTML)}></div></div></div>;
   }
 }
 
 artistResultsDisplay = (artistResults, searchTerm) => {
   for(let x = 0; x < artistResults.length; x++) {
     let highlightedHTML = highlight(searchTerm, artistResults[x].description);
-    return <div><div><h4><a className="hover-grey" href={FlowRouter.path('artist-guide',{name:artistResults[x].cityName,artistName:artistResults[x].artistSlug})}>{highlight(searchTerm, artistResults[x].artistName)}</a></h4></div><div><div dangerouslySetInnerHTML={createMarkup(highlightedHTML)}></div></div></div>;
+    return <div><div><h4 className={regexMatches(searchTerm, artistResults[x].artistName) ? 'highlight' : ''}><a className="hover-grey" href={FlowRouter.path('artist-guide',{name:artistResults[x].cityName,artistName:artistResults[x].artistSlug})}>{artistResults[x].artistName}</a></h4></div><div><div dangerouslySetInnerHTML={createMarkup(highlightedHTML)}></div></div></div>;
   }
 }
 
@@ -21,6 +21,10 @@ locationResultsDisplay = (locationResults, searchTerm) => {
     let highlightedHTML = highlight(searchTerm, locationResults[x].description);
     return <div><div><h4>{highlight(searchTerm, locationResults[x].name)}</h4></div><div><div dangerouslySetInnerHTML={createMarkup(highlightedHTML)}></div></div></div>
   }
+}
+regexMatches = (searchTerm, text) => {
+  regex = new RegExp(searchTerm, 'gi');
+  return text.match(regex);
 }
 
 highlight = (searchTerm, text) => {
