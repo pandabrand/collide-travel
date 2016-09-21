@@ -7,7 +7,7 @@ import {createMarkup, cloudinaryURL} from '../../lib/utils.js';
 
 const serveCityAd = (ads, city) => {
   const cityGuideAd = ads ? ads.cityGuideAd : null;
-  const ad = (!city.showAdSpaceImage && cityGuideAd && cityGuideAd.length > 0) ? <div className="guide-ad"><div dangerouslySetInnerHTML={createMarkup(cityGuideAd)}></div></div> : (city.showAdSpaceImage && city.cityGuideAdSpaceImage && city.cityGuideAdSpaceImage.length > 0) ? <div className="guide-ad"><a href={city.cityGuideAdSpaceURLlink && city.cityGuideAdSpaceURLlink.legth > 0 ? city.cityGuideAdSpaceURLlink : 'javascript:void(0)'} target="_blank"><img src={cloudinaryURL(city.cityGuideAdSpaceImage, 270, 324, "fit")}/></a></div> : <div className="guide-ad"><img src="/image/new-logo.png" className="img-responsive" srcSet="/images/new-logo.png 1x, /images/new-logo@2x.png"/></div>;
+  const ad = (!city.showAdSpaceImage && cityGuideAd && cityGuideAd.length > 0) ? <div className="guide-ad"><div dangerouslySetInnerHTML={createMarkup(cityGuideAd)}></div></div> : (city.showAdSpaceImage && city.cityGuideAdSpaceImage && city.cityGuideAdSpaceImage.length > 0) ? <div className="guide-ad"><a href={city.cityGuideAdSpaceURLlink && city.cityGuideAdSpaceURLlink.length > 0 ? city.cityGuideAdSpaceURLlink : 'javascript:void(0)'} target="_blank"><img src={cloudinaryURL(city.cityGuideAdSpaceImage, 270, 324, "fit")}/></a></div> : <div className="guide-ad"><img src="/image/new-logo.png" className="img-responsive" srcSet="/images/new-logo.png 1x, /images/new-logo@2x.png"/></div>;
   return ad;
 }
 

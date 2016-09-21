@@ -7,6 +7,7 @@ import SelectBarComponent from '../includes/select-bar.jsx';
 import FeaturedMapsComponent from './featured-maps.jsx';
 import FeaturedCitiesComponent from '../city/featured-cities.jsx';
 import TrendingContainer from '../../containers/trending.jsx';
+import NewsletterModal from '../modals/newsletter-modal.jsx';
 
 // let Waypoint = Meteor.require('react-waypoint');
 let Waypoint = require('react-waypoint');
@@ -43,6 +44,7 @@ const getHome = (homePage, featuredCities, routeName, promotedCity, locations, a
     {serveTakeoverAd(ads)}
     <FeaturedCitiesComponent props={props} featuredCities={featuredCities} dispatch={dispatch}/>
     <TrendingContainer/>
+    <NewsletterModal shouldCloseOnOverlayClick={true} title="Let COLLiDE come to you." text="Sign up for weekly updates about new city guides, contests, and events in your city."/>
   </div>);
 }
 
