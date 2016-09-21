@@ -16,7 +16,7 @@ const showMore = () => {
   _limit = _limit + 6;
   Session.set('mobileLimit', _limit);
   const _cur = FlowRouter.current();
-  return FlowRouter.go(_cur.path,{},{hash: 'maintainScroll=1'});
+  return FlowRouter.go(_cur.path,{},{});
 }
 
 const getCityArtistsTable = (city, artists, ads, dispatch, props) => {
