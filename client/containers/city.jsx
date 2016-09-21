@@ -59,7 +59,7 @@ const composeDataFromLocation = (position, props, onData) => {
  }
 
 const composeData = (props, onData, city) => {
-  const limit = window.matchMedia("(max-width: 600px)").matches ? 6 : 30;
+  const limit = window.matchMedia("(max-width: 600px)").matches ? Session.get('mobileLimit') : 30;
   const artists_sub = Meteor.subscribe('artists-city-by-name', city.cityName);
   const adSubscription = Meteor.subscribe('get-ad');
   let homeCity = city;
@@ -67,7 +67,7 @@ const composeData = (props, onData, city) => {
   let artists = {};
   let artistComments = [];
   if(artists_sub.ready() && adSubscription.ready()) {
-    artists = ArtistsCollection.find({cityName:city.cityName}, {sort:{isFeatured: -1, artistName: 1}}).fetch();
+    artists = ArtistsCollection.find({cityName:city.cityName}, {sort:{isFeatured: -1, artistName: 1},limit:limit}).fetch();
     ads = AdZoneCollection.findOne({});
 
     const locations_sub = Meteor.subscribe('locations', homeCity._id);
@@ -90,6 +90,7 @@ const composeData = (props, onData, city) => {
 }
 
 const composer = (props, onData) => {
+  Session.setDefault('mobileLimit',6);
   if(props.geolocation) {
     position = Geolocation.latLng();
     if(position) {
