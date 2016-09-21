@@ -1,6 +1,7 @@
 import React, {PropTypes, Component} from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
-
+import {FacebookButton, PinterestButton,TwitterButton, TumblrButton} from 'react-social';
+import {createMarkup, cloudinaryURL} from '../../lib/utils.js';
 
 const getCCPath = (artist, city) => {
   let path = '';
@@ -21,6 +22,16 @@ const getCCMessage = (artist,city) => {
     message = artist.artistName + ': Guide to ' + city.displayName + ' and more at Travel Collide.';
   }
   return message;
+}
+
+const getCCMedia = (artist,city) => {
+  let mediaURL = '';
+  if(!artist) {
+    mediaURL = cloudinaryURL(city.guidePreview);
+  } else {
+    mediaURL = cloudinaryURL(artist.image);
+  }
+  return mediaURL;
 }
 
 export default class SocialShareComponent extends Component {
@@ -69,13 +80,16 @@ export default class SocialShareComponent extends Component {
 
   render() {
     const {artist, city} = this.props;
+    const url = getCCPath(artist,city);
+    const message = getCCMessage(artist,city);
+    const media = getCCMedia(artist,city);
     return (
       <div className="popover-social-icons">
-        <a href="#" onClick={this.popit.bind(this,this.twitterLink(artist, city))} className="external"><i className="fa fa-twitter"></i></a>
-        <a href="#" onClick={this.popit.bind(this,this.facebookLink(artist, city))} className="external"><i className="fa fa-facebook"></i></a>
+        <TwitterButton url={url} message={message} element={'a'}><i className="fa fa-twitter"></i></TwitterButton>
+        {/*<FacebookButton url={url} message={message} element={'a'} appId={'1247963348571465'}><i className="fa fa-facebook"></i></FacebookButton>*/}
         {/*<a href="#" onClick="http://instagram.com/officialculturecollide" target="_blank" className="external"><i className="fa fa-instagram"></i></a>*/}
-        <a href="#" onClick={this.popit.bind(this,this.pinterestLink(artist, city))} data-pin-do="buttonPin" className="external"><i className="fa fa-pinterest"></i></a>
-        <a href="#" onClick={this.popit.bind(this,this.tumblrLink(artist, city))} className="external"><i className="fa fa-tumblr"></i></a>
+        <PinterestButton url={url} message={message} element={'a'} media={media}><i className="fa fa-pinterest"></i></PinterestButton>
+        <TumblrButton url={url} message={message} element={'a'} media={media}><i className="fa fa-tumblr"></i></TumblrButton>
       </div>
     );
   }
