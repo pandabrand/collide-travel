@@ -20,7 +20,7 @@
         display: block;
         text-align: center;
         color: $link-grey;
-        &:hover {
+        &:hover, &:focus {
           color: $link-hover-white;
         }
       }

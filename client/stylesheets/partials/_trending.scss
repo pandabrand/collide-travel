@@ -33,7 +33,7 @@
     margin: 10px auto;
   }
   a {
-    &:hover {
+    &:hover, &:focus {
       color: $link-hover-grey;
     }
   }
@@ -105,7 +105,7 @@
     border: $blackish 1px solid;
   }
   a {
-    &:hover {
+    &:hover, &:focus {
       color: $link-hover-grey;
     }
   }

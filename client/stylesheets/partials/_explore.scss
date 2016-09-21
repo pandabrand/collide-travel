@@ -18,7 +18,7 @@
       @media (min-width: 509px) {
         font-size: 12px;
       }
-      &:hover {
+      &:hover, &:focus {
         color: $link-hover-grey;
       }
     }

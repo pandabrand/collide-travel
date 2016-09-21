@@ -64,7 +64,7 @@
 }
 
 .artist-comment-link {
-  &:hover {
+  &:hover, &:focus {
     color: $link-hover-grey;
   }
 }

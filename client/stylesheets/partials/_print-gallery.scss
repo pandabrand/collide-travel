@@ -24,7 +24,7 @@
   color: $link-grey;
   background-color: $white;
   border-color: $blackish;
-  &:hover {
+  &:hover, &:focus {
     color: $link-hover-grey;
   }
 }

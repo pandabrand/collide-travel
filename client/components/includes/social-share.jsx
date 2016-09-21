@@ -89,7 +89,7 @@ export default class SocialShareComponent extends Component {
       <div className="popover-social-icons">
         <TwitterButton url={url} message={message} element={'a'}><i className="fa fa-twitter"></i></TwitterButton>
         {/*<FacebookButton url={url} message={message} element={'a'} appId={'1247963348571465'} sharer={'true'}><i className="fa fa-facebook"></i></FacebookButton>*/}
-        <a href="#" onClick={this.popit.bind(this,this.facebookLink(artist,city))}><i className="fa fa-facebook"></i></a>
+        <a href={this.facebookLink(artist,city)} target="_blank"><i className="fa fa-facebook"></i></a>
          {/*<a href="#" onClick="http://instagram.com/officialculturecollide" target="_blank" className="external"><i className="fa fa-instagram"></i></a>*/}
         <PinterestButton url={url} message={message} element={'a'} media={media}><i className="fa fa-pinterest"></i></PinterestButton>
         <TumblrButton url={url} message={message} element={'a'} media={media}><i className="fa fa-tumblr"></i></TumblrButton>
