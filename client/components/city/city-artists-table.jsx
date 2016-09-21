@@ -19,7 +19,9 @@ const getCityArtistsTable = (city, artists, ads, dispatch, props) => {
       <div className="city-table-col">
           <div className="masonry-guides">
             <div className="grid-item">
-              <img src={cloudinaryURL(city.printPreview, 270, 324, "fit")} />
+              <a href={city.showDownloadLink && city.printDownloadLink && city.printDownloadLink.length > 0 ? city.printDownloadLink : 'javascript:void(0)'} target="_blank">
+                <img src={cloudinaryURL(city.printPreview, 270, 324, "fit")} />
+              </a>
             </div>
             <div className="grid-item">
                 {serveCityAd(ads, city)}

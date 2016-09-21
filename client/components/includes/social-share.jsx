@@ -1,0 +1,82 @@
+import React, {PropTypes, Component} from 'react';
+import shouldPureComponentUpdate from 'react-pure-render/function';
+
+
+const getCCPath = (artist, city) => {
+  let path = '';
+  if(!artist) {
+    path = FlowRouter.path('city-guide', {name:city.cityName});
+  } else {
+    path = FlowRouter.path('artist-guide', {name:city.cityName, artistName:artist.artistSlug});
+  }
+  const url = Meteor.absoluteUrl(path);
+  return url;
+}
+
+const getCCMessage = (artist,city) => {
+  let message = '';
+  if(!artist) {
+    message = 'Travel Collide guide to ' + city.displayName + ' and more.';
+  } else {
+    message = artist.artistName + ': Guide to ' + city.displayName + ' and more at Travel Collide.';
+  }
+  return message;
+}
+
+export default class SocialShareComponent extends Component {
+
+    constructor(props) {
+      super(props);
+    }
+
+  twitterLink = (artist, city) => {
+    const twitterURL =  'https://twitter.com/intent/tweet?text='+getCCMessage(artist,city)+'&url='+getCCPath(artist,city);
+
+  	return twitterURL;
+  }
+
+  facebookLink = (artist, city) => {
+    const path = 'https://www.facebook.com/sharer/sharer.php?u=';
+    const facebookURL = path + getCCPath(artist,city);
+
+  	return facebookURL;
+  }
+
+  pinterestLink = (artist, city) => {
+    const path = 'https://www.pinterest.com/pin/create/button/?url=';
+    const frpath = getCCPath(artist,city);
+    //add &media = imgSrc soon.
+    const description = '&description='+getCCMessage(artist,city);
+    const pintrestURL = path + frpath + description;
+
+  	return pintrestURL;
+  }
+
+  tumblrLink = (artist, city) => {
+    const path = 'http://tumblr.com/widgets/share/tool?canonicalUrl=';
+    const frpath = getCCPath(artist,city);
+    const title = '&title=' + getCCMessage(artist,city);
+    const tumblrURL = path + frpath + title;
+    return tumblrURL;
+  }
+
+  popit = (url) => {
+    const w=350,h=200,left = Number((screen.width/2)-(w/2)), tops = Number((screen.height/2)-(h/2)),
+    newwindow=window.open(url,'name','height='+h+',width='+w+',top='+tops+'left='+left);
+    if (window.focus) {newwindow.focus()}
+  	return false;
+  }
+
+  render() {
+    const {artist, city} = this.props;
+    return (
+      <div className="popover-social-icons">
+        <a href="#" onClick={this.popit.bind(this,this.twitterLink(artist, city))} className="external"><i className="fa fa-twitter"></i></a>
+        <a href="#" onClick={this.popit.bind(this,this.facebookLink(artist, city))} className="external"><i className="fa fa-facebook"></i></a>
+        {/*<a href="#" onClick="http://instagram.com/officialculturecollide" target="_blank" className="external"><i className="fa fa-instagram"></i></a>*/}
+        <a href="#" onClick={this.popit.bind(this,this.pinterestLink(artist, city))} data-pin-do="buttonPin" className="external"><i className="fa fa-pinterest"></i></a>
+        <a href="#" onClick={this.popit.bind(this,this.tumblrLink(artist, city))} className="external"><i className="fa fa-tumblr"></i></a>
+      </div>
+    );
+  }
+}

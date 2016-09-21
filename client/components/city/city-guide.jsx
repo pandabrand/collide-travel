@@ -1,5 +1,6 @@
 import React from 'react';
 import {createMarkup, cloudinaryURL} from '../../lib/utils.js';
+import SocialShareComponent from '../includes/social-share.jsx';
 
 export default function CityGuideComponent({city}) {
   return (
@@ -9,6 +10,7 @@ export default function CityGuideComponent({city}) {
         <h1 className="content-header">{city.displayName}</h1>
         <div className="city-copy">
           <div dangerouslySetInnerHTML={createMarkup(city.description)}/>
+          <SocialShareComponent city={city}/>
           <div className="photo-credit">{city.photoCredit ? 'photography: ' + city.photoCredit : ''}</div>
         </div>
       </div>

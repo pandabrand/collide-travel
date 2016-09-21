@@ -1,5 +1,6 @@
 import React from 'react';
 import {createMarkup, cloudinaryURL} from '../../lib/utils.js';
+import SocialShareComponent from '../includes/social-share.jsx';
 
 export default function ArtistHeaderComponent({artist, homeCity, props, dispatch}) {
   return (<div className="jumbotron artist-jumbo">
@@ -11,6 +12,7 @@ export default function ArtistHeaderComponent({artist, homeCity, props, dispatch
         <h1>{artist.artistName}: Guide to {homeCity.displayName}</h1>
         <div className="header-body">
           <div dangerouslySetInnerHTML={createMarkup(artist.description)}></div>
+          <SocialShareComponent city={homeCity} artist={artist}/>
           <div className="photo-credit">{artist.photoCredit ? 'photography: ' + artist.photoCredit : ''}</div>
         </div>
       </div>

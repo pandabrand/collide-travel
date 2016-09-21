@@ -31,38 +31,9 @@ export default class MapMarkerComponent extends Component {
     const pulse = (mapTableRowClick && parseInt(mapTableRowClick.item) === parseInt(item)) ? 'pulse' : '';
     const imgFile = location.photo.substr(location.photo.lastIndexOf('/') + 1);
     const imgSrc = cloudinaryURL( location.photo, 246, 246 );
-    
+
     const mapLink = (location) => {
       return 'https://www.google.com/maps/dir/Current+Location/'+location.location.lat+','+location.location.lng;
-    }
-
-    const twitterLink = (location, _a, comment) => {
-      const path = FlowRouter.path('artist-guide', {name:_a.cityName, artistName:_a.artistSlug});
-      const url = Meteor.absoluteUrl(path);
-      return 'https://twitter.com/intent/tweet?text='+_a.artistName + ' on ' + location.name + ' and more at Travel Collide.&url='+url;
-    }
-
-    const facebookLink = (location, _a, comment) => {
-      const path = 'https://www.facebook.com/sharer/sharer.php?u=';
-      const frpath = FlowRouter.path('artist-guide', {name:_a.cityName, artistName:_a.artistSlug});
-      const url = Meteor.absoluteUrl(frpath);
-      return path + url;
-    }
-
-    const pinterestLink = (location, _a, comment) => {
-      const path = 'https://www.pinterest.com/pin/create/button/?url=';
-      const frpath = FlowRouter.path('artist-guide', {name:_a.cityName, artistName:_a.artistSlug});
-      const media = '&media=' + imgSrc;
-      const description = '&description='+_a.artistName + ' on ' + location.name + ' and more at Travel Collide.';
-      return path + frpath + media + description;
-    }
-
-    const tumblrLink = (location, _a, comment) => {
-      const path = 'http://tumblr.com/widgets/share/tool?canonicalUrl=';
-      const frpath = FlowRouter.path('artist-guide', {name:_a.cityName, artistName:_a.artistSlug});
-      const title = '&title=' + _a.artistName + ' on ' + location.name;
-      const content = '&content=' + comment.comment;
-      return path + frpath + title + content;
     }
 
     const getArtistsWithLocation = (location, artists) => {
@@ -95,13 +66,6 @@ export default class MapMarkerComponent extends Component {
                 return comment && !comment.hideComment && comment.comment && comment.comment.length > 0 && comment.comment !== 'undefined' ? <div key={i} style={{boxShadow: '1px 1px 2px 0 '+ _a.color}} className="pin-artist-comment">
                           <div className="pin-artist">{_a.artistName}</div>
                           <div className="pin-comment">{comment.comment}</div>
-                          <div className="popover-social-icons">
-                            <a href={twitterLink(location, _a, comment)} target="_blank" className="external"><i className="fa fa-twitter"></i></a>
-                            <a href={facebookLink(location, _a, comment)} target="_blank" className="external"><i className="fa fa-facebook"></i></a>
-                            {/*<a href="http://instagram.com/officialculturecollide" target="_blank" className="external"><i className="fa fa-instagram"></i></a>*/}
-                            <a href={pinterestLink(location, _a, comment)} data-pin-do="buttonPin" target="_blank" className="external"><i className="fa fa-pinterest"></i></a>
-                            <a href={tumblrLink(location, _a, comment)} target="_blank" className="external"><i className="fa fa-tumblr"></i></a>
-                          </div>
                         </div> : <div key={i} style={{boxShadow: '1px 1px 2px 0 '+ _a.color}} className="pin-artist-comment"><a className="artist-comment-link" href={FlowRouter.path('artist-guide', {name:_a.cityName, artistName:_a.artistSlug})}><div className="pin-artist">{_a.artistName} Recommends</div></a></div>;
               })}
               <div className="map-links"><a href={mapLink(location)} target="_blank">Directions <i className="fa fa-map-o"></i></a></div>
