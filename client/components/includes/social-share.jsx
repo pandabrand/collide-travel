@@ -47,10 +47,12 @@ export default class SocialShareComponent extends Component {
   }
 
   facebookLink = (artist, city) => {
-    const path = 'https://www.facebook.com/sharer/sharer.php?u=';
-    const facebookURL = path + getCCPath(artist,city);
-
-  	return facebookURL;
+    const path = 'https://www.facebook.com/dialog/share?display=popup&app_id='+Meteor.settings.public.FACEBOOK_ID;
+    const message = getCCMessage(artist,city);
+    const media = getCCMedia(artist,city);
+    const facebookShareURL = getCCPath(artist,city);
+    const facebookShareLink = path + '&href=' + facebookShareURL + '&link=' + facebookShareURL + '&caption=' + message + '&media=' + media + '&redirect_uri=' + facebookShareURL;
+  	return facebookShareLink;
   }
 
   pinterestLink = (artist, city) => {
@@ -86,8 +88,9 @@ export default class SocialShareComponent extends Component {
     return (
       <div className="popover-social-icons">
         <TwitterButton url={url} message={message} element={'a'}><i className="fa fa-twitter"></i></TwitterButton>
-        {/*<FacebookButton url={url} message={message} element={'a'} appId={'1247963348571465'}><i className="fa fa-facebook"></i></FacebookButton>*/}
-        {/*<a href="#" onClick="http://instagram.com/officialculturecollide" target="_blank" className="external"><i className="fa fa-instagram"></i></a>*/}
+        {/*<FacebookButton url={url} message={message} element={'a'} appId={'1247963348571465'} sharer={'true'}><i className="fa fa-facebook"></i></FacebookButton>*/}
+        <a href="#" onClick={this.popit.bind(this,this.facebookLink(artist,city))}><i className="fa fa-facebook"></i></a>
+         {/*<a href="#" onClick="http://instagram.com/officialculturecollide" target="_blank" className="external"><i className="fa fa-instagram"></i></a>*/}
         <PinterestButton url={url} message={message} element={'a'} media={media}><i className="fa fa-pinterest"></i></PinterestButton>
         <TumblrButton url={url} message={message} element={'a'} media={media}><i className="fa fa-tumblr"></i></TumblrButton>
       </div>
