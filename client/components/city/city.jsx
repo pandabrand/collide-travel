@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Waypoint from 'react-waypoint';
 import CityGuideComponent from './city-guide.jsx';
 import ArtistCityGuideComponent from './artist-city-guide.jsx';
 import CityMapsComponent from './city-map.jsx';
@@ -9,7 +10,6 @@ import TrendingContainer from '../../containers/trending.jsx';
 import {createMarkup} from '../../lib/utils.js';
 import setMapPosition from '../../../lib/client/actions/set-map-position.js';
 
-let Waypoint = require('react-waypoint');
 
 const serveStickyAd = (ads) => {
   const takeoverAd = ads ? ads.takeoverAd : null;
@@ -53,7 +53,7 @@ const getCity = (homeCity, locations, artists, artistComments, ads, props, dispa
           </div>
           <div className="fluid-container map-border">
             <div className="row city-wrapper featured-city">
-              <Waypoint onEnter={_onWaypointEnter} onLeave={_onWaypointLeave} onPositionChange={_onWaypointPositionChange}/>
+              <Waypoint scrollableAncestor={window} onEnter={_onWaypointEnter} onLeave={_onWaypointLeave} onPositionChange={_onWaypointPositionChange}/>
               <CityMapsComponent key="artists-city-map-component" dispatch={dispatch} props={props} city={homeCity} locations={locations} artists={artists} artistComments={artistComments}/>
               <CityArtistsTableComponent ads={ads} city={homeCity} artists={artists} props={props}/>
               <div className="get-clear"></div>

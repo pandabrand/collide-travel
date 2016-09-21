@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 import { connect } from 'react-redux';
 
+import Waypoint from 'react-waypoint';
 import GoogleMap from 'google-map-react';
 import MapMarkerComponent from '../mapping/map-marker.jsx';
 import {K_CIRCLE_SIZE} from '../mapping/marker-style.js';
@@ -10,8 +11,6 @@ import setCircleHover from '../../../lib/client/actions/set-circle-hover.js';
 import setMapLocationClick from '../../../lib/client/actions/set-map-location-click.js';
 import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-click.js';
 import setMapPosition from '../../../lib/client/actions/set-map-position.js';
-
-import Waypoint from 'react-waypoint';
 
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
 const DEFAULT_ZOOM = 14;
@@ -47,14 +46,13 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
     });
 
     const _onWaypointEnter = (currentPosition) => {
-      console.log('entering');
-      if(window.innerWidth <= 768 && currentPosition.currentPosition === 'inside') {
+      if(window.matchMedia('(max-width: 511px)').matches && currentPosition.currentPosition === 'inside') {
         return dispatch(setMapPosition(false));
       }
     }
 
     const _onWaypointLeave = (currentPosition) => {
-      if(window.innerWidth > 768 && currentPosition.currentPosition === 'above') {
+      if(window.matchMedia('(max-width: 511px)').matches && currentPosition.currentPosition === 'above') {
         return dispatch(setMapPosition(currentPosition.currentPosition === 'above'));
       }
     }
@@ -68,7 +66,7 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
   if(homeCity && locations) {
     homeCenter = window.innerWidth <= 768 && props.mobileMapRowPosition && Object.keys(props.mobileMapRowPosition).length > 0 && props.mobileMapRowPosition !== '-1' ? props.mobileMapRowPosition : Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : locations[0].location;
     return <div className="row featured-city soundcloud-border">
-      <Waypoint onEnter={_onWaypointEnter} onLeave={_onWaypointLeave} onPositionChange={_onWaypointPositionChange}/>
+      <Waypoint scrollableAncestor={window} onEnter={_onWaypointEnter} onLeave={_onWaypointLeave} onPositionChange={_onWaypointPositionChange}/>
       <div className={fixedMapClass}>
         <div className="featured-map">
           <GoogleMap

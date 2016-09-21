@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 import { connect } from 'react-redux';
 
+import Waypoint from 'react-waypoint';
 import GoogleMap from 'google-map-react';
 import MapMarkerComponent from '../mapping/map-marker.jsx';
 import {K_CIRCLE_SIZE} from '../mapping/marker-style.js';
@@ -11,7 +12,7 @@ import setMapLocationClick from '../../../lib/client/actions/set-map-location-cl
 import setMapTableRowClick from '../../../lib/client/actions/set-map-table-row-click.js';
 import setMapPosition from '../../../lib/client/actions/set-map-position.js';
 
-let Waypoint = require('react-waypoint');
+// let Waypoint = require('react-waypoint');
 
 const MAP_KEY = Meteor.settings.public.GMAP_KEY;
 const DEFAULT_ZOOM = 14;
@@ -73,7 +74,7 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
   if(homeCity && locations) {
     homeCenter = window.innerWidth <= 768 && props.mobileMapRowPosition && Object.keys(props.mobileMapRowPosition).length > 0 && props.mobileMapRowPosition !== '-1' ? props.mobileMapRowPosition : Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : locations[0].location;
     return <div className="row featured-city">
-      <Waypoint onEnter={_onWaypointEnter} onLeave={_onWaypointLeave} onPositionChange={_onWaypointPositionChange}/>
+      <Waypoint scrollableAncestor={window} onEnter={_onWaypointEnter} onLeave={_onWaypointLeave} onPositionChange={_onWaypointPositionChange}/>
       <div className={fixedMapClass}>
         <div className="featured-map">
           <GoogleMap
