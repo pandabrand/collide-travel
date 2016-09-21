@@ -61,3 +61,14 @@
 }
 
 .grid-item--width2 { width: 98%; }
+
+.show-more-button {
+  text-align: center;
+  border: $pink 1px solid;
+  width: 100%;
+  display: block;
+  padding: 10px;
+  &:hover, &:focus {
+    color: $link-hover-grey;
+  }
+}

@@ -11,6 +11,14 @@ const serveCityAd = (ads, city) => {
   return ad;
 }
 
+const showMore = () => {
+  let _limit = Session.get('mobileLimit');
+  _limit = _limit + 6;
+  Session.set('mobileLimit', _limit);
+  const _cur = FlowRouter.current();
+  return FlowRouter.go(_cur.path,{},{hash: 'maintainScroll=1'});
+}
+
 const getCityArtistsTable = (city, artists, ads, dispatch, props) => {
   const tableMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 artist-tiles' : 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12  artist-tiles mobile-map-table';
 
@@ -30,6 +38,7 @@ const getCityArtistsTable = (city, artists, ads, dispatch, props) => {
               let showLong = i%3 === 0;
               return <CityArtistsGridItem key={i} artist={artist} city={city} showLong={showLong}/>;
             })}
+            { window.matchMedia("(max-width: 511px)").matches ? <div className="grid-item grid-item--width2 show-more-container"><a href="javascript:void(0)" onClick={showMore.bind(this, showMore)} className="show-more-button">See more.</a></div> : ''}
           </div>
           </div>
         </div>;
