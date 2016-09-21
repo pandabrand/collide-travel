@@ -12,30 +12,55 @@ import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 import SpinnerComponent from '../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
-  const subscription = Meteor.subscribe('type-locations',props.type);
+
   const adSubscription = Meteor.subscribe('get-ad');
-  if(subscription.ready() && adSubscription.ready()) {
+  if(adSubscription.ready()) {
     let homeCity = {};
     let locations = [];
     let artists = [];
     let artistComments = [];
 
     ads = AdZoneCollection.findOne({});
-    locations = LocationsCollection.find({type: props.type}).fetch();
-    if(locations.length > 0) {
+    if(props.name) {
+      subscription = Meteor.subscribe('city-type-locations', props.type, props.name);
+      if(subscription.ready()) {
+        homeCity = CitiesCollection.findOne({cityName: props.name});
+        locations = LocationsCollection.find({type: props.type, cityName: props.name}).fetch();
+        if(locations.length > 0) {
+          const locationIds =  _.pluck(locations, '_id');
 
-      const locationIds =  _.pluck(locations, '_id');
+          const artist_sub = Meteor.subscribe('artist-by-location', locationIds);
+          const comments_sub = Meteor.subscribe('artist-comments-by-location',locationIds);
+          if(artist_sub.ready() && comments_sub.ready()) {
+            artists = ArtistsCollection.find({locationIds: {$in:locationIds}}).fetch();
+            artistComments = ArtistCommentsCollection.find({locationId: {$in: locationIds}}).fetch();
 
-      const city_sub = Meteor.subscribe('find-city-id', locations[0].cityId);
-      const artist_sub = Meteor.subscribe('artist-by-location', locationIds);
-      const comments_sub = Meteor.subscribe('artist-comments-by-location',locationIds);
-      if(city_sub.ready() &&  artist_sub.ready() && comments_sub.ready()) {
-        homeCity = CitiesCollection.findOne({_id:locations[0].cityId});
-        artists = ArtistsCollection.find({locationIds: {$in:locationIds}}).fetch();
-        artistComments = ArtistCommentsCollection.find({locationId: {$in: locationIds}}).fetch();
+            const categoryData = {homeCity, locations, artists, artistComments, ads, props}
+            onData(null, categoryData);
+          }
+        }
+      }
 
-        const categoryData = {homeCity, locations, artists, artistComments, ads, props}
-        onData(null, categoryData);
+    } else {
+      let subscription = Meteor.subscribe('type-locations',props.type);
+      if(subscription.ready()) {
+        locations = LocationsCollection.find({type: props.type}).fetch();
+        if(locations.length > 0) {
+
+          const locationIds =  _.pluck(locations, '_id');
+
+          const city_sub = Meteor.subscribe('find-city-id', locations[0].cityId);
+          const artist_sub = Meteor.subscribe('artist-by-location', locationIds);
+          const comments_sub = Meteor.subscribe('artist-comments-by-location',locationIds);
+          if(city_sub.ready() &&  artist_sub.ready() && comments_sub.ready()) {
+            homeCity = CitiesCollection.findOne({_id:locations[0].cityId});
+            artists = ArtistsCollection.find({locationIds: {$in:locationIds}}).fetch();
+            artistComments = ArtistCommentsCollection.find({locationId: {$in: locationIds}}).fetch();
+
+            const categoryData = {homeCity, locations, artists, artistComments, ads, props}
+            onData(null, categoryData);
+          }
+        }
       }
     }
 

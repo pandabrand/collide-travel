@@ -77,6 +77,12 @@ Meteor.publish('type-locations', function(categoryType) {
     return LocationsCollection.find({type: categoryType});
 });
 
+Meteor.publish('city-type-locations', function(categoryType, cityName) {
+  check(categoryType, String);
+  check(cityName, String);
+  return [CitiesCollection.find({cityName:cityName}), LocationsCollection.find({type: categoryType, cityName: cityName})];
+});
+
 Meteor.publish('categories', function(){
   return LocationsCollection.find();
 });

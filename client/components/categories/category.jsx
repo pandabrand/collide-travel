@@ -20,9 +20,9 @@ const serveTakeoverAd = (ads) => {
 
 
 const getCategory = (homeCity, locations, artists, artistComments, ads, props, dispatch) => {
-
+  const categoryHeader = FlowRouter.current().params && FlowRouter.current().params.name ? homeCity.displayName + ': ' + props.type : props.type;
   return <div id="main">
-          <CategoryGuideComponent category={props.type} />
+          <CategoryGuideComponent category={categoryHeader} />
           <div>
             {serveStickyAd(ads)}
           </div>

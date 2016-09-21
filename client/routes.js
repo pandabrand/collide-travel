@@ -139,8 +139,21 @@ publicRoutes.route('/privacy', {
   }
 });
 
-publicRoutes.route('/category/:type', {
+const categorySection = publicRoutes.group({
+  prefix: "/category"
+});
+
+categorySection.route('/:type', {
   name: 'category-guide',
+  action(params) {
+    mount(AppContainer, {
+      content: <CategoryContainer {...params}/>
+    });
+  }
+});
+
+categorySection.route('/:type/city/:name', {
+  name: 'city-category-guide',
   action(params) {
     mount(AppContainer, {
       content: <CategoryContainer {...params}/>

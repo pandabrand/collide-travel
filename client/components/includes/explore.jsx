@@ -19,14 +19,17 @@ const showArtistLabel = (artists) => {
 const showCategoryLabel = (locationCategories) => {
   const CURRENT_ROUTE = FlowRouter.current();
   if(CURRENT_ROUTE.params) {
-    return CURRENT_ROUTE.params.type ? 'Category: '+_.find(locationCategories, function(category){return CURRENT_ROUTE.params.type === category}) : 'Category ';
+    return CURRENT_ROUTE.params.type ? 'Category: '+_.findWhere(locationCategories, {type: CURRENT_ROUTE.params.type}).type : 'Category ';
   }
 }
 
 export const ExploreBarComponent = ({cities, artists, locationCategories, props}) => {
     const CURRENT_ROUTE = FlowRouter.current();
+    console.dir(locationCategories);
     const cityFilter = (CURRENT_ROUTE.params && CURRENT_ROUTE.params.name) ? {cityName: CURRENT_ROUTE.params.name} : null;
     const filteredArtists = cityFilter ? _.where(artists, cityFilter) : artists;
+    const filteredCategories = cityFilter ? _.where(locationCategories, cityFilter) : locationCategories;
+
     return(
       <div className="explore-bar">
         <div className="dropdown">
@@ -75,8 +78,8 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
           </button>
           <ul className="dropdown-menu right-dropdown-menu" aria-labelledby="dropdownMenu3">
             <li><a href='/'>Home</a></li>
-            {locationCategories.map((category, i) => {
-              return <li key={i}><a href={FlowRouter.path('category-guide',{type:category})}>{category}</a></li>
+            {filteredCategories.map((category, i) => {
+              return <li key={i}><a href={(FlowRouter.current().params && FlowRouter.current().params.name) ? FlowRouter.path('city-category-guide',{type:category.type, name:FlowRouter.current().params.name}) : FlowRouter.path('category-guide',{type:category.type})}>{category.type}</a></li>
             })}
           </ul>
         </div>
