@@ -7,7 +7,7 @@ import setMobileMenuClick from '../../../lib/client/actions/set-mobile-menu-clic
 
 export default class UIHeaderComponent extends Component {
   componentWillMount = () => {
-    const title = 'Travel Collide';
+    const title = 'Collide Travel';
     DocHead.setTitle(title);
     const charset = {charset: 'utf-8'};
     DocHead.addMeta(charset);
