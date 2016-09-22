@@ -1,6 +1,8 @@
 footer {
   clear: both;
   width: 100%;
+  position: absolute;
+  bottom: 0;
   .footLinks {
     text-transform: uppercase;
     color: $whitish;
@@ -13,4 +15,8 @@ footer {
   .text-center {
     text-align: center;
   }
+}
+
+footer, .push {
+  height: 72px;
 }

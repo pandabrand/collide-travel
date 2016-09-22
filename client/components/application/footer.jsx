@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 export default class UIFooterComponent extends Component {
   render() {
     return (
-      <footer id="footer">
+      <footer id="footer" className="push">
       	<div className="container">
       		<div className="text-center footLinks">
       			© 2016 Culture Collide &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

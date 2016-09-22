@@ -6,6 +6,20 @@
   }
   // padding-bottom: 60px;
 }
+.footer-wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  position: relative;
+  margin: 0 auto -72px; /* the bottom margin is the negative value of the footer's height */
+  padding: 0 0 72px;
+  @extend %clearfix;
+}
+
+.clearfix {
+  @extend %clearfix;
+}
+
 .fullheight {
     height: 100%;
 }
