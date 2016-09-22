@@ -25,8 +25,9 @@ const showCategoryLabel = (locationCategories) => {
 
 export const ExploreBarComponent = ({cities, artists, locationCategories, props}) => {
     const CURRENT_ROUTE = FlowRouter.current();
-    console.dir(locationCategories);
     const cityFilter = (CURRENT_ROUTE.params && CURRENT_ROUTE.params.name) ? {cityName: CURRENT_ROUTE.params.name} : null;
+    const selectedArtist = CURRENT_ROUTE.params && CURRENT_ROUTE.params.artistName ? true : false;
+    const selectedCategory = CURRENT_ROUTE.params && CURRENT_ROUTE.params.type ? true : false;
     const filteredArtists = cityFilter ? _.where(artists, cityFilter) : artists;
     const filteredCategories = cityFilter ? _.where(locationCategories, cityFilter) : locationCategories;
 
@@ -36,11 +37,11 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
           <a className="btn" className="explore-btn" href={FlowRouter.path('city-guide-near-me')}><i className="fa fa-crosshairs"/> Near Me</a>
         </div>
         <div className="dropdown">
-          <button className="btn btn-default dropdown-toggle show-mobile-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <button className={cityFilter ? 'selected btn btn-default dropdown-toggle show-mobile-button' : 'btn btn-default dropdown-toggle show-mobile-button'} type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             {showCityLabel(cities)}
             <span className="caret"></span>
           </button>
-          <button className="btn btn-default dropdown-toggle show-lrgscrn-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <button className={cityFilter ? 'selected btn btn-default dropdown-toggle show-lrgscrn-button' : 'btn btn-default dropdown-toggle show-lrgscrn-button' } type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Explore by {showCityLabel(cities)}
             <span className="caret"></span>
           </button>
@@ -52,11 +53,11 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
           </ul>
         </div>
         <div className="dropdown">
-          <button className="btn btn-default dropdown-toggle show-mobile-button" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <button className={selectedArtist ? 'selected btn btn-default dropdown-toggle show-mobile-button' : 'btn btn-default dropdown-toggle show-mobile-button'} type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             {showArtistLabel(artists)}
             <span className="caret"></span>
           </button>
-          <button className="btn btn-default dropdown-toggle show-lrgscrn-button" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <button className={selectedArtist ? 'selected btn btn-default dropdown-toggle show-lrgscrn-button' : 'btn btn-default dropdown-toggle show-lrgscrn-button'} type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Explore by {showArtistLabel(artists)}
             <span className="caret"></span>
           </button>
@@ -68,11 +69,11 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
           </ul>
         </div>
         <div className="dropdown">
-          <button className="btn btn-default dropdown-toggle show-mobile-button" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <button className={selectedCategory ? 'selected btn btn-default dropdown-toggle show-mobile-button' : 'btn btn-default dropdown-toggle show-mobile-button'} type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             {showCategoryLabel(locationCategories)}
             <span className="caret"></span>
           </button>
-          <button className="btn btn-default dropdown-toggle show-lrgscrn-button" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <button className={selectedCategory ? 'selected btn btn-default dropdown-toggle show-lrgscrn-button' : 'btn btn-default dropdown-toggle show-lrgscrn-button'} type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Explore by {showCategoryLabel(locationCategories)}
             <span className="caret"></span>
           </button>
