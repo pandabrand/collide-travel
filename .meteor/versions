@@ -90,6 +90,7 @@ npm-bcrypt@0.9.1
 npm-container@1.2.0
 npm-mongo@1.5.49
 observe-sequence@1.0.12
+okgrow:analytics@2.0.0
 okgrow:router-autoscroll@0.1.8
 ordered-dict@1.0.8
 pauldowman:dotenv@1.0.1
