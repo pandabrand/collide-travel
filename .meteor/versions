@@ -71,6 +71,8 @@ mdg:validation-error@0.5.1
 meteor@1.2.17
 meteor-base@1.0.4
 meteorhacks:async@1.0.0
+meteorhacks:kadira@2.30.0
+meteorhacks:meteorx@1.4.1
 meteorhacks:npm@1.5.0
 michalvalasek:autoform-bootstrap-colorpicker@0.1.0
 minifier-css@1.2.14
@@ -83,6 +85,7 @@ modules-runtime@0.7.6
 momentjs:moment@2.15.0
 mongo@1.1.12
 mongo-id@1.0.5
+mongo-livedata@1.0.12
 mpowaga:autoform-summernote@0.4.3
 mxab:simple-schema-jsdoc@0.1.1
 natestrauser:select2@4.0.3
