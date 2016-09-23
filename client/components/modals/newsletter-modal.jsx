@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import Modal  from './modal.jsx';
 import {Form, Field, FieldType, Text} from 'simple-react-form';
 import { TextField, EmailField } from 'simple-react-form-bootstrap/lib/fields/string';
+import Cookies from 'js-cookie';
 
 validateEmail = (email) => {
   var re = /^(([^<>()[]\.,;:s@"]+(.[^<>()[]\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/igm;
@@ -27,14 +28,14 @@ export default class NewsletterModal extends Component {
       isOpen: false,
       emailError: '',
       successMessage: '',
+      showModal: false,
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    Session.setDefault('modalShown', false);
   }
 
   openModal() {
-    if(!Session.get('modalShown')) {
+    if(!this.state.showModal) {
       this.setState({
         isOpen: true,
       });
@@ -42,13 +43,17 @@ export default class NewsletterModal extends Component {
   }
 
   closeModal() {
-    Session.set('modalShown',true);
+    Cookies.set('modalShown', 'yes', {expires:30});
     this.setState({
       isOpen: false,
+      showModal: true,
     });
   }
 
   componentDidMount() {
+    if('yes' === Cookies.get('modalShown')) {
+      this.setState({showModal: true});
+    }
     window.setTimeout(this.openModal, 3000);
   }
 
