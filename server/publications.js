@@ -131,7 +131,7 @@ Meteor.publish('artist-by-location', function(locationIds){
 
 Meteor.publish('artist-related', function(artistId){
   check(artistId, String);
-  return ArtistsCollection.find({ _id: { $nin: [artistId] } },{limit:3});
+  return ArtistsCollection.find({ _id: { $nin: [artistId] } },{limit:3,fields:{artistSlug:1,artistName:1,image:1,cityName:1,cityId:1}});
 })
 
 Meteor.publish('artist-comments-by-location', function(locationIds) {
