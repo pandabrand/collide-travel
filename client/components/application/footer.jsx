@@ -13,11 +13,6 @@ export default class UIFooterComponent extends Component {
       			<a href="/privacy">Privacy Policy</a>
       		</div>
       	</div>
-      	<div className="row">
-      		<div className="col-md-6 text-right page-scroll">
-      		</div>
-
-      	</div>
       </footer>
     );
   }
