@@ -60,7 +60,7 @@ const composeDataFromLocation = (position, props, onData) => {
 
 const composeData = (props, onData, city) => {
   const limit = window.innerWidth <= 511 ? Session.get('mobileLimit') : 30;
-  const artists_sub = Meteor.subscribe('artists-city-by-name', city.cityName);
+  const artists_sub = Meteor.subscribe('artists-city-by-name-image', city.cityName);
   const adSubscription = Meteor.subscribe('get-ad');
   let homeCity = city;
   let locations = {};

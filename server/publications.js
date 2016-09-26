@@ -28,12 +28,16 @@ Meteor.publish('cities', function() {
   return CitiesCollection.find();
 });
 
+Meteor.publish('explore-cities', function() {
+  return CitiesCollection.find({},{fields: {cityName:1,displayName:1,isPromoted:1}});
+});
+
 Meteor.publish('city-guides', function() {
   return CitiesCollection.find({showPrintGuide:true});
 });
 
 Meteor.publish('featured-cities', function() {
-  return CitiesCollection.find({isFeatured:true},{skip:0, limit: 4});
+  return CitiesCollection.find({isFeatured:true},{skip:0, limit: 6, fields:{displayName:1,printPreview:1,cityName:1}});
 });
 
 Meteor.publish('find-city', function(cityName) {
@@ -49,7 +53,7 @@ Meteor.publish('find-city-id', function(id) {
 });
 
 Meteor.publish('promoted-city', function() {
-  return CitiesCollection.find({isPromoted: true});
+  return CitiesCollection.find({isPromoted: true}, {fields:{displayName:1,isPromoted:1,cityName:1}});
 });
 
 Meteor.publish('locations', function(cityId){
@@ -87,9 +91,18 @@ Meteor.publish('categories', function(){
   return LocationsCollection.find();
 });
 
+Meteor.publish('explore-categories', function(){
+  return LocationsCollection.find({},{fields:{type:1,name:1,cityName:1}});
+});
+
 Meteor.publish('artists', function(){
   return ArtistsCollection.find();
 })
+
+Meteor.publish('explore-artists', function(){
+  return ArtistsCollection.find({},{fields:{cityName:1,artistSlug:1,artistName:1,isFeatured:1}});
+})
+
 
 Meteor.publish('artist', function(id){
   check(id, String);
@@ -98,7 +111,12 @@ Meteor.publish('artist', function(id){
 
 Meteor.publish('artists-city-by-name', function(cityName) {
     check(cityName, String);
-    return ArtistsCollection.find({cityName:cityName});
+    return ArtistsCollection.find({cityName:cityName},{fields:{artistName:1,cityName:1,artistSlug:1,locationIds:1,isFeatured:1,color:1}});
+})
+
+Meteor.publish('artists-city-by-name-image', function(cityName) {
+    check(cityName, String);
+    return ArtistsCollection.find({cityName:cityName},{fields:{artistName:1,cityName:1,artistSlug:1,locationIds:1,isFeatured:1,color:1,image:1}});
 })
 
 Meteor.publish('artist-name', function(name){

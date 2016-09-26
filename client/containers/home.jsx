@@ -19,11 +19,11 @@ const composer = (props, onData) => {
   const adSubscription = Meteor.subscribe('get-ad');
 
   if(subscription.ready() && homePage_sub.ready() && promoted_sub.ready() && adSubscription.ready()) {
-    const featuredCities = CitiesCollection.find({isFeatured:true},{skip:0,limit:6}).fetch();
+    const featuredCities = CitiesCollection.find({isFeatured:true},{skip:0,limit:6, fields:{displayName:1,printPreview:1,cityName:1}}).fetch();
 
     const homePage = PagesCollection.findOne({isHome: true});
 
-    const promotedCity = CitiesCollection.findOne({isPromoted: true});
+    const promotedCity = CitiesCollection.findOne({isPromoted: true}, {fields:{displayName:1,isPromoted:1,cityName:1}});
 
     const ads = AdZoneCollection.findOne({});
 
@@ -32,7 +32,7 @@ const composer = (props, onData) => {
     let artists = {};
     let artistComments = [];
     if(artists_sub.ready()) {
-      artists = ArtistsCollection.find({cityName:promotedCity.cityName},{sort:{artistName:1}}).fetch();
+      artists = ArtistsCollection.find({cityName:promotedCity.cityName},{sort:{artistName:1},fields:{artistName:1,cityName:1,artistSlug:1,locationIds:1,isFeatured:1,color:1}}).fetch();
 
       const locations_sub = Meteor.subscribe('locations', promotedCity._id);
       if(locations_sub.ready()) {
