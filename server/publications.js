@@ -37,7 +37,7 @@ Meteor.publish('city-guides', function() {
 });
 
 Meteor.publish('featured-cities', function() {
-  return CitiesCollection.find({isFeatured:true},{skip:0, limit: 6, fields:{displayName:1,printPreview:1,cityName:1}});
+  return CitiesCollection.find({isFeatured:true},{skip:0, limit: 6, fields:{displayName:1,printPreview:1,cityName:1,isFeatured:1}});
 });
 
 Meteor.publish('find-city', function(cityName) {
