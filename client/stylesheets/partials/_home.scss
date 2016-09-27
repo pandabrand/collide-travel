@@ -13,7 +13,7 @@
     @media (max-width: 768px) {
       height: 200px;
       padding: 0 !important;
-      box-shadow: -25px 29px 25px rgba($blackish,.5);
+      box-shadow: -25px 14px 25px rgba($blackish,.5);
     }
     .featured-map {
       @media(min-width: 769px) {
@@ -47,6 +47,7 @@
     @media (max-width: 768px) {
       height: 200px;
       padding: 0 !important;
+      box-shadow: -25px 14px 25px rgba($blackish,.5);
     }
     .city-map {
       @media(min-width: 769px) {

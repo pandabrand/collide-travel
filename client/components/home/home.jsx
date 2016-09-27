@@ -9,7 +9,6 @@ import FeaturedCitiesComponent from '../city/featured-cities.jsx';
 import TrendingContainer from '../../containers/trending.jsx';
 import NewsletterModal from '../modals/newsletter-modal.jsx';
 
-// let Waypoint = Meteor.require('react-waypoint');
 let Waypoint = require('react-waypoint');
 
 const serveStickyAd = (ads) => {

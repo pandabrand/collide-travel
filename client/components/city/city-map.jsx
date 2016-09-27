@@ -3,6 +3,8 @@ import shouldPureComponentUpdate from 'react-pure-render/function';
 import { connect } from 'react-redux';
 
 import GoogleMap from 'google-map-react';
+import classnames from 'classnames';
+
 import MapMarkerComponent from '../mapping/map-marker.jsx';
 import {K_CIRCLE_SIZE} from '../mapping/marker-style.js';
 import {MapTableComponent} from '../mapping/map-table.jsx';
@@ -43,7 +45,7 @@ const getCityMap = (city, locations, artists, artistComments, dispatch, props) =
     map.fitBounds(bound);
   }
 
-  const fixedMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 city-map-col' : 'col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 city-map-col fix-map';
+  let fixedMapClass = classnames('col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 city-map-col', {'fix-map': props.mapPosition});
 
   if(city && locations) {
     homeCenter = locations[0].location;

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 import { connect } from 'react-redux';
+import classnames from 'classnames';
 
 import CityArtistsGridItem from './city-artists-grid-item.jsx';
 import {createMarkup, cloudinaryURL} from '../../lib/utils.js';
@@ -20,7 +21,7 @@ const showMore = () => {
 }
 
 const getCityArtistsTable = (city, artists, ads, dispatch, props) => {
-  const tableMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 artist-tiles' : 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12  artist-tiles mobile-map-table';
+  let tableMapClass = classnames('col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 artist-tiles',{'mobile-map-table':props.mapPosition});
 
   if(city && artists) {
     return <div className={tableMapClass}>

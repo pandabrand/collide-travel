@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import Waypoint from 'react-waypoint';
 import GoogleMap from 'google-map-react';
+import classnames from 'classnames';
+
 import MapMarkerComponent from '../mapping/map-marker.jsx';
 import {K_CIRCLE_SIZE} from '../mapping/marker-style.js';
 import {MapTableComponent} from '../mapping/map-table.jsx';
@@ -30,7 +32,6 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
   let bounds = [];
 
   _onChildClick = (key, childProps) => {
-    // console.dir(childProps);
     return dispatch(setMapTableRowClick({item: childProps.item, coord: childProps.location.location}));
   }
 
@@ -68,14 +69,14 @@ const getCoordsByCity = (homeCity, locations, artist, artists, artistComments, d
   const _onWaypointPositionChange = (currentPosition) => {
   }
 
-  const fixedMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col' : 'col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col fix-map';
-  const tableMapClass = !props.mapPosition ? 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col' : 'col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col mobile-map-table';
+  let fixedMapClass = classnames('col-md-6 col-sm-6 col-md-push-6 col-sm-push-6 col-xs-12 featured-map-col', {'fix-map': props.mapPosition});
+  let tableMapClass = classnames('col-md-6 col-sm-6 col-md-pull-6 col-sm-pull-6 col-xs-12 featured-table-col', {'mobile-map-table' : props.mapPosition});
 
   if(homeCity && locations) {
     homeCenter = window.innerWidth <= 768 && props.mobileMapRowPosition && Object.keys(props.mobileMapRowPosition).length > 0 && props.mobileMapRowPosition !== '-1' ? props.mobileMapRowPosition : Object.keys(props.mapTableRowClick).length > 0 ? props.mapTableRowClick.coord : locations[0].location;
     return <div className="row featured-city">
       <Waypoint scrollableAncestor={window} onEnter={_onWaypointEnter} onLeave={_onWaypointLeave} onPositionChange={_onWaypointPositionChange} fireOnRapidScroll={true}/>
-      <div className={fixedMapClass}>
+      <div id="featured-map-col-id" className={fixedMapClass}>
         <div className="featured-map">
           <GoogleMap
             bootstrapURLKeys={{key: MAP_KEY}}
