@@ -201,7 +201,7 @@ Meteor.publish('user-list', function (){
 });
 
 Meteor.publish('get-ad', function(){
-  return AdZoneCollection.find({});
+  return AdZoneCollection.find({},{limit:1,sort:{_id:-1}});
 });
 
 Meteor.publish('magazines', function() {

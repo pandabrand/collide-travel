@@ -62,3 +62,6 @@ shell-server
 reacttech:af-cloudinary
 okgrow:analytics
 meteorhacks:kadira
+kadira:debug
+meteorhacks:unblock
+meteorhacks:fast-render
