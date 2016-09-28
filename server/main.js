@@ -20,27 +20,31 @@ Meteor.startup(() => {
 });
 
 const trendingCron = new Cron(function() {
-	Meteor.call('get.feed.partial', (err, res) => {
-		if(res && res.length > 0) {
-			TrendingCollection.remove({});
-			res.map((article, i) => {
-				check(article,{
-					title: String,
-					secondaryTitle: String,
-					description: String,
-					secondaryDescription: String,
-					link: String,
-					guid: String,
-					'dc:image': String,
-					'dc:subject': String,
-					'dc:date': String
-				});
-				TrendingCollection.insert({secondaryTitle:article.secondaryTitle, secondaryDescription: article.secondaryDescription, link:article.link, guid: article.guid, image: article['dc:image']});
-			})
-		}
+	Meteor.defer(function() {
+		console.dir('updating trending');
+		Meteor.call('get.feed.partial', (err, res) => {
+			if(res && res.length > 0) {
+				TrendingCollection.remove({});
+				res.map((article, i) => {
+					console.dir(article);
+					check(article,{
+						title: String,
+						secondaryTitle: String,
+						description: String,
+						secondaryDescription: Match.OneOf(String,Object),
+						link: String,
+						guid: String,
+						'dc:image': String,
+						'dc:subject': String,
+						'dc:date': String
+					});
+					secondaryDesc = typeof article.secondaryDescription === 'string' ? article.secondaryDescription : ' ';
+					TrendingCollection.insert({secondaryTitle:article.secondaryTitle, secondaryDescription: secondaryDesc, link:article.link, guid: article.guid, image: article['dc:image']});
+				})
+			}
+		});
 	});
-
 }, {
-    minute: 10,
+    minute: 46,
 		// hour: 6
 });
