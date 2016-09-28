@@ -3,7 +3,7 @@ import UIHeader from './header.jsx';
 import UIFooter from './footer.jsx';
 
 export const AdminLayoutComponent = ({content}) => (
-  <div className="fullheight">
+  <div className="fullheight footer-wrapper">
     <UIHeader/>
     <div className="shim"></div>
     <div className="fullheight">{content}</div>
