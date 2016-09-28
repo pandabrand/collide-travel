@@ -41,6 +41,6 @@ const trendingCron = new Cron(function() {
 	});
 
 }, {
-    minute: 47,
+    minute: 10,
 		// hour: 6
 });
