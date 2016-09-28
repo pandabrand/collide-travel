@@ -5,6 +5,7 @@ import { ArtistsCollection } from '../lib/collections/artists.js';
 import { ArtistCommentsCollection } from '../lib/collections/artist-comments.js';
 import { EventsCollection } from '../lib/collections/events.js';
 import { PagesCollection } from '../lib/collections/pages.js';
+import { TrendingCollection } from '../lib/collections/trending.js';
 import { AdZoneCollection } from '../lib/collections/ad-zone.js';
 let haversine = require('haversine');
 
@@ -212,6 +213,14 @@ Meteor.publish('edit-magazine', function(magazineId) {
   check(magazineId, String);
   return MagazinesCollection.find({_id: magazineId});
 })
+
+Meteor.publish('trending', function() {
+  return TrendingCollection.find();
+});
+
+Meteor.publish('get-trending', function() {
+  return TrendingCollection.find({},{limit:3,sort:{_id:-1}});
+});
 
 Meteor.publish('search', function(searchTerm) {
   check(searchTerm, Match.OneOf( String, null, undefined ));

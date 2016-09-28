@@ -9,12 +9,11 @@ import {createMarkup} from '../../lib/utils.js';
           <div className="row">
             <div className="trending-gallery">
             {res.map((article, i) => {
-              const url = 'http://www.culturecollide.com'+article['dc:image'];
               return <div key={i} className="col-md-4 col-sm-6 col-xs-12">
                 <a href={article.link} target="_blank">
                 <div className="trending-container">
                   <div className="trending-image">
-                    <img className="img-responsive" src={url} />
+                    <img className="img-responsive" src={article.image} />
                   </div>
                   <div className="trending-article">
                     <div className="trending-header">
