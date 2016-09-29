@@ -1,22 +1,10 @@
 import React, { Component } from 'react'
-import sr from '../includes/scroll-reveal.js'
 import {createMarkup} from '../../lib/utils.js';
 
 export class FullTrendingRow extends Component {
   props: Props;
 
   componentDidMount = () => {
-    // const config = {
-    //   origin: 'right',
-    //   duration: 1000,
-    //   delay: 150,
-    //   distance: '500px',
-    //   scale: 1,
-    //   easing: 'ease',
-    //   mobile: false,
-    // }
-    //
-    // sr.reveal(this.refs.box1, config)
   }
 
   render () {
