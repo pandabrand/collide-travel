@@ -8,11 +8,12 @@ import { LocationsCollection } from '../../lib/collections/locations.js';
 import { ArtistsCollection } from '../../lib/collections/artists.js';
 import  {ExploreBarComponent}  from '../components/includes/explore.jsx';
 import SpinnerComponent from '../components/includes/spinner.jsx';
+import { subs } from '../main.js';
 
 const composer = (props, onData) => {
-  const citySubscription = Meteor.subscribe('explore-cities');
-  const cat_sub = Meteor.subscribe('explore-categories');
-  const art_sub = Meteor.subscribe('explore-artists');
+  const citySubscription = subs.subscribe('explore-cities');
+  const cat_sub = subs.subscribe('explore-categories');
+  const art_sub = subs.subscribe('explore-artists');
 
   if(citySubscription.ready() && cat_sub.ready() && art_sub.ready()) {
     const cities = CitiesCollection.find({},{sort:{isPromoted: -1, isFeatured: -1, displayName: 1},fields: {cityName:1,displayName:1,isPromoted:1}}).fetch();

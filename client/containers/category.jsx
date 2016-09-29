@@ -10,10 +10,11 @@ import { ArtistCommentsCollection } from '../../lib/collections/artist-comments.
 import { CategoryComponent } from '../components/categories/category.jsx';
 import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 import SpinnerComponent from '../components/includes/spinner.jsx';
+import { subs } from '../main.js';
 
 const composer = (props, onData) => {
 
-  const adSubscription = Meteor.subscribe('get-ad');
+  const adSubscription = subs.subscribe('get-ad');
   if(adSubscription.ready()) {
     let homeCity = {};
     let locations = [];
@@ -22,15 +23,15 @@ const composer = (props, onData) => {
 
     ads = AdZoneCollection.findOne({});
     if(props.name) {
-      subscription = Meteor.subscribe('city-type-locations', props.type, props.name);
+      subscription = subs.subscribe('city-type-locations', props.type, props.name);
       if(subscription.ready()) {
         homeCity = CitiesCollection.findOne({cityName: props.name});
         locations = LocationsCollection.find({type: props.type, cityName: props.name}).fetch();
         if(locations.length > 0) {
           const locationIds =  _.pluck(locations, '_id');
 
-          const artist_sub = Meteor.subscribe('artist-by-location', locationIds);
-          const comments_sub = Meteor.subscribe('artist-comments-by-location',locationIds);
+          const artist_sub = subs.subscribe('artist-by-location', locationIds);
+          const comments_sub = subs.subscribe('artist-comments-by-location',locationIds);
           if(artist_sub.ready() && comments_sub.ready()) {
             artists = ArtistsCollection.find({locationIds: {$in:locationIds}}).fetch();
             artistComments = ArtistCommentsCollection.find({locationId: {$in: locationIds}}).fetch();

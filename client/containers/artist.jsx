@@ -10,11 +10,12 @@ import { ArtistCommentsCollection } from '../../lib/collections/artist-comments.
 import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 import { ArtistGuideComponent } from '../components/artist/artist.jsx';
 import SpinnerComponent from '../components/includes/spinner.jsx';
+import { subs } from '../main.js';
 
 const composer = (props, onData) => {
-  const subscription = Meteor.subscribe('find-city',props.name);
-  const artist_sub = Meteor.subscribe('artist-name', props.artistName);
-  const adSubscription = Meteor.subscribe('get-ad');
+  const subscription = subs.subscribe('find-city',props.name);
+  const artist_sub = subs.subscribe('artist-name', props.artistName);
+  const adSubscription = subs.subscribe('get-ad');
   let homeCity = {};
   let locations = {};
   let artist = {};
@@ -25,12 +26,12 @@ const composer = (props, onData) => {
     homeCity = CitiesCollection.findOne({cityName:props.name});
     artist = ArtistsCollection.findOne({artistSlug:props.artistName});
     ads = AdZoneCollection.findOne({});
-    const locations_sub = Meteor.subscribe('artist-locations', artist.locationIds);
+    const locations_sub = subs.subscribe('artist-locations', artist.locationIds);
     if(locations_sub.ready()) {
         locations = LocationsCollection.find({_id: {$in: artist.locationIds}}).fetch({},{sort: {isFeatured: -1, name: 1}});
 
-        const comments_sub = Meteor.subscribe('artist-comments', artist._id);
-        const related_sub = Meteor.subscribe('artist-related', artist._id);
+        const comments_sub = subs.subscribe('artist-comments', artist._id);
+        const related_sub = subs.subscribe('artist-related', artist._id);
 
         if (comments_sub.ready() && related_sub.ready()) {
           artistComments = ArtistCommentsCollection.find({artistId: artist._id}).fetch();

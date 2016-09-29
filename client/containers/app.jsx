@@ -7,9 +7,10 @@ import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 
 import  {AppComponent}  from '../components/application/App.jsx';
 import SpinnerComponent from '../components/includes/spinner.jsx';
+import { subs } from '../main.js';
 
 const composer = (props, onData) => {
-  const adSubscription = Meteor.subscribe('get-ad');
+  const adSubscription = subs.subscribe('get-ad');
   if(adSubscription.ready()) {
     ads = AdZoneCollection.findOne({});
     const adData = {ads, props}

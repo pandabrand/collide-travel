@@ -12,30 +12,31 @@ import { ArtistCommentsCollection } from '../../lib/collections/artist-comments.
 import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 import { CityComponent } from '../components/city/city.jsx';
 import SpinnerComponent from '../components/includes/spinner.jsx';
+import { subs } from '../main.js';
 
 const getLocations = (id) => {
-  const locations_sub = Meteor.subscribe('locations',id);
+  const locations_sub = subs.subscribe('locations',id);
   if(locations_sub.ready()) {
     return LocationsCollection.find({cityId: id}, {sort:{isFeatured: -1, name: 1}}).fetch();
   }
 }
 
 const getArtistLocations = (locationIds) => {
-  const locations_sub = Meteor.subscribe('artist-locations', locationIds);
+  const locations_sub = subs.subscribe('artist-locations', locationIds);
   if(locations_sub.ready()) {
     return LocationsCollection.find({_id: {$in: locationIds}},{sort:{isFeatured: -1, name: 1}});
   }
 }
 
 const getArtistComments = (artistId) => {
-  const ac_sub = Meteor.subscribe('artist-comments', artistId);
+  const ac_sub = subs.subscribe('artist-comments', artistId);
   if(ac_sub.ready()) {
     return ArtistCommentsCollection.find({artistId: artistId}).fetch();
   }
 }
 
 const composeDataFromLocation = (position, props, onData) => {
-  const subscription = Meteor.subscribe('cities');
+  const subscription = subs.subscribe('cities');
   if(subscription.ready()) {
     const cities = CitiesCollection.find({}).fetch();
     const start = {latitude: position.lat, longitude: position.lng};
@@ -51,7 +52,7 @@ const composeDataFromLocation = (position, props, onData) => {
 }
 
  const composeDataFromURL = (props, onData) => {
-   const subscription = Meteor.subscribe('find-city',props.name);
+   const subscription = subs.subscribe('find-city',props.name);
    if(subscription.ready()) {
      const city = CitiesCollection.findOne({cityName:props.name});
      return composeData(props, onData, city);
@@ -60,8 +61,8 @@ const composeDataFromLocation = (position, props, onData) => {
 
 const composeData = (props, onData, city) => {
   const limit = window.innerWidth <= 511 ? Session.get('mobileLimit') : 30;
-  const artists_sub = Meteor.subscribe('artists-city-by-name-image', city.cityName);
-  const adSubscription = Meteor.subscribe('get-ad');
+  const artists_sub = subs.subscribe('artists-city-by-name-image', city.cityName);
+  const adSubscription = subs.subscribe('get-ad');
   let homeCity = city;
   let locations = {};
   let artists = {};
@@ -70,11 +71,11 @@ const composeData = (props, onData, city) => {
     artists = ArtistsCollection.find({cityName:city.cityName}, {sort:{isFeatured: -1, artistName: 1},limit:limit}).fetch();
     ads = AdZoneCollection.findOne({});
 
-    const locations_sub = Meteor.subscribe('locations', homeCity._id);
+    const locations_sub = subs.subscribe('locations', homeCity._id);
     if(locations_sub.ready()) {
         locations = LocationsCollection.find({cityId:homeCity._id}, {sort:{isFeatured: -1, name: 1}}).fetch();
 
-        const ac_sub = Meteor.subscribe('all-artist-comments');
+        const ac_sub = subs.subscribe('all-artist-comments');
         if(ac_sub.ready()) {
           for(let x = 0; x < artists.length; x++) {
             const _comm = ArtistCommentsCollection.find({artistId: artists[x]._id}).fetch();
