@@ -11,7 +11,6 @@ export const LayoutComponent = ({ads, content}) => {
   return (<div className="footer-wrapper">
     <UIHeaderComponent ads={ads}/>
     <ExploreBarContainer/>
-    {/*<div className="shim"></div>*/}
     <div className="clearfix">{content}</div>
     <UIFooterComponent/>
   </div>

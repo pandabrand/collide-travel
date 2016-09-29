@@ -45,6 +45,6 @@ const trendingCron = new Cron(function() {
 		});
 	});
 }, {
-    minute: 46,
-		// hour: 6
+    minute: 45,
+		hour: 8
 });
