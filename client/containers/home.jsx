@@ -39,10 +39,12 @@ const composer = (props, onData) => {
       if(locations_sub.ready()) {
           locations = LocationsCollection.find({cityId:promotedCity._id},{sort:{isFeatured:-1,name: 1}}).fetch();
 
-          const ac_sub = subs.subscribe('all-artist-comments');
+          const artistIds = _.pluck(artists, '_id');
+          const ac_sub = subs.subscribe('artist-comments-by-artist', artistIds);
           if(ac_sub.ready()) {
+            const artistsComments = ArtistCommentsCollection.find({artistId: {$in: artistIds}}).fetch();
             for(let x = 0; x < artists.length; x++) {
-              const _comm = ArtistCommentsCollection.find({artistId: artists[x]._id}).fetch();
+              const _comm = _.where(artistsComments, {artistId: artists[x]._id});
               for(let y = 0; y < _comm.length; y++) {
                 artistComments.push(_comm[y]);
               }
