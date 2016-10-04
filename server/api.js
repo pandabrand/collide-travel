@@ -14,7 +14,10 @@ api.addCollection(CitiesCollection);
 
 // Maps to: /api/articles/:id
 api.addRoute('cities/:name', {authRequired: false}, {
-  get: function () {
+  get: {
+    authRequired: false,
+    action: function () {
     return CitiesCollection.find({name:this.urlParams.name});
-  },
+    },
+  }
 });
