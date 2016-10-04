@@ -8,7 +8,8 @@
       return;
     } else {
       let xhr = new XMLHttpRequest();
-      xhr.open("GET", "https://collide-travel.herokuapp.com/api/cities/chicago", false);
+      xhr.setRequestHeader('Access-Control-Allow-Origin','https://collide-travel.herokuapp.com/');
+      xhr.open("GET", "https://collide-travel.herokuapp.com/api/cities/chicago", true);
       xhr.send();
 
       console.dir(xhr.status);
