@@ -5,6 +5,10 @@ const api = new Restivus({
   useDefaultAuth: true,
   prettyJson: true,
   enableCors: true,
+  defaultHeaders: {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin':'https://collide-travel.herokuapp.com/',
+  },
 });
 
 api.addCollection(CitiesCollection);
