@@ -4,7 +4,6 @@ import { CitiesCollection } from '../lib/collections/cities.js';
 const api = new Restivus({
   useDefaultAuth: true,
   prettyJson: true,
-  enableCors: true,
 });
 
 api.addCollection(CitiesCollection);
