@@ -1,5 +1,8 @@
 (function(global) {
   console.dir('hi there.');
+  attachAndCreate();
+
+  
   function attachAndCreate() {
     console.dir('called');
     let cc_info = document.getElementById('cc-info');
