@@ -1,4 +1,5 @@
 (function(global) {
+  console.dir('hi there.');
   function attachAndCreate() {
     console.dir('called');
     let cc_info = document.getElementById('cc-info');
@@ -13,9 +14,4 @@
       cc_info.appendChild.div_doc;
     }
   }
-
-  if (window.attachEvent)
-      window.attachEvent('onload', attachAndCreate);
-  else
-      window.addEventListener('load', attachAndCreate, false);
 })();// hi there
