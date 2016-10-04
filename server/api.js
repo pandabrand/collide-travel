@@ -6,7 +6,6 @@ const api = new Restivus({
   prettyJson: true,
   enableCors: true,
   defaultHeaders: {
-    'Content-Type': 'application/json',
     'Access-Control-Allow-Origin':'https://collide-travel.herokuapp.com/',
   },
 });
