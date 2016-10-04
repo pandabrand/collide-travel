@@ -37,7 +37,7 @@ const getCityArtistsTable = (city, artists, ads, dispatch, props) => {
             </div>
             {artists.map((artist,i) => {
               let showLong = i%3 === 0;
-              let addId = window.innerWidth <= 511 && Session.get('mobileLimit') === (i+1);
+              let addId = window.innerWidth <= 511 && (Session.get('mobileLimit') - 6) === (i+1);
               return <CityArtistsGridItem key={i} artist={artist} city={city} showLong={showLong} addScrollId={addId}/>;
             })}
             { window.matchMedia("(max-width: 511px)").matches ? <div className="grid-item grid-item--width2 show-more-container"><a href="javascript:void(0)" onClick={showMore.bind(this, showMore)} className="show-more-button">See more.</a></div> : ''}
