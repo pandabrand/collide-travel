@@ -3,21 +3,20 @@
 
 
   function attachAndCreate() {
-    var data = null;
-
-    var xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
-
-    xhr.addEventListener("readystatechange", function () {
-      if (this.readyState === 4) {
-        console.dir(this.responseText);
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://collide-travel.herokuapp.com/cc-city/chicago",
+      "method": "GET",
+      "headers": {
+        "cache-control": "no-cache",
+        "postman-token": "aff514f9-afd2-ba79-7979-87c6a57116dd"
       }
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
     });
-
-    xhr.open("GET", "https://collide-travel.herokuapp.com/cc-city/chicago");
-    xhr.setRequestHeader("cache-control", "no-cache");
-
-    xhr.send(data);
     // let cc_info = document.getElementById('cc-info');
     // if(!cc_info) {
     //   return;
