@@ -43,8 +43,14 @@ Meteor.publish('featured-cities', function() {
 
 Meteor.publish('find-city', function(cityName) {
   check(cityName, String);
-  cities = CitiesCollection.find({cityName:cityName});
-  return cities;
+  return CitiesCollection.find({cityName:cityName},{fields:{displayName:1, cityName:1, description:1, guidePreview:1, isDefault:1, isPromoted:1, printPreview:1, isFeatured:1}});
+});
+
+Meteor.publish('cc-city', function(cityName) {
+  check(cityName, String);
+  return CitiesCollection.find({cityName:cityName},{fields:{displayName:1, cityName:1, description:1, guidePreview:1}});
+}, {
+  url: "cc-city/:0"
 });
 
 Meteor.publish('find-city-id', function(id) {
