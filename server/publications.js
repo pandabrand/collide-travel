@@ -53,7 +53,7 @@ Meteor.publish('cc-city', function(cityName) {
   let locations = LocationsCollection.find({cityId:{$in:cityIds}},{limit:10,fields:{name:1,address:1,photo:1,description:1,website:1,location:1,photoCredit:1}});
   let artists = ArtistsCollection.find({cityId:{$in:cityIds}},{fields:{artistName:1,artistSlug:1,locationIds:1,color:1}});
   let artistIds = artists.map(function(a) { return a._id; });
-  let locationIds = locations.map(function(l) return l._id);
+  let locationIds = locations.map(function(l) {return l._id;});
   let comments = ArtistCommentsCollection.find({artistId:{$in:artistIds}, locationId:{$in:locationIds}});
   return [city,locations,artists,comments];
 }, {
