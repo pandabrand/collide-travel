@@ -37,7 +37,7 @@
               location_title_div.className = 'cc-location-table-row-title';
               let location_title = document.createTextNode(location.name);
               location_title_div.appendChild(location_title);
-              location_row.appendChild(location_desc_div);
+              location_row.appendChild(location_title_div);
 
               let location_desc_div = document.createElement('div');
               location_desc_div.className = 'cc-location-table-row-desc';
