@@ -1,6 +1,6 @@
 (function(global) {
   attachAndCreate();
-
+  let map,city_coord;
 
   function attachAndCreate() {
     let cc_info = document.getElementById('cc-info');
@@ -13,7 +13,21 @@
         success: function(response) {
           console.dir(response);
           let city = response.cities[0];
-          let div_doc = document.createElement('div');
+          city_coord = city.location;
+          //make map
+          let map_div = document.createElement('div');
+          map_div.className = 'cc-google-map';
+          map_div.id = 'cc-map';
+          cc_info.appendChild(map_div);
+          
+          var s = document.createElement('script');
+          s.type = 'text/javascript';
+          s.async = true;
+          s.defer = true;
+          s.src = 'https://maps.googleapis.com/maps/api/js?key='+Meteor.settings.public.GMAP_KEY+'&callback=initMap';
+          var x = document.getElementsByTagName('script')[0];
+          x.parentNode.insertBefore(s, x);
+
           //create map title div and text
           let map_title_div = document.createElement('div');
           map_title_div.className = 'cc-map-title';
@@ -58,4 +72,12 @@
       });
     }
   }
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('cc-map'), {
+      center: city_coord,
+      zoom: 8
+    });
+  }
+
 })();// hi there

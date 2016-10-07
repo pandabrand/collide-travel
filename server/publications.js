@@ -48,7 +48,7 @@ Meteor.publish('find-city', function(cityName) {
 
 Meteor.publish('cc-city', function(cityName) {
   check(cityName, String);
-  let city = CitiesCollection.find({cityName:cityName},{fields:{displayName:1, cityName:1, description:1, guidePreview:1}});
+  let city = CitiesCollection.find({cityName:cityName},{fields:{displayName:1, cityName:1, description:1, guidePreview:1,location:1}});
   let cityIds = city.map(function(p) { return p._id });
   let locations = LocationsCollection.find({cityId:{$in:cityIds}},{limit:10,fields:{name:1,address:1,photo:1,description:1,website:1,location:1,photoCredit:1}});
   let artists = ArtistsCollection.find({cityId:{$in:cityIds}},{fields:{artistName:1,locationIds:1,color:1}});

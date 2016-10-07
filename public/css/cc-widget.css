@@ -2,12 +2,20 @@
 #cc-info {
   display: block;
   width: 250px;
-  height: 350px;
-  margin: 0 2em;
-  border: #000 solid 1px;
+  height: 550px;
+  margin: 2em;
+  border: #090a0a solid 1px;
   overflow-y: scroll;
   font-family: "Open Sans";
-  color: #090a0a; }
+  color: #090a0a;
+  position: relative; }
+  #cc-info .cc-google-map {
+    display: block;
+    width: 250px;
+    height: 200px;
+    position: fixed;
+    top: 0;
+    z-index: 1005; }
   #cc-info .cc-map-title {
     font-size: 1.5em;
     text-align: center;
@@ -15,7 +23,8 @@
     font-weight: 700; }
   #cc-info .cc-location-table-row {
     display: block;
-    margin: .25em; }
+    margin: .25em;
+    border-top: #090a0a solid 1px; }
     #cc-info .cc-location-table-row .cc-location-table-row-title {
       padding: .25em; }
     #cc-info .cc-location-table-row .cc-location-table-row-desc {
