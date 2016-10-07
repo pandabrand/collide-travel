@@ -16,7 +16,10 @@
           //make map
           let map_div = document.createElement('div');
           map_div.className = 'cc-google-map';
-          map_div.id = 'cc-map';
+          let map_loader_div = document.createElement('div');
+          map_loader_div.id = 'cc-map';
+          map_loader_div.className = 'cc-map';
+          map_div.appendChild(map_loader_div);
           cc_info.appendChild(map_div);
 
           var s = document.createElement('script');
