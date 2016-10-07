@@ -62,8 +62,7 @@
 
               let location_desc_div = document.createElement('div');
               location_desc_div.className = 'cc-location-table-row-desc';
-              let location_desc = document.createTextNode(location.description);
-              location_desc_div.appendChild(location_desc);
+              location_desc_div.innerHTML = location.description;
               location_row.appendChild(location_desc_div);
 
               let location_addr_div = document.createElement('div');
@@ -71,6 +70,36 @@
               let location_addr = document.createTextNode(location.address);
               location_addr_div.appendChild(location_addr);
               location_row.appendChild(location_addr_div);
+
+              let location_links_div = document.createElement('div');
+              location_links_div.className = 'cc-location-table-row-links';
+              let direction_div = document.createElement('div');
+              direction_div.className = 'map-links';
+              let direction_div_anchor = document.createElement('a');
+              direction_div_anchor.href = 'https://www.google.com/maps/dir/Current+Location/'+location.location.lat+','+location.location.lng;
+              direction_div_anchor.target = '_blank';
+              let direction_div_text = document.createTextNode('Directions');
+              let direction_div_icon = document.createElement('i');
+              direction_div_icon.className = 'fa fa-map-o';
+              direction_div_anchor.appendChild(direction_div_text);
+              direction_div_anchor.appendChild(direction_div_icon);
+              direction_div.appendChild(direction_div_anchor);
+              location_links_div.appendChild(direction_div);
+
+              let web_div = document.createElement('div');
+              web_div.className = 'map-links';
+              let web_div_anchor = document.createElement('a');
+              web_div_anchor.href = location.website;
+              web_div_anchor.target = '_blank';
+              web_div_anchor.className = 'location-website';
+              let web_div_text = document.createTextNode('Website');
+              let web_div_icon = document.createElement('i');
+              web_div_icon.className = 'fa fa-laptop';
+              web_div_anchor.appendChild(web_div_text);
+              web_div_anchor.appendChild(web_div_icon);
+              web_div.appendChild(web_div_anchor);
+              location_links_div.appendChild(web_div);
+              location_row.appendChild(location_links_div);
 
               location_scroller_div.appendChild(location_row);
             }
