@@ -1,6 +1,5 @@
 (function(global) {
   attachAndCreate();
-  let map,city_coord;
 
   function attachAndCreate() {
     let cc_info = document.getElementById('cc-info');
@@ -76,6 +75,7 @@
 
 })();// hi there
 
+let map,city_coord;
 function initMap() {
   map = new google.maps.Map(document.getElementById('cc-map'), {
     center: city_coord,
