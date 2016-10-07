@@ -161,7 +161,7 @@
           let footer_str = '<p>Find even more at <a href="http://collidetravel.com/" target="_blank">Collide Travel</a></p>';
           footer_text_div.innerHTML = footer_str;
           footer_div.appendChild(footer_text_div);
-          cc_info.appendChild(footer_div);
+          location_scroller_div.appendChild(footer_div);
 
         }
       });

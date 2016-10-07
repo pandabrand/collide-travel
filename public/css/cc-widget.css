@@ -9,6 +9,18 @@
   border: #090a0a solid 1px;
   font-family: "Open Sans";
   color: #090a0a; }
+  #cc-info a {
+    color: #333; }
+    #cc-info a:visited {
+      color: #333; }
+    #cc-info a:hover, #cc-info a:focus, #cc-info a:active {
+      color: #ccc; }
+  #cc-info .cc-header {
+    text-align: center; }
+    #cc-info .cc-header .cc-header-title {
+      font-weight: 700; }
+    #cc-info .cc-header .cc-header-text a {
+      text-decoration: none; }
   #cc-info .cc-google-map {
     display: block; }
     #cc-info .cc-google-map .cc-map {
@@ -16,14 +28,8 @@
       height: 200px; }
   #cc-info .location-wrapper {
     overflow-y: scroll;
-    height: 350px;
+    height: 300px;
     width: 250px; }
-    #cc-info .location-wrapper a {
-      color: #333; }
-      #cc-info .location-wrapper a:visited {
-        color: #333; }
-      #cc-info .location-wrapper a:hover, #cc-info .location-wrapper a:focus, #cc-info .location-wrapper a:active {
-        color: #ccc; }
     #cc-info .location-wrapper .cc-map-title {
       font-size: 1.5em;
       text-align: center;
@@ -57,5 +63,7 @@
           margin-right: 0; }
         #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-links .map-links a .fa {
           padding-left: 3px; }
+    #cc-info .location-wrapper .cc-footer .cc-footer-text {
+      font-size: .75em; }
 
 /*# sourceMappingURL=cc-widget.css.map */
