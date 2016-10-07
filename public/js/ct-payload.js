@@ -8,7 +8,7 @@
     } else {
       $.ajax({
         type: 'GET',
-        url: 'https://collide-travel.herokuapp.com/cc-city/chicago',
+        url: 'http://www.collidetravel.com/cc-city/chicago',
         success: function(response) {
           console.dir(response);
           let city = response.cities[0];
