@@ -73,11 +73,12 @@
     }
   }
 
-  function initMap() {
-    map = new google.maps.Map(document.getElementById('cc-map'), {
-      center: city_coord,
-      zoom: 8
-    });
-  }
 
 })();// hi there
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('cc-map'), {
+    center: city_coord,
+    zoom: 8
+  });
+}
