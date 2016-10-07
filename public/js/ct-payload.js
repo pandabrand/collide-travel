@@ -65,8 +65,10 @@
               let artists_with_location = _.filter(artists, function(a) {
                 _.contains(a.locationIds, location._id);
               });
+              console.dir(artists_with_location);
 
               if(artists_with_location) {
+                console.log(artists_with_location.length);
                 for(let y = 0; y < artists_with_location.length; y++) {
                   let artist = artists_with_location[y];
                   let comment = _.findWhere(comments, {locationId: locations._id, artistId: artist._id});
