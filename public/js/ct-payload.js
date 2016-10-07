@@ -26,7 +26,7 @@
           s.type = 'text/javascript';
           s.async = true;
           s.defer = true;
-          s.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCCZXJra6h1WdMewRSZ2SJ9K0Rt1lurRIk&callback=initMap';
+          s.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDbP0UfwLDjGd9NDCgnbtQUUjKmAmgoHxE&callback=initMap';
           var x = document.getElementsByTagName('script')[0];
           x.parentNode.insertBefore(s, x);
 
@@ -87,6 +87,6 @@ let map,city_coord;
 function initMap() {
   map = new google.maps.Map(document.getElementById('cc-map'), {
     center: city_coord,
-    zoom: 8
+    zoom: 11
   });
 }

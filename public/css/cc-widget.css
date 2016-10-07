@@ -26,7 +26,8 @@
       margin: .25em;
       border-top: #090a0a solid 1px; }
       #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-title {
-        padding: .25em; }
+        padding: .25em;
+        font-weight: 700; }
       #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-desc {
         padding: .25em; }
       #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-addr {
