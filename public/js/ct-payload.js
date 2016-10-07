@@ -12,6 +12,7 @@
         success: function(response) {
           console.dir(response);
           let city = response.cities[0];
+
           city_coord = city.location;
           //make map
           let map_div = document.createElement('div');
@@ -45,20 +46,47 @@
           //make location table
           let locations = response.locations;
           if(locations) {
+            let artists = response.artists;
+            let comments = response['artist-comments'];
+
             let locations_div = document.createElement('div');
             locations_div.className = 'cc-location-table';
             for(let x = 0; x < locations.length; x++) {
               let location = locations[x];
               let location_row = document.createElement('div');
               location_row.className = 'cc-location-table-row';
-              let artists = response.artists;
-              let comments = response['artist-comments'];
 
               let location_title_div = document.createElement('div');
               location_title_div.className = 'cc-location-table-row-title';
               let location_title = document.createTextNode(location.name);
               location_title_div.appendChild(location_title);
               location_row.appendChild(location_title_div);
+
+              let artists_with_location = _.filter(artists, function(a) {
+                _.contains(a.locationIds, location._id);
+              });
+
+              if(artists_with_location) {
+                for(let y = 0; y < artists_with_location.length; y++) {
+                  let artist = artists_with_location[y];
+                  let comment = _.findWhere(comments, {locationId: locations._id, artistId: artist._id});
+                  let location-artist-comment-link = document.createElement('a');
+                  location-artist-comment-link.href = 'http://collidetravel.com/city/'+city.cityName+'/artist/'+artist.artistSlug;
+                  location-artist-comment-link.target = '_blank';
+                  if(comment) {
+                    let comment_str = artist.artistName + ' says:<br/>' + comment;
+                    location-artist-comment-link.innerHTML = comment_str;
+                  } else {
+                    location-artist-comment-link.appendChild(document.createTextNode(artist.artistName + ' Recommends'));
+                  }
+
+                  let location-artist-comment-div = document.createElement('div');
+                  location-artist-comment-div.className = 'cc-location-table-row-comment';
+                  location-artist-comment-div.style = 'box-shadow: 1px 1px 2px 0px ' + artist.color + ';';
+                  location-artist-comment-div.appendChild(location-artist-comment-link);
+                  location_row.appendChild(location-artist-comment-div);
+                }
+              }
 
               let location_desc_div = document.createElement('div');
               location_desc_div.className = 'cc-location-table-row-desc';
