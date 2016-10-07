@@ -30,12 +30,17 @@
           var x = document.getElementsByTagName('script')[0];
           x.parentNode.insertBefore(s, x);
 
+          //create location scoller
+          let location_scroller_div = document.createElement('div');
+          location_scroller_div.className = 'location-wrapper';
+          cc_info.appendChild(location_scroller_div);
+
           //create map title div and text
           let map_title_div = document.createElement('div');
           map_title_div.className = 'cc-map-title';
           let map_title_text = document.createTextNode(city.displayName);
           map_title_div.appendChild(map_title_text);
-          cc_info.appendChild(map_title_div);
+          location_scroller_div.appendChild(map_title_div);
 
           //make location table
           let locations = response.locations;
@@ -67,7 +72,7 @@
               location_addr_div.appendChild(location_addr);
               location_row.appendChild(location_addr_div);
 
-              cc_info.appendChild(location_row);
+              location_scroller_div.appendChild(location_row);
             }
           }
         }

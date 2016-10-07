@@ -5,33 +5,32 @@
   height: 550px;
   margin: 2em;
   border: #090a0a solid 1px;
-  overflow-y: scroll;
   font-family: "Open Sans";
-  color: #090a0a;
-  position: relative; }
+  color: #090a0a; }
   #cc-info .cc-google-map {
-    display: block;
-    position: fixed;
-    top: 0;
-    z-index: 1005; }
+    display: block; }
     #cc-info .cc-google-map .cc-map {
       width: 250px;
       height: 200px; }
-  #cc-info .cc-map-title {
-    font-size: 1.5em;
-    text-align: center;
-    display: block;
-    font-weight: 700; }
-  #cc-info .cc-location-table-row {
-    display: block;
-    margin: .25em;
-    border-top: #090a0a solid 1px; }
-    #cc-info .cc-location-table-row .cc-location-table-row-title {
-      padding: .25em; }
-    #cc-info .cc-location-table-row .cc-location-table-row-desc {
-      padding: .25em; }
-    #cc-info .cc-location-table-row .cc-location-table-row-addr {
-      font-size: .75em;
-      padding: .25em; }
+  #cc-info .location-wrapper {
+    overflow-y: scroll;
+    height: 350px;
+    width: 250px; }
+    #cc-info .location-wrapper .cc-map-title {
+      font-size: 1.5em;
+      text-align: center;
+      display: block;
+      font-weight: 700; }
+    #cc-info .location-wrapper .cc-location-table-row {
+      display: block;
+      margin: .25em;
+      border-top: #090a0a solid 1px; }
+      #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-title {
+        padding: .25em; }
+      #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-desc {
+        padding: .25em; }
+      #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-addr {
+        font-size: .75em;
+        padding: .25em; }
 
 /*# sourceMappingURL=cc-widget.css.map */
