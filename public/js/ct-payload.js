@@ -31,7 +31,7 @@
               let location_row = document.createElement('div');
               location_row.className = 'cc-location-table-row';
               let artists = response.artists;
-              let comments = response.['artist-comments'];
+              let comments = response['artist-comments'];
 
               let location_title_div = document.createElement('div');
               location_title_div.className = 'cc-location-table-row-title';
