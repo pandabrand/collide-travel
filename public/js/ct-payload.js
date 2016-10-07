@@ -19,12 +19,12 @@
           map_div.className = 'cc-google-map';
           map_div.id = 'cc-map';
           cc_info.appendChild(map_div);
-          
+
           var s = document.createElement('script');
           s.type = 'text/javascript';
           s.async = true;
           s.defer = true;
-          s.src = 'https://maps.googleapis.com/maps/api/js?key='+Meteor.settings.public.GMAP_KEY+'&callback=initMap';
+          s.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCCZXJra6h1WdMewRSZ2SJ9K0Rt1lurRIk&callback=initMap';
           var x = document.getElementsByTagName('script')[0];
           x.parentNode.insertBefore(s, x);
 
