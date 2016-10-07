@@ -14,6 +14,25 @@
           let city = response.cities[0];
 
           city_coord = city.location;
+
+          //make title
+          let header_div = document.createElement('div');
+          header_div.className = 'cc-header';
+          let header_title_div = document.createElement('div');
+          header_title_div.className = 'cc-header-title';
+          header_title_div.appendChild(document.createTextNode('Collide Travel Guide:'));
+
+          let header_text_div = document.createElement('div');
+          header_text_div.className = 'cc-header-text';
+          header_link = document.createElement('a');
+          header_link.href = 'http://collidetravel.com/city/'+city.cityName;
+          header_link.target = '_blank';
+          header_link.appendChild(document.createTextNode(city.displayName));
+          header_text_div.appendChild(header_link);
+          header_div.appendChild(header_title_div);
+          header_div.appendChild(header_text_div);
+          cc_info.appendChild(header_div);
+
           //make map
           let map_div = document.createElement('div');
           map_div.className = 'cc-google-map';
@@ -65,7 +84,6 @@
               let artists_with_location = _.filter(artists, function(a) {
                 return _.contains(a.locationIds, location._id);
               });
-              console.dir(artists_with_location);
 
               if(artists_with_location) {
                 for(let y = 0; y < artists_with_location.length; y++) {
@@ -133,6 +151,18 @@
               location_scroller_div.appendChild(location_row);
             }
           }
+
+          //make footer
+          let footer_div = document.createElement('div');
+          footer_div.className = 'cc-footer';
+
+          let footer_text_div = document.createElement('div');
+          footer_text_div.className = 'cc-footer-text';
+          let footer_str = '<p>Find even more at <a href="http://collidetravel.com/" target="_blank">Collide Travel</a></p>';
+          footer_text_div.innerHTML = footer_str;
+          footer_div.appendChild(footer_text_div);
+          cc_info.appendChild(footer_div);
+
         }
       });
     }

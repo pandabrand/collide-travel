@@ -18,6 +18,12 @@
     overflow-y: scroll;
     height: 350px;
     width: 250px; }
+    #cc-info .location-wrapper a {
+      color: #333; }
+      #cc-info .location-wrapper a:visited {
+        color: #333; }
+      #cc-info .location-wrapper a:hover, #cc-info .location-wrapper a:focus, #cc-info .location-wrapper a:active {
+        color: #ccc; }
     #cc-info .location-wrapper .cc-map-title {
       font-size: 1.5em;
       text-align: center;
@@ -28,6 +34,9 @@
       margin: .25em;
       border-top: #090a0a solid 1px; }
       #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-title {
+        padding: .25em;
+        font-weight: 700; }
+      #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-comment {
         padding: .25em;
         font-weight: 700; }
       #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-desc {
@@ -46,13 +55,7 @@
         font-size: .75em; }
         #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-links .map-links:last-child {
           margin-right: 0; }
-        #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-links .map-links a {
-          color: #333; }
-          #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-links .map-links a:visited {
-            color: #333; }
-          #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-links .map-links a:hover, #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-links .map-links a:focus, #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-links .map-links a:active {
-            color: #ccc; }
-          #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-links .map-links a .fa {
-            padding-left: 3px; }
+        #cc-info .location-wrapper .cc-location-table-row .cc-location-table-row-links .map-links a .fa {
+          padding-left: 3px; }
 
 /*# sourceMappingURL=cc-widget.css.map */
