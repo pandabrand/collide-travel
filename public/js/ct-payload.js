@@ -70,21 +70,21 @@
                 for(let y = 0; y < artists_with_location.length; y++) {
                   let artist = artists_with_location[y];
                   let comment = _.findWhere(comments, {locationId: locations._id, artistId: artist._id});
-                  let location-artist-comment-link = document.createElement('a');
-                  location-artist-comment-link.href = 'http://collidetravel.com/city/'+city.cityName+'/artist/'+artist.artistSlug;
-                  location-artist-comment-link.target = '_blank';
+                  let location_artist_comment_link = document.createElement('a');
+                  location_artist_comment_link.href = 'http://collidetravel.com/city/'+city.cityName+'/artist/'+artist.artistSlug;
+                  location_artist_comment_link.target = '_blank';
                   if(comment) {
                     let comment_str = artist.artistName + ' says:<br/>' + comment;
-                    location-artist-comment-link.innerHTML = comment_str;
+                    location_artist_comment_link.innerHTML = comment_str;
                   } else {
-                    location-artist-comment-link.appendChild(document.createTextNode(artist.artistName + ' Recommends'));
+                    location_artist_comment_link.appendChild(document.createTextNode(artist.artistName + ' Recommends'));
                   }
 
-                  let location-artist-comment-div = document.createElement('div');
-                  location-artist-comment-div.className = 'cc-location-table-row-comment';
-                  location-artist-comment-div.style = 'box-shadow: 1px 1px 2px 0px ' + artist.color + ';';
-                  location-artist-comment-div.appendChild(location-artist-comment-link);
-                  location_row.appendChild(location-artist-comment-div);
+                  let location_artist_comment_div = document.createElement('div');
+                  location_artist_comment_div.className = 'cc-location-table-row-comment';
+                  location_artist_comment_div.style = 'box-shadow: 1px 1px 2px 0px ' + artist.color + ';';
+                  location_artist_comment_div.appendChild(location_artist_comment_link);
+                  location_row.appendChild(location_artist_comment_div);
                 }
               }
 
