@@ -75,6 +75,7 @@
               let location = locations[x];
               let location_row = document.createElement('div');
               location_row.className = 'cc-location-table-row';
+              location_row.id = location._id;
 
               let location_title_div = document.createElement('div');
               location_title_div.className = 'cc-location-table-row-title';
@@ -150,6 +151,14 @@
               location_row.appendChild(location_links_div);
 
               location_scroller_div.appendChild(location_row);
+
+              new Waypoint({
+                element: document.getElementById(location._id),
+                handler: function(direction) {
+                  console.dir(this.element.id + ' triggers at ' + this.triggerPoint)
+                },
+                offset: 15
+              });
             }
           }
 
@@ -175,14 +184,17 @@
 let map,city_coord,marker_locations;
 function initMap() {
   map = new google.maps.Map(document.getElementById('cc-map'), {
-    center: city_coord,
-    zoom: 11
+    center: marker_locations[0].location,
+    zoom: 11,
+    mappTypeControl: false,
+    streetViewControl: false,
+    fullscreenControl: false,
   });
   for(let z = 0; z < marker_locations.length; z++) {
     let marker_location = marker_locations[z];
     marker = new google.maps.Marker({
      map: map,
-     draggable: true,
+     draggable: false,
      animation: google.maps.Animation.DROP,
      position: marker_location.location,
      title: marker_location.name
