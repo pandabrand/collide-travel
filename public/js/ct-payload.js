@@ -183,7 +183,7 @@ function initMap() {
      map: map,
      draggable: true,
      animation: google.maps.Animation.DROP,
-     position: marker_locations[z].location;
+     position: marker_locations[z].location,
    });
   }
 }
