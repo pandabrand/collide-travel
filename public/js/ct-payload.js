@@ -156,7 +156,7 @@
               let waypoint = new Waypoint({
                 element: document.getElementById(location._id),
                 handler: function(direction) {
-                  console.dir(this.element.id + ' triggers at ' + this.triggerPoint)
+                  map.panTo(location.location);
                 },
                 offset: 15,
                 context: document.getElementById('cc-location-wrapper-id')
