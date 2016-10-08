@@ -53,6 +53,7 @@
           //create location scoller
           let location_scroller_div = document.createElement('div');
           location_scroller_div.className = 'location-wrapper';
+          location_scroller_div.id = 'cc-location-wrapper-id';
           cc_info.appendChild(location_scroller_div);
 
           //create map title div and text
@@ -157,7 +158,8 @@
                 handler: function(direction) {
                   console.dir(this.element.id + ' triggers at ' + this.triggerPoint)
                 },
-                offset: 15
+                offset: 15,
+                context: document.getElementById('cc-location-wrapper-id')
               });
             }
           }
