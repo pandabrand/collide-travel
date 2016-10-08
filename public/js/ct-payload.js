@@ -64,6 +64,7 @@
 
           //make location table
           let locations = response.locations;
+          marker_locations = locations;
           if(locations) {
             let artists = response.artists;
             let comments = response['artist-comments'];
@@ -171,10 +172,18 @@
 
 })();// hi there
 
-let map,city_coord;
+let map,city_coord,marker_locations;
 function initMap() {
   map = new google.maps.Map(document.getElementById('cc-map'), {
     center: city_coord,
     zoom: 11
   });
+  for(let z = 0; z < marker_locations.length; z++) {
+    marker = new google.maps.Marker({
+     map: map,
+     draggable: true,
+     animation: google.maps.Animation.DROP,
+     position: marker_locations[z].location;
+   });
+  }
 }
