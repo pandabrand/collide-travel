@@ -152,7 +152,7 @@
 
               location_scroller_div.appendChild(location_row);
 
-              new Waypoint({
+              let waypoint = new Waypoint({
                 element: document.getElementById(location._id),
                 handler: function(direction) {
                   console.dir(this.element.id + ' triggers at ' + this.triggerPoint)
