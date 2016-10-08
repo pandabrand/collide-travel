@@ -179,11 +179,13 @@ function initMap() {
     zoom: 11
   });
   for(let z = 0; z < marker_locations.length; z++) {
+    let marker_location = marker_locations[z];
     marker = new google.maps.Marker({
      map: map,
      draggable: true,
      animation: google.maps.Animation.DROP,
-     position: marker_locations[z].location,
+     position: marker_location.location,
+     title: marker_location.name
    });
   }
 }
