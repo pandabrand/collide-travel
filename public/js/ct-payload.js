@@ -20,6 +20,13 @@
           //make title
           let header_div = document.createElement('div');
           header_div.className = 'cc-header';
+
+          let header_img_div = document.createElement('div');
+          header_img_div.className = 'cc-header-silver-image';
+          let header_img = document.createElement('img');
+          header_img.src = 'http://collidetravel.com/images/flat-logo-inline-white-250px.png';
+          header_img_div.appendChild(header_img);
+
           let header_title_div = document.createElement('div');
           header_title_div.className = 'cc-header-title';
           header_title_div.appendChild(document.createTextNode('Collide Travel Guide:'));
@@ -31,6 +38,7 @@
           header_link.target = '_blank';
           header_link.appendChild(document.createTextNode(city.displayName));
           header_text_div.appendChild(header_link);
+          header_div.appendChild(header_img_div);
           header_div.appendChild(header_title_div);
           header_div.appendChild(header_text_div);
           cc_info.appendChild(header_div);

@@ -3,7 +3,7 @@
   display: block;
   clear: both;
   width: 250px;
-  height: 544px;
+  height: 612px;
   margin: 2em;
   background-color: #FFF;
   border: #090a0a solid 1px;
@@ -17,6 +17,12 @@
       color: #ccc; }
   #cc-info .cc-header {
     text-align: center; }
+    #cc-info .cc-header .cc-header-silver-image {
+      padding: 0 5px;
+      background-color: #090a0a; }
+      #cc-info .cc-header .cc-header-silver-image img {
+        width: 100%;
+        height: auto; }
     #cc-info .cc-header .cc-header-title {
       font-weight: 700; }
     #cc-info .cc-header .cc-header-text a {
