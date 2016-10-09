@@ -157,9 +157,16 @@
                 element: document.getElementById(location._id),
                 handler: function(direction) {
                   map.panTo(location.location);
+                  let thismarkerObj = _.findWhere(map_markers, {id:location._id});
+                  let thismarker = thismarkerObj.marker;
+                  if(that) {
+                    that.setZIndex();
+                  }
+                  that = thismarker;
+                  thismarker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
                 },
                 offset: 15,
-                context: document.getElementById('cc-location-wrapper-id')
+                context: document.getElementById('cc-location-wrapper-id'),
               });
             }
           }
@@ -183,23 +190,28 @@
 
 })();// hi there
 
-let map,city_coord,marker_locations;
+let map,city_coord,marker_locations,map_markers,that;
 function initMap() {
   map = new google.maps.Map(document.getElementById('cc-map'), {
     center: marker_locations[0].location,
-    zoom: 11,
+    zoom: 13,
+    disableDefaultUI: true,
     mappTypeControl: false,
+    scrollwheel: false,
     streetViewControl: false,
     fullscreenControl: false,
   });
   for(let z = 0; z < marker_locations.length; z++) {
     let marker_location = marker_locations[z];
+
     marker = new google.maps.Marker({
      map: map,
      draggable: false,
      animation: google.maps.Animation.DROP,
      position: marker_location.location,
-     title: marker_location.name
+     title: marker_location.name,
+     id: marker_location._id,
    });
+   map_markers.push({id:marker_location._id, marker:marker});
   }
 }
