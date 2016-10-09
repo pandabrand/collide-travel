@@ -201,6 +201,7 @@ function initMap() {
     streetViewControl: false,
     fullscreenControl: false,
   });
+  map_markers = [];
   for(let z = 0; z < marker_locations.length; z++) {
     let marker_location = marker_locations[z];
 
