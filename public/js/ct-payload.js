@@ -3,12 +3,14 @@
 
   function attachAndCreate() {
     let cc_info = document.getElementById('cc-info');
-    if(!cc_info) {
+    let cc_data_city = cc_info.dataset.ccCity;
+    if(!cc_info || !cc_data_city) {
       return;
     } else {
       $.ajax({
+        const cc_url = 'http://www.collidetravel.com/cc-city/' + cc_data_city;
         type: 'GET',
-        url: 'http://www.collidetravel.com/cc-city/chicago',
+        url: cc_url,
         success: function(response) {
           console.dir(response);
           let city = response.cities[0];
