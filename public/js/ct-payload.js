@@ -8,7 +8,7 @@
       return;
     } else {
       $.ajax({
-        const cc_url = 'http://www.collidetravel.com/cc-city/' + cc_data_city;
+        let cc_url = 'http://www.collidetravel.com/cc-city/'.concat(cc_data_city);
         type: 'GET',
         url: cc_url,
         success: function(response) {
