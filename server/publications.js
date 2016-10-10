@@ -60,6 +60,10 @@ Meteor.publish('cc-city', function(cityName) {
   url: "cc-city/:0"
 });
 
+Meteor.publish('cc-cities', function() {
+  return CitiesCollection.find({},{fields:{cityName:1}});
+},{url: "cc-cities"});
+
 Meteor.publish('find-city-id', function(id) {
   check(id, String);
   cities = CitiesCollection.find({_id:id});
