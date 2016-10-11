@@ -43,7 +43,7 @@ Meteor.publish('featured-cities', function() {
 
 Meteor.publish('find-city', function(cityName) {
   check(cityName, String);
-  return CitiesCollection.find({cityName:cityName},{fields:{displayName:1, cityName:1, description:1, guidePreview:1, isDefault:1, isPromoted:1, printPreview:1, isFeatured:1}});
+  return CitiesCollection.find({cityName:cityName},{fields:{displayName:1, cityName:1, description:1, guidePreview:1, isDefault:1, isPromoted:1, printPreview:1, isFeatured:1, cityGuideAdSpaceImage:1, cityGuideAdSpaceURLlink:1, showAdSpaceImage:1}});
 });
 
 Meteor.publish('cc-city', function(cityName) {
