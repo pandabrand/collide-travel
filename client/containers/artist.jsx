@@ -35,7 +35,7 @@ const composer = (props, onData) => {
 
         if (comments_sub.ready() && related_sub.ready()) {
           artistComments = ArtistCommentsCollection.find({artistId: artist._id}).fetch();
-          relatedArtists = ArtistsCollection.find({ _id: { $nin: [artist._id] }, cityId: artist.cityId },{sample:{size:2}}).fetch();
+          relatedArtists = ArtistsCollection.find({ _id: { $nin: [artist._id] }, cityId: artist.cityId },{sample:{size:3},limit:3}).fetch();
 
           const homeData = {homeCity, locations, artist, artistComments, relatedArtists, ads, props}
           onData(null, homeData);
