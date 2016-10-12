@@ -147,9 +147,10 @@ Meteor.publish('artist-by-location', function(locationIds){
   return ArtistsCollection.find({locationIds:{$in: locationIds}});
 })
 
-Meteor.publish('artist-related', function(artistId){
+Meteor.publish('artist-related', function(artistId, cityId){
   check(artistId, String);
-  return ArtistsCollection.find({ _id: { $nin: [artistId] } },{limit:3,fields:{artistSlug:1,artistName:1,image:1,cityName:1,cityId:1}});
+  check(cityId, String);
+  return ArtistsCollection.find({ _id: { $nin: [artistId] }, cityId: cityId },{limit:3,fields:{artistSlug:1,artistName:1,image:1,cityName:1,cityId:1}});
 })
 
 Meteor.publish('artist-comments-by-location', function(locationIds) {

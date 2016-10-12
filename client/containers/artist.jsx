@@ -31,7 +31,7 @@ const composer = (props, onData) => {
         locations = LocationsCollection.find({_id: {$in: artist.locationIds}}).fetch({},{sort: {isFeatured: -1, name: 1}});
 
         const comments_sub = subs.subscribe('artist-comments', artist._id);
-        const related_sub = subs.subscribe('artist-related', artist._id);
+        const related_sub = subs.subscribe('artist-related', artist._id, artist.cityId);
 
         if (comments_sub.ready() && related_sub.ready()) {
           artistComments = ArtistCommentsCollection.find({artistId: artist._id}).fetch();
