@@ -150,7 +150,7 @@ Meteor.publish('artist-by-location', function(locationIds){
 Meteor.publish('artist-related', function(artistId, cityId){
   check(artistId, String);
   check(cityId, String);
-  return ArtistsCollection.find({ _id: { $nin: [artistId] }, cityId: cityId },{sample:3,fields:{artistSlug:1,artistName:1,image:1,cityName:1,cityId:1}});
+  return ArtistsCollection.find({ _id: { $nin: [artistId] }, cityId: cityId },{sample:{size:3},fields:{artistSlug:1,artistName:1,image:1,cityName:1,cityId:1}});
 })
 
 Meteor.publish('artist-comments-by-location', function(locationIds) {
