@@ -44,11 +44,11 @@ export default class UIHeaderComponent extends Component {
     DocHead.addMeta(twitter_site);
 
     // <meta name="twitter:creator" content="@{{userTwitter user.profile.twitterHandle}}"/>
-    const apple_touch_icon = {rel:"apple-touch-icon", sizes:"180x180", href:"/favicons/apple-touch-icon.png"};
-    const icon_32 = {rel:"icon", type:"image/png", href:"/favicons/favicon-32x32.png", sizes:"32x32"};
-    const icon_16 = {rel:"icon", type:"image/png", href:"/favicons/favicon-16x16.png", sizes:"16x16"};
-    const manifest_json = {rel:"manifest", href:"/favicons/manifest.json"};
-    const mask_icon = {rel:"mask-icon", href:"/favicons/safari-pinned-tab.svg", color:"#5bbad5"};
+    const apple_touch_icon = {rel:"apple-touch-icon", sizes:"180x180", href:"/apple-touch-icon.png"};
+    const icon_32 = {rel:"icon", type:"image/png", href:"/favicon-32x32.png", sizes:"32x32"};
+    const icon_16 = {rel:"icon", type:"image/png", href:"/favicon-16x16.png", sizes:"16x16"};
+    const manifest_json = {rel:"manifest", href:"/manifest.json"};
+    const mask_icon = {rel:"mask-icon", href:"/safari-pinned-tab.svg", color:"#5bbad5"};
     const theme_color = {name:"theme-color", content:"#ffffff"};
 
     DocHead.addLink(apple_touch_icon);
