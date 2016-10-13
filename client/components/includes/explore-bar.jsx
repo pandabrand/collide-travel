@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import {BlazeExploreBarComponent} from './blaze-explore-bar.jsx';
 
 const getExploreBar = (props) => {
-  console.dir(props);
   return <BlazeExploreBarComponent {...props}/>;
 }
 

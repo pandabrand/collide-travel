@@ -32,12 +32,10 @@ Meteor.startup(() => {
 
 const trendingCron = new Cron(function() {
 	Meteor.defer(function() {
-		console.dir('updating trending');
 		Meteor.call('get.feed.partial', (err, res) => {
 			if(res && res.length > 0) {
 				TrendingCollection.remove({});
 				res.map((article, i) => {
-					console.dir(article);
 					check(article,{
 						title: String,
 						secondaryTitle: String,

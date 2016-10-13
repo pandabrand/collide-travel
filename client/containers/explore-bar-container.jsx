@@ -18,7 +18,14 @@ const composer = (props, onData) => {
   if(citySubscription.ready() && cat_sub.ready() && art_sub.ready()) {
     const cities = CitiesCollection.find({},{sort:{isPromoted: -1, isFeatured: -1, displayName: 1},fields: {cityName:1,displayName:1,isPromoted:1}}).fetch();
 
-    const locationCategories = _.uniq(LocationsCollection.find({}, {sort: {type: 1},fields:{type:1,name:1,cityName:1}}).fetch(), false, function(l){return l.type});
+    const locations = LocationsCollection.find({}, {sort: {type: 1},fields:{type:1,name:1,cityName:1}}).fetch();
+    let locationCategories = _.uniq(locations, false, function(l){return l.type});
+    locationCategories.map(function(category) {
+      citiesToUnique = _.where(locations, {type:category.type});
+      uniqueCities = _.uniq(citiesToUnique, false, function(c){return c.cityName});
+      category['cityNames'] = _.pluck(uniqueCities, 'cityName');
+    });
+
     // const locationCategories = _.pluck(allLocationCategories, 'type');
 
     const artists = ArtistsCollection.find({},{sort: {isFeatured: -1, artistName: 1},fields:{cityName:1,artistSlug:1,artistName:1,isFeatured:1}}).fetch();

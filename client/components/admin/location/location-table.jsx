@@ -33,9 +33,7 @@ const getLocationTable = (locations, cities, props) => {
       </thead>
       <tbody>
         {locations.map((location,i) => {
-          console.log('location: ' + location.name + ' city: ' + location.cityId);
           const city = getCity(location.cityId);
-          console.dir(city);
           return <tr key={i}>
             <td>{location.name}</td>
             <td>{location.type}</td>

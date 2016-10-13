@@ -12,7 +12,6 @@
         type: 'GET',
         url: cc_url,
         success: function(response) {
-          console.dir(response);
           let city = response.cities[0];
 
           city_coord = city.location;

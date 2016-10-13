@@ -29,7 +29,7 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
     const selectedArtist = CURRENT_ROUTE.params && CURRENT_ROUTE.params.artistName ? true : false;
     const selectedCategory = CURRENT_ROUTE.params && CURRENT_ROUTE.params.type ? true : false;
     const filteredArtists = cityFilter ? _.where(artists, cityFilter) : artists;
-    const filteredCategories = cityFilter ? _.where(locationCategories, cityFilter) : locationCategories;
+    const filteredCategories = cityFilter ? _.filter(locationCategories, function(l){return _.contains(l.cityNames, CURRENT_ROUTE.params.name);}) : locationCategories;
 
     return(
       <div className="explore-bar">
