@@ -7,7 +7,7 @@ import ArtistCityGuideComponent from './artist-city-guide.jsx';
 import CityMapsComponent from './city-map.jsx';
 import CityArtistsTableComponent from './city-artists-table.jsx';
 import TrendingContainer from '../../containers/trending.jsx';
-import {createMarkup} from '../../lib/utils.js';
+import {createMarkup, cloudinaryURL,removeHTMLTags} from '../../lib/utils.js';
 import setMapPosition from '../../../lib/client/actions/set-map-position.js';
 
 
@@ -26,6 +26,17 @@ const serveTakeoverAd = (ads) => {
 }
 
 const getCity = (homeCity, locations, artists, artistComments, ads, props, dispatch) => {
+  const social_title = 'Collide Travel - ' + homeCity.displayName
+  SEO.set({
+    title: social_title,
+    description: removeHTMLTags(homeCity.description).substring(0,154),
+    meta: {
+      'property="og:image"': cloudinaryURL(homeCity.guidePreview, 334, 334),
+      'property="og:title"': social_title,
+      'name="twitter:title"':social_title,
+    }
+  });
+
   _onChildScroll = (key, childProps) => {
   }
 

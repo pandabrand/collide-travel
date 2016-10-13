@@ -51,7 +51,7 @@ export default class SocialShareComponent extends Component {
     const message = getCCMessage(artist,city);
     const media = getCCMedia(artist,city);
     const facebookShareURL = getCCPath(artist,city);
-    const facebookShareLink = path + '&href=' + facebookShareURL + '&link=' + facebookShareURL + '&caption=' + message + '&media=' + media + '&redirect_uri=' + 'https://www.facebook.com';
+    const facebookShareLink = path + '&href=' + facebookShareURL + '&link=' + facebookShareURL + '&caption=' + message + '&redirect_uri=' + 'https://www.facebook.com';
   	return facebookShareLink;
   }
 

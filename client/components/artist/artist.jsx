@@ -5,7 +5,7 @@ import ArtistMapAndTableComponent from './artist-map-and-table.jsx';
 import ArtistSoundcloudComponent from './soundcloud.jsx';
 import TrendingContainer from '../../containers/trending.jsx';
 import RelatedArtistsComponent from './relatedArtists.jsx';
-import {createMarkup} from '../../lib/utils.js';
+import {createMarkup, removeHTMLTags, cloudinaryURL} from '../../lib/utils.js';
 
 const serveStickyAd = (ads) => {
   const takeoverAd = ads ? ads.takeoverAd : null;
@@ -23,6 +23,18 @@ const serveTakeoverAd = (ads) => {
 
 
 const getArtistGuide = (artist, homeCity, locations, artistComments, relatedArtists, ads, props, dispatch) => {
+  const social_title = 'Collide Travel - ' + artist.artistName + ': Guide to ' + homeCity.displayName;
+  SEO.set({
+    title: social_title,
+    description: removeHTMLTags(artist.description).substring(0,154),
+    meta: {
+      'property="og:image"': cloudinaryURL(artist.image, 334, 334),
+      'property="og:title"': social_title,
+      'name="twitter:title"':social_title,
+    }
+  });
+
+
   return <div id="main" className="artists-container">
           <ArtistHeaderComponent artist={artist} homeCity={homeCity}/>
           {serveStickyAd(ads)}

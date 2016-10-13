@@ -16,4 +16,8 @@ const cloudinaryURL = (imgStr, w, h, crop="fill", gravity="auto") => {
   return imgSrc;
 }
 
-export {createMarkup, cloudinaryURL};
+const removeHTMLTags = (strInputCode) => {
+  return strInputCode.replace(/<\/?[^>]+(>|$)/g, "");
+}
+
+export {createMarkup, cloudinaryURL, removeHTMLTags};
