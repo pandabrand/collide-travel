@@ -6,6 +6,9 @@ const cities = CitiesCollection.find({});
 const artists = ArtistsCollection.find({});
 
 const cloudinaryURL = (imgStr, w, h, crop="fill", gravity="auto") => {
+  if(!imgStr) {
+    return;
+  }
   const imgFile = imgStr.lastIndexOf('/') === -1 ? imgStr : imgStr.substr(imgStr.lastIndexOf('/') + 1);
   let cloudObj = {width:w, gravity: gravity, crop:crop};
   if(h && h > 0) {
