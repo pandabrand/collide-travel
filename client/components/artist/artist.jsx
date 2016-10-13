@@ -28,7 +28,7 @@ const getArtistGuide = (artist, homeCity, locations, artistComments, relatedArti
     title: social_title,
     description: removeHTMLTags(artist.description).substring(0,154),
     meta: {
-      'property="og:image"': cloudinaryURL(artist.image, 334, 334),
+      'property="og:image"': cloudinaryURL(artist.image, 500, 500),
       'property="og:title"': social_title,
       'name="twitter:title"':social_title,
     }

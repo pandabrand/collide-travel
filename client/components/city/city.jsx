@@ -31,7 +31,7 @@ const getCity = (homeCity, locations, artists, artistComments, ads, props, dispa
     title: social_title,
     description: removeHTMLTags(homeCity.description).substring(0,154),
     meta: {
-      'property="og:image"': cloudinaryURL(homeCity.guidePreview, 334, 334),
+      'property="og:image"': cloudinaryURL(homeCity.guidePreview, 500, 500),
       'property="og:title"': social_title,
       'name="twitter:title"':social_title,
     }
