@@ -84,34 +84,18 @@ publicRoutes = FlowRouter.group({
     DocHead.addLink(mask_icon);
     DocHead.addMeta(theme_color);
 
-    // const fb_url = {property:'og:url', content:'https://www.collidetravel.com/'};
     const fb_type = {property:'og:type', content:'website'};
-    // const fb_title = {property:'og:title', content:'Collide Travel'};
-    // const fb_description = {property:'og:description', content:'Take a tour with today\'s top bands, artists and tastemakers'};
     const fb_app_id = {property:'fb:app_id', content:Meteor.settings.public.FACEBOOK_ID};
     const fb_site_name = {property:'og:site_name', content:'Collide Travel'};
     const fb_locale = {property:'og:locale', content:'en_US'};
     DocHead.addMeta(fb_app_id);
     DocHead.addMeta(fb_type);
-    // DocHead.addMeta(fb_url);
-    // DocHead.addMeta(fb_title);
-    // DocHead.addMeta(fb_description);
     DocHead.addMeta(fb_site_name);
     DocHead.addMeta(fb_locale);
 
 
-    const twitter_card = {name:'twitter:card', content:'Curating the most inspiring music, travel and culinary the globe has to offer.'};
-    const twitter_title = {name:'twitter:title', content:'Collide Travel'};
-    const twitter_description = {name:'twitter:description', content:'Take a tour with today\'s top bands, artists and tastemakers'};
     const twitter_site = {name:'twitter:site', content:'@CultureCollide'};
-    const twitter_url = {name:'twitter:url', content:'https://www.collidetravel.com/'};
-    // DocHead.addMeta(twitter_card);
-    // DocHead.addMeta(twitter_title);
-    // DocHead.addMeta(twitter_description);
     DocHead.addMeta(twitter_site);
-    // DocHead.addMeta(twitter_url);
-    // title: 'Collide Travel',
-    // description: 'Take a tour with today\'s top bands, artists and tastemakers',
 
   }]
 });

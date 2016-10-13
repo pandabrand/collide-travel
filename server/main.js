@@ -19,6 +19,7 @@ Meteor.startup(() => {
 
 	prerenderio = Meteor.npmRequire( 'prerender-node' );
 	const prerender_token = Meteor.settings.private.PRERENDER_TOKEN;
+	console.dir(prerender_token);
 	if (prerender_token) {
 		 prerenderio.set('prerenderToken', prerender_token);
 		 prerenderio.set('host', Meteor.settings.public.DOMAIN);

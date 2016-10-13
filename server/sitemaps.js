@@ -20,12 +20,12 @@ const cloudinaryURL = (imgStr, w, h, crop="fill", gravity="auto") => {
 
 cityURLS = cities.map(function(city) {
   const image = cloudinaryURL(city.guidePreview);
-  return {page:'/city/'+city.cityName, lastmod: new Date(), images: [{loc:image}]};
+  return {page:'/city/'+city.cityName, lastmod: new Date()};//, images: [{loc:image}]};
 });
 
 artistURLS = artists.map(function(artist) {
   const image = cloudinaryURL(artist.image);
-  return {page:'/city/'+artist.cityName+/artist/+artist.artistSlug, lastmod: new Date(), images:[{loc:image}]};
+  return {page:'/city/'+artist.cityName+/artist/+artist.artistSlug, lastmod: new Date()};//, images:[{loc:image}]};
 });
 
 sitemaps.add('/sitemap.xml', function() {
