@@ -59,18 +59,43 @@ import AdZoneCollection from '../lib/collections/ad-zone.js';
 publicRoutes = FlowRouter.group({
   name: 'public',
   triggersEnter: [function(context, redirect) {
-    const fb_url = {property:'og:url', content:'https://www.collidetravel.com/'};
+    const title = 'Collide Travel';
+    DocHead.setTitle(title);
+    const charset = {charset: 'utf-8'};
+    DocHead.addMeta(charset);
+    const http_content = {'http-equiv': 'X-UA-Compatible', content: 'IE=edge'};
+    DocHead.addMeta(http_content);
+    const viewport = {name: 'viewport', content: 'width=device-width, initial-scale=1.0'};
+    DocHead.addMeta(viewport);
+
+    const cloudinary_dpr_hint =  {'http-equiv':'Accept-CH', content:'DPR, Viewport-Width, Width'};
+    DocHead.addMeta(cloudinary_dpr_hint);
+    const apple_touch_icon = {rel:"apple-touch-icon", sizes:"180x180", href:"/apple-touch-icon.png"};
+    const icon_32 = {rel:"icon", type:"image/png", href:"/favicon-32x32.png", sizes:"32x32"};
+    const icon_16 = {rel:"icon", type:"image/png", href:"/favicon-16x16.png", sizes:"16x16"};
+    const manifest_json = {rel:"manifest", href:"/manifest.json"};
+    const mask_icon = {rel:"mask-icon", href:"/safari-pinned-tab.svg", color:"#5bbad5"};
+    const theme_color = {name:"theme-color", content:"#ffffff"};
+
+    DocHead.addLink(apple_touch_icon);
+    DocHead.addLink(icon_32);
+    DocHead.addLink(icon_16);
+    DocHead.addLink(manifest_json);
+    DocHead.addLink(mask_icon);
+    DocHead.addMeta(theme_color);
+
+    // const fb_url = {property:'og:url', content:'https://www.collidetravel.com/'};
     const fb_type = {property:'og:type', content:'website'};
-    const fb_title = {property:'og:title', content:'Collide Travel'};
-    const fb_description = {property:'og:description', content:'Take a tour with today\'s top bands, artists and tastemakers'};
+    // const fb_title = {property:'og:title', content:'Collide Travel'};
+    // const fb_description = {property:'og:description', content:'Take a tour with today\'s top bands, artists and tastemakers'};
     const fb_app_id = {property:'fb:app_id', content:Meteor.settings.public.FACEBOOK_ID};
     const fb_site_name = {property:'og:site_name', content:'Collide Travel'};
     const fb_locale = {property:'og:locale', content:'en_US'};
     DocHead.addMeta(fb_app_id);
-    DocHead.addMeta(fb_url);
     DocHead.addMeta(fb_type);
-    DocHead.addMeta(fb_title);
-    DocHead.addMeta(fb_description);
+    // DocHead.addMeta(fb_url);
+    // DocHead.addMeta(fb_title);
+    // DocHead.addMeta(fb_description);
     DocHead.addMeta(fb_site_name);
     DocHead.addMeta(fb_locale);
 
@@ -80,11 +105,11 @@ publicRoutes = FlowRouter.group({
     const twitter_description = {name:'twitter:description', content:'Take a tour with today\'s top bands, artists and tastemakers'};
     const twitter_site = {name:'twitter:site', content:'@CultureCollide'};
     const twitter_url = {name:'twitter:url', content:'https://www.collidetravel.com/'};
-    DocHead.addMeta(twitter_card);
-    DocHead.addMeta(twitter_title);
-    DocHead.addMeta(twitter_description);
+    // DocHead.addMeta(twitter_card);
+    // DocHead.addMeta(twitter_title);
+    // DocHead.addMeta(twitter_description);
     DocHead.addMeta(twitter_site);
-    DocHead.addMeta(twitter_url);
+    // DocHead.addMeta(twitter_url);
     // title: 'Collide Travel',
     // description: 'Take a tour with today\'s top bands, artists and tastemakers',
 
