@@ -27,15 +27,15 @@ const serveTakeoverAd = (ads) => {
 
 const getCity = (homeCity, locations, artists, artistComments, ads, props, dispatch) => {
   const social_title = 'Collide Travel - ' + homeCity.displayName
-  SEO.set({
-    title: social_title,
-    description: removeHTMLTags(homeCity.description).substring(0,154),
-    meta: {
-      'property="og:image"': cloudinaryURL(homeCity.guidePreview, 500, 500),
-      'property="og:title"': social_title,
-      'name="twitter:title"':social_title,
-    }
-  });
+  // SEO.set({
+  //   title: social_title,
+  //   description: removeHTMLTags(homeCity.description).substring(0,154),
+  //   meta: {
+  //     'property="og:image"': cloudinaryURL(homeCity.guidePreview, 500, 500),
+  //     'property="og:title"': social_title,
+  //     'name="twitter:title"':social_title,
+  //   }
+  // });
 
   _onChildScroll = (key, childProps) => {
   }

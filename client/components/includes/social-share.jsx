@@ -47,7 +47,7 @@ export default class SocialShareComponent extends Component {
   }
 
   facebookLink = (artist, city) => {
-    const path = 'https://www.facebook.com/dialog/share?display=popup&app_id='+Meteor.settings.public.FACEBOOK_ID;
+    const path = 'https://www.facebook.com/dialog/share?display=popup';
     const message = getCCMessage(artist,city);
     const media = getCCMedia(artist,city);
     const facebookShareURL = getCCPath(artist,city);

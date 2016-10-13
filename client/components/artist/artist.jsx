@@ -24,15 +24,23 @@ const serveTakeoverAd = (ads) => {
 
 const getArtistGuide = (artist, homeCity, locations, artistComments, relatedArtists, ads, props, dispatch) => {
   const social_title = 'Collide Travel - ' + artist.artistName + ': Guide to ' + homeCity.displayName;
-  SEO.set({
-    title: social_title,
-    description: removeHTMLTags(artist.description).substring(0,154),
-    meta: {
-      'property="og:image"': cloudinaryURL(artist.image, 500, 500),
-      'property="og:title"': social_title,
-      'name="twitter:title"':social_title,
-    }
-  });
+  DocHead.setTitle(social_title);
+  const fb_url = {property:'og:url', content:'https://www.collidetravel.com'+FlowRouter.current().path};
+  const fb_title = {property:'og:title', content:social_title};
+  const fb_description = {property:'og:description', content:removeHTMLTags(artist.description).substring(0,154)};
+  DocHead.addMeta(fb_url);
+  DocHead.addMeta(fb_title);
+  DocHead.addMeta(fb_description);
+
+  // SEO.set({
+  //   title: social_title,
+  //   description: removeHTMLTags(artist.description).substring(0,154),
+  //   meta: {
+  //     'property="og:image"': cloudinaryURL(artist.image, 500, 500),
+  //     'property="og:title"': social_title,
+  //     'name="twitter:title"':social_title,
+  //   }
+  // });
 
 
   return <div id="main" className="artists-container">
