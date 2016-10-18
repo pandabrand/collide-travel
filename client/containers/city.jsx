@@ -12,7 +12,7 @@ import { ArtistCommentsCollection } from '../../lib/collections/artist-comments.
 import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 import { CityComponent } from '../components/city/city.jsx';
 import SpinnerComponent from '../components/includes/spinner.jsx';
-import { subs } from '../main.js';
+import { subs } from './subs.js';
 
 const getLocations = (id) => {
   const locations_sub = subs.subscribe('locations',id);

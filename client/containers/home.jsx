@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 import { composeWithTracker } from 'react-komposer';
 import { CitiesCollection } from '../../lib/collections/cities.js';
 import { PagesCollection } from '../../lib/collections/pages.js';
-import { HomeComponent } from '../components/home/home.jsx';
+import { HomeComponent }  from '../components/home/home.jsx';
 import { LocationsCollection } from '../../lib/collections/locations.js';
 import { ArtistsCollection } from '../../lib/collections/artists.js';
 import { ArtistCommentsCollection } from '../../lib/collections/artist-comments.js';
 import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
-import { subs } from '../main.js';
+import { subs } from './subs.js';
 import SpinnerComponent from '../components/includes/spinner.jsx';
 
 const composer = (props, onData) => {

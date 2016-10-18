@@ -7,7 +7,7 @@ import { CitiesCollection } from '../../lib/collections/cities.js';
 import { MagazinesCollection } from '../../lib/collections/magazines.js';
 import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 import { PagesCollection } from '../../lib/collections/pages.js';
-import { subs } from '../main.js';
+import { subs } from './subs.js';
 
 import  PrintPageComponent  from '../components/print-page/print-page.jsx';
 import SpinnerComponent from '../components/includes/spinner.jsx';

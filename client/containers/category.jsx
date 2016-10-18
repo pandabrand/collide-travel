@@ -10,7 +10,7 @@ import { ArtistCommentsCollection } from '../../lib/collections/artist-comments.
 import { CategoryComponent } from '../components/categories/category.jsx';
 import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 import SpinnerComponent from '../components/includes/spinner.jsx';
-import { subs } from '../main.js';
+import { subs } from './subs.js';
 
 const composer = (props, onData) => {
 

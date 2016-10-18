@@ -7,7 +7,7 @@ import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
 
 import  {AppComponent}  from '../components/application/App.jsx';
 import SpinnerComponent from '../components/includes/spinner.jsx';
-import { subs } from '../main.js';
+import { subs } from './subs.js';
 
 const composer = (props, onData) => {
   const adSubscription = subs.subscribe('get-ad');

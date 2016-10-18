@@ -1,5 +1,4 @@
 import React, {PropTypes, Component} from 'react';
-import shouldPureComponentUpdate from 'react-pure-render/function';
 import {FacebookButton, PinterestButton,TwitterButton, TumblrButton} from 'react-social';
 import {createMarkup, cloudinaryURL} from '../../lib/utils.js';
 

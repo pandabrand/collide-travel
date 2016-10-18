@@ -8,7 +8,7 @@ import { LocationsCollection } from '../../lib/collections/locations.js';
 import { ArtistsCollection } from '../../lib/collections/artists.js';
 import  {ExploreBarComponent}  from '../components/includes/explore.jsx';
 import SpinnerComponent from '../components/includes/spinner.jsx';
-import { subs } from '../main.js';
+import { subs } from './subs.js';
 
 const composer = (props, onData) => {
   const citySubscription = subs.subscribe('explore-cities');

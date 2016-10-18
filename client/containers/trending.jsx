@@ -6,7 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import { composeWithTracker } from 'react-komposer';
 import { TrendingCollection } from '../../lib/collections/trending.js';
 import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
-import { subs } from '../main.js';
+import { subs } from './subs.js';
 
 import TrendingComponent  from '../components/trending/trending.jsx';
 import SpinnerComponent from '../components/includes/spinner.jsx';

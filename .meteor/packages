@@ -6,16 +6,15 @@
 
 meteor-base@1.0.4             # Packages every Meteor app needs to have
 mobile-experience@1.0.4       # Packages for a great mobile UX
-mongo@1.1.12                   # The database Meteor supports right now
+mongo@1.1.12_1                   # The database Meteor supports right now
 blaze-html-templates@1.0.4    # Compile .html files into Meteor Blaze views
 reactive-var@1.0.10            # Reactive variable for tracker
 tracker@1.1.0                 # Meteor's client-side reactive programming library
 
-standard-minifier-js@1.2.0    # JS minifier run for production mode
-es5-shim@4.6.14                # ECMAScript 5 compatibility for older browsers.
-ecmascript@0.5.8              # Enable ECMAScript2015+ syntax in app code
+standard-minifier-js@1.2.0_1    # JS minifier run for production mode
+es5-shim@4.6.14_1                # ECMAScript 5 compatibility for older browsers.
+ecmascript@0.5.8_1              # Enable ECMAScript2015+ syntax in app code
 
-kadira:flow-router
 kadira:blaze-layout
 seba:minifiers-autoprefixer
 fourseven:scss@=3.8.0_1
@@ -51,14 +50,14 @@ aldeed:autoform-select2
 natestrauser:select2
 lepozepo:cloudinary
 michalvalasek:autoform-bootstrap-colorpicker
-http@1.2.9
+http@1.2.9_1
 meteorhacks:npm
 
 
 npm-container
 mdg:geolocation
 okgrow:router-autoscroll
-shell-server
+shell-server@0.2.1
 reacttech:af-cloudinary
 okgrow:analytics
 meteorhacks:kadira
@@ -67,7 +66,9 @@ meteorhacks:unblock
 meteorhacks:fast-render
 chfritz:easycron
 meteorhacks:subs-manager
-facts
+facts@1.0.8
 simple:rest
 simple:json-routes
 gadicohen:sitemaps
+kadira:react-layout
+kadira:flow-router

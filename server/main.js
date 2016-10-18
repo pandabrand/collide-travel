@@ -17,16 +17,6 @@ Cloudinary.config ({
 
 Meteor.startup(() => {
 
-	prerenderio = Meteor.npmRequire( 'prerender-node' );
-	const prerender_token = Meteor.settings.private.PRERENDER_TOKEN;
-	console.dir(prerender_token);
-	if (prerender_token) {
-		 prerenderio.set('prerenderToken', prerender_token);
-		 prerenderio.set('host', Meteor.settings.public.DOMAIN);
-		 prerenderio.set('protocol', 'http');
-		 WebApp.rawConnectHandlers.use(prerenderio);
-	 }
-
 	// Enable cross origin requests for all endpoints
 	// "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS",
 	JsonRoutes.setResponseHeaders({

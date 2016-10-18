@@ -3,6 +3,7 @@ Meteor.startup(function() {
     key: Meteor.settings.public.GMAP_KEY,
     libraries: 'places'  // also accepts an array if you need more than one
   });
+
   $.cloudinary.config ({
   	cloud_name:Meteor.settings.public.CLOUDINARY_CLOUD_NAME
   });
@@ -44,11 +45,4 @@ Tracker.autorun(function() {
   if (Roles.subscription.ready() && !FlowRouter._initialized) {
      return FlowRouter.initialize();
    }
-});
-
-export const subs = new SubsManager({
-    // maximum number of cache subscriptions
-    cacheLimit: 30,
-    // any subscription will be expire after 5 minute, if it's not subscribed again
-    expireIn: 15
 });
