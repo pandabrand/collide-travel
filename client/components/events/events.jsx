@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import EventsRowContainer from '../../containers/event-row.jsx';
-import {createMarkup} from '../../lib/utils.js';
+import {createMarkup} from '/lib/utils.js';
 
 const serveStickyAd = (ads) => {
   const takeoverAd = ads ? ads.takeoverAd : null;

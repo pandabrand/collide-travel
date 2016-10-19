@@ -6,8 +6,8 @@ import { Meteor } from 'meteor/meteor';
 import { composeWithTracker } from 'react-komposer';
 
 import ContestComponent  from '../components/contests/contests.jsx';
-import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
-import SpinnerComponent from '../components/includes/spinner.jsx';
+import { AdZoneCollection } from '/lib/collections/ad-zone.js';
+import SpinnerComponent from '/imports/components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const adSubscription = Meteor.subscribe('get-ad');

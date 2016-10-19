@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import DashboardComponent from '../dashboard.jsx';
+import DashboardComponent from '/imports/components/admin/dashboard.jsx';
 import {BlazeNewEventComponent} from './blaze-new-event.jsx';
 
 const getNewEvent = (props) => {

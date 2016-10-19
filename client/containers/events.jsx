@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { EventsCollection } from '../../lib/collections/events.js';
-import { AdZoneCollection } from '../../lib/collections/ad-zone.js';
+import { EventsCollection } from '/lib/collections/events.js';
+import { AdZoneCollection } from '/lib/collections/ad-zone.js';
 
 import { EventsComponent } from '../components/events/events.jsx';
 
 import { connect } from 'react-redux';
 import { compose,composeWithTracker, composeAll } from 'react-komposer';
-import SpinnerComponent from '../components/includes/spinner.jsx';
+import SpinnerComponent from '/imports/components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('admin-events');

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {createMarkup} from '../../lib/utils.js';
+import {createMarkup} from '/lib/utils.js';
 
 export class FullTrendingRow extends Component {
   props: Props;

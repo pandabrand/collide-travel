@@ -6,7 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import { composeWithTracker } from 'react-komposer';
 
 import FullTrendingComponent  from '../components/trending/full-trending.jsx';
-import SpinnerComponent from '../components/includes/spinner.jsx';
+import SpinnerComponent from '/imports/components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   Meteor.call('get.feed.full', (err, res) => {

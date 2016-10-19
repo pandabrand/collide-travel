@@ -5,10 +5,10 @@ import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 
 // import { composeWithTracker } from 'react-komposer';
-import { CitiesCollection } from '../../lib/collections/cities.js';
-import { LocationsCollection } from '../../lib/collections/locations.js';
-import { ArtistsCollection } from '../../lib/collections/artists.js';
-import { ExploreBarComponent } from '../components/includes/explore.jsx';
+import { CitiesCollection } from '/lib/collections/cities.js';
+import { LocationsCollection } from '/lib/collections/locations.js';
+import { ArtistsCollection } from '/lib/collections/artists.js';
+import { ExploreBarComponent } from '/imports/components/includes/explore.jsx';
 
 const ExploreBarContainer = createContainer(({}) => {
   const citySubscription = Meteor.subscribe('cities');

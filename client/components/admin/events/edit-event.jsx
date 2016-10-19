@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import DashboardComponent from '../dashboard.jsx';
+import DashboardComponent from '/imports/components/admin/dashboard.jsx';
 import {BlazeEditEventComponent} from './blaze-edit-event.jsx';
 
 const getEditEvent = (props, id) => {

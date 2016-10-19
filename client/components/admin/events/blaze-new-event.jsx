@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Template } from 'meteor/templating';
 import { Blaze } from 'meteor/blaze';
 
-import DashboardComponent from '../dashboard.jsx';
+import DashboardComponent from '/imports/components/admin/dashboard.jsx';
 
 export class BlazeNewEventComponent extends Component {
   componentDidMount() {

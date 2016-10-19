@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 
 import { composeWithTracker } from 'react-komposer';
 
-import { EventsCollection } from '../../../lib/collections/events.js';
+import { EventsCollection } from '/lib/collections/events.js';
 
 import {EventTableComponent} from '../../components/admin/events/event-table.jsx';
-import SpinnerComponent from '../../components/includes/spinner.jsx';
+import SpinnerComponent from '/imports/components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('admin-events');
