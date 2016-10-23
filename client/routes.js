@@ -21,7 +21,8 @@ import {PrivacyComponent} from '/imports/components/home/privacy.jsx';
 import AccountUIComponent from '/imports/components/accounts/accountUI.jsx';
 import AdminOverviewContainer from '/imports/containers/admin/overview.jsx';
 
-import EditAdComponent from '/imports/components/admin/ads/edit-ad.jsx';
+import EditAdContainer from '/imports/containers/admin/ads.js';
+import AdUpdateComponent from '/imports/components/admin/ads/ad-update.jsx';
 
 // import AdminUserContainer from './containers/admin/user.jsx';
 // import EditUserComponent from './components/admin/users/edit-user.jsx';
@@ -31,10 +32,10 @@ import EditAdComponent from '/imports/components/admin/ads/edit-ad.jsx';
 // import AddNewEventComponent from './components/admin/events/new-event.jsx';
 // import EditEventComponent from './components/admin/events/edit-event.jsx';
 //
-// import AdminCityContainer from './containers/admin/city.jsx';
-// import AddNewCityComponent from './components/admin/city/new-city.jsx';
-// import EditCityComponent from './components/admin/city/edit-city.jsx';
-//
+import AdminCityContainer from '/imports/containers/admin/city.jsx';
+import AddNewCityComponent from '/imports/components/admin/city/new-city.jsx';
+import EditCityComponent from '/imports/components/admin/city/edit-city.jsx';
+
 // import AdminMagazineContainer from './containers/admin/magazine.jsx';
 // import AddNewMagazineComponent from './components/admin/magazine/new-magazine.jsx';
 // import EditMagazineComponent from './components/admin/magazine/edit-magazine.jsx';
@@ -280,7 +281,7 @@ adminAdRoutes.route('/', {
   name: 'admin-ads',
   action() {
     ReactLayout.render(AdminAppComponent, {
-      content: <EditAdComponent/>,
+      content: <AdUpdateComponent/>,
     });
   }
 });
@@ -365,46 +366,46 @@ adminAdRoutes.route('/', {
 //     }
 // });
 //
-// const adminCityRoutes = privateRoutes.group({
-//   prefix: '/city',
-//   triggersEnter: [ function() {
-//       if(!Roles.userIsInRole(Meteor.userId(), ['super-admin','admin','editor'],'default')) {
-//         return FlowRouter.go('dashboard');
-//       }
-//     }
-//   ],
-// });
-//
-// adminCityRoutes.route('/', {
-//     name: 'admin-city',
-//     action() {
-//       ReactLayout.render(AdminAppComponent, {
-//         content: <AdminCityContainer/>,
-//       });
-//     }
-// });
-//
-// adminCityRoutes.route('/new', {
-//     name: 'admin-city-new',
-//     action() {
-//       ReactLayout.render(AdminAppComponent, {
-//         content: <AddNewCityComponent showNew={true}/>,
-//       });
-//     }
-// });
-//
-// adminCityRoutes.route('/:id', {
-//     name: 'admin-city-edit',
-//     subscriptions: function(params) {
-//       this.register('editCity', Meteor.subscribe('edit-city', params.id));
-//     },
-//     action(params) {
-//       ReactLayout.render(AdminAppComponent, {
-//         content: <EditCityComponent id={params.id}/>,
-//       });
-//     }
-// });
-//
+const adminCityRoutes = privateRoutes.group({
+  prefix: '/city',
+  triggersEnter: [ function() {
+      if(!Roles.userIsInRole(Meteor.userId(), ['super-admin','admin','editor'],'default')) {
+        return FlowRouter.go('dashboard');
+      }
+    }
+  ],
+});
+
+adminCityRoutes.route('/', {
+    name: 'admin-city',
+    action() {
+      ReactLayout.render(AdminAppComponent, {
+        content: <AdminCityContainer/>,
+      });
+    }
+});
+
+adminCityRoutes.route('/new', {
+    name: 'admin-city-new',
+    action() {
+      ReactLayout.render(AdminAppComponent, {
+        content: <AddNewCityComponent showNew={true}/>,
+      });
+    }
+});
+
+adminCityRoutes.route('/:id', {
+    name: 'admin-city-edit',
+    subscriptions: function(params) {
+      this.register('editCity', Meteor.subscribe('edit-city', params.id));
+    },
+    action(params) {
+      ReactLayout.render(AdminAppComponent, {
+        content: <EditCityComponent id={params.id}/>,
+      });
+    }
+});
+
 // const adminArtistRoutes = privateRoutes.group({
 //   prefix: '/artist',
 //   triggersEnter: [ function() {

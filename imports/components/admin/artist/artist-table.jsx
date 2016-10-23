@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import DashboardComponent from  '../dashboard.jsx';
 
-const getArtistTable = (artists, props) => {
   const deleteArtist = (id) => {
     Meteor.call('artists.remove', id);
   }
@@ -17,7 +16,9 @@ const getArtistTable = (artists, props) => {
     FlowRouter.go(edit_path);
   }
 
-  return <div id="main-table">
+export const ArtistTableComponent = ({artists, props}) =>
+(<DashboardComponent>
+  <div id="main-table">
     <h2>Artists</h2> <a href={FlowRouter.path('admin-artist-new')} className="btn btn-primary add"><i className="fa fa-plus"/></a>
     <table className="table table-striped">
       <thead>
@@ -39,8 +40,5 @@ const getArtistTable = (artists, props) => {
         })}
       </tbody>
     </table>
-  </div>;
-}
-
-export const ArtistTableComponent = ({artists, props}) =>
-(<DashboardComponent content={getArtistTable(artists, props)}/>);
+  </div>
+</DashboardComponent>);

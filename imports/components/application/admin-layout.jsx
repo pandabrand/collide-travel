@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import UIHeader from '/imports/components/application/header.jsx';
 import UIFooter from '/imports/components/application/footer.jsx';
 

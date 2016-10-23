@@ -6,15 +6,20 @@ import ArtistGuideContainer from '/imports/containers/artist.jsx';
 import CategoryContainer from '/imports/containers/category.jsx';
 import NewsletterComponent from '/imports/components/newsletter/newsletter.jsx';
 import MagazineContainer  from '/imports/containers/magazine.jsx';
+import AdUpdateComponent from '/imports/components/admin/ads/ad-update.jsx';
 
 import {AboutComponent} from '/imports/components/home/about.jsx';
 import {TermsComponent} from '/imports/components/home/terms.jsx';
 import {PrivacyComponent} from '/imports/components/home/privacy.jsx';
 
-import AccountUIComponent from '/imports/components/accounts/accountUI.jsx';
+// import AccountUIComponent from '/imports/components/accounts/accountUI.jsx';
 import {AdminAppComponent} from '/imports/components/application/AdminApp.jsx';
-import AdminOverviewContainer from '/imports/containers/admin/overview.jsx';
-import EditAdComponent from '/imports/components/admin/ads/edit-ad.jsx';
+// import AdminOverviewContainer from '/imports/containers/admin/overview.jsx';
+// import EditAdComponent from '/imports/components/admin/ads/edit-ad.jsx';
+//
+// import AdminCityContainer from '/imports/containers/admin/city.jsx';
+// import AddNewCityComponent from '/imports/components/admin/city/new-city.jsx';
+// import EditCityContainer from '/imports/containers/admin/city-edit.js';
 
 // Define our middleware using the Picker.middleware() method.
 // Picker.middleware( bodyParser.json() );
@@ -192,9 +197,49 @@ adminAdRoutes.route('/', {
   name: 'admin-ads',
   action() {
     ReactLayout.render(AdminAppComponent, {
-      content: <EditAdComponent/>,
+      content: <AdUpdateComponent/>,
     });
   }
+});
+
+const adminCityRoutes = privateRoutes.group({
+  prefix: '/city',
+  triggersEnter: [ function() {
+      if(!Roles.userIsInRole(Meteor.userId(), ['super-admin','admin','editor'],'default')) {
+        return FlowRouter.go('dashboard');
+      }
+    }
+  ],
+});
+
+adminCityRoutes.route('/', {
+    name: 'admin-city',
+    action() {
+      ReactLayout.render(AdminAppComponent, {
+        content: <AdminCityContainer/>,
+      });
+    }
+});
+
+adminCityRoutes.route('/new', {
+    name: 'admin-city-new',
+    action() {
+      ReactLayout.render(AdminAppComponent, {
+        content: <AddNewCityComponent showNew={true}/>,
+      });
+    }
+});
+
+adminCityRoutes.route('/:id', {
+    name: 'admin-city-edit',
+    subscriptions: function(params) {
+      this.register('editCity', Meteor.subscribe('edit-city', params.id));
+    },
+    action(params) {
+      ReactLayout.render(AdminAppComponent, {
+        content: <EditCityContainer id={params.id}/>,
+      });
+    }
 });
 
 

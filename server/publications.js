@@ -6,7 +6,7 @@ import { ArtistCommentsCollection } from '../lib/collections/artist-comments.js'
 import { EventsCollection } from '../lib/collections/events.js';
 import { PagesCollection } from '../lib/collections/pages.js';
 import { TrendingCollection } from '../lib/collections/trending.js';
-import { AdZoneCollection } from '../lib/collections/ad-zone.js';
+import {AdZoneCollection} from '../lib/collections/ad-zone.js';
 let haversine = require('haversine');
 
 Meteor.publish('everything', function() {

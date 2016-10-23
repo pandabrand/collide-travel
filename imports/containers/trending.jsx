@@ -6,13 +6,13 @@ import { Meteor } from 'meteor/meteor';
 import { composeWithTracker } from 'react-komposer';
 import { TrendingCollection } from '/lib/collections/trending.js';
 import { AdZoneCollection } from '/lib/collections/ad-zone.js';
-import { subs } from '/imports/containers/subs.js';
+import { Subs } from '/imports/containers/subs.js';
 
 import TrendingComponent  from '/imports/components/trending/trending.jsx';
 import SpinnerComponent from '/imports/components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
-  const subscription = subs.subscribe('get-trending');
+  const subscription = Subs.subscribe('get-trending');
   if(subscription.ready()) {
     const res = TrendingCollection.find({},{limit:3,sort:{_id:-1}}).fetch();
     const trendingData = {res, props}

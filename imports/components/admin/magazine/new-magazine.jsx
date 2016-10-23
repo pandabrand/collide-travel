@@ -4,10 +4,6 @@ import { connect } from 'react-redux';
 import DashboardComponent from '../dashboard.jsx';
 import {BlazeNewMagazineComponent} from './blaze-new-magazine.jsx';
 
-const getNewMagazine = (props) => {
-  return <BlazeNewMagazineComponent {...props}/>;
-}
-
 export default NewMagazineComponent = ({props}) => {
-  return <DashboardComponent content={getNewMagazine(props)}/>;
+  return <DashboardComponent><BlazeNewMagazineComponent {...props}/></DashboardComponent>;
 };
