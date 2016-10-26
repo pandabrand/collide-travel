@@ -14,7 +14,7 @@ import SpinnerComponent from '/imports/components/includes/spinner.jsx';
 
 const composer = (props, onData) => {
   const citySubscription = Subs.subscribe('city-guides');
-  const magazineSubscription = Subs.subscribe('magazines');
+  const magazineSubscription = Subs.subscribe('all-magazines');
   const adSubscription = Subs.subscribe('get-ad');
   const pageSubscription = Subs.subscribe('page-by-title','City Guides');
   if(citySubscription.ready() && magazineSubscription.ready() && adSubscription.ready() && pageSubscription.ready()) {

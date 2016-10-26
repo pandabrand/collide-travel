@@ -25,7 +25,7 @@ Meteor.publish('event', function(id) {
   return EventsCollection.find({_id:id});
 });
 
-Meteor.publish('cities', function() {
+Meteor.publish('all-cities', function() {
   return CitiesCollection.find();
 });
 
@@ -74,7 +74,7 @@ Meteor.publish('promoted-city', function() {
   return CitiesCollection.find({isPromoted: true}, {fields:{displayName:1,isPromoted:1,cityName:1}});
 });
 
-Meteor.publish('locations', function(cityId){
+Meteor.publish('city-id-locations', function(cityId){
   check(cityId, String);
   return LocationsCollection.find({cityId:cityId},{sort:{isFeatured: -1, name: 1}});
 });
@@ -113,7 +113,7 @@ Meteor.publish('explore-categories', function(){
   return LocationsCollection.find({},{fields:{type:1,name:1,cityName:1}});
 });
 
-Meteor.publish('artists', function(){
+Meteor.publish('all-artists', function(){
   return ArtistsCollection.find();
 })
 
@@ -228,7 +228,7 @@ Meteor.publish('get-ad', function(){
   return AdZoneCollection.find({},{limit:1,sort:{_id:-1}});
 });
 
-Meteor.publish('magazines', function() {
+Meteor.publish('all-magazines', function() {
   return MagazinesCollection.find();
 });
 
@@ -260,3 +260,5 @@ Meteor.publish('search', function(searchTerm) {
     ];
   }
 })
+
+//// Pagination

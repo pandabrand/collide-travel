@@ -35,7 +35,7 @@ const composer = (props, onData) => {
     if(artists_sub.ready()) {
       artists = ArtistsCollection.find({cityName:promotedCity.cityName},{sort:{artistName:1},fields:{artistName:1,cityName:1,artistSlug:1,locationIds:1,isFeatured:1,color:1}}).fetch();
 
-      const locations_sub = Subs.subscribe('locations', promotedCity._id);
+      const locations_sub = Subs.subscribe('city-id-locations', promotedCity._id);
       if(locations_sub.ready()) {
           locations = LocationsCollection.find({cityId:promotedCity._id},{sort:{isFeatured:-1,name: 1}}).fetch();
 

@@ -9,11 +9,12 @@ import { MagazinesCollection } from '/lib/collections/magazines.js';
 import {MagazineTableComponent} from '/imports/components/admin/magazine/magazine-table.jsx';
 import SpinnerComponent from '/imports/components/includes/spinner.jsx';
 
+const pagination = new Meteor.Pagination(MagazinesCollection);
+
 const composer = (props, onData) => {
-  const subscription = Meteor.subscribe('magazines');
-  if(subscription.ready()) {
-    const magazines = MagazinesCollection.find().fetch();
-    const magazineData = {magazines, props};
+  const magazines = pagination.getPage();
+  if(pagination.ready()) {
+    const magazineData = {magazines, pagination, props};
     onData(null, magazineData);
   }
 };

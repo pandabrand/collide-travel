@@ -2,7 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import DashboardComponent from  '../dashboard.jsx';
+import BootstrapPaginator from 'react-bootstrap-pagination';
 
+export const ArtistTableComponent = ({artists, pagination, props}) => {
   const deleteArtist = (id) => {
     Meteor.call('artists.remove', id);
   }
@@ -16,10 +18,10 @@ import DashboardComponent from  '../dashboard.jsx';
     FlowRouter.go(edit_path);
   }
 
-export const ArtistTableComponent = ({artists, props}) =>
-(<DashboardComponent>
+  return <DashboardComponent>
   <div id="main-table">
     <h2>Artists</h2> <a href={FlowRouter.path('admin-artist-new')} className="btn btn-primary add"><i className="fa fa-plus"/></a>
+    <BootstrapPaginator pagination={pagination} limit={10} containerClass='text-center' />
     <table className="table table-striped">
       <thead>
         <tr>
@@ -41,4 +43,5 @@ export const ArtistTableComponent = ({artists, props}) =>
       </tbody>
     </table>
   </div>
-</DashboardComponent>);
+</DashboardComponent>;
+}

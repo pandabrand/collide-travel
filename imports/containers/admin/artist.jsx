@@ -9,11 +9,12 @@ import { ArtistsCollection } from '/lib/collections/artists.js';
 import {ArtistTableComponent} from '/imports/components/admin/artist/artist-table.jsx';
 import SpinnerComponent from '/imports/components/includes/spinner.jsx';
 
+const pagination = new Meteor.Pagination(ArtistsCollection);
+
 const composer = (props, onData) => {
-  const subscription = Meteor.subscribe('artists');
-  if(subscription.ready()) {
-    const artists = ArtistsCollection.find().fetch();
-    const artistData = {artists, props};
+  const artists = pagination.getPage();
+  if(pagination.ready()) {
+    const artistData = {artists, pagination, props};
     onData(null, artistData);
   }
 };

@@ -15,7 +15,7 @@ import SpinnerComponent from '/imports/components/includes/spinner.jsx';
 import { Subs } from '/imports/containers/subs.js';
 
 const getLocations = (id) => {
-  const locations_sub = Subs.subscribe('locations',id);
+  const locations_sub = Subs.subscribe('city-id-locations',id);
   if(locations_sub.ready()) {
     return LocationsCollection.find({cityId: id}, {sort:{isFeatured: -1, name: 1}}).fetch();
   }
@@ -36,7 +36,7 @@ const getArtistComments = (artistId) => {
 }
 
 const composeDataFromLocation = (position, props, onData) => {
-  const subscription = Subs.subscribe('cities');
+  const subscription = Subs.subscribe('all-cities');
   if(subscription.ready()) {
     const cities = CitiesCollection.find({}).fetch();
     const start = {latitude: position.lat, longitude: position.lng};
@@ -71,7 +71,7 @@ const composeData = (props, onData, city) => {
     artists = ArtistsCollection.find({cityName:city.cityName}, {sort:{isFeatured: -1, artistName: 1},limit:limit}).fetch();
     ads = AdZoneCollection.findOne({});
 
-    const locations_sub = Subs.subscribe('locations', homeCity._id);
+    const locations_sub = Subs.subscribe('city-id-locations', homeCity._id);
     if(locations_sub.ready()) {
         locations = LocationsCollection.find({cityId:homeCity._id}, {sort:{isFeatured: -1, name: 1}}).fetch();
 

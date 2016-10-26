@@ -4,7 +4,7 @@ import {Form, Field} from 'simple-react-form';
 import Textarea from 'simple-react-form-material-ui/lib/textarea'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton'
-import AdZoneCollection from '/lib/collections/ad-zone.js';
+import {AdZoneCollection} from '/lib/collections/ad-zone.js';
 
 import DashboardComponent from '../dashboard.jsx';
 // import {BlazeEditAdComponent} from './blaze-edit-ad.jsx';

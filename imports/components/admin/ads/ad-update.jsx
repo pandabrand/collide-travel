@@ -5,7 +5,7 @@ import {Form, Field} from 'simple-react-form';
 import Textarea from 'simple-react-form-material-ui/lib/textarea'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton'
-import AdZoneCollection from '/lib/collections/ad-zone.js';
+import {AdZoneCollection} from '/lib/collections/ad-zone.js';
 import DashboardComponent from '../dashboard.jsx';
 
 const propTypes = {
@@ -45,7 +45,7 @@ class AdUpdateComponent extends Component {
           <RaisedButton primary={true} label='Update' onTouchTap={() => this.refs.form.submit()}/>
         </MuiThemeProvider>
         <div><p>{this.state.showSuccessMessage}</p></div>
-      </div>      
+      </div>
     </DashboardComponent>);
   }
 }

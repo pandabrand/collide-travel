@@ -10,15 +10,15 @@ import { CitiesCollection } from '/lib/collections/cities.js';
 import {LocationTableComponent} from '/imports/components/admin/location/location-table.jsx';
 import SpinnerComponent from '/imports/components/includes/spinner.jsx';
 
+const pagination = new Meteor.Pagination(LocationsCollection);
+
 const composer = (props, onData) => {
-  const subscription = Meteor.subscribe('all-locations');
-  const city_sub = Meteor.subscribe('cities');
-  if(subscription.ready()) {
-    const locations = LocationsCollection.find().fetch();
-    let cities = {};
+  const locations = pagination.getPage();
+  if(pagination.ready()) {
+    const city_sub = Meteor.subscribe('all-cities');
     if(city_sub.ready()) {
       cities = CitiesCollection.find({},{displayName:1}).fetch();
-      const locationData = {locations, cities, props};
+      const locationData = {locations, cities, pagination, props};
       onData(null, locationData);
     }
   }

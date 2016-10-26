@@ -9,11 +9,12 @@ import { CitiesCollection } from '/lib/collections/cities.js';
 import {CityTableComponent} from '/imports/components/admin/city/city-table.jsx';
 import SpinnerComponent from '/imports/components/includes/spinner.jsx';
 
+const pagination = new Meteor.Pagination(CitiesCollection);
+
 const composer = (props, onData) => {
-  const subscription = Meteor.subscribe('cities');
-  if(subscription.ready()) {
-    const cities = CitiesCollection.find().fetch();
-    const cityData = {cities, props};
+  const cityTable = pagination.getPage();
+  if(pagination.ready()) {
+    const cityData = {cityTable, pagination, props};
     onData(null, cityData);
   }
 };

@@ -11,7 +11,7 @@ import { ArtistsCollection } from '/lib/collections/artists.js';
 import { ExploreBarComponent } from '/imports/components/includes/explore.jsx';
 
 const ExploreBarContainer = createContainer(({}) => {
-  const citySubscription = Meteor.subscribe('cities');
+  const citySubscription = Meteor.subscribe('all-cities');
   const loading = !citySubscription.ready();
   const cities = CitiesCollection.find({}).fetch();
   const citiesExist = !loading && !!cities;

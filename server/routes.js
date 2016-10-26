@@ -14,12 +14,29 @@ import {PrivacyComponent} from '/imports/components/home/privacy.jsx';
 
 // import AccountUIComponent from '/imports/components/accounts/accountUI.jsx';
 import {AdminAppComponent} from '/imports/components/application/AdminApp.jsx';
-// import AdminOverviewContainer from '/imports/containers/admin/overview.jsx';
+import AdminOverviewContainer from '/imports/containers/admin/overview.jsx';
 // import EditAdComponent from '/imports/components/admin/ads/edit-ad.jsx';
 //
-// import AdminCityContainer from '/imports/containers/admin/city.jsx';
-// import AddNewCityComponent from '/imports/components/admin/city/new-city.jsx';
-// import EditCityContainer from '/imports/containers/admin/city-edit.js';
+import AdminCityContainer from '/imports/containers/admin/city.jsx';
+import AddNewCityComponent from '/imports/components/admin/city/new-city.jsx';
+import EditCityContainer from '/imports/containers/admin/city-edit.js';
+
+import AdminArtistContainer from '/imports/containers/admin/artist.jsx';
+import AddNewArtistComponent from '/imports/components/admin/artist/new-artist.jsx';
+import EditArtistComponent from '/imports/components/admin/artist/edit-artist.jsx';
+import EditArtistCommentsComponent from '/imports/components/admin/artist/edit-artist-comments.jsx';
+
+import AdminLocationContainer from '/imports/containers/admin/location.jsx';
+import AddNewLocationComponent from '/imports/components/admin/location/new-location.jsx';
+import EditLocationComponent from '/imports/components/admin/location/edit-location.jsx';
+
+import AdminMagazineContainer from '/imports/containers/admin/magazine.jsx';
+import MagazineUpdateComponent from '/imports/components/admin/magazine/magazine-update.jsx';
+import MagazineCreateComponent from '/imports/components/admin/magazine/magazine-new.jsx';
+
+import AdminPageContainer from '/imports/containers/admin/page.jsx';
+import AddNewPageComponent from '/imports/components/admin/page/new-page.jsx';
+import EditPageComponent from '/imports/components/admin/page/edit-page.jsx';
 
 // Define our middleware using the Picker.middleware() method.
 // Picker.middleware( bodyParser.json() );
@@ -242,6 +259,177 @@ adminCityRoutes.route('/:id', {
     }
 });
 
+const adminArtistRoutes = privateRoutes.group({
+  prefix: '/artist',
+  triggersEnter: [ function() {
+      if(!Roles.userIsInRole(Meteor.userId(), ['super-admin','admin','editor','artist-editor'],'default')) {
+        return FlowRouter.go('dashboard');
+      }
+    }
+  ],
+});
+
+adminArtistRoutes.route('/', {
+    name: 'admin-artist',
+    action() {
+      ReactLayout.render(AdminAppComponent, {
+        content: <AdminArtistContainer/>,
+      });
+    }
+});
+
+adminArtistRoutes.route('/new', {
+    name: 'admin-artist-new',
+    action() {
+      ReactLayout.render(AdminAppComponent, {
+        content: <AddNewArtistComponent showNew={true}/>,
+      });
+    }
+});
+
+adminArtistRoutes.route('/:id', {
+    name: 'admin-artist-edit',
+    subscriptions: function(params) {
+      this.register('editArtist', Meteor.subscribe('artist', params.id));
+      this.register('cities', Meteor.subscribe('cities'));
+    },
+    action(params) {
+      ReactLayout.render(AdminAppComponent, {
+        content: <EditArtistComponent id={params.id}/>,
+      });
+    }
+});
+
+adminArtistRoutes.route('/comments/:id', {
+    name: 'admin-artist-comments-edit',
+    subscriptions: function(params) {
+      this.register('editArtistComments', Meteor.subscribe('artist-comments-edit', params.id));
+    },
+    action(params) {
+      ReactLayout.render(AdminAppComponent, {
+        content: <EditArtistCommentsComponent id={params.id}/>,
+      });
+    }
+});
+
+const adminLocationRoutes = privateRoutes.group({
+  prefix: '/location',
+  triggersEnter: [ function() {
+      if(!Roles.userIsInRole(Meteor.userId(), ['super-admin','admin','editor'],'default')) {
+        return FlowRouter.go('dashboard');
+      }
+    }
+  ],
+});
+
+adminLocationRoutes.route('/', {
+    name: 'admin-location',
+    action() {
+      ReactLayout.render(AdminAppComponent, {
+        content: <AdminLocationContainer/>,
+      });
+    }
+});
+
+adminLocationRoutes.route('/new', {
+    name: 'admin-location-new',
+    action() {
+      ReactLayout.render(AdminAppComponent, {
+        content: <AddNewLocationComponent showNew={true}/>,
+      });
+    }
+});
+
+adminLocationRoutes.route('/:id', {
+    name: 'admin-location-edit',
+    subscriptions: function(params) {
+      this.register('editLocation', Meteor.subscribe('location', params.id));
+      this.register('cities', Meteor.subscribe('cities'));
+    },
+    action(params) {
+      ReactLayout.render(AdminAppComponent, {
+        content: <EditLocationComponent id={params.id}/>,
+      });
+    }
+});
+
+const adminMagazineRoutes = privateRoutes.group({
+  prefix: '/magazine',
+  triggersEnter: [ function() {
+      if(!Roles.userIsInRole(Meteor.userId(), ['super-admin','admin','editor'],'default')) {
+        return FlowRouter.go('dashboard');
+      }
+    }
+  ],
+});
+
+adminMagazineRoutes.route('/', {
+    name: 'admin-magazine',
+    action() {
+      ReactLayout.render(AdminAppComponent, {
+        content: <AdminMagazineContainer/>,
+      });
+    }
+});
+
+adminMagazineRoutes.route('/new', {
+    name: 'admin-magazine-new',
+    action() {
+      ReactLayout.render(AdminAppComponent, {
+        content: <MagazineCreateComponent/>,
+      });
+    }
+});
+
+adminMagazineRoutes.route('/:id', {
+    name: 'admin-magazine-edit',
+    action(params) {
+      ReactLayout.render(AdminAppComponent, {
+        content: <MagazineUpdateComponent id={params.id}/>,
+      });
+    }
+});
+
+
+const adminPageRoutes = privateRoutes.group({
+  prefix: '/pages',
+  triggersEnter: [ function() {
+      if(!Roles.userIsInRole(Meteor.userId(), ['super-admin','admin','editor'],'default')) {
+        return FlowRouter.go('dashboard');
+      }
+    }
+  ],
+});
+
+adminPageRoutes.route('/', {
+    name: 'admin-page',
+    action() {
+      ReactLayout.render(AdminAppComponent, {
+        content: <AdminPageContainer/>,
+      });
+    }
+});
+
+adminPageRoutes.route('/new', {
+    name: 'admin-page-new',
+    action() {
+      ReactLayout.render(AdminAppComponent, {
+        content: <AddNewPageComponent showNew={true}/>,
+      });
+    }
+});
+
+adminPageRoutes.route('/:id', {
+    name: 'admin-page-edit',
+    subscriptions: function(params) {
+      this.register('editPage', Meteor.subscribe('page', params.id));
+    },
+    action(params) {
+      ReactLayout.render(AdminAppComponent, {
+        content: <EditPageComponent id={params.id}/>,
+      });
+    }
+});
 
 const timeInMillis = 1000 * 10; // 10 secs
 // FlowRouter.setPageCacheTimeout(timeInMillis);

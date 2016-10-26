@@ -97,3 +97,14 @@
     > h1, > h2, > h3, > h4, > h5, > h6 { margin: 0; }
   }
 }
+
+ul.pagination {
+  li {
+    float: left;
+  }
+}
+
+.uploadThumbnailContainer {
+  float: right;
+  margin: 0 25% 0 0;
+}
