@@ -12,7 +12,7 @@ import SpinnerComponent from '/imports/components/includes/spinner.jsx';
 const composer = (props, onData) => {
   const subscription = Meteor.subscribe('pages');
   if(subscription.ready()) {
-    const pages = PagesCollection.find().fetch();
+    const pages = PagesCollection.find({},{sort:{_id:1}}).fetch();
     const pageData = {pages, props};
     onData(null, pageData);
   }

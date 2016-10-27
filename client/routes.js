@@ -50,8 +50,8 @@ import AddNewLocationComponent from '/imports/components/admin/location/new-loca
 import EditLocationComponent from '/imports/components/admin/location/edit-location.jsx';
 
 import AdminPageContainer from '/imports/containers/admin/page.jsx';
-import AddNewPageComponent from '/imports/components/admin/page/new-page.jsx';
-import EditPageComponent from '/imports/components/admin/page/edit-page.jsx';
+import PageCreateComponent from '/imports/components/admin/page/page-new.jsx';
+import PageUpdateComponent from '/imports/components/admin/page/page-update.jsx';
 //
 // import AdZoneCollection from '../lib/collections/ad-zone.js';
 
@@ -523,19 +523,16 @@ adminPageRoutes.route('/new', {
     name: 'admin-page-new',
     action() {
       ReactLayout.render(AdminAppComponent, {
-        content: <AddNewPageComponent showNew={true}/>,
+        content: <PageCreateComponent/>,
       });
     }
 });
 
 adminPageRoutes.route('/:id', {
     name: 'admin-page-edit',
-    subscriptions: function(params) {
-      this.register('editPage', Meteor.subscribe('page', params.id));
-    },
     action(params) {
       ReactLayout.render(AdminAppComponent, {
-        content: <EditPageComponent id={params.id}/>,
+        content: <PageUpdateComponent id={params.id}/>,
       });
     }
 });
