@@ -88,6 +88,11 @@ Meteor.publish('location', function(locationId){
   return LocationsCollection.find({_id:locationId});
 });
 
+Meteor.publish('location-and-cities', function(locationId){
+  check(locationId, String);
+  return [LocationsCollection.find({_id:locationId}),CitiesCollection.find({},{fields: {displayName:1}})];
+});
+
 Meteor.publish('artist-locations', function(locationIds) {
   check(locationIds, [String]);
 

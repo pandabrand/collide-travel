@@ -27,8 +27,8 @@ import EditArtistComponent from '/imports/components/admin/artist/edit-artist.js
 import EditArtistCommentsComponent from '/imports/components/admin/artist/edit-artist-comments.jsx';
 
 import AdminLocationContainer from '/imports/containers/admin/location.jsx';
-import AddNewLocationComponent from '/imports/components/admin/location/new-location.jsx';
-import EditLocationComponent from '/imports/components/admin/location/edit-location.jsx';
+import LocationUpdateComponent from '/imports/components/admin/location/location-update.jsx';
+import LocationCreateComponent from '/imports/components/admin/location/location-new.jsx';
 
 import AdminMagazineContainer from '/imports/containers/admin/magazine.jsx';
 import MagazineUpdateComponent from '/imports/components/admin/magazine/magazine-update.jsx';
@@ -335,20 +335,16 @@ adminLocationRoutes.route('/new', {
     name: 'admin-location-new',
     action() {
       ReactLayout.render(AdminAppComponent, {
-        content: <AddNewLocationComponent showNew={true}/>,
+        content: <LocationCreateComponent/>,
       });
     }
 });
 
 adminLocationRoutes.route('/:id', {
     name: 'admin-location-edit',
-    subscriptions: function(params) {
-      this.register('editLocation', Meteor.subscribe('location', params.id));
-      this.register('cities', Meteor.subscribe('cities'));
-    },
     action(params) {
       ReactLayout.render(AdminAppComponent, {
-        content: <EditLocationComponent id={params.id}/>,
+        content: <LocationUpdateComponent id={params.id}/>,
       });
     }
 });

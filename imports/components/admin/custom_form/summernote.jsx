@@ -46,9 +46,9 @@ class ReactSummernote extends Component {
     this.manageModalScroll(true);
   }
 
-  shouldComponentUpdate() {
-    return true;
-  }
+  // componentWillReceiveProps (nextProps) {
+  //   this.setState({ value: nextProps.value })
+  // }
 
   componentWillUnmount() {
     if (this.editor) this.editor.summernote('destroy');

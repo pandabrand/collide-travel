@@ -32,6 +32,7 @@ class HtmlEditor extends Component {
 
   onChange(value) {
     this.setState({ value: value })
+    console.dir(value)
     this.props.onChange(value);
   }
 

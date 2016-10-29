@@ -39,6 +39,7 @@
     "react-controllables": "^0.6.0",
     "react-dom": "^15.3.0",
     "react-dropzone": "^3.7.0",
+    "react-geosuggest": "^2.0.0",
     "react-komposer": "^1.13.1",
     "react-mounter": "^1.2.0",
     "react-pure-render": "^1.0.2",
