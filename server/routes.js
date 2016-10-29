@@ -18,8 +18,8 @@ import AdminOverviewContainer from '/imports/containers/admin/overview.jsx';
 // import EditAdComponent from '/imports/components/admin/ads/edit-ad.jsx';
 //
 import AdminCityContainer from '/imports/containers/admin/city.jsx';
-import AddNewCityComponent from '/imports/components/admin/city/new-city.jsx';
-import EditCityContainer from '/imports/containers/admin/city-edit.js';
+import CityCreateComponent from '/imports/components/admin/city/city-new.jsx';
+import CityUpdateComponent from '/imports/components/admin/city/city-update.jsx';
 
 import AdminArtistContainer from '/imports/containers/admin/artist.jsx';
 import AddNewArtistComponent from '/imports/components/admin/artist/new-artist.jsx';
@@ -242,7 +242,7 @@ adminCityRoutes.route('/new', {
     name: 'admin-city-new',
     action() {
       ReactLayout.render(AdminAppComponent, {
-        content: <AddNewCityComponent showNew={true}/>,
+        content: <CityCreateComponent/>,
       });
     }
 });
@@ -254,7 +254,7 @@ adminCityRoutes.route('/:id', {
     },
     action(params) {
       ReactLayout.render(AdminAppComponent, {
-        content: <EditCityContainer id={params.id}/>,
+        content: <CityUpdateComponent id={params.id}/>,
       });
     }
 });

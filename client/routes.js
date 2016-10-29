@@ -33,8 +33,8 @@ import AdUpdateComponent from '/imports/components/admin/ads/ad-update.jsx';
 // import EditEventComponent from './components/admin/events/edit-event.jsx';
 //
 import AdminCityContainer from '/imports/containers/admin/city.jsx';
-import AddNewCityComponent from '/imports/components/admin/city/new-city.jsx';
-import EditCityComponent from '/imports/components/admin/city/edit-city.jsx';
+import CityCreateComponent from '/imports/components/admin/city/city-new.jsx';
+import CityUpdateComponent from '/imports/components/admin/city/city-update.jsx';
 
 import AdminMagazineContainer from '/imports/containers/admin/magazine.jsx';
 import MagazineUpdateComponent from '/imports/components/admin/magazine/magazine-update.jsx';
@@ -389,19 +389,16 @@ adminCityRoutes.route('/new', {
     name: 'admin-city-new',
     action() {
       ReactLayout.render(AdminAppComponent, {
-        content: <AddNewCityComponent showNew={true}/>,
+        content: <CityCreateComponent/>,
       });
     }
 });
 
 adminCityRoutes.route('/:id', {
     name: 'admin-city-edit',
-    subscriptions: function(params) {
-      this.register('editCity', Meteor.subscribe('edit-city', params.id));
-    },
     action(params) {
       ReactLayout.render(AdminAppComponent, {
-        content: <EditCityComponent id={params.id}/>,
+        content: <CityUpdateComponent id={params.id}/>,
       });
     }
 });
@@ -489,10 +486,6 @@ adminLocationRoutes.route('/new', {
 
 adminLocationRoutes.route('/:id', {
     name: 'admin-location-edit',
-    // subscriptions: function(params) {
-    //   this.register('editLocation', Meteor.subscribe('location', params.id));
-    //   this.register('cities', Meteor.subscribe('cities'));
-    // },
     action(params) {
       ReactLayout.render(AdminAppComponent, {
         content: <LocationUpdateComponent id={params.id}/>,
