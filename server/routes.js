@@ -22,8 +22,8 @@ import CityCreateComponent from '/imports/components/admin/city/city-new.jsx';
 import CityUpdateComponent from '/imports/components/admin/city/city-update.jsx';
 
 import AdminArtistContainer from '/imports/containers/admin/artist.jsx';
-import AddNewArtistComponent from '/imports/components/admin/artist/new-artist.jsx';
-import EditArtistComponent from '/imports/components/admin/artist/edit-artist.jsx';
+import ArtistCreateComponent from '/imports/components/admin/artist/artist-new.jsx';
+import ArtistUpdateComponent from '/imports/components/admin/artist/artist-update.jsx';
 import EditArtistCommentsComponent from '/imports/components/admin/artist/edit-artist-comments.jsx';
 
 import AdminLocationContainer from '/imports/containers/admin/location.jsx';
@@ -282,20 +282,16 @@ adminArtistRoutes.route('/new', {
     name: 'admin-artist-new',
     action() {
       ReactLayout.render(AdminAppComponent, {
-        content: <AddNewArtistComponent showNew={true}/>,
+        content: <ArtistCreateComponent/>,
       });
     }
 });
 
 adminArtistRoutes.route('/:id', {
     name: 'admin-artist-edit',
-    subscriptions: function(params) {
-      this.register('editArtist', Meteor.subscribe('artist', params.id));
-      this.register('cities', Meteor.subscribe('cities'));
-    },
     action(params) {
       ReactLayout.render(AdminAppComponent, {
-        content: <EditArtistComponent id={params.id}/>,
+        content: <ArtistUpdateComponent id={params.id}/>,
       });
     }
 });

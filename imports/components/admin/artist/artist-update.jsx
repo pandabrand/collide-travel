@@ -6,20 +6,25 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 import DashboardComponent from '../dashboard.jsx';
-import {LocationsCollection} from '/lib/collections/locations.js';
+import {ArtistsCollection} from '/lib/collections/artists.js';
 import {CitiesCollection} from '/lib/collections/cities.js';
+import {LocationsCollection} from '/lib/collections/locations.js';
+
 
 const propTypes = {
-  location: React.PropTypes.object
+  cityValue: React.PropTypes.object
 }
 
-class LocationUpdateComponent extends Component {
+class ArtistUpdateComponent extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      cityValue: this.props.artist.cityId,
+    };
     this.showSuccessMessage = this.showSuccessMessage.bind(this);
     this.cityOptions = this.cityOptions.bind(this);
+    this.locationOptions = this.locationOptions.bind(this);
   }
 
   cityOptions() {
@@ -28,13 +33,25 @@ class LocationUpdateComponent extends Component {
     });
   }
 
+  locationOptions() {
+    const cityId = this.state.cityValue || '';
+    const locationsFiltered = cityId ? _.where(this.props.locations, {cityId:cityId}) : this.props.locations;
+    return locationsFiltered.map((location)=> {
+      return {'label':location.name,'value':location._id};
+    });
+  }
+
   showSuccessMessage() {
-    this.setState({successMessage: 'Location updated.'})
+    this.setState({successMessage: 'Artist updated.'})
     document.getElementById('formtop').scrollIntoView({behavior:'smooth'})
     setTimeout(() => {
       this.setState({successMessage: null})
-      FlowRouter.go('admin-location');
+      FlowRouter.go('admin-artist');
     }, 3000);
+  }
+
+  onChange(value) {
+    this.setState({cityValue: value});
   }
 
   render() {
@@ -49,7 +66,7 @@ class LocationUpdateComponent extends Component {
 
     return (<DashboardComponent>
       <div id='formtop'>
-        <h1>Edit Location</h1>
+        <h1>Edit Artist</h1>
         {!this.state.successMessage ? '' :
           <MuiThemeProvider>
             <Paper style={style} zDepth={3}>{this.state.successMessage}</Paper>
@@ -57,26 +74,26 @@ class LocationUpdateComponent extends Component {
         }
         <MuiThemeProvider>
           <Form
-            collection={LocationsCollection}
+            collection={ArtistsCollection}
             type='update'
-            doc={this.props.location}
+            doc={this.props.artist}
             ref='form'
             onSuccess={this.showSuccessMessage}
           >
-            <Field fieldName='name'/>
-            <Field fieldName='type'/>
-            <Field id='citySelectID' fieldName='cityId' options={this.cityOptions()}/>
-            <Field fieldName='geolocation'/>
-            <Field fieldName='description'/>
-            <Field fieldName='photo'/>
-            <Field fieldName='photoCredit'/>
-            <Field fieldName='website'/>
-            <Field fieldName='isFeatured'/>
+          <Field fieldName='artistName'/>
+          <Field id='citySelectID' value={this.state.cityValue} onChange={this.onChange} fieldName='cityId' options={this.cityOptions()}/>
+          <Field id='optionSelectID' fieldName='locationIds' options={this.locationOptions()}/>
+          <Field fieldName='image'/>
+          <Field fieldName='photoCredit'/>
+          <Field fieldName='description'/>
+          <Field fieldName='color'/>
+          <Field fieldName='soundcloud'/>
+          <Field fieldName='isFeatured'/>
           </Form>
         </MuiThemeProvider>
         <MuiThemeProvider>
           <div>
-            <RaisedButton label='Back' onTouchTap={() => FlowRouter.go('admin-location')}/>
+            <RaisedButton label='Back' onTouchTap={() => FlowRouter.go('admin-artist')}/>
             <RaisedButton primary={true} label='Update' onTouchTap={() => this.refs.form.submit()}/>
           </div>
         </MuiThemeProvider>
@@ -85,12 +102,13 @@ class LocationUpdateComponent extends Component {
   }
 }
 
-LocationUpdateComponent.propTypes = propTypes;
+ArtistUpdateComponent.propTypes = propTypes;
 
 export default createContainer(({id}) => {
-  const handler = Meteor.subscribe('location-and-cities', id)
+  const handler = Meteor.subscribe('artist-cities-and-locations', id)
   const isLoading = !handler.ready()
-  const location = LocationsCollection.findOne()
+  const artist = ArtistsCollection.findOne()
   const cities = CitiesCollection.find({},{fields: {displayName:1}}).fetch()
-  return {isLoading, location, cities}
-}, LocationUpdateComponent)
+  const locations = LocationsCollection.find({}, {fields: {name:1, cityId:1}}).fetch()
+  return {isLoading, artist, locations, cities}
+}, ArtistUpdateComponent)
