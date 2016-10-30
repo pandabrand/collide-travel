@@ -85,7 +85,7 @@ class CityUpdateComponent extends Component {
         </MuiThemeProvider>
         <MuiThemeProvider>
           <div>
-            <RaisedButton label='Back' onTouchTap={() => FlowRouter.go('admin-location')}/>
+            <RaisedButton label='Back' onTouchTap={() => FlowRouter.go('admin-city')}/>
             <RaisedButton primary={true} label='Update' onTouchTap={() => this.refs.form.submit()}/>
           </div>
         </MuiThemeProvider>

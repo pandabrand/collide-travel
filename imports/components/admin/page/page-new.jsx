@@ -54,6 +54,9 @@ export default class PageCreateComponent extends Component {
           </Form>
         </MuiThemeProvider>
         <MuiThemeProvider>
+          <RaisedButton label='Back' onTouchTap={() => FlowRouter.go('admin-page')}/>
+        </MuiThemeProvider>
+        <MuiThemeProvider>
           <RaisedButton primary={true} label='Create' onTouchTap={() => this.refs.form.submit()}/>
         </MuiThemeProvider>
       </div>

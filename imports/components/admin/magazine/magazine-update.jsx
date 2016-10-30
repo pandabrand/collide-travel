@@ -60,6 +60,9 @@ class MagazineUpdateComponent extends Component {
           </Form>
         </MuiThemeProvider>
         <MuiThemeProvider>
+          <RaisedButton label='Back' onTouchTap={() => FlowRouter.go('admin-magazine')}/>
+        </MuiThemeProvider>
+        <MuiThemeProvider>
           <RaisedButton primary={true} label='Update' onTouchTap={() => this.refs.form.submit()}/>
         </MuiThemeProvider>
       </div>
