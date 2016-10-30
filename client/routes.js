@@ -177,29 +177,29 @@ citySection.route('/:name', {
   }
 });
 
-// function setGeolocation(context) {
-//   context.params['geolocation'] = {};
-// }
-//
-// publicRoutes.route('/near-me', {
-//   name: 'city-guide-near-me',
-//   triggersEnter: [setGeolocation],
-//   action(params) {
-//     ReactLayout.render(AppContainer, {
-//       content: <CityContainer {...params}/>
-//     });
-//   }
-// });
-//
-// citySection.route('/:name/:locationName', {
-//   name: 'location',
-//   action(params) {
-//     ReactLayout.render(AppContainer, {
-//       content: <Cityontainer {...params}/>
-//     });
-//   }
-// });
-//
+function setGeolocation(context) {
+  context.params['geolocation'] = {};
+}
+
+publicRoutes.route('/near-me', {
+  name: 'city-guide-near-me',
+  triggersEnter: [setGeolocation],
+  action(params) {
+    ReactLayout.render(AppContainer, {
+      content: <CityContainer {...params}/>
+    });
+  }
+});
+
+citySection.route('/:name/:locationName', {
+  name: 'location',
+  action(params) {
+    ReactLayout.render(AppContainer, {
+      content: <Cityontainer {...params}/>
+    });
+  }
+});
+
 citySection.route('/:name/artist/:artistName', {
   name: 'artist-guide',
   action(params) {

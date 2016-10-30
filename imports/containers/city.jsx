@@ -60,7 +60,7 @@ const composeDataFromLocation = (position, props, onData) => {
  }
 
 const composeData = (props, onData, city) => {
-  const limit = window.innerWidth <= 511 ? Session.get('mobileLimit') : 30;
+  const limit = (typeof window !== 'undefined' && window.innerWidth <= 511) ? Session.get('mobileLimit') : 30;
   const artists_sub = Subs.subscribe('artists-city-by-name-image', city.cityName);
   const adSubscription = Subs.subscribe('get-ad');
   let homeCity = city;
@@ -93,7 +93,9 @@ const composeData = (props, onData, city) => {
 }
 
 const composer = (props, onData) => {
-  Session.setDefault('mobileLimit',6);
+  if(Meteor.isClient) {
+    Session.setDefault('mobileLimit',6);
+  }
   if(props.geolocation) {
     position = Geolocation.latLng();
     if(position) {

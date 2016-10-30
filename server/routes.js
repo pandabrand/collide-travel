@@ -85,6 +85,29 @@ citySection.route('/:name', {
   }
 });
 
+function setGeolocation(context) {
+  context.params['geolocation'] = {};
+}
+
+publicRoutes.route('/near-me', {
+  name: 'city-guide-near-me',
+  triggersEnter: [setGeolocation],
+  action(params) {
+    ReactLayout.render(AppContainer, {
+      content: <CityContainer {...params}/>
+    });
+  }
+});
+
+citySection.route('/:name/:locationName', {
+  name: 'location',
+  action(params) {
+    ReactLayout.render(AppContainer, {
+      content: <Cityontainer {...params}/>
+    });
+  }
+});
+
 citySection.route('/:name/artist/:artistName', {
   name: 'artist-guide',
   action(params) {
@@ -420,6 +443,6 @@ adminPageRoutes.route('/:id', {
     }
 });
 
-const timeInMillis = 1000 * 10; // 10 secs
-// FlowRouter.setPageCacheTimeout(timeInMillis);
-// FlowRouter.setDeferScriptLoading(true);
+const timeInMillis = 1000 * 30; // 10 secs
+FlowRouter.setPageCacheTimeout(timeInMillis);
+FlowRouter.setDeferScriptLoading(true);
