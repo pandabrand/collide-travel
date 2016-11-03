@@ -25,19 +25,21 @@ const showCategoryLabel = (locationCategories) => {
 
 const citiesDrop = (cities) => {
   return cities.map((city, i) => {
-    return <li key={i}><a href={FlowRouter.path('city-guide',{name:city.cityName})}>{city.displayName}</a></li>;
+    return <li key={i}><a href={'/city/'+city.cityName}>{city.displayName}</a></li>;
   });
 }
 
 const artistsDrop = (artists) => {
   return artists.map((artist, i) => {
-    return <li key={i}><a href={FlowRouter.path('artist-guide',{name:artist.cityName, artistName:artist.artistSlug})}>{artist.artistName}</a></li>;
+    // return <li key={i}><a href={FlowRouter.path('artist-guide',{name:artist.cityName, artistName:artist.artistSlug})}>{artist.artistName}</a></li>;
+    return <li key={i}><a href={'/city/'+artist.cityName+'/artist/'+artist.artistSlug}>{artist.artistName}</a></li>;
   });
 }
 
 const categoriesDrop = (categories) => {
   return categories.map((category, i) => {
-    return <li key={i}><a href={(FlowRouter.current().params && FlowRouter.current().params.name) ? FlowRouter.path('city-category-guide',{type:category.type, name:FlowRouter.current().params.name}) : FlowRouter.path('category-guide',{type:category.type})}>{category.type}</a></li>;
+    // return <li key={i}><a href={(FlowRouter.current().params && FlowRouter.current().params.name) ? FlowRouter.path('city-category-guide',{type:category.type, name:FlowRouter.current().params.name}) : FlowRouter.path('category-guide',{type:category.type})}>{category.type}</a></li>;
+    return <li key={i}><a href={(FlowRouter.current().params && FlowRouter.current().params.name) ? '/category/'+category.type+'/city/'+FlowRouter.current().params.name : '/category/'+category.type}>{category.type}</a></li>;
   });
 }
 export const ExploreBarComponent = ({cities, artists, locationCategories, props}) => {
