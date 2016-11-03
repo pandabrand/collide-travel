@@ -48,7 +48,7 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
         <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
           <li><a href='/'>Home</a></li>
           {cities.map((city, i) => {
-            return <li key={i}><a href={FlowRouter.path('city-guide',{name:city.cityName})}>{city.displayName}</a></li>
+            return <li key={i}><a href={FlowRouter.path('city-guide',{'name':city.cityName})}>{city.displayName}</a></li>
           })}
         </ul>
       </div>
@@ -64,7 +64,7 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
         <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
           <li><a href='/'>Home</a></li>
           {filteredArtists.map((artist, i) => {
-            return <li key={i}><a href={FlowRouter.path('artist-guide',{name:artist.cityName, artistName:artist.artistSlug})}>{artist.artistName}</a></li>
+            return <li key={i}><a href={FlowRouter.path('artist-guide',{'name':artist.cityName, 'artistName':artist.artistSlug})}>{artist.artistName}</a></li>
           })}
         </ul>
       </div>
@@ -80,7 +80,7 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
         <ul className="dropdown-menu right-dropdown-menu" aria-labelledby="dropdownMenu3">
           <li><a href='/'>Home</a></li>
           {filteredCategories.map((category, i) => {
-            return <li key={i}><a href={(FlowRouter.current().params && FlowRouter.current().params.name) ? FlowRouter.path('city-category-guide',{type:category.type, name:FlowRouter.current().params.name}) : FlowRouter.path('category-guide',{type:category.type})}>{category.type}</a></li>
+            return <li key={i}><a href={(FlowRouter.current().params && FlowRouter.current().params.name) ? FlowRouter.path('city-category-guide',{'type':category.type, 'name':FlowRouter.current().params.name}) : FlowRouter.path('category-guide',{'type':category.type})}>{category.type}</a></li>
           })}
         </ul>
       </div>
