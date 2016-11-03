@@ -62,44 +62,7 @@ export default class UIHeaderComponent extends Component {
     const showTopAd = ads ? ads.showTopBannerAd : false;
     const mobileButtonClasses = state.mobileMenuClick ? 'navbar-toggle c-hamburger c-hamburger--htx is-active' : 'navbar-toggle c-hamburger c-hamburger--htx';
     const ad = (topAd && topAd.length > 0 && showTopAd) ? <div className="banner-ad fluid-container ad-container"><div dangerouslySetInnerHTML={createMarkup(topAd)}/></div> : '';
-    
-    const title = 'Collide Travel';
-    DocHead.setTitle(title);
-    const charset = {charset: 'utf-8'};
-    DocHead.addMeta(charset);
-    const http_content = {'http-equiv': 'X-UA-Compatible', content: 'IE=edge'};
-    DocHead.addMeta(http_content);
-    const viewport = {name: 'viewport', content: 'width=device-width, initial-scale=1.0'};
-    DocHead.addMeta(viewport);
 
-    const cloudinary_dpr_hint =  {'http-equiv':'Accept-CH', content:'DPR, Viewport-Width, Width'};
-    DocHead.addMeta(cloudinary_dpr_hint);
-    const apple_touch_icon = {rel:"apple-touch-icon", sizes:"180x180", href:"/apple-touch-icon.png"};
-    const icon_32 = {rel:"icon", type:"image/png", href:"/favicon-32x32.png", sizes:"32x32"};
-    const icon_16 = {rel:"icon", type:"image/png", href:"/favicon-16x16.png", sizes:"16x16"};
-    const manifest_json = {rel:"manifest", href:"/manifest.json"};
-    const mask_icon = {rel:"mask-icon", href:"/safari-pinned-tab.svg", color:"#5bbad5"};
-    const theme_color = {name:"theme-color", content:"#ffffff"};
-
-    DocHead.addLink(apple_touch_icon);
-    DocHead.addLink(icon_32);
-    DocHead.addLink(icon_16);
-    DocHead.addLink(manifest_json);
-    DocHead.addLink(mask_icon);
-    DocHead.addMeta(theme_color);
-
-    const fb_type = {property:'og:type', content:'website'};
-    const fb_app_id = {property:'fb:app_id', content:Meteor.settings.public.FACEBOOK_ID};
-    const fb_site_name = {property:'og:site_name', content:'Collide Travel'};
-    const fb_locale = {property:'og:locale', content:'en_US'};
-    DocHead.addMeta(fb_app_id);
-    DocHead.addMeta(fb_type);
-    DocHead.addMeta(fb_site_name);
-    DocHead.addMeta(fb_locale);
-
-
-    const twitter_site = {name:'twitter:site', content:'@CultureCollide'};
-    DocHead.addMeta(twitter_site);
 
     return (
       <div className="nav-wrapper">
