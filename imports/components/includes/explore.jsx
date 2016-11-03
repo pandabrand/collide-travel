@@ -23,6 +23,23 @@ const showCategoryLabel = (locationCategories) => {
   }
 }
 
+const citiesDrop = (cities) => {
+  return cities.map((city, i) => {
+    return <li key={i}><a href={FlowRouter.path('city-guide',{name:city.cityName})}>{city.displayName}</a></li>;
+  });
+}
+
+const artistsDrop = (artists) => {
+  return artists.map((artist, i) => {
+    return <li key={i}><a href={FlowRouter.path('artist-guide',{name:artist.cityName, artistName:artist.artistSlug})}>{artist.artistName}</a></li>;
+  });
+}
+
+const categoriesDrop = (categories) => {
+  return categories.map((category, i) => {
+    return <li key={i}><a href={(FlowRouter.current().params && FlowRouter.current().params.name) ? FlowRouter.path('city-category-guide',{type:category.type, name:FlowRouter.current().params.name}) : FlowRouter.path('category-guide',{type:category.type})}>{category.type}</a></li>;
+  });
+}
 export const ExploreBarComponent = ({cities, artists, locationCategories, props}) => {
   const CURRENT_ROUTE = FlowRouter.current();
   const cityFilter = (CURRENT_ROUTE.params && CURRENT_ROUTE.params.name) ? {cityName: CURRENT_ROUTE.params.name} : null;
@@ -47,9 +64,7 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
         </button>
         <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
           <li><a href='/'>Home</a></li>
-          {cities.map((city, i) => {
-            return <li key={i}><a href={FlowRouter.path('city-guide',{'name':city.cityName})}>{city.displayName}</a></li>
-          })}
+          {citiesDrop(cities)}
         </ul>
       </div>
       <div className="dropdown">
@@ -63,9 +78,7 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
         </button>
         <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
           <li><a href='/'>Home</a></li>
-          {filteredArtists.map((artist, i) => {
-            return <li key={i}><a href={FlowRouter.path('artist-guide',{'name':artist.cityName, 'artistName':artist.artistSlug})}>{artist.artistName}</a></li>
-          })}
+          {artistsDrop(filteredArtists)}
         </ul>
       </div>
       <div className="dropdown">
@@ -79,9 +92,7 @@ export const ExploreBarComponent = ({cities, artists, locationCategories, props}
         </button>
         <ul className="dropdown-menu right-dropdown-menu" aria-labelledby="dropdownMenu3">
           <li><a href='/'>Home</a></li>
-          {filteredCategories.map((category, i) => {
-            return <li key={i}><a href={(FlowRouter.current().params && FlowRouter.current().params.name) ? FlowRouter.path('city-category-guide',{'type':category.type, 'name':FlowRouter.current().params.name}) : FlowRouter.path('category-guide',{'type':category.type})}>{category.type}</a></li>
-          })}
+          {categoriesDrop(filteredCategories)}
         </ul>
       </div>
     </div>
