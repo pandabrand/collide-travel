@@ -30,7 +30,7 @@ const getCity = (homeCity, locations, artists, artistComments, ads, props, dispa
   const social_description = removeHTMLTags(homeCity.description).substring(0,154);
   const current_url = FlowRouter.current();
   const social_url = FlowRouter.url(current_url.route.path, current_url.params, {});
-  const social_image = cloudinaryURL(homeCity.guidePreview, 600, 315, fill, auto, 2);
+  const social_image = cloudinaryURL(homeCity.guidePreview, 600, 315, 'fill', 'auto', 2);
 
   const fb_url = {property:'og:url', content:social_url};
   const fb_title = {property:'og:title', content:social_title};
