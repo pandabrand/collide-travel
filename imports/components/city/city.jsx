@@ -28,19 +28,22 @@ const serveTakeoverAd = (ads) => {
 const getCity = (homeCity, locations, artists, artistComments, ads, props, dispatch) => {
   const social_title = 'Collide Travel - ' + homeCity.displayName;
   const social_description = removeHTMLTags(homeCity.description).substring(0,154);
-  const social_url = Meteor.absoluteUrl() + FlowRouter.current().path;
-  const social_image = cloudinaryURL(homeCity.guidePreview);
+  const current_url = FlowRouter.current();
+  const social_url = FlowRouter.url(current_url.route.path, current_url.params, {});
+  const social_image = cloudinaryURL(homeCity.guidePreview, 600, 315, fill, auto, 2);
 
   const fb_url = {property:'og:url', content:social_url};
   const fb_title = {property:'og:title', content:social_title};
   const fb_description = {property:'og:description',content:social_description};
   const fb_image = {property:'og:image', content: social_image};
+  const fb_type = {property:'og:type', content:'place'};
   const twitter_card = {name:'twitter:card', content:social_description};
   const twitter_title = {name:'twitter:title', content:social_title};
   const twitter_description = {name:'twitter:description', content:social_description};
   const twitter_url = {name:'twitter:url', content:social_url};
 
   DocHead.setTitle(social_title);
+  DocHead.addMeta(fb_type);
   DocHead.addMeta(fb_url);
   DocHead.addMeta(fb_title);
   DocHead.addMeta(fb_description);

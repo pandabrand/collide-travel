@@ -5,12 +5,12 @@ import {createMarkup, cloudinaryURL} from '/lib/utils.js';
 const getCCPath = (artist, city) => {
   let path = '';
   if(!artist) {
-    path = FlowRouter.path('city-guide', {name:city.cityName});
+    path = FlowRouter.url('city-guide', {name:city.cityName});
   } else {
-    path = FlowRouter.path('artist-guide', {name:city.cityName, artistName:artist.artistSlug});
+    path = FlowRouter.url('artist-guide', {name:city.cityName, artistName:artist.artistSlug});
   }
-  const url = Meteor.absoluteUrl(path);
-  return url;
+  // const url = Meteor.absoluteUrl(path);
+  return path;
 }
 
 const getCCMessage = (artist,city) => {
