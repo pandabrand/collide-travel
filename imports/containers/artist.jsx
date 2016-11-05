@@ -11,6 +11,7 @@ import { AdZoneCollection } from '/lib/collections/ad-zone.js';
 import { ArtistGuideComponent } from '/imports/components/artist/artist.jsx';
 import SpinnerComponent from '/imports/components/includes/spinner.jsx';
 import { Subs } from '/imports/containers/subs.js';
+import {createMarkup, removeHTMLTags, cloudinaryURL} from '/lib/utils.js';
 
 const composer = (props, onData) => {
   const subscription = Subs.subscribe('find-city',props.name);
@@ -38,6 +39,33 @@ const composer = (props, onData) => {
           relatedArtists = ArtistsCollection.find({ _id: { $nin: [artist._id] }, cityId: artist.cityId },{sample:{size:3},limit:3}).fetch();
 
           const homeData = {homeCity, locations, artist, artistComments, relatedArtists, ads, props}
+
+          const social_title = 'Collide Travel - ' + artist.artistName + ': Guide to ' + homeCity.displayName;
+          const social_description = removeHTMLTags(artist.description).substring(0,154);
+          const current_url = FlowRouter.current();
+          const social_url = FlowRouter.url(current_url.route.path, current_url.params, {});
+          const social_image = cloudinaryURL(homeCity.guidePreview, 600, 315, 'fill', 'auto', 2);
+          const fb_url = {property:'og:url', content:social_url};
+          const fb_type = {property:'og:type', content:'profile'};
+          const fb_title = {property:'og:title', content:social_title};
+          const fb_description = {property:'og:description', content:social_description};
+          const fb_image = {property:'og:image', content: social_image};
+          const twitter_card = {name:'twitter:card', content:social_description};
+          const twitter_title = {name:'twitter:title', content:social_title};
+          const twitter_description = {name:'twitter:description', content:social_description};
+          const twitter_url = {name:'twitter:url', content:social_url};
+
+          DocHead.setTitle(social_title);
+          DocHead.addMeta(fb_type);
+          DocHead.addMeta(fb_url);
+          DocHead.addMeta(fb_title);
+          DocHead.addMeta(fb_description);
+          DocHead.addMeta(fb_image);
+          DocHead.addMeta(twitter_card);
+          DocHead.addMeta(twitter_title);
+          DocHead.addMeta(twitter_description);
+          DocHead.addMeta(twitter_url);
+
           onData(null, homeData);
         }
     }

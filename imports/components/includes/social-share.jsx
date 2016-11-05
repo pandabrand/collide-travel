@@ -35,9 +35,39 @@ const getCCMedia = (artist,city) => {
 
 export default class SocialShareComponent extends Component {
 
-    constructor(props) {
-      super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    const {artist,city} = this.props;
+    const url = getCCPath(artist,city);
+
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : Meteor.settings.public.FACEBOOK_ID,
+        xfbml      : true,
+        version    : 'v2.8'
+      });
+      FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+
+     document.getElementById('facebookShareID').onclick = function(url) {
+       FB.ui({
+         method: 'share',
+         mobile_iframe: true,
+         href: url,
+       }, function(response){});
+     }
+  }
 
   twitterLink = (artist, city) => {
     const twitterURL =  'https://twitter.com/intent/tweet?text='+getCCMessage(artist,city)+'&url='+getCCPath(artist,city);
@@ -89,7 +119,7 @@ export default class SocialShareComponent extends Component {
       <div className="popover-social-icons">
         <TwitterButton url={url} message={message} element={'a'}><i className="fa fa-twitter"></i></TwitterButton>
         {/*<FacebookButton url={url} message={message} element={'a'} appId={'1247963348571465'} sharer={'true'}><i className="fa fa-facebook"></i></FacebookButton>*/}
-        <a href={this.facebookLink(artist,city)} target="_blank"><i className="fa fa-facebook"></i></a>
+        <a href="javascript:(void(0));" id="facebookShareID" target="_blank"><i className="fa fa-facebook"></i></a>
          {/*<a href="#" onClick="http://instagram.com/officialculturecollide" target="_blank" className="external"><i className="fa fa-instagram"></i></a>*/}
         <PinterestButton url={url} message={message} element={'a'} media={media}><i className="fa fa-pinterest"></i></PinterestButton>
         <TumblrButton url={url} message={message} element={'a'} media={media}><i className="fa fa-tumblr"></i></TumblrButton>
