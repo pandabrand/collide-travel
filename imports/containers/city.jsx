@@ -102,6 +102,7 @@ const composeData = (props, onData, city) => {
           const twitter_title = {name:'twitter:title', content:social_title};
           const twitter_description = {name:'twitter:description', content:social_description};
           const twitter_url = {name:'twitter:url', content:social_url};
+          const google_description = {name:'description', content:social_description};
 
           DocHead.setTitle(social_title);
           DocHead.addMeta(fb_type);
@@ -113,6 +114,7 @@ const composeData = (props, onData, city) => {
           DocHead.addMeta(twitter_title);
           DocHead.addMeta(twitter_description);
           DocHead.addMeta(twitter_url);
+          DocHead.addMeta(google_description);
           return {homeCity, locations, artists, artistComments, ads, props}
         }
     }

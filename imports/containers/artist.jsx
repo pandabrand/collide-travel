@@ -54,6 +54,7 @@ const composer = (props, onData) => {
           const twitter_title = {name:'twitter:title', content:social_title};
           const twitter_description = {name:'twitter:description', content:social_description};
           const twitter_url = {name:'twitter:url', content:social_url};
+          const google_description = {name:'description', content:social_description};
 
           DocHead.setTitle(social_title);
           DocHead.addMeta(fb_type);
@@ -65,7 +66,7 @@ const composer = (props, onData) => {
           DocHead.addMeta(twitter_title);
           DocHead.addMeta(twitter_description);
           DocHead.addMeta(twitter_url);
-
+          DocHead.addMeta(google_description);
           onData(null, homeData);
         }
     }

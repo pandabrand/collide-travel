@@ -6,32 +6,6 @@ import { connect } from 'react-redux';
 import setMobileMenuClick from '/lib/actions/set-mobile-menu-click.js';
 
 export default class UIHeaderComponent extends Component {
-  componentWillMount = () => {
-    //
-    // <!-- Open Graph Meta Tags -->
-    // const fb_url = {property:'og:url', content:'https://www.collidetravel.com/'};
-    // const fb_type = {property:'og:type', content:'website'};
-    // const fb_title = {property:'og:title', content:'Collide Travel'};
-    // const fb_description = {property:'og:description', content:'Take a tour with today\'s top bands, artists and tastemakers'};
-    // DocHead.addMeta(fb_type);
-    // DocHead.addMeta(fb_title);
-    // DocHead.addMeta(fb_description);
-    // DocHead.addMeta(fb_url);
-    // const fb_image = {property:'og:image', content:''};
-
-    // <!-- Twitter Card Meta Tags -->
-    // const twitter_card = {name:'twitter:card', content:'summary'};
-    // const twitter_title = {name:'twitter:title', content:'Travel Collide'};
-    // const twitter_description = {name:'twitter:description', content:'Get out of town.'};
-    // const twitter_card = {name:'twitter:image', content:'url'};
-    // const twitter_site = {name:'twitter:site', content:'@culturecollide'};
-    // DocHead.addMeta(twitter_card);
-    // DocHead.addMeta(twitter_title);
-    // DocHead.addMeta(twitter_description);
-    // DocHead.addMeta(twitter_site);
-
-    // <meta name="twitter:creator" content="@{{userTwitter user.profile.twitterHandle}}"/>
-  }
 
   componentDidMount = () => {
     this.unsubscribe = store.subscribe(() =>

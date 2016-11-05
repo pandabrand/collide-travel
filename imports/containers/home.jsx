@@ -51,6 +51,8 @@ const composer = (props, onData) => {
             }
 
             const homeData = {homePage, featuredCities, promotedCity, locations, artists, artistComments, ads, props}
+            const google_description = {name:'description', content:'CollideTravel.com — a comprehensive guide to cities across the globe built on Google Maps.Through this platform, you can search by city or by artist to discover locals-approved destinations during your next trip.'};
+            DocHead.addMeta(google_description);
             onData(null, homeData);
           }
       }
