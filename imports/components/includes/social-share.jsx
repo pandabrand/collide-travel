@@ -37,6 +37,7 @@ export default class SocialShareComponent extends Component {
 
   constructor(props) {
     super(props);
+    this.callMePlease = this.callMePlease.bind(this);
   }
 
   componentDidMount() {
@@ -60,11 +61,11 @@ export default class SocialShareComponent extends Component {
        fjs.parentNode.insertBefore(js, fjs);
      }(document, 'script', 'facebook-jssdk'));
 
-     document.getElementById('facebookShareID').onclick = function(url) {
+     document.getElementById('facebookShareID').onclick = function(event) {
        FB.ui({
          method: 'share',
          mobile_iframe: true,
-         href: url,
+         href: event.view.location.href,
        }, function(response){});
      }
   }
@@ -73,6 +74,10 @@ export default class SocialShareComponent extends Component {
     const twitterURL =  'https://twitter.com/intent/tweet?text='+getCCMessage(artist,city)+'&url='+getCCPath(artist,city);
 
   	return twitterURL;
+  }
+
+  callMePlease = () => {
+    console.log('hi.');
   }
 
   facebookLink = (artist, city) => {
