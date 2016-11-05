@@ -13,6 +13,7 @@ import { AdZoneCollection } from '/lib/collections/ad-zone.js';
 import { CityComponent } from '/imports/components/city/city.jsx';
 import SpinnerComponent from '/imports/components/includes/spinner.jsx';
 import { Subs } from '/imports/containers/subs.js';
+import {createMarkup, removeHTMLTags, cloudinaryURL} from '/lib/utils.js';
 
 const getLocations = (id) => {
   const locations_sub = Subs.subscribe('city-id-locations',id);
@@ -86,6 +87,32 @@ const composeData = (props, onData, city) => {
             }
           }
 
+          const social_title = 'Collide Travel - ' + homeCity.displayName;
+          const social_description = removeHTMLTags(homeCity.description).substring(0,154);
+          const current_url = FlowRouter.current();
+          const social_url = FlowRouter.url(current_url.route.path, current_url.params, {});
+          const social_image = cloudinaryURL(homeCity.guidePreview, 600, 315, 'fill', 'auto', 2.0);
+
+          const fb_url = {property:'og:url', content:social_url};
+          const fb_title = {property:'og:title', content:social_title};
+          const fb_description = {property:'og:description',content:social_description};
+          const fb_image = {property:'og:image', content: social_image};
+          const fb_type = {property:'og:type', content:'place'};
+          const twitter_card = {name:'twitter:card', content:social_description};
+          const twitter_title = {name:'twitter:title', content:social_title};
+          const twitter_description = {name:'twitter:description', content:social_description};
+          const twitter_url = {name:'twitter:url', content:social_url};
+
+          DocHead.setTitle(social_title);
+          DocHead.addMeta(fb_type);
+          DocHead.addMeta(fb_url);
+          DocHead.addMeta(fb_title);
+          DocHead.addMeta(fb_description);
+          DocHead.addMeta(fb_image);
+          DocHead.addMeta(twitter_card);
+          DocHead.addMeta(twitter_title);
+          DocHead.addMeta(twitter_description);
+          DocHead.addMeta(twitter_url);
           return {homeCity, locations, artists, artistComments, ads, props}
         }
     }

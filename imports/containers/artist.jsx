@@ -44,7 +44,7 @@ const composer = (props, onData) => {
           const social_description = removeHTMLTags(artist.description).substring(0,154);
           const current_url = FlowRouter.current();
           const social_url = FlowRouter.url(current_url.route.path, current_url.params, {});
-          const social_image = cloudinaryURL(homeCity.guidePreview, 600, 315, 'fill', 'auto', 2);
+          const social_image = cloudinaryURL(artist.image, 600, 315, 'fill', 'auto', 2.0);
           const fb_url = {property:'og:url', content:social_url};
           const fb_type = {property:'og:type', content:'profile'};
           const fb_title = {property:'og:title', content:social_title};
