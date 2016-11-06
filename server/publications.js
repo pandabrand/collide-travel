@@ -83,6 +83,10 @@ Meteor.publish('all-locations', function(){
   return LocationsCollection.find({});
 });
 
+Meteor.publish('locations-text-search', function(){
+  return LocationsCollection.find({},{fields:{name:1},sort:{name:1}});
+});
+
 Meteor.publish('artist-cities-and-locations', function(artistId) {
   check(artistId, String)
   return [ArtistsCollection.find({_id:artistId}),CitiesCollection.find({},{fields: {displayName:1}}),LocationsCollection.find({},{fields: {name:1, cityId:1}})];
@@ -129,6 +133,10 @@ Meteor.publish('explore-categories', function(){
 
 Meteor.publish('all-artists', function(){
   return ArtistsCollection.find();
+})
+
+Meteor.publish('artists-text-search', function(){
+  return ArtistsCollection.find({},{fields:{artistName:1},sort:{artistName:1}});
 })
 
 Meteor.publish('explore-artists', function(){

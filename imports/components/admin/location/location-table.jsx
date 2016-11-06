@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 
 import DashboardComponent from  '../dashboard.jsx';
 import BootstrapPaginator from 'react-bootstrap-pagination';
+import AutoComplete from 'material-ui/AutoComplete';
+import MenuItem from 'material-ui/MenuItem';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
-export const LocationTableComponent = ({locations, cities, pagination, props}) => {
+export const LocationTableComponent = ({locations, cities, pagination, locationsTextSearch, props}) => {
   const deleteLocation = (id) => {
     Meteor.call('locations.remove', id);
   }
@@ -19,9 +22,19 @@ export const LocationTableComponent = ({locations, cities, pagination, props}) =
     return filtered[0];
   }
 
+  const autoCompleteArray = () => {
+    return locationsTextSearch.map((location,i) => {
+      return {
+        text: location.name,
+        value: (<MenuItem key={i} onClick={() => {editLocation(location._id)}} primaryText={location.name}/>)
+      };
+    });
+  }
+
   return <DashboardComponent>
     <div id="main-table">
       <h2>Locations</h2> <a href={FlowRouter.path('admin-location-new')} className="btn btn-primary add"><i className="fa fa-plus"/></a>
+      <div className="autoCompleteDiv"><MuiThemeProvider><AutoComplete dataSource={autoCompleteArray()} filter={AutoComplete.fuzzyFilter} maxSearchResults={15} floatingLabelText="Type a name, fuzzy search"/></MuiThemeProvider></div>
       <BootstrapPaginator pagination={pagination} limit={10} containerClass='text-center' />
       <table className="table table-striped">
         <thead>

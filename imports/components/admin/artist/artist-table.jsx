@@ -7,7 +7,7 @@ import AutoComplete from 'material-ui/AutoComplete';
 import MenuItem from 'material-ui/MenuItem';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-export const ArtistTableComponent = ({artists, pagination, props}) => {
+export const ArtistTableComponent = ({artists, pagination, textSearchArtists, props}) => {
   const deleteArtist = (id) => {
     Meteor.call('artists.remove', id);
   }
@@ -21,8 +21,8 @@ export const ArtistTableComponent = ({artists, pagination, props}) => {
     FlowRouter.go(edit_path);
   }
 
-  const autoCompleteArray = (artists) => {
-    return artists.map((artist,i) => {
+  const autoCompleteArray = () => {
+    return textSearchArtists.map((artist,i) => {
       return {
         text: artist.artistName,
         value: (<MenuItem key={i} onClick={() => {editArtist(artist._id)}} primaryText={artist.artistName}/>)
@@ -33,7 +33,7 @@ export const ArtistTableComponent = ({artists, pagination, props}) => {
   return <DashboardComponent>
   <div id="main-table">
     <h2>Artists</h2> <a href={FlowRouter.path('admin-artist-new')} className="btn btn-primary add"><i className="fa fa-plus"/></a>
-    <div className="autoCompleteDiv"><MuiThemeProvider><AutoComplete dataSource={autoCompleteArray(artists)} filter={AutoComplete.fuzzyFilter} floatingLabelText="Type 'peah', fuzzy search"/></MuiThemeProvider></div>
+    <div className="autoCompleteDiv"><MuiThemeProvider><AutoComplete dataSource={autoCompleteArray(artists)} filter={AutoComplete.fuzzyFilter} maxSearchResults={15} floatingLabelText="Type a name, fuzzy search"/></MuiThemeProvider></div>
     <BootstrapPaginator pagination={pagination} limit={10} containerClass='text-center' />
     <table className="table table-striped">
       <thead>
