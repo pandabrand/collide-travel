@@ -20,7 +20,7 @@ class ArtistUpdateComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cityValue: this.props.artist.cityId,
+      changes: {},
     };
     this.showSuccessMessage = this.showSuccessMessage.bind(this);
     this.cityOptions = this.cityOptions.bind(this);
@@ -34,7 +34,7 @@ class ArtistUpdateComponent extends Component {
   }
 
   locationOptions() {
-    const cityId = this.state.cityValue || '';
+    const cityId = this.state.changes.cityId || '';
     const locationsFiltered = cityId ? _.where(this.props.locations, {cityId:cityId}) : this.props.locations;
     return locationsFiltered.map((location)=> {
       return {'label':location.name,'value':location._id};
@@ -48,10 +48,6 @@ class ArtistUpdateComponent extends Component {
       this.setState({successMessage: null})
       FlowRouter.go('admin-artist');
     }, 3000);
-  }
-
-  onChange(value) {
-    this.setState({cityValue: value});
   }
 
   render() {
@@ -79,9 +75,10 @@ class ArtistUpdateComponent extends Component {
             doc={this.props.artist}
             ref='form'
             onSuccess={this.showSuccessMessage}
+            onChange={changes => this.setState({changes:changes})}
           >
           <Field fieldName='artistName'/>
-          <Field id='citySelectID' value={this.state.cityValue} onChange={this.onChange} fieldName='cityId' options={this.cityOptions()}/>
+          <Field id='citySelectID' fieldName='cityId' options={this.cityOptions()}/>
           <Field id='optionSelectID' fieldName='locationIds' options={this.locationOptions()}/>
           <Field fieldName='image'/>
           <Field fieldName='photoCredit'/>
