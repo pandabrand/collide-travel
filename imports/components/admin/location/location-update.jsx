@@ -90,7 +90,8 @@ LocationUpdateComponent.propTypes = propTypes;
 export default createContainer(({id}) => {
   const handler = Meteor.subscribe('location-and-cities', id)
   const isLoading = !handler.ready()
-  const location = LocationsCollection.findOne()
+  const locations = LocationsCollection.find({_id:id}).fetch()
+  const location = locations[0]
   const cities = CitiesCollection.find({},{fields: {displayName:1}}).fetch()
   return {isLoading, location, cities}
 }, LocationUpdateComponent)

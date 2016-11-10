@@ -74,6 +74,7 @@ PageUpdateComponent.propTypes = propTypes;
 export default createContainer(({id}) => {
   const handler = Meteor.subscribe('page', id)
   const isLoading = !handler.ready()
-  const page = PagesCollection.findOne()
+  const pages = PagesCollection.find({_id:id}).fetch()
+  const page = pages[0]
   return {isLoading, page}
 }, PageUpdateComponent)

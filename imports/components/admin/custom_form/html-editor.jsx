@@ -31,8 +31,7 @@ class HtmlEditor extends Component {
   }
 
   onChange(value) {
-    this.setState({ value: value })
-    console.dir(value)
+    this.setState({ value: value });
     this.props.onChange(value);
   }
 
@@ -58,7 +57,9 @@ class HtmlEditor extends Component {
             ],
           }}
         />
-        <TextField ref='input' style={{'visibility':'hidden'}} value={this.state.value || ''}
+        <TextField ref='input'
+          style={{'visibility':'hidden'}}
+          value={this.state.value || ''}
           onChange={this.onChange}
           {...this.props.passProps}
           floatingLabelText={this.props.useHint ? null : this.props.label}

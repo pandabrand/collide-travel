@@ -99,6 +99,7 @@ CityUpdateComponent.propTypes = propTypes;
 export default createContainer(({id}) => {
   const handler = Meteor.subscribe('find-city-id', id)
   const isLoading = !handler.ready()
-  const city = CitiesCollection.findOne()
+  const cities = CitiesCollection.find({_id:id}).fetch()
+  const city = cities[0]
   return {isLoading, city}
 }, CityUpdateComponent)

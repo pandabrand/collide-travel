@@ -75,6 +75,7 @@ MagazineUpdateComponent.propTypes = propTypes;
 export default createContainer(({id}) => {
   const handler = Meteor.subscribe('edit-magazine', id)
   const isLoading = !handler.ready()
-  const magazine = MagazinesCollection.findOne()
+  const magazines = MagazinesCollection.find({_id:id}).fetch()
+  const magazine = magazines[0]
   return {isLoading, magazine}
 }, MagazineUpdateComponent)

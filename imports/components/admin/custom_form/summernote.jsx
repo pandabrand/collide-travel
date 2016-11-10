@@ -30,6 +30,7 @@ class ReactSummernote extends Component {
 
     this.uid = `react-summernote-${Date.now()}`;
     this.editor = {};
+    this.state = {value: this.props.value};
 
     ReactSummernote.reset = ReactSummernote.reset.bind(this);
     ReactSummernote.insertImage = ReactSummernote.insertImage.bind(this);
@@ -39,16 +40,21 @@ class ReactSummernote extends Component {
 
   componentDidMount() {
     const options = this.props.options || {};
+    const contents = this.props.value || '';
     options.callbacks = this.callbacks;
-
     this.editor = $(`#${this.uid}`);
     this.editor.summernote(options);
     this.manageModalScroll(true);
+    this.editor.summernote('code',contents);
   }
 
-  // componentWillReceiveProps (nextProps) {
-  //   this.setState({ value: nextProps.value })
-  // }
+  componentWillReceiveProps (nextProps) {
+    this.setState({ value: nextProps.value })
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.value !== this.state.value;
+  }
 
   componentWillUnmount() {
     if (this.editor) this.editor.summernote('destroy');
@@ -88,7 +94,8 @@ class ReactSummernote extends Component {
   }
 
   render() {
-    return <div id={this.uid} dangerouslySetInnerHTML={{ __html: this.props.value }}></div>;
+    // return <div id={this.uid} dangerouslySetInnerHTML={{ __html: this.state.value }}></div>;
+    return <div id={this.uid}></div>;
   }
 }
 
