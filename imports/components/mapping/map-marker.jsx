@@ -29,7 +29,6 @@ export default class MapMarkerComponent extends Component {
     const circleStyle = this.props.$hover || (parseInt(mapTableHoverIndex)+1) === parseInt(item) ? markerCircleStyleHover : markerPointerStyle;
     const popoverStyle = (mapTableRowClick && parseInt(mapTableRowClick.item) === parseInt(item)) ? {display:'block'} : {display:'none'};
     const pulse = (mapTableRowClick && parseInt(mapTableRowClick.item) === parseInt(item)) ? 'pulse' : '';
-    const imgFile = location.photo.substr(location.photo.lastIndexOf('/') + 1);
     const imgSrc = cloudinaryURL( location.photo, 246, 246 );
 
     const mapLink = (location) => {

@@ -48,7 +48,6 @@ export default function MapRowComponent({location, item, hoverIndex, artists, co
     return 'https://www.google.com/maps/dir/Current+Location/'+location.location.lat+','+location.location.lng;
   }
 
-  const imgFile = location.photo.substr(location.photo.lastIndexOf('/') + 1);
   const imgSrc = cloudinaryURL(location.photo, 150, undefined, 'scale', 'faces', '2.0');
 
   const _onWaypointEnter = (currentPosition) => {
