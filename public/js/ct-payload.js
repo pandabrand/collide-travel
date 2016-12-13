@@ -28,7 +28,10 @@
 
           let header_title_div = document.createElement('div');
           header_title_div.className = 'flex-item cc-header-item cc-header-title';
-          header_title_div.appendChild(document.createTextNode('Collide Travel Guide:'));
+          let header_img = document.createElement('img');
+          header_img.src = 'http://collidetravel.com/images/new-logo.png';
+          header_title_div.appendChild(header_img);
+          // header_title_div.appendChild(document.createTextNode('Collide Travel Guide:'));
 
           let header_text_div = document.createElement('div');
           header_text_div.className = 'flex-item cc-header-item cc-header-text';
@@ -36,6 +39,7 @@
           header_link.href = 'http://collidetravel.com/city/'+city.cityName;
           header_link.target = '_blank';
           header_link.appendChild(document.createTextNode(city.displayName));
+          header_text_div.appendChild(document.createTextNode('Collide Travel Guide:'));
           header_text_div.appendChild(header_link);
           // header_div.appendChild(header_img_div);
           // header_div.appendChild(header_title_div);
