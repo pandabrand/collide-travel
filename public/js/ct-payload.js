@@ -29,7 +29,7 @@
           let header_title_div = document.createElement('div');
           header_title_div.className = 'flex-item cc-header-item cc-header-title';
           let header_img = document.createElement('img');
-          header_img.src = 'http://collidetravel.com/images/new-logo.png';
+          header_img.src = 'http://collidetravel.com/images/new-logo-inverse.png';
           header_title_div.appendChild(header_img);
           // header_title_div.appendChild(document.createTextNode('Collide Travel Guide:'));
 
