@@ -39,7 +39,9 @@
           header_link.href = 'http://collidetravel.com/city/'+city.cityName;
           header_link.target = '_blank';
           header_link.appendChild(document.createTextNode(city.displayName));
-          header_text_div.appendChild(document.createTextNode('Collide Travel Guide:'));
+          let header_title_element = document.createElement('h3');
+          header_title_element.appendChild(document.createTextNode('Collide Travel Guide:'));
+          header_text_div.appendChild(header_title_element);
           header_text_div.appendChild(header_link);
           // header_div.appendChild(header_img_div);
           // header_div.appendChild(header_title_div);
