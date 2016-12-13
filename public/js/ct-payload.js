@@ -28,9 +28,14 @@
 
           let header_title_div = document.createElement('div');
           header_title_div.className = 'flex-item cc-header-item cc-header-title';
+          let header_img_link = document.createElement('a');
+          header_img_link.href = 'http://collidetravel.com/';
+          header_img_link.target = '_blank';
+
           let header_img = document.createElement('img');
           header_img.src = 'http://collidetravel.com/images/new-logo-inverse.png';
-          header_title_div.appendChild(header_img);
+          header_img_link.appendChild(header_img);
+          header_title_div.appendChild(header_img_link);
           // header_title_div.appendChild(document.createTextNode('Collide Travel Guide:'));
 
           let header_text_div = document.createElement('div');
