@@ -17,34 +17,47 @@
           city_coord = city.location;
 
           //make title
-          let header_div = document.createElement('div');
-          header_div.className = 'cc-header';
-
-          let header_img_div = document.createElement('div');
-          header_img_div.className = 'cc-header-silver-image';
-          let header_img = document.createElement('img');
-          header_img.src = 'http://collidetravel.com/images/flat-logo-inline-white-250px.png';
-          header_img_div.appendChild(header_img);
+          // let header_div = document.createElement('div');
+          // header_div.className = 'cc-header';
+          //
+          // let header_img_div = document.createElement('div');
+          // header_img_div.className = 'cc-header-silver-image';
+          // let header_img = document.createElement('img');
+          // header_img.src = 'http://collidetravel.com/images/flat-logo-inline-white-250px.png';
+          // header_img_div.appendChild(header_img);
 
           let header_title_div = document.createElement('div');
-          header_title_div.className = 'cc-header-title';
-          header_title_div.appendChild(document.createTextNode('Collide Travel Guide:'));
+          header_title_div.className = 'flex-item cc-header-item cc-header-title';
+          let header_img_link = document.createElement('a');
+          header_img_link.href = 'http://collidetravel.com/';
+          header_img_link.target = '_blank';
+
+          let header_img = document.createElement('img');
+          header_img.src = 'http://collidetravel.com/images/new-logo-inverse.png';
+          header_img_link.appendChild(header_img);
+          header_title_div.appendChild(header_img_link);
+          // header_title_div.appendChild(document.createTextNode('Collide Travel Guide:'));
 
           let header_text_div = document.createElement('div');
-          header_text_div.className = 'cc-header-text';
+          header_text_div.className = 'flex-item cc-header-item cc-header-text';
           header_link = document.createElement('a');
           header_link.href = 'http://collidetravel.com/city/'+city.cityName;
           header_link.target = '_blank';
           header_link.appendChild(document.createTextNode(city.displayName));
+          let header_title_element = document.createElement('h3');
+          header_title_element.appendChild(document.createTextNode('Collide Travel Guide:'));
+          header_text_div.appendChild(header_title_element);
           header_text_div.appendChild(header_link);
-          header_div.appendChild(header_img_div);
-          header_div.appendChild(header_title_div);
-          header_div.appendChild(header_text_div);
-          cc_info.appendChild(header_div);
+          // header_div.appendChild(header_img_div);
+          // header_div.appendChild(header_title_div);
+          // header_div.appendChild(header_text_div);
+          // cc_info.appendChild(header_div);
+          cc_info.appendChild(header_title_div);
+          cc_info.appendChild(header_text_div);
 
           //make map
           let map_div = document.createElement('div');
-          map_div.className = 'cc-google-map';
+          map_div.className = 'flex-item cc-body cc-google-map';
           let map_loader_div = document.createElement('div');
           map_loader_div.id = 'cc-map';
           map_loader_div.className = 'cc-map';
@@ -61,7 +74,7 @@
 
           //create location scoller
           let location_scroller_div = document.createElement('div');
-          location_scroller_div.className = 'location-wrapper';
+          location_scroller_div.className = 'flex-item cc-body location-wrapper';
           location_scroller_div.id = 'cc-location-wrapper-id';
           cc_info.appendChild(location_scroller_div);
 
