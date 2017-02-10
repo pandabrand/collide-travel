@@ -36,11 +36,10 @@ Meteor.startup(function() {
     $(window).scroll(sticky_relocate);
     sticky_relocate();
   });
-  
+
   // Needed for onTouchTap
   // http://stackoverflow.com/a/34015469/988941
   injectTapEventPlugin();
-
 })
 
 FlowRouter.wait();

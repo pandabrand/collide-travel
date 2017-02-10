@@ -27,6 +27,8 @@ const serveTakeoverAd = (ads) => {
 
 const getHome = (homePage, featuredCities, routeName, promotedCity, locations, artists, artistComments, ads, props, dispatch) => {
   const _width = (typeof window !== 'undefined') ? window.innerWidth : '';
+  // const testJSON = Meteor.call('get.feed.partial');
+  // console.dir(testJSON);
   return (<div>
     <div id="main" className="fluid-container">
       <img className="hero-image" src={cloudinaryURL(homePage.image, 1280, undefined, 'fill', 'auto', '2.0')} />
@@ -37,7 +39,7 @@ const getHome = (homePage, featuredCities, routeName, promotedCity, locations, a
     </div>
     {serveStickyAd(ads)}
     <div className="home-map-container">
-      <div id="city-copied" className="featured-city-copy">This month's featured city: {promotedCity.displayName}</div>
+      <div id="city-copied" className="featured-city-copy">This week's featured city: {promotedCity.displayName}</div>
       <FeaturedMapsComponent homeCity={promotedCity} locations={locations} artists={artists} artistComments={artistComments} props={props} dispatch={dispatch}/>
     </div>
     {serveTakeoverAd(ads)}
