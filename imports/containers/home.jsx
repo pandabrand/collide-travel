@@ -20,7 +20,7 @@ const composer = (props, onData) => {
   const adSubscription = Subs.subscribe('get-ad');
 
   if(subscription.ready() && homePage_sub.ready() && promoted_sub.ready() && adSubscription.ready()) {
-    const featuredCities = CitiesCollection.find({isFeatured:true},{skip:0,limit:6, fields:{displayName:1,printPreview:1,cityName:1,isFeatured:1}}).fetch();
+    const featuredCities = CitiesCollection.find({$or:[{isFeatured:true},{isDefault:true}]},{skip:0,limit:6, fields:{displayName:1,printPreview:1,cityName:1,isFeatured:1}}).fetch();
 
     const homePage = PagesCollection.findOne({isHome: true});
 
