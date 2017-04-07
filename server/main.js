@@ -38,9 +38,9 @@ const trendingCron = new Cron(function() {
 				TrendingCollection.remove({});
 				res.map((article, i) => {
 					check(article,{
-						title: String,
-						secondaryTitle: String,
-						description: String,
+						title: Match.OneOf(String,Object),
+						secondaryTitle: Match.OneOf(String,Object),
+						description: Match.OneOf(String,Object),
 						secondaryDescription: Match.OneOf(String,Object),
 						link: String,
 						guid: String,
