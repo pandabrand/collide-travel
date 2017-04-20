@@ -106,10 +106,18 @@ ArtistUpdateComponent.propTypes = propTypes;
 
 export default createContainer(({id}) => {
   const handler = Meteor.subscribe('artist-cities-and-locations', id)
-  const isLoading = !handler.ready()
-  const artists = ArtistsCollection.find({_id:id}).fetch()
-  const artist = artists[0]
-  const cities = CitiesCollection.find({},{fields: {displayName:1}}).fetch()
-  const locations = LocationsCollection.find({}, {fields: {name:1, cityId:1}}).fetch()
+  const isLoading = handler.ready()
+  const cities = []
+  const locations = []
+  const artist = {}
+  if(isLoading) {
+    const artists = ArtistsCollection.find({_id:id}).fetch()
+    const artist = artists[0]
+    const cities = CitiesCollection.find({},{fields: {displayName:1}}).fetch()
+    const locations = LocationsCollection.find({}, {fields: {name:1, cityId:1}}).fetch()
+    return {isLoading, artist, cities, locations}
+  }
+  // const cities = CitiesCollection.find({},{fields: {displayName:1}}).fetch()
+  // const locations = LocationsCollection.find({}, {fields: {name:1, cityId:1}}).fetch()
   return {isLoading, artist, locations, cities}
 }, ArtistUpdateComponent)
