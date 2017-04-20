@@ -12,7 +12,10 @@ import {LocationsCollection} from '/lib/collections/locations.js';
 
 
 const propTypes = {
-  cityValue: React.PropTypes.object
+  cityValue: React.PropTypes.object,
+  artist: React.PropTypes.object,
+  cities: React.PropTypes.array.isRequired,
+  locations: React.PropTypes.array.isRequired,
 }
 
 class ArtistUpdateComponent extends Component {

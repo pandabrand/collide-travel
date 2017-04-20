@@ -11,7 +11,9 @@ import {CitiesCollection} from '/lib/collections/cities.js';
 import {LocationsCollection} from '/lib/collections/locations.js';
 
 const propTypes = {
-  cityValue: React.PropTypes.object
+  cityValue: React.PropTypes.object,
+  cities: React.PropTypes.array.isRequired,
+  locations: React.PropTypes.array.isRequired,
 }
 
 class ArtistCreateComponent extends Component {
