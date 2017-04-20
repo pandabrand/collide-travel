@@ -6,6 +6,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 import DashboardComponent from '../dashboard.jsx';
+import CityFieldComponent from './city-field.jsx';
 import {ArtistsCollection} from '/lib/collections/artists.js';
 import {CitiesCollection} from '/lib/collections/cities.js';
 import {LocationsCollection} from '/lib/collections/locations.js';
@@ -25,15 +26,7 @@ class ArtistCreateComponent extends Component {
       changes: {}
     };
     this.showSuccessMessage = this.showSuccessMessage.bind(this);
-    this.cityOptions = this.cityOptions.bind(this);
     this.locationOptions = this.locationOptions.bind(this);
-  }
-
-  cityOptions() {
-    console.dir(this.props.cities);
-    return this.props.cities.map((city) => {
-      return {'label':city.displayName, 'value':city._id};
-    });
   }
 
   locationOptions() {
@@ -82,7 +75,7 @@ class ArtistCreateComponent extends Component {
             onChange={changes => {this.setState({changes:changes});}}
           >
           <Field fieldName='artistName'/>
-          <Field id='citySelectID' fieldName='cityId' options={this.cityOptions()}/>
+          <CityFieldComponent cities={this.props.cities} />
           <Field id='optionSelectID' fieldName='locationIds' options={this.locationOptions()}/>
           <Field fieldName='image'/>
           <Field fieldName='photoCredit'/>
@@ -107,13 +100,8 @@ ArtistCreateComponent.propTypes = propTypes;
 
 export default createContainer(() => {
   const handler = Meteor.subscribe('cities-and-locations')
-  const isLoading = handler.ready()
-  const cities = []
-  const locations = []
-  if(isLoading) {
-    const cities = CitiesCollection.find({},{fields: {displayName:1}}).fetch()
-    const locations = LocationsCollection.find({}, {fields: {name:1, cityId:1}}).fetch()
-    return {isLoading, cities, locations}
-  }
+  const isLoading = !handler.ready()
+  const cities = CitiesCollection.find({},{fields: {displayName:1}}).fetch()
+  const locations = LocationsCollection.find({}, {fields: {name:1, cityId:1}}).fetch()
   return {isLoading, cities, locations}
 }, ArtistCreateComponent)

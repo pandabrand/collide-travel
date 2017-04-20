@@ -6,6 +6,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 import DashboardComponent from '../dashboard.jsx';
+import CityFieldComponent from './city-field.jsx';
 import {ArtistsCollection} from '/lib/collections/artists.js';
 import {CitiesCollection} from '/lib/collections/cities.js';
 import {LocationsCollection} from '/lib/collections/locations.js';
@@ -81,7 +82,7 @@ class ArtistUpdateComponent extends Component {
             onChange={changes => this.setState({changes:changes})}
           >
           <Field fieldName='artistName'/>
-          <Field id='citySelectID' fieldName='cityId' options={this.cityOptions()}/>
+          <CityFieldComponent cities={this.props.cities} />
           <Field id='optionSelectID' fieldName='locationIds' options={this.locationOptions()}/>
           <Field fieldName='image'/>
           <Field fieldName='photoCredit'/>
@@ -106,18 +107,10 @@ ArtistUpdateComponent.propTypes = propTypes;
 
 export default createContainer(({id}) => {
   const handler = Meteor.subscribe('artist-cities-and-locations', id)
-  const isLoading = handler.ready()
-  const cities = []
-  const locations = []
-  const artist = {}
-  if(isLoading) {
-    const artists = ArtistsCollection.find({_id:id}).fetch()
-    const artist = artists[0]
-    const cities = CitiesCollection.find({},{fields: {displayName:1}}).fetch()
-    const locations = LocationsCollection.find({}, {fields: {name:1, cityId:1}}).fetch()
-    return {isLoading, artist, cities, locations}
-  }
-  // const cities = CitiesCollection.find({},{fields: {displayName:1}}).fetch()
-  // const locations = LocationsCollection.find({}, {fields: {name:1, cityId:1}}).fetch()
+  const isLoading = !handler.ready()
+  const artists = ArtistsCollection.find({_id:id}).fetch()
+  const artist = artists[0]
+  const cities = CitiesCollection.find({},{fields: {displayName:1}}).fetch()
+  const locations = LocationsCollection.find({}, {fields: {name:1, cityId:1}}).fetch()
   return {isLoading, artist, locations, cities}
 }, ArtistUpdateComponent)
