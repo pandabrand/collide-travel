@@ -28,6 +28,7 @@ class ArtistCreateComponent extends Component {
   }
 
   cityOptions() {
+    console.dir(this.props.cities);
     return this.props.cities.map((city) => {
       return {'label':city.displayName, 'value':city._id};
     });
