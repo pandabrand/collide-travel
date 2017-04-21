@@ -30,7 +30,7 @@ class ArtistCreateComponent extends Component {
   }
 
   cityOptions() {
-    const cities = this.props.cities || [];
+    let cities = !this.props.isLoading ? this.props.cities : [];
     return cities.map((city) => {
       return {'label':city.displayName, 'value':city._id};
     });
