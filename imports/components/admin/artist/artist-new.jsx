@@ -107,12 +107,9 @@ ArtistCreateComponent.propTypes = propTypes;
 export default createContainer(() => {
   const handler = Meteor.subscribe('cities-and-locations');
   const isLoading = !handler.ready();
-  const cities = CitiesCollection.find({},{fields: {displayName:1}});
-  const locations = LocationsCollection.find({}, {fields: {name:1, cityId:1}});
-  const citiesLocationsExists = !isLoading && !!cities && !!locations;
   return {
     isLoading,
-    cities: citiesLocationsExists ? cities.fetch() : [],
-    locations: citiesLocationsExists ? locations.fetch() : [],
+    cities: CitiesCollection.find({},{fields: {displayName:1}}).fetch(),
+    locations: LocationsCollection.find({}, {fields: {name:1, cityId:1}}).fetch(),
   };
 }, ArtistCreateComponent)
