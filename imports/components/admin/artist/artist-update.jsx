@@ -6,7 +6,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 import DashboardComponent from '../dashboard.jsx';
-import CityFieldComponent from './city-field.jsx';
 import {ArtistsCollection} from '/lib/collections/artists.js';
 import {CitiesCollection} from '/lib/collections/cities.js';
 import {LocationsCollection} from '/lib/collections/locations.js';
@@ -82,7 +81,7 @@ class ArtistUpdateComponent extends Component {
             onChange={changes => this.setState({changes:changes})}
           >
           <Field fieldName='artistName'/>
-          <CityFieldComponent cities={this.props.cities} />
+          <Field id='citySelectID' fieldName='cityId' options={this.cityOptions()}/>
           <Field id='optionSelectID' fieldName='locationIds' options={this.locationOptions()}/>
           <Field fieldName='image'/>
           <Field fieldName='photoCredit'/>
@@ -107,10 +106,11 @@ ArtistUpdateComponent.propTypes = propTypes;
 
 export default createContainer(({id}) => {
   const handler = Meteor.subscribe('artist-cities-and-locations', id)
-  const isLoading = !handler.ready()
-  const artists = ArtistsCollection.find({_id:id}).fetch()
-  const artist = artists[0]
-  const cities = CitiesCollection.find({},{fields: {displayName:1}}).fetch()
-  const locations = LocationsCollection.find({}, {fields: {name:1, cityId:1}}).fetch()
-  return {isLoading, artist, locations, cities}
+  return {
+    isLoading: !handler.ready(),
+    cities: CitiesCollection.find({},{fields: {displayName:1}}).fetch(),
+    locations: LocationsCollection.find({}, {fields: {name:1, cityId:1}}).fetch(),
+    artist: ArtistsCollection.findOne({_id:id}),
+  };
+
 }, ArtistUpdateComponent)
