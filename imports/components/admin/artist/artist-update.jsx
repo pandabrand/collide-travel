@@ -31,8 +31,7 @@ class ArtistUpdateComponent extends Component {
   }
 
   cityOptions() {
-    let cities = this.props.cities;
-    return cities.map((city) => {
+    return this.props.cities.map((city) => {
       return {'label':city.displayName, 'value':city._id};
     });
   }
