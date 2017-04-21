@@ -31,7 +31,7 @@ class ArtistUpdateComponent extends Component {
   }
 
   cityOptions() {
-    let cities = !this.props.isLoading ? this.props.cities : [];
+    let cities = this.props.cities;
     return cities.map((city) => {
       return {'label':city.displayName, 'value':city._id};
     });
@@ -107,11 +107,14 @@ ArtistUpdateComponent.propTypes = propTypes;
 
 export default createContainer(({id}) => {
   const handler = Meteor.subscribe('artist-cities-and-locations', id)
+  const isLoading = !handler.ready();
+  const cities = CitiesCollection.find({},{fields: {displayName:1}});
+  const locations = LocationsCollection.find({}, {fields: {name:1, cityId:1}});
+  const citiesLocationsExists = !isLoading && !!cities && !!locations;
   return {
-    isLoading: !handler.ready(),
-    cities: CitiesCollection.find({},{fields: {displayName:1}}).fetch(),
-    locations: LocationsCollection.find({}, {fields: {name:1, cityId:1}}).fetch(),
+    isLoading,
+    cities: citiesLocationsExists ? cities.fetch() : [],
+    locations: citiesLocationsExists ? locations.fetch() : [],
     artist: ArtistsCollection.findOne({_id:id}),
   };
-
 }, ArtistUpdateComponent)

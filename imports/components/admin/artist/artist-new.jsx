@@ -30,7 +30,7 @@ class ArtistCreateComponent extends Component {
   }
 
   cityOptions() {
-    let cities = !this.props.isLoading ? this.props.cities : [];
+    let cities = this.props.cities;
     return cities.map((city) => {
       return {'label':city.displayName, 'value':city._id};
     });
@@ -107,9 +107,13 @@ ArtistCreateComponent.propTypes = propTypes;
 
 export default createContainer(() => {
   const handler = Meteor.subscribe('cities-and-locations');
+  const isLoading = !handler.ready();
+  const cities = CitiesCollection.find({},{fields: {displayName:1}});
+  const locations = LocationsCollection.find({}, {fields: {name:1, cityId:1}});
+  const citiesLocationsExists = !isLoading && !!cities && !!locations;
   return {
-    isLoading: !handler.ready(),
-    cities: CitiesCollection.find({},{fields: {displayName:1}}).fetch(),
-    locations: LocationsCollection.find({}, {fields: {name:1, cityId:1}}).fetch(),
+    isLoading,
+    cities: citiesLocationsExists ? cities.fetch() : [],
+    locations: citiesLocationsExists ? locations.fetch() : [],
   };
 }, ArtistCreateComponent)
