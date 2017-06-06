@@ -62,10 +62,8 @@ jalik:ufs@0.7.2
 jeremy:geocomplete@1.8.0
 jquery@1.11.10
 kadira:blaze-layout@2.3.0
-kadira:debug@3.2.2
 kadira:dochead@1.5.0
 kadira:flow-router-ssr@3.13.0
-kadira:runtime-dev@0.0.1
 kurounin:pagination@1.0.20
 launch-screen@1.1.0
 lepozepo:cloudinary@4.2.6

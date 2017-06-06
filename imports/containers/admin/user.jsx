@@ -4,18 +4,19 @@ import { connect } from 'react-redux';
 
 import { composeWithTracker } from 'react-komposer';
 
-import {UsersTableComponent} from '/imports/components/admin/users/users.jsx';
+import {UserTableComponent} from '/imports/components/admin/users/user-table.jsx';
 import SpinnerComponent from '/imports/components/includes/spinner.jsx';
 
+const pagination = new Meteor.Pagination(Meteor.users);
+
 const composer = (props, onData) => {
-  const subscription = Meteor.subscribe('user-list');
-  if(subscription.ready()) {
-    const users = Meteor.users.find().fetch();
-    const userData = {users, props};
+  const userTable = pagination.getPage();
+  if(pagination.ready()) {
+    const userData = {userTable, pagination, props};
     onData(null, userData);
   }
 };
 
-const AdminUserContainer = composeWithTracker(composer, SpinnerComponent)(UsersTableComponent);
+const AdminUserContainer = composeWithTracker(composer, SpinnerComponent)(UserTableComponent);
 
 export default connect()(AdminUserContainer);
