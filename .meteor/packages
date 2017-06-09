@@ -57,7 +57,6 @@ okgrow:router-autoscroll
 shell-server@0.2.1
 reacttech:af-cloudinary
 okgrow:analytics
-meteorhacks:kadira
 meteorhacks:unblock
 meteorhacks:fast-render@=2.14.0
 chfritz:easycron

@@ -81,7 +81,6 @@ meteor@1.6.0
 meteor-base@1.0.4
 meteorhacks:fast-render@2.14.0
 meteorhacks:inject-data@2.0.0
-meteorhacks:kadira@2.30.3
 meteorhacks:meteorx@1.4.1
 meteorhacks:picker@1.0.3
 meteorhacks:subs-manager@1.6.4
@@ -97,7 +96,6 @@ modules-runtime@0.7.8
 momentjs:moment@2.17.1
 mongo@1.1.14
 mongo-id@1.0.6
-mongo-livedata@1.0.12
 mpowaga:autoform-summernote@0.4.3
 mrest:restivus@0.8.13
 mxab:simple-schema-jsdoc@0.1.1
