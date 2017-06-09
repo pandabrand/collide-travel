@@ -9,6 +9,8 @@ import { TrendingCollection } from '../lib/collections/trending.js';
 import {AdZoneCollection} from '../lib/collections/ad-zone.js';
 let haversine = require('haversine');
 
+import { publishComposite } from 'meteor/reywood:publish-composite';
+
 Meteor.publish('everything', function() {
     return [
       CitiesCollection.find({}),
@@ -281,6 +283,24 @@ Meteor.publish('search', function(searchTerm) {
       LocationsCollection.find(locationQuery, {limit:10,fields:{name:1,description:1,address:1,cityId:1}}),
     ];
   }
-})
+});
 
+Meteor.publish('location.categories', function() {
+  return LocationsCollection.find({},{distinct:'type',field:{type:1}});
+});
+
+Meteor.publishComposite('locations.hr.categories', function(hrLocationId, categories) {
+  return {
+    find() {
+      return CitiesCollection.find({hardRockId:hrLocationId});
+    },
+    children: [
+      {
+        find(city, categories) {
+          return LocationsCollection.find({cityId:city._id, type:{$in:categories}});
+        }
+      }
+    ]
+  };
+})
 //// Pagination

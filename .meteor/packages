@@ -74,3 +74,8 @@ meteor@1.6.0
 matb33:collection-hooks
 force-ssl
 practicalmeteor:mocha
+practicalmeteor:chai
+dburles:factory
+hwillson:stub-collections
+johanbrook:publication-collector
+mrest:restivus
