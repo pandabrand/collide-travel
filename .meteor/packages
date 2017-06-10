@@ -71,10 +71,5 @@ webapp@1.3.12
 fastclick@1.0.13
 meteor@1.6.0
 matb33:collection-hooks
-force-ssl@1.0.13
-practicalmeteor:mocha
-practicalmeteor:chai
-dburles:factory
-hwillson:stub-collections
-johanbrook:publication-collector
+force-ssl
 mrest:restivus

@@ -62,10 +62,12 @@ class LocationCreateComponent extends Component {
           <Field id='citySelectID' fieldName='cityId' options={this.cityOptions()}/>
           <Field fieldName='geolocation'/>
           <Field fieldName='description'/>
+          <Field fieldName='longDescription'/>
           <Field fieldName='photo'/>
           <Field fieldName='photoCredit'/>
           <Field fieldName='website'/>
           <Field fieldName='isFeatured'/>
+          <Field fieldName='hardRockAltImage'/>
           </Form>
         </MuiThemeProvider>
         <MuiThemeProvider>
