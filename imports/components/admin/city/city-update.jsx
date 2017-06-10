@@ -81,6 +81,8 @@ class CityUpdateComponent extends Component {
             <Field fieldName='showDownloadLink'/>
             <Field fieldName='printPurchaseLink'/>
             <Field fieldName='showPurchaseLink'/>
+            <Field fieldName='hardRockId'/>
+            <Field fieldName='hardRockAltImage'/>
           </Form>
         </MuiThemeProvider>
         <MuiThemeProvider>
