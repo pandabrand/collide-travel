@@ -53,11 +53,11 @@ ApiV1.addRoute(
 );
 
 /**
- * @api {get} /locations/:hotelId?categories=:categories&limit=:limit&skip=:skip Request Locations. Returns an array of locations based off of hotelId. Extra query params for category filter, return count, and return skip.
- * @apiParam {int} hotelId Hotel property unique ID.
- * @apiParam {String} [categories]  Optional Comma-delimited string of category types to filter by.
- * @apiParam {int} [limit]  Optional Number of Location items to return. All returned when this is value is not passed.
- * @apiParam {int} [skip]  Optional Number of Location items to skip.
+ * @api {get} /locations/:hotelId/? Request Locations. Returns an array of locations based off of hotelId. Extra query params for category filter, return count, and return skip.
+ * @apiParam {Number} hotelId Hotel property unique ID.
+ * @apiParam {String} [categories]  Query Param Optional Comma-delimited string of category types to filter by.
+ * @apiParam {Number} [limit]  Query Param Optional Number of Location items to return. All returned when this is value is not passed.
+ * @apiParam {Number} [skip]  Query Param Optional Number of Location items to skip.
  * @apiName GetLocations
  * @apiGroup Locations
  *
