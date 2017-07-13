@@ -116,8 +116,16 @@ ApiXML.addRoute(
  {authRequired: false},
  {
    get: function() {
-     let city = CitiesCollection.find().fetch();
-     let citiesXML = js2xmlparser.parse("cities", city);
+     let cities = CitiesCollection.find().fetch();
+     _.each(cities, function(city) {
+       var previewId = city.printPreview;
+       var cityGuideAdSpaceImage = city.cityGuideAdSpaceImage;
+       var altImageId = city.hardRockAltImage;
+       city.printPreview = previewId ? cloudinaryURL(previewId) : '';
+       city.cityGuideAdSpaceImage = cityGuideAdSpaceImage ? cloudinaryURL(cityGuideAdSpaceImage) : '';
+       city.hardRockAltImage = altImageId ? cloudinaryURL(altImageId) : '';
+     });
+     let citiesXML = js2xmlparser.parse("cities", cities);
      return {
        headers: {
          'Content-Type': 'application/xml',
