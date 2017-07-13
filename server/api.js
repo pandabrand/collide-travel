@@ -1,3 +1,5 @@
+import js2xmlparser from 'js2xmlparser';
+
 import { CitiesCollection } from '../lib/collections/cities.js';
 import { LocationsCollection } from '../lib/collections/locations.js';
 import { cloudinaryURL } from '/lib/utils.js';
@@ -101,3 +103,64 @@ ApiV1.addRoute(
     }
   }
 )
+
+var ApiXML = new Restivus({
+  apiPath: 'xml/',
+  version: 'v1',
+  defaultHeaders: {'Content-Type':'application/xml'}
+});
+
+//Add XML output
+ApiXML.addRoute(
+ 'cities',
+ {authRequired: false},
+ {
+   get: function() {
+     let city = CitiesCollection.find().fetch();
+     let citiesXML = js2xmlparser.parse("cities", city);
+     return {
+       headers: {
+         'Content-Type': 'application/xml',
+         'X-Custom-Header': 'custom value'
+       },
+       body: citiesXML
+     };
+   }
+ }
+);
+
+ApiXML.addRoute(
+ 'artists',
+ {authRequired: false},
+ {
+   get: function() {
+     let artist = ArtistsCollection.find().fetch();
+     let artistsXML = js2xmlparser.parse("artists", artist);
+     return {
+       headers: {
+         'Content-Type': 'application/xml',
+         'X-Custom-Header': 'custom value'
+       },
+       body: artistsXML
+     };
+   }
+ }
+);
+
+ApiXML.addRoute(
+ 'locations',
+ {authRequired: false},
+ {
+   get: function() {
+     let location = LocationsCollection.find().fetch();
+     let locationsXML = js2xmlparser.parse("locations", location);
+     return {
+       headers: {
+         'Content-Type': 'application/xml',
+         'X-Custom-Header': 'custom value'
+       },
+       body: locationsXML
+     };
+   }
+ }
+);
