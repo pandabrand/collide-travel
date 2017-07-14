@@ -118,9 +118,11 @@ ApiXML.addRoute(
    get: function() {
      let cities = CitiesCollection.find().fetch();
      _.each(cities, function(city) {
+       var guidePreviewID = city.guidePreview;
        var previewId = city.printPreview;
        var cityGuideAdSpaceImage = city.cityGuideAdSpaceImage;
        var altImageId = city.hardRockAltImage;
+       city.guidePreview = guidePreviewID ? cloudinaryURLNoTransformations(guidePreviewID) : '';
        city.printPreview = previewId ? cloudinaryURLNoTransformations(previewId) : '';
        city.cityGuideAdSpaceImage = cityGuideAdSpaceImage ? cloudinaryURLNoTransformations(cityGuideAdSpaceImage) : '';
        city.hardRockAltImage = altImageId ? cloudinaryURLNoTransformations(altImageId) : '';
