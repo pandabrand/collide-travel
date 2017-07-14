@@ -144,8 +144,13 @@ ApiXML.addRoute(
  {authRequired: false},
  {
    get: function() {
-     let artist = ArtistsCollection.find().fetch();
-     let artistsXML = js2xmlparser.parse("artists", artist);
+     let artists = ArtistsCollection.find().fetch();
+     _.each(artists, function(artist) {
+       var image = artist.image;
+       artist.image = image ? cloudinaryURLNoTransformations(image) : '';
+     });
+
+     let artistsXML = js2xmlparser.parse("artists", artists);
      return {
        headers: {
          'Content-Type': 'application/xml',
@@ -162,8 +167,13 @@ ApiXML.addRoute(
  {authRequired: false},
  {
    get: function() {
-     let location = LocationsCollection.find().fetch();
-     let locationsXML = js2xmlparser.parse("locations", location);
+     let locations = LocationsCollection.find().fetch();
+     _.each(locations, function(location) {
+       var photo = location.photo;
+       city.photo = photo ? cloudinaryURLNoTransformations(photo) : '';
+     });
+
+     let locationsXML = js2xmlparser.parse("locations", locations);
      return {
        headers: {
          'Content-Type': 'application/xml',
