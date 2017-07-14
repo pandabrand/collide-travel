@@ -148,6 +148,8 @@ ApiXML.addRoute(
      _.each(artists, function(artist) {
        var image = artist.image;
        artist.image = image ? cloudinaryURLNoTransformations(image) : '';
+       var locations = artist.locationIds;
+       artist.locationIds = locations.join(',');
      });
 
      let artistsXML = js2xmlparser.parse("artists", artists);
@@ -180,30 +182,6 @@ ApiXML.addRoute(
          'X-Custom-Header': 'custom value'
        },
        body: locationsXML
-     };
-   }
- }
-);
-
-ApiXML.addRoute(
- 'updateCities',
- {authRequired: false},
- {
-   get: function() {
-     let cities = CitiesCollection.find({},{fields:{printPreview:1,cityGuideAdSpaceImage:1,hardRockAltImage:1}}).fetch();
-     _.each(cities, function(city) {
-       var previewId = city.printPreview;
-       console.log(cloudinaryURLNoTransformations(previewId));
-      //  getCloudinaryDetails(previewId, city._id);
-      //  var cityGuideAdSpaceImage = city.cityGuideAdSpaceImage;
-      //  var altImageId = city.hardRockAltImage;
-     });
-     return {
-       headers: {
-         'Content-Type': 'application/xml',
-         'X-Custom-Header': 'custom value'
-       },
-       body: '<cityupdate>Done</cityupdate>'
      };
    }
  }
