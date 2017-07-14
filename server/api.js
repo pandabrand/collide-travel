@@ -2,7 +2,7 @@ import js2xmlparser from 'js2xmlparser';
 
 import { CitiesCollection } from '../lib/collections/cities.js';
 import { LocationsCollection } from '../lib/collections/locations.js';
-import { cloudinaryURL } from '/lib/utils.js';
+import { cloudinaryURL, getCloudinaryDetails, cloudinaryURLNoTransformations } from '/lib/utils.js';
 
 
 // Global API configuration
@@ -121,9 +121,9 @@ ApiXML.addRoute(
        var previewId = city.printPreview;
        var cityGuideAdSpaceImage = city.cityGuideAdSpaceImage;
        var altImageId = city.hardRockAltImage;
-       city.printPreview = previewId ? cloudinaryURL(previewId) : '';
-       city.cityGuideAdSpaceImage = cityGuideAdSpaceImage ? cloudinaryURL(cityGuideAdSpaceImage) : '';
-       city.hardRockAltImage = altImageId ? cloudinaryURL(altImageId) : '';
+       city.printPreview = previewId ? cloudinaryURLNoTransformations(previewId) : '';
+       city.cityGuideAdSpaceImage = cityGuideAdSpaceImage ? cloudinaryURLNoTransformations(cityGuideAdSpaceImage) : '';
+       city.hardRockAltImage = altImageId ? cloudinaryURLNoTransformations(altImageId) : '';
      });
      let citiesXML = js2xmlparser.parse("cities", cities);
      return {
@@ -168,6 +168,30 @@ ApiXML.addRoute(
          'X-Custom-Header': 'custom value'
        },
        body: locationsXML
+     };
+   }
+ }
+);
+
+ApiXML.addRoute(
+ 'updateCities',
+ {authRequired: false},
+ {
+   get: function() {
+     let cities = CitiesCollection.find({},{fields:{printPreview:1,cityGuideAdSpaceImage:1,hardRockAltImage:1}}).fetch();
+     _.each(cities, function(city) {
+       var previewId = city.printPreview;
+       console.log(cloudinaryURLNoTransformations(previewId));
+      //  getCloudinaryDetails(previewId, city._id);
+      //  var cityGuideAdSpaceImage = city.cityGuideAdSpaceImage;
+      //  var altImageId = city.hardRockAltImage;
+     });
+     return {
+       headers: {
+         'Content-Type': 'application/xml',
+         'X-Custom-Header': 'custom value'
+       },
+       body: '<cityupdate>Done</cityupdate>'
      };
    }
  }
