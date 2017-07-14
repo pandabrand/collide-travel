@@ -170,7 +170,7 @@ ApiXML.addRoute(
      let locations = LocationsCollection.find().fetch();
      _.each(locations, function(location) {
        var photo = location.photo;
-       city.photo = photo ? cloudinaryURLNoTransformations(photo) : '';
+       location.photo = photo ? cloudinaryURLNoTransformations(photo) : '';
      });
 
      let locationsXML = js2xmlparser.parse("locations", locations);
